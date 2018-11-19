@@ -32,6 +32,9 @@
 		B5276AF821A0124D000A74A5 /* CurrenciesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */; };
 		B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF321A0124D000A74A5 /* CurrenciesViewController.swift */; };
 		B5276AFA21A0124D000A74A5 /* CurrenciesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF421A0124D000A74A5 /* CurrenciesInteractor.swift */; };
+		B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B3F21A27FDD000A74A5 /* PostsEndPoint.swift */; };
+		B5276B4121A27FDD000A74A5 /* PostsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B3F21A27FDD000A74A5 /* PostsEndPoint.swift */; };
+		B5276B4221A27FDD000A74A5 /* PostsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B3F21A27FDD000A74A5 /* PostsEndPoint.swift */; };
 		C07B6C3481306E5A4E4462D0 /* Pods_StagingCryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084EF5BB3FCB474B5135431A /* Pods_StagingCryptotracker.framework */; };
 		C0CE4935DE67B38D9BD096C9 /* Pods_Cryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D2C2A8FD287D294CF24F89F /* Pods_Cryptotracker.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +63,7 @@
 		B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesModels.swift; sourceTree = "<group>"; };
 		B5276AF321A0124D000A74A5 /* CurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewController.swift; sourceTree = "<group>"; };
 		B5276AF421A0124D000A74A5 /* CurrenciesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesInteractor.swift; sourceTree = "<group>"; };
+		B5276B3F21A27FDD000A74A5 /* PostsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEndPoint.swift; sourceTree = "<group>"; };
 		BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B2530050E251A72770FCB3 /* Pods_DebugCryptotracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugCryptotracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +146,7 @@
 		B5276ABF21A00F83000A74A5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B5276B3E21A27F17000A74A5 /* Network */,
 				B5276AEE21A011ED000A74A5 /* Currencies */,
 			);
 			path = Source;
@@ -184,6 +189,14 @@
 			path = Currencies;
 			sourceTree = "<group>";
 		};
+		B5276B3E21A27F17000A74A5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B5276B3F21A27FDD000A74A5 /* PostsEndPoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		C507AE03D095A52756BA7150 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +222,7 @@
 				B5276AA721A00F59000A74A5 /* Frameworks */,
 				B5276AA821A00F59000A74A5 /* Resources */,
 				B5276AFB21A01E5F000A74A5 /* SwiftLint */,
+				5AFF39393601B3825388FEC7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,6 +242,7 @@
 				B5276AC421A00F9F000A74A5 /* Frameworks */,
 				B5276AC521A00F9F000A74A5 /* Resources */,
 				B5276AFC21A01E75000A74A5 /* SwiftLint */,
+				C11214258295C89F3DA935FB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,6 +262,7 @@
 				B5276AD221A00FAC000A74A5 /* Frameworks */,
 				B5276AD321A00FAC000A74A5 /* Resources */,
 				B5276AFD21A01E84000A74A5 /* SwiftLint */,
+				10C882205A518229496CEE7F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,6 +345,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		10C882205A518229496CEE7F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-StagingCryptotracker/Pods-StagingCryptotracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MUOSimpleNetwork/MUOSimpleNetwork.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MUOSimpleNetwork.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StagingCryptotracker/Pods-StagingCryptotracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4120CDEE9F183875376742D0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -363,6 +397,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5AFF39393601B3825388FEC7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MUOSimpleNetwork/MUOSimpleNetwork.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MUOSimpleNetwork.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B5276AFB21A01E5F000A74A5 /* SwiftLint */ = {
@@ -407,6 +459,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
+		C11214258295C89F3DA935FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MUOSimpleNetwork/MUOSimpleNetwork.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MUOSimpleNetwork.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D5DE15271E9E4ADFBBFD7F37 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -440,6 +510,7 @@
 				B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */,
 				B5276AF821A0124D000A74A5 /* CurrenciesModels.swift in Sources */,
 				B5276AF521A0124D000A74A5 /* CurrenciesPresenter.swift in Sources */,
+				B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +520,7 @@
 			files = (
 				B5276AC221A00F9F000A74A5 /* ViewController.swift in Sources */,
 				B5276AC321A00F9F000A74A5 /* AppDelegate.swift in Sources */,
+				B5276B4121A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +530,7 @@
 			files = (
 				B5276AD021A00FAC000A74A5 /* ViewController.swift in Sources */,
 				B5276AD121A00FAC000A74A5 /* AppDelegate.swift in Sources */,
+				B5276B4221A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

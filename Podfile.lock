@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: 7fbbcb2f0f73f43772778b0e96d07b2e34d98eb3
+PODS:
+  - MUOSimpleNetwork (0.0.1)
+
+DEPENDENCIES:
+  - MUOSimpleNetwork (~> 0.0.1)
+
+SPEC REPOS:
+  "https://abaikirov@bitbucket.org/abaikirov/muosimplenetwork.git":
+    - MUOSimpleNetwork
+
+SPEC CHECKSUMS:
+  MUOSimpleNetwork: f0f9f051bcdf35cdd20d30d71944c051e71c604e
+
+PODFILE CHECKSUM: 80d7e9bd099bc9a6f511588b80226532534166e1
 
 COCOAPODS: 1.5.3
