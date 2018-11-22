@@ -23,14 +23,15 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   
   var posts: [Posts.FetchPosts.ViewModel.DisplayedPost]?
 
-  private lazy var postsTable: UITableView = {
-    let postTable = UITableView()
+  private lazy var postsList: UICollectionView = {
+    let layout = UICollectionViewFlowLayout()
+    layout.minimumLineSpacing = 1
+    let postTable = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+    postTable.backgroundColor = .white
     postTable.translatesAutoresizingMaskIntoConstraints = false
     postTable.delegate = self
     postTable.dataSource = self
-    postTable.prefetchDataSource = self
-    postTable.register(PostsTableViewCell.self, forCellReuseIdentifier: PostsTableViewCell.reuseID)
-    postTable.rowHeight = 200
+    postTable.register(PostsCell.self, forCellWithReuseIdentifier: PostsCell.reuseID)
     return postTable
   }()
   
@@ -62,15 +63,15 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   }
   
   private func setupViews() {
-    view.addSubview(postsTable)
+    view.addSubview(postsList)
   }
   
   private func setupConstraints() {
     let postsTableC = [
-      postsTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      postsTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-      postsTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      postsTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+      postsList.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      postsList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      postsList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      postsList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
     ]
     
     NSLayoutConstraint.activate(postsTableC)
@@ -93,14 +94,13 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   
   func displayPosts(viewModel: Posts.FetchPosts.ViewModel) {
     posts = viewModel.displayedPosts
-    postsTable.reloadData()
+    postsList.reloadData()
   }
   
-  func displayNextPosts(viewModel: Posts.FetchPosts.ViewModel) {
-    guard
-      let oldCount = posts?.count else {
+  func displayNextPosts(viewModel: Posts.FetchPosts.ViewModel) {    
+    guard let oldCount = posts?.count else {
       posts = viewModel.displayedPosts
-      postsTable.reloadData()
+      postsList.reloadData()
       return
     }
     
@@ -110,9 +110,10 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     for index in oldCount..<posts!.count {
       insertingIndexes.append(IndexPath(row: index, section: 0))
     }
-    postsTable.beginUpdates()
-    postsTable.insertRows(at: insertingIndexes, with: .bottom)
-    postsTable.endUpdates()
+    
+    postsList.performBatchUpdates({
+      postsList.insertItems(at: insertingIndexes)
+    }, completion: nil)
   }
   
   private func loadNextPosts() {
@@ -124,15 +125,15 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   }
 }
 
-extension PostsViewController: UITableViewDelegate & UITableViewDataSource & UITableViewDataSourcePrefetching {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension PostsViewController: UICollectionViewDelegateFlowLayout & UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return posts?.count ?? 0
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: PostsTableViewCell.reuseID)
-      as? PostsTableViewCell else {
-      fatalError("\(PostsTableViewCell.self) not registered")
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostsCell.reuseID,
+                                                        for: indexPath) as? PostsCell else {
+      fatalError("\(PostsCell.self) not registered")
     }
     
     guard let post = posts?[indexPath.row] else {
@@ -148,11 +149,9 @@ extension PostsViewController: UITableViewDelegate & UITableViewDataSource & UIT
     return cell
   }
   
-  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-    
-  }
-  
-  func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-    
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: collectionView.frame.width, height: 200)
   }
 }

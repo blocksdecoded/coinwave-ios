@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class PostsTableViewCell: UITableViewCell {
+class PostsCell: UICollectionViewCell {
   static var reuseID: String {
     return String(describing: self)
   }
@@ -29,8 +29,8 @@ class PostsTableViewCell: UITableViewCell {
     return image
   }()
   
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     setup()
   }
   
@@ -49,12 +49,13 @@ class PostsTableViewCell: UITableViewCell {
   // MARK: Setup cell
   
   private func setup() {
+    backgroundColor = UIColor.white
+    
     setupViews()
     setupConstraints()
   }
   
   private func setupViews() {
-    separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     contentView.addSubview(postImage)
     contentView.addSubview(postTitle)
   }

@@ -83,9 +83,9 @@
 		B5276B8D21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
 		B5276B8E21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
 		B5276B8F21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
-		B5F5BFA721A426680012599B /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsTableViewCell.swift */; };
-		B5F5BFA821A426680012599B /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsTableViewCell.swift */; };
-		B5F5BFA921A426680012599B /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsTableViewCell.swift */; };
+		B5F5BFA721A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
+		B5F5BFA821A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
+		B5F5BFA921A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		C07B6C3481306E5A4E4462D0 /* Pods_StagingCryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084EF5BB3FCB474B5135431A /* Pods_StagingCryptotracker.framework */; };
 		C0CE4935DE67B38D9BD096C9 /* Pods_Cryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D2C2A8FD287D294CF24F89F /* Pods_Cryptotracker.framework */; };
 /* End PBXBuildFile section */
@@ -132,7 +132,7 @@
 		B5276B8421A2A353000A74A5 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		B5276B8821A2A369000A74A5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		B5F5BFA621A426680012599B /* PostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
+		B5F5BFA621A426680012599B /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B2530050E251A72770FCB3 /* Pods_DebugCryptotracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugCryptotracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,7 +278,7 @@
 				B5276B4721A28183000A74A5 /* PostsModels.swift */,
 				B5276B4821A28183000A74A5 /* PostsViewController.swift */,
 				B5276B4921A28183000A74A5 /* PostsInteractor.swift */,
-				B5F5BFA621A426680012599B /* PostsTableViewCell.swift */,
+				B5F5BFA621A426680012599B /* PostsCell.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -654,7 +654,7 @@
 				B5276B7D21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
 				B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */,
 				B5276B5021A28183000A74A5 /* PostsRouter.swift in Sources */,
-				B5F5BFA721A426680012599B /* PostsTableViewCell.swift in Sources */,
+				B5F5BFA721A426680012599B /* PostsCell.swift in Sources */,
 				B5276B7921A2A313000A74A5 /* HTTPMethod.swift in Sources */,
 				B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */,
 				B5276B5F21A29DD9000A74A5 /* Post.swift in Sources */,
@@ -687,7 +687,7 @@
 				B5276B6421A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276B7A21A2A313000A74A5 /* HTTPMethod.swift in Sources */,
 				B5276B4E21A28183000A74A5 /* PostsWorker.swift in Sources */,
-				B5F5BFA821A426680012599B /* PostsTableViewCell.swift in Sources */,
+				B5F5BFA821A426680012599B /* PostsCell.swift in Sources */,
 				B5276B8221A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B5276B8621A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5276B7121A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
@@ -716,7 +716,7 @@
 				B5276B6521A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276B7B21A2A313000A74A5 /* HTTPMethod.swift in Sources */,
 				B5276B4F21A28183000A74A5 /* PostsWorker.swift in Sources */,
-				B5F5BFA921A426680012599B /* PostsTableViewCell.swift in Sources */,
+				B5F5BFA921A426680012599B /* PostsCell.swift in Sources */,
 				B5276B8321A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B5276B8721A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5276B7221A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
