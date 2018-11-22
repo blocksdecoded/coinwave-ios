@@ -83,6 +83,10 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   
   // MARK: Routing
   
+  private func openPost(index: Int) {
+    router?.navigateToPostPreview(source: self, destination: PostPreviewViewController())
+  }
+  
   // MARK: View lifecycle
   
   override func viewDidLoad() {
@@ -157,5 +161,9 @@ extension PostsViewController: UICollectionViewDelegateFlowLayout & UICollection
                       layout collectionViewLayout: UICollectionViewLayout,
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: collectionView.frame.width, height: 200)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    openPost(index: indexPath.row)
   }
 }

@@ -26,6 +26,9 @@ class PostsWorker {
         guard let postList = posts else {
           fatalError("FUCK")
         }
+        
+        DataStore.shared.insert(posts: postList)
+        
         DispatchQueue.main.async {
           completion(postList)
         }
@@ -37,7 +40,6 @@ class PostsWorker {
     DispatchQueue.global(qos: .background).async {
       let postsNetworkManager = PostsNetworkManager()
       postsNetworkManager.fetchNextPosts(date: date, completion: { posts, error in
-        
         if error != nil {
           print(error!)
           DispatchQueue.main.async {
@@ -49,6 +51,9 @@ class PostsWorker {
         guard let postList = posts else {
           fatalError("FUCK")
         }
+        
+        DataStore.shared.insert(posts: postList)
+        
         DispatchQueue.main.async {
           completion(postList)
         }

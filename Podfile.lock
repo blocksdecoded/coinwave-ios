@@ -1,16 +1,22 @@
 PODS:
   - Kingfisher (4.10.1)
+  - SQLite.swift (0.11.5):
+    - SQLite.swift/standard (= 0.11.5)
+  - SQLite.swift/standard (0.11.5)
 
 DEPENDENCIES:
   - Kingfisher (= 4.10.1)
+  - SQLite.swift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Kingfisher
+    - SQLite.swift
 
 SPEC CHECKSUMS:
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
 
-PODFILE CHECKSUM: d38d33d5149f8934ac32805cb4ca8157bb103b4a
+PODFILE CHECKSUM: 7f3731c8cc1418fca20f2073d16ac0040d4cf744
 
 COCOAPODS: 1.5.3

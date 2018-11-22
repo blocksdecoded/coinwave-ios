@@ -89,6 +89,45 @@
 		B5E93CF621A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */; };
 		B5E93CF721A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */; };
 		B5E93CF821A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */; };
+		B5E93D0021A6A73500D1705A /* PostPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */; };
+		B5E93D0121A6A73500D1705A /* PostPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */; };
+		B5E93D0221A6A73500D1705A /* PostPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */; };
+		B5E93D0321A6A73500D1705A /* PostPreviewWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */; };
+		B5E93D0421A6A73500D1705A /* PostPreviewWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */; };
+		B5E93D0521A6A73500D1705A /* PostPreviewWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */; };
+		B5E93D0621A6A73500D1705A /* PostPreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */; };
+		B5E93D0721A6A73500D1705A /* PostPreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */; };
+		B5E93D0821A6A73500D1705A /* PostPreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */; };
+		B5E93D0921A6A73500D1705A /* PostPreviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFD21A6A73500D1705A /* PostPreviewModels.swift */; };
+		B5E93D0A21A6A73500D1705A /* PostPreviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFD21A6A73500D1705A /* PostPreviewModels.swift */; };
+		B5E93D0B21A6A73500D1705A /* PostPreviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFD21A6A73500D1705A /* PostPreviewModels.swift */; };
+		B5E93D0C21A6A73500D1705A /* PostPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFE21A6A73500D1705A /* PostPreviewViewController.swift */; };
+		B5E93D0D21A6A73500D1705A /* PostPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFE21A6A73500D1705A /* PostPreviewViewController.swift */; };
+		B5E93D0E21A6A73500D1705A /* PostPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFE21A6A73500D1705A /* PostPreviewViewController.swift */; };
+		B5E93D0F21A6A73500D1705A /* PostPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFF21A6A73500D1705A /* PostPreviewInteractor.swift */; };
+		B5E93D1021A6A73500D1705A /* PostPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFF21A6A73500D1705A /* PostPreviewInteractor.swift */; };
+		B5E93D1121A6A73500D1705A /* PostPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFF21A6A73500D1705A /* PostPreviewInteractor.swift */; };
+		B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */; };
+		B5E93D2F21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */; };
+		B5E93D3021A6B90F00D1705A /* SQLiteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */; };
+		B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */; };
+		B5E93D3321A6B98E00D1705A /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */; };
+		B5E93D3421A6B98E00D1705A /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */; };
+		B5E93D3621A6B9B000D1705A /* DataAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3521A6B9B000D1705A /* DataAccessError.swift */; };
+		B5E93D3721A6B9B000D1705A /* DataAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3521A6B9B000D1705A /* DataAccessError.swift */; };
+		B5E93D3821A6B9B000D1705A /* DataAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3521A6B9B000D1705A /* DataAccessError.swift */; };
+		B5E93D3A21A6B9DD00D1705A /* PostDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3921A6B9DD00D1705A /* PostDataHelper.swift */; };
+		B5E93D3B21A6B9DD00D1705A /* PostDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3921A6B9DD00D1705A /* PostDataHelper.swift */; };
+		B5E93D3C21A6B9DD00D1705A /* PostDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3921A6B9DD00D1705A /* PostDataHelper.swift */; };
+		B5E93D3E21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3D21A6CEFC00D1705A /* CategoryDataHelper.swift */; };
+		B5E93D3F21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3D21A6CEFC00D1705A /* CategoryDataHelper.swift */; };
+		B5E93D4021A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3D21A6CEFC00D1705A /* CategoryDataHelper.swift */; };
+		B5E93D4221A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */; };
+		B5E93D4321A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */; };
+		B5E93D4421A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */; };
+		B5E93D4621A6E64200D1705A /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4521A6E64200D1705A /* DataStore.swift */; };
+		B5E93D4721A6E64200D1705A /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4521A6E64200D1705A /* DataStore.swift */; };
+		B5E93D4821A6E64200D1705A /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4521A6E64200D1705A /* DataStore.swift */; };
 		B5F5BFA721A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F5BFA821A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F5BFA921A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
@@ -140,6 +179,19 @@
 		B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B5E93CEF21A6A3AE00D1705A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Heavy.otf"; sourceTree = "<group>"; };
+		B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewPresenter.swift; sourceTree = "<group>"; };
+		B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewWorker.swift; sourceTree = "<group>"; };
+		B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewRouter.swift; sourceTree = "<group>"; };
+		B5E93CFD21A6A73500D1705A /* PostPreviewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewModels.swift; sourceTree = "<group>"; };
+		B5E93CFE21A6A73500D1705A /* PostPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewViewController.swift; sourceTree = "<group>"; };
+		B5E93CFF21A6A73500D1705A /* PostPreviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewInteractor.swift; sourceTree = "<group>"; };
+		B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDataStore.swift; sourceTree = "<group>"; };
+		B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
+		B5E93D3521A6B9B000D1705A /* DataAccessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessError.swift; sourceTree = "<group>"; };
+		B5E93D3921A6B9DD00D1705A /* PostDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataHelper.swift; sourceTree = "<group>"; };
+		B5E93D3D21A6CEFC00D1705A /* CategoryDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataHelper.swift; sourceTree = "<group>"; };
+		B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCategoryDataHelper.swift; sourceTree = "<group>"; };
+		B5E93D4521A6E64200D1705A /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		B5F5BFA621A426680012599B /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +274,7 @@
 		B5276ABF21A00F83000A74A5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B5E93D2B21A6B44B00D1705A /* DataStore */,
 				B5E93CF321A6A40C00D1705A /* Assets */,
 				B5E93CEE21A6A39800D1705A /* Common */,
 				B5276B5D21A29DC9000A74A5 /* Models */,
@@ -296,6 +349,7 @@
 		B5276B5C21A29DB8000A74A5 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B5E93CF921A6A71A00D1705A /* PostPreview */,
 				B5276AEE21A011ED000A74A5 /* Currencies */,
 				B5276B4321A2816F000A74A5 /* Posts */,
 			);
@@ -356,6 +410,41 @@
 				B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B5E93CF921A6A71A00D1705A /* PostPreview */ = {
+			isa = PBXGroup;
+			children = (
+				B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */,
+				B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */,
+				B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */,
+				B5E93CFD21A6A73500D1705A /* PostPreviewModels.swift */,
+				B5E93CFE21A6A73500D1705A /* PostPreviewViewController.swift */,
+				B5E93CFF21A6A73500D1705A /* PostPreviewInteractor.swift */,
+			);
+			path = PostPreview;
+			sourceTree = "<group>";
+		};
+		B5E93D2B21A6B44B00D1705A /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				B5E93D2C21A6B8DB00D1705A /* SQLite */,
+				B5E93D4521A6E64200D1705A /* DataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		B5E93D2C21A6B8DB00D1705A /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */,
+				B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */,
+				B5E93D3521A6B9B000D1705A /* DataAccessError.swift */,
+				B5E93D3921A6B9DD00D1705A /* PostDataHelper.swift */,
+				B5E93D3D21A6CEFC00D1705A /* CategoryDataHelper.swift */,
+				B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */,
+			);
+			path = SQLite;
 			sourceTree = "<group>";
 		};
 		C507AE03D095A52756BA7150 /* Pods */ = {
@@ -513,12 +602,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -535,12 +626,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -557,12 +650,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-StagingCryptotracker/Pods-StagingCryptotracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -672,17 +767,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5E93D4621A6E64200D1705A /* DataStore.swift in Sources */,
 				B5276B8D21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
 				B5276B7021A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
 				B5276B6C21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B6821A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
 				B5276B5621A28183000A74A5 /* PostsViewController.swift in Sources */,
+				B5E93D0321A6A73500D1705A /* PostPreviewWorker.swift in Sources */,
 				B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */,
 				B5276AB021A00F59000A74A5 /* ViewController.swift in Sources */,
+				B5E93D0921A6A73500D1705A /* PostPreviewModels.swift in Sources */,
 				B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */,
 				B5276B5921A28183000A74A5 /* PostsInteractor.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5276AF621A0124D000A74A5 /* CurrenciesWorker.swift in Sources */,
+				B5E93D0F21A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
+				B5E93D3621A6B9B000D1705A /* DataAccessError.swift in Sources */,
 				B5276B4D21A28183000A74A5 /* PostsWorker.swift in Sources */,
 				B5276B8121A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B5276B5321A28183000A74A5 /* PostsModels.swift in Sources */,
@@ -691,14 +791,22 @@
 				B5276AFA21A0124D000A74A5 /* CurrenciesInteractor.swift in Sources */,
 				B5276B7D21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
 				B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */,
+				B5E93D0C21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
 				B5276B5021A28183000A74A5 /* PostsRouter.swift in Sources */,
+				B5E93D3A21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
 				B5F5BFA721A426680012599B /* PostsCell.swift in Sources */,
+				B5E93D3E21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
+				B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B5276B7921A2A313000A74A5 /* HTTPMethod.swift in Sources */,
 				B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */,
 				B5276B5F21A29DD9000A74A5 /* Post.swift in Sources */,
 				B5276AF821A0124D000A74A5 /* CurrenciesModels.swift in Sources */,
 				B5276AF521A0124D000A74A5 /* CurrenciesPresenter.swift in Sources */,
+				B5E93D4221A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
+				B5E93D0621A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
 				B5276B4A21A28183000A74A5 /* PostsPresenter.swift in Sources */,
+				B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
+				B5E93D0021A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
 				B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 				B5276B7521A2A2FD000A74A5 /* EndPointType.swift in Sources */,
 			);
@@ -714,11 +822,16 @@
 				B5276B8E21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
 				B5276AC221A00F9F000A74A5 /* ViewController.swift in Sources */,
 				B5276B5421A28183000A74A5 /* PostsModels.swift in Sources */,
+				B5E93D3721A6B9B000D1705A /* DataAccessError.swift in Sources */,
 				B5E93CF121A6A3AE00D1705A /* Constants.swift in Sources */,
+				B5E93D1021A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
+				B5E93D3321A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5276B5721A28183000A74A5 /* PostsViewController.swift in Sources */,
 				B5276AC321A00F9F000A74A5 /* AppDelegate.swift in Sources */,
+				B5E93D0D21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
 				B5276B6921A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
 				B5276B5A21A28183000A74A5 /* PostsInteractor.swift in Sources */,
+				B5E93D2F21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B5276B7621A2A2FD000A74A5 /* EndPointType.swift in Sources */,
 				B5276B6D21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B4121A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
@@ -729,8 +842,16 @@
 				B5F5BFA821A426680012599B /* PostsCell.swift in Sources */,
 				B5276B8221A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B5276B8621A2A353000A74A5 /* NetworkRouter.swift in Sources */,
+				B5E93D0721A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
+				B5E93D0421A6A73500D1705A /* PostPreviewWorker.swift in Sources */,
+				B5E93D3B21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
+				B5E93D3F21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
+				B5E93D4721A6E64200D1705A /* DataStore.swift in Sources */,
+				B5E93D0A21A6A73500D1705A /* PostPreviewModels.swift in Sources */,
+				B5E93D0121A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
 				B5276B7121A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
 				B5276B6021A29DD9000A74A5 /* Post.swift in Sources */,
+				B5E93D4321A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,11 +865,16 @@
 				B5276B8F21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
 				B5276AD021A00FAC000A74A5 /* ViewController.swift in Sources */,
 				B5276B5521A28183000A74A5 /* PostsModels.swift in Sources */,
+				B5E93D3821A6B9B000D1705A /* DataAccessError.swift in Sources */,
 				B5E93CF221A6A3AE00D1705A /* Constants.swift in Sources */,
+				B5E93D1121A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
+				B5E93D3421A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5276B5821A28183000A74A5 /* PostsViewController.swift in Sources */,
 				B5276AD121A00FAC000A74A5 /* AppDelegate.swift in Sources */,
+				B5E93D0E21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
 				B5276B6A21A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
 				B5276B5B21A28183000A74A5 /* PostsInteractor.swift in Sources */,
+				B5E93D3021A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B5276B7721A2A2FD000A74A5 /* EndPointType.swift in Sources */,
 				B5276B6E21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B4221A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
@@ -759,8 +885,16 @@
 				B5F5BFA921A426680012599B /* PostsCell.swift in Sources */,
 				B5276B8321A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B5276B8721A2A353000A74A5 /* NetworkRouter.swift in Sources */,
+				B5E93D0821A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
+				B5E93D0521A6A73500D1705A /* PostPreviewWorker.swift in Sources */,
+				B5E93D3C21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
+				B5E93D4021A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
+				B5E93D4821A6E64200D1705A /* DataStore.swift in Sources */,
+				B5E93D0B21A6A73500D1705A /* PostPreviewModels.swift in Sources */,
+				B5E93D0221A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
 				B5276B7221A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
 				B5276B6121A29DD9000A74A5 /* Post.swift in Sources */,
+				B5E93D4421A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

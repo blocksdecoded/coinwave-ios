@@ -34,6 +34,52 @@ struct Post: Codable {
     case liked
     case categories
   }
+  
+  init(id: Int,
+       title: String,
+       date: String,
+       author: String,
+       html: String?,
+       url: String,
+       featured: String?,
+       middle: String?,
+       thumb: String?,
+       likes: Int,
+       liked: Bool,
+       categories: [Category]) {
+    self.init(id: id,
+              title: title,
+              date: date,
+              author: author,
+              html: html,
+              url: url,
+              image: FeaturedImage(featured: featured,
+                                   middle: middle,
+                                   thumb: thumb),
+              likes: likes, liked: liked, categories: categories)
+  }
+  
+  init(id: Int,
+       title: String,
+       date: String,
+       author: String,
+       html: String?,
+       url: String,
+       image: FeaturedImage?,
+       likes: Int,
+       liked: Bool,
+       categories: [Category]) {
+    self.id = id
+    self.title = title
+    self.date = date
+    self.author = author
+    self.html = html
+    self.url = url
+    self.image = image
+    self.likes = likes
+    self.liked = liked
+    self.categories = categories
+  }
 }
 
 struct FeaturedImage: Codable {
@@ -56,6 +102,21 @@ struct Category: Codable {
   // swiftlint:disable identifier_name
   let id: Int
   let title: String
+  
+  init(id: Int, title: String) {
+    self.id = id
+    self.title = title
+  }
+  
+  init(id: Int64, title: String) {
+    self.id = Int(id)
+    self.title = title
+  }
+}
+
+struct PostCategory {
+  let postID: Int
+  let categoryID: Int
 }
 
 struct PostsList: Codable {

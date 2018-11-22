@@ -6,6 +6,7 @@ source 'https://abaikirov@bitbucket.org/abaikirov/muosimplenetwork.git'
 
 def sharedPods
   pod 'Kingfisher', '4.10.1'
+  pod 'SQLite.swift'
 end
 
 target 'Cryptotracker' do
