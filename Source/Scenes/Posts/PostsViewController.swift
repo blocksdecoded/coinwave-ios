@@ -22,10 +22,14 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   var router: (NSObjectProtocol & PostsRoutingLogic & PostsDataPassing)?
   
   var posts: [Posts.FetchPosts.ViewModel.DisplayedPost]?
+  
+  override var prefersStatusBarHidden: Bool {
+    return true
+  }
 
   private lazy var postsList: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
-    layout.minimumLineSpacing = 1
+    layout.minimumLineSpacing = 0.5
     let postTable = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     postTable.backgroundColor = .white
     postTable.translatesAutoresizingMaskIntoConstraints = false

@@ -17,7 +17,8 @@ class PostsCell: UICollectionViewCell {
   private lazy var postTitle: UILabel = {
     let title = UILabel()
     title.translatesAutoresizingMaskIntoConstraints = false
-    title.textColor = .red
+    title.textColor = .white
+    title.font = UIFont(name: Constants.Fonts.heavy, size: 20)
     title.numberOfLines = 0
     title.textAlignment = .center
     return title
@@ -29,12 +30,30 @@ class PostsCell: UICollectionViewCell {
     return image
   }()
   
+  private lazy var imageMask: UIView = {
+    let mask = UIView()
+    mask.translatesAutoresizingMaskIntoConstraints = false
+    mask.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+    return mask
+  }()
+  
+  private lazy var underline: UIView = {
+    let line = UIView()
+    line.translatesAutoresizingMaskIntoConstraints = false
+    line.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+    return line
+  }()
+  
+  let underlineWidth: CGFloat
+  
   override init(frame: CGRect) {
+    underlineWidth = frame.width / 3
     super.init(frame: frame)
     setup()
   }
   
   required init?(coder aDecoder: NSCoder) {
+    underlineWidth = 100
     super.init(coder: aDecoder)
     setup()
   }
@@ -57,6 +76,8 @@ class PostsCell: UICollectionViewCell {
   
   private func setupViews() {
     contentView.addSubview(postImage)
+    contentView.addSubview(imageMask)
+    contentView.addSubview(underline)
     contentView.addSubview(postTitle)
   }
   
@@ -74,11 +95,25 @@ class PostsCell: UICollectionViewCell {
       bottomAnchor.constraint(equalTo: postImage.bottomAnchor)
     ]
     
-    NSLayoutConstraint.activate(titleC + imageC)
+    let imageMaskC = [
+      imageMask.leadingAnchor.constraint(equalTo: postImage.leadingAnchor),
+      imageMask.trailingAnchor.constraint(equalTo: postImage.trailingAnchor),
+      imageMask.topAnchor.constraint(equalTo: postImage.topAnchor),
+      imageMask.bottomAnchor.constraint(equalTo: postImage.bottomAnchor)
+    ]
+    
+    let underlineC = [
+      underline.centerXAnchor.constraint(equalTo: postTitle.centerXAnchor),
+      underline.topAnchor.constraint(equalTo: postTitle.bottomAnchor, constant: 4),
+      underline.heightAnchor.constraint(equalToConstant: 3),
+      underline.widthAnchor.constraint(equalToConstant: underlineWidth)
+    ]
+    
+    NSLayoutConstraint.activate(titleC + imageC + imageMaskC + underlineC)
   }
   
   func onBind(_ post: Posts.FetchPosts.ViewModel.DisplayedPost) {
-    postTitle.text = post.title
+    postTitle.text = post.title.uppercased()
     
     guard let imageUrl = post.image?.image else {
       return

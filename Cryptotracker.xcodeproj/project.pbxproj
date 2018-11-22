@@ -83,6 +83,12 @@
 		B5276B8D21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
 		B5276B8E21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
 		B5276B8F21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
+		B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
+		B5E93CF121A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
+		B5E93CF221A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
+		B5E93CF621A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */; };
+		B5E93CF721A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */; };
+		B5E93CF821A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */; };
 		B5F5BFA721A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F5BFA821A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F5BFA921A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
@@ -132,6 +138,8 @@
 		B5276B8421A2A353000A74A5 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		B5276B8821A2A369000A74A5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B5E93CEF21A6A3AE00D1705A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Heavy.otf"; sourceTree = "<group>"; };
 		B5F5BFA621A426680012599B /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +222,8 @@
 		B5276ABF21A00F83000A74A5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B5E93CF321A6A40C00D1705A /* Assets */,
+				B5E93CEE21A6A39800D1705A /* Common */,
 				B5276B5D21A29DC9000A74A5 /* Models */,
 				B5276B5C21A29DB8000A74A5 /* Scenes */,
 				B5276B3E21A27F17000A74A5 /* Network */,
@@ -322,6 +332,30 @@
 				B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		B5E93CEE21A6A39800D1705A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B5E93CEF21A6A3AE00D1705A /* Constants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B5E93CF321A6A40C00D1705A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				B5E93CF421A6A41200D1705A /* Fonts */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		B5E93CF421A6A41200D1705A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		C507AE03D095A52756BA7150 /* Pods */ = {
@@ -441,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5276AB821A00F5A000A74A5 /* LaunchScreen.storyboard in Resources */,
+				B5E93CF621A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AB521A00F5A000A74A5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5276AC621A00F9F000A74A5 /* LaunchScreen.storyboard in Resources */,
+				B5E93CF721A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AC721A00F9F000A74A5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5276AD421A00FAC000A74A5 /* LaunchScreen.storyboard in Resources */,
+				B5E93CF821A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AD521A00FAC000A74A5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,6 +677,7 @@
 				B5276B6C21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B6821A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
 				B5276B5621A28183000A74A5 /* PostsViewController.swift in Sources */,
+				B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */,
 				B5276AB021A00F59000A74A5 /* ViewController.swift in Sources */,
 				B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */,
 				B5276B5921A28183000A74A5 /* PostsInteractor.swift in Sources */,
@@ -676,6 +714,7 @@
 				B5276B8E21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
 				B5276AC221A00F9F000A74A5 /* ViewController.swift in Sources */,
 				B5276B5421A28183000A74A5 /* PostsModels.swift in Sources */,
+				B5E93CF121A6A3AE00D1705A /* Constants.swift in Sources */,
 				B5276B5721A28183000A74A5 /* PostsViewController.swift in Sources */,
 				B5276AC321A00F9F000A74A5 /* AppDelegate.swift in Sources */,
 				B5276B6921A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
@@ -705,6 +744,7 @@
 				B5276B8F21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
 				B5276AD021A00FAC000A74A5 /* ViewController.swift in Sources */,
 				B5276B5521A28183000A74A5 /* PostsModels.swift in Sources */,
+				B5E93CF221A6A3AE00D1705A /* Constants.swift in Sources */,
 				B5276B5821A28183000A74A5 /* PostsViewController.swift in Sources */,
 				B5276AD121A00FAC000A74A5 /* AppDelegate.swift in Sources */,
 				B5276B6A21A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
