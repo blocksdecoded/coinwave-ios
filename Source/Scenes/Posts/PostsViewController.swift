@@ -110,9 +110,9 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     for index in oldCount..<posts!.count {
       insertingIndexes.append(IndexPath(row: index, section: 0))
     }
-    
+    postsTable.beginUpdates()
     postsTable.insertRows(at: insertingIndexes, with: .bottom)
-    
+    postsTable.endUpdates()
   }
   
   private func loadNextPosts() {
@@ -139,7 +139,7 @@ extension PostsViewController: UITableViewDelegate & UITableViewDataSource & UIT
       fatalError("no post for \(indexPath.row)")
     }
     
-    if indexPath.row == posts!.count - 1 {
+    if indexPath.row + 3 >= posts!.count - 1 {
       loadNextPosts()
     }
     

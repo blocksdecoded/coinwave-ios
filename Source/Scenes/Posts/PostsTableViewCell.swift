@@ -79,10 +79,10 @@ class PostsTableViewCell: UITableViewCell {
   func onBind(_ post: Posts.FetchPosts.ViewModel.DisplayedPost) {
     postTitle.text = post.title
     
-    guard let imageUrl = post.image?.featured else {
+    guard let imageUrl = post.image?.image else {
       return
     }
-    
+
     postImage.kf.setImage(with: URL(string: imageUrl))
   }
 }

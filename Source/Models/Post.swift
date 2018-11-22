@@ -19,7 +19,7 @@ struct Post: Codable {
   let image: FeaturedImage?
   let likes: Int
   let liked: Bool
-  let categories: [Category]?
+  let categories: [Category]
   
   enum CodingKeys: String, CodingKey {
     // swiftlint:disable identifier_name
@@ -37,9 +37,19 @@ struct Post: Codable {
 }
 
 struct FeaturedImage: Codable {
-  let featured: String
-  let middle: String
-  let thumb: String
+  let featured: String?
+  let middle: String?
+  let thumb: String?
+  
+  var image: String? {
+    if featured != nil {
+      return featured
+    } else if middle != nil {
+      return middle
+    } else {
+      return thumb
+    }
+  }
 }
 
 struct Category: Codable {
