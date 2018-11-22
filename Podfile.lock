@@ -1,16 +1,16 @@
 PODS:
-  - MUOSimpleNetwork (0.0.1)
+  - Kingfisher (4.10.1)
 
 DEPENDENCIES:
-  - MUOSimpleNetwork (~> 0.0.1)
+  - Kingfisher (= 4.10.1)
 
 SPEC REPOS:
-  "https://abaikirov@bitbucket.org/abaikirov/muosimplenetwork.git":
-    - MUOSimpleNetwork
+  https://github.com/cocoapods/specs.git:
+    - Kingfisher
 
 SPEC CHECKSUMS:
-  MUOSimpleNetwork: f0f9f051bcdf35cdd20d30d71944c051e71c604e
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
 
-PODFILE CHECKSUM: 80d7e9bd099bc9a6f511588b80226532534166e1
+PODFILE CHECKSUM: d38d33d5149f8934ac32805cb4ca8157bb103b4a
 
 COCOAPODS: 1.5.3

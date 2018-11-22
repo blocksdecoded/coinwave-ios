@@ -5,7 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://abaikirov@bitbucket.org/abaikirov/muosimplenetwork.git'
 
 def sharedPods
-  pod 'MUOSimpleNetwork', '~> 0.0.1'
+  pod 'Kingfisher', '4.10.1'
 end
 
 target 'Cryptotracker' do

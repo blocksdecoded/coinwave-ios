@@ -16,6 +16,7 @@ enum Currencies {
   // MARK: Use cases
 
   enum Something {
+    // swiftlint:disable nesting
     struct Request {
     }
     struct Response {
