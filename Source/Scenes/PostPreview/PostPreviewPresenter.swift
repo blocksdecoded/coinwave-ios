@@ -26,7 +26,7 @@ class PostPreviewPresenter: PostPreviewPresentationLogic {
       return
     }
     
-    let viewModel = PostPreview.Something.ViewModel(html: html)
+    let viewModel = PostPreview.Something.ViewModel(html: html, url: response.post.url)
     viewController?.displaySomething(viewModel: viewModel)
   }
 }

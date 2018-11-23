@@ -22,6 +22,14 @@ class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
   var router: (NSObjectProtocol & PostPreviewRoutingLogic & PostPreviewDataPassing)?
   
   let postID: Int
+  var shouldHandleScroll = false
+  var navigationViewHidden = false
+  var initialOffset: CGFloat = 0
+  let delay: CGFloat = 60
+  
+  var postUrl: String = ""
+  
+  var navigationViewTopConstraint = NSLayoutConstraint()
   
   override var prefersStatusBarHidden: Bool {
     return true
@@ -31,7 +39,15 @@ class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
     let webConfiguration = WKWebViewConfiguration()
     let webView = WKWebView(frame: .zero, configuration: webConfiguration)
     webView.translatesAutoresizingMaskIntoConstraints = false
+    webView.scrollView.delegate = self
     return webView
+  }()
+  
+  private lazy var navigationView: PostNavigationView = {
+    let view = PostNavigationView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.delegate = self
+    return view
   }()
 
   // MARK: Object lifecycle
@@ -83,6 +99,7 @@ class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
   
   private func setupViews() {
     view.addSubview(webView)
+    navigationView.presentView(fromView: view)
   }
   
   private func setupConstraints() {
@@ -93,12 +110,18 @@ class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
       webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ]
     
-    NSLayoutConstraint.activate(webViewC)
+    navigationViewTopConstraint = view.safeAreaLayoutGuide.topAnchor.constraint(equalTo: navigationView.topAnchor)
+    
+    let navigationC = [
+      navigationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      navigationViewTopConstraint,
+      view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: navigationView.trailingAnchor)
+    ]
+    
+    NSLayoutConstraint.activate(webViewC + navigationC)
   }
   
   // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
   
   func fetchPost() {
     let request = PostPreview.Something.Request(postID: postID)
@@ -107,6 +130,94 @@ class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
   
   func displaySomething(viewModel: PostPreview.Something.ViewModel) {
     webView.loadHTMLString(viewModel.html, baseURL: nil)
+    postUrl = viewModel.url
+  }
+  
+  private func animateNavigationView(_ shouldHide: Bool) {
+    if !navigationViewHidden && !shouldHide {
+      return
+    }
+    
+    navigationViewHidden = shouldHide
+    navigationViewTopConstraint.constant = shouldHide ? navigationView.frame.height + view.safeAreaInsets.top : 0
+    UIView.animate(withDuration: 0.4, animations: {
+      self.view.layoutIfNeeded()
+    })
+  }
+  
+  private func share() {
+    let activityVC = UIActivityViewController(activityItems: [postUrl], applicationActivities: nil)
+    present(activityVC, animated: true, completion: nil)
+    if UI_USER_INTERFACE_IDIOM() == .pad {
+      if let popOver = activityVC.popoverPresentationController {
+        popOver.sourceView = navigationView
+      }
+    }
+  }
+}
+
+extension PostPreviewViewController: PostNavigationViewDelegate {
+  func postNavigationBackClicked() {
+    navigationController?.popViewController(animated: true)
+  }
+  
+  func postNavigationFontSizeClicked() {
+    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    let fontChangeView = FontSelectorView(frame: CGRect(x: 0,
+                                                        y: 0,
+                                                        width: UIScreen.main.bounds.width,
+                                                        height: UIScreen.main.bounds.height))
+    fontChangeView.delegate = self
+    fontChangeView.fontSize = 10
+    fontChangeView.presentView(fromView: view, animated: true)
+  }
+  
+  func postNavigationShareClicked() {
+    share()
+  }
+}
+
+extension PostPreviewViewController: FontSelectorViewDelegate {
+  func fontSizeValueDidChanged(_ size: Float) {
+    
+  }
+  
+  func fontSelectorViewDidDismiss() {
+    navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+  }
+}
+
+extension PostPreviewViewController: UIScrollViewDelegate {
+  func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    shouldHandleScroll = true
+    initialOffset = scrollView.contentOffset.y
+  }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let yOffset = scrollView.contentOffset.y
+    if yOffset == 0 {
+      scrolledToTop()
+    }
+    
+    if shouldHandleScroll {
+      if yOffset > initialOffset {
+        if yOffset - initialOffset > delay {
+          scrolledToBottom()
+          shouldHandleScroll = false
+        }
+      } else {
+        scrolledToTop()
+        shouldHandleScroll = false
+      }
+    }
+  }
+  
+  func scrolledToTop() {
+    animateNavigationView(false)
+  }
+  
+  func scrolledToBottom() {
+    animateNavigationView(true)
   }
 }
 

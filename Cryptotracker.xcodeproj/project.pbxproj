@@ -131,6 +131,12 @@
 		B5E93D4B21A6FCE600D1705A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */; };
 		B5E93D4C21A6FCE600D1705A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */; };
 		B5E93D4D21A6FCE600D1705A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */; };
+		B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */; };
+		B5E93D5221A7C0BC00D1705A /* FontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */; };
+		B5E93D5321A7C0BC00D1705A /* FontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */; };
+		B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5421A7E68000D1705A /* PostNavigationView.swift */; };
+		B5E93D5621A7E68000D1705A /* PostNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5421A7E68000D1705A /* PostNavigationView.swift */; };
+		B5E93D5721A7E68000D1705A /* PostNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5421A7E68000D1705A /* PostNavigationView.swift */; };
 		B5F5BFA721A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F5BFA821A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F5BFA921A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
@@ -196,6 +202,8 @@
 		B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCategoryDataHelper.swift; sourceTree = "<group>"; };
 		B5E93D4521A6E64200D1705A /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectorView.swift; sourceTree = "<group>"; };
+		B5E93D5421A7E68000D1705A /* PostNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigationView.swift; sourceTree = "<group>"; };
 		B5F5BFA621A426680012599B /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -278,7 +286,7 @@
 		B5276ABF21A00F83000A74A5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B5E93D4921A6FC3700D1705A /* ViewControllers */,
+				B5E93D4E21A7C08000D1705A /* Views */,
 				B5E93D2B21A6B44B00D1705A /* DataStore */,
 				B5E93CF321A6A40C00D1705A /* Assets */,
 				B5E93CEE21A6A39800D1705A /* Common */,
@@ -458,6 +466,24 @@
 				B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B5E93D4E21A7C08000D1705A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B5E93D4F21A7C09500D1705A /* Widgets */,
+				B5E93D4921A6FC3700D1705A /* ViewControllers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B5E93D4F21A7C09500D1705A /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */,
+				B5E93D5421A7E68000D1705A /* PostNavigationView.swift */,
+			);
+			path = Widgets;
 			sourceTree = "<group>";
 		};
 		C507AE03D095A52756BA7150 /* Pods */ = {
@@ -792,6 +818,7 @@
 				B5E93D0921A6A73500D1705A /* PostPreviewModels.swift in Sources */,
 				B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */,
 				B5276B5921A28183000A74A5 /* PostsInteractor.swift in Sources */,
+				B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5276AF621A0124D000A74A5 /* CurrenciesWorker.swift in Sources */,
 				B5E93D0F21A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
@@ -807,6 +834,7 @@
 				B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */,
 				B5E93D0C21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
 				B5276B5021A28183000A74A5 /* PostsRouter.swift in Sources */,
+				B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5E93D3A21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
 				B5F5BFA721A426680012599B /* PostsCell.swift in Sources */,
 				B5E93D3E21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
@@ -840,6 +868,7 @@
 				B5E93CF121A6A3AE00D1705A /* Constants.swift in Sources */,
 				B5E93D1021A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
 				B5E93D3321A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
+				B5E93D5621A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5276B5721A28183000A74A5 /* PostsViewController.swift in Sources */,
 				B5E93D4C21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
 				B5276AC321A00F9F000A74A5 /* AppDelegate.swift in Sources */,
@@ -854,6 +883,7 @@
 				B5276B6421A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276B7A21A2A313000A74A5 /* HTTPMethod.swift in Sources */,
 				B5276B4E21A28183000A74A5 /* PostsWorker.swift in Sources */,
+				B5E93D5221A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B5F5BFA821A426680012599B /* PostsCell.swift in Sources */,
 				B5276B8221A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B5276B8621A2A353000A74A5 /* NetworkRouter.swift in Sources */,
@@ -884,6 +914,7 @@
 				B5E93CF221A6A3AE00D1705A /* Constants.swift in Sources */,
 				B5E93D1121A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
 				B5E93D3421A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
+				B5E93D5721A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5276B5821A28183000A74A5 /* PostsViewController.swift in Sources */,
 				B5E93D4D21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
 				B5276AD121A00FAC000A74A5 /* AppDelegate.swift in Sources */,
@@ -898,6 +929,7 @@
 				B5276B6521A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276B7B21A2A313000A74A5 /* HTTPMethod.swift in Sources */,
 				B5276B4F21A28183000A74A5 /* PostsWorker.swift in Sources */,
+				B5E93D5321A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B5F5BFA921A426680012599B /* PostsCell.swift in Sources */,
 				B5276B8321A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B5276B8721A2A353000A74A5 /* NetworkRouter.swift in Sources */,

@@ -25,6 +25,7 @@ enum PostPreview {
     }
     struct ViewModel {
       let html: String
+      let url: String
     }
   }
 }
