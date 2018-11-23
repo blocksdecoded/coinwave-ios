@@ -12,6 +12,7 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
 protocol PostPreviewDisplayLogic: class {
   func displayPost(viewModel: PostPreview.LoadPost.ViewModel)
@@ -44,7 +45,6 @@ class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
     webView.translatesAutoresizingMaskIntoConstraints = false
     webView.scrollView.delegate = self
     webView.navigationDelegate = self
-    webView.uiDelegate = self
     return webView
   }()
   
@@ -237,9 +237,30 @@ extension PostPreviewViewController: UIScrollViewDelegate {
   }
 }
 
-extension PostPreviewViewController: WKNavigationDelegate & WKUIDelegate {
+extension PostPreviewViewController: WKNavigationDelegate {
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
     applyFontSize(postFontSize)
+  }
+  
+  func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
+               decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    if navigationAction.navigationType == .linkActivated {
+      guard var url = navigationAction.request.url else {
+        decisionHandler(.allow)
+        return
+      }
+      
+      if !url.absoluteString.contains("http:") && !url.absoluteString.contains("https:") {
+        url = URL(string: "https:\(url.absoluteString)")!
+      }
+      
+      let safariVC = SFSafariViewController(url: url)
+      self.present(safariVC, animated: true, completion: nil)
+      decisionHandler(.cancel)
+      
+    } else {
+      decisionHandler(.allow)
+    }
   }
 }
 
