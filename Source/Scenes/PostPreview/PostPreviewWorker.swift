@@ -16,4 +16,20 @@ class PostPreviewWorker {
   func fetchPost(postID: Int, completion: @escaping(Post?) -> Void) {
     completion(DataStore.shared.loadPost(postID))
   }
+  
+  func changeFont(_ size: Float, completion: @escaping(Float) -> Void) {
+    UserDefaults.standard.set(size, forKey: "font_size")
+    completion(size)
+  }
+  
+  func fetchFontSize(_ completion: @escaping(Float) -> Void) {
+    let defaults = UserDefaults.standard
+    let defaultFontSize: Float = 0
+    if let size = defaults.value(forKey: "font_size") as? Float {
+      completion(size)
+      return
+    }
+    defaults.set(defaultFontSize, forKey: "font_size")
+    completion(defaultFontSize)
+  }
 }

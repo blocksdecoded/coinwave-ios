@@ -13,7 +13,8 @@
 import UIKit
 
 protocol PostPreviewBusinessLogic {
-  func fetchPost(request: PostPreview.Something.Request)
+  func fetchPost(request: PostPreview.LoadPost.Request)
+  func changeFontSize(request: PostPreview.ChangeFontSize.Request)
 }
 
 protocol PostPreviewDataStore {
@@ -27,14 +28,24 @@ class PostPreviewInteractor: PostPreviewBusinessLogic, PostPreviewDataStore {
   
   // MARK: Do something
   
-  func fetchPost(request: PostPreview.Something.Request) {
+  func fetchPost(request: PostPreview.LoadPost.Request) {
     worker = PostPreviewWorker()
     worker?.fetchPost(postID: request.postID, completion: { post in
       guard let post = post else {
         return
       }
-      let response = PostPreview.Something.Response(post: post)
-      self.presenter?.presentSomething(response: response)
+      
+      self.worker?.fetchFontSize { fontSize in
+        let response = PostPreview.LoadPost.Response(post: post, fontSize: fontSize)
+        self.presenter?.presentPost(response: response)
+      }
+    })
+  }
+  
+  func changeFontSize(request: PostPreview.ChangeFontSize.Request) {
+    worker = PostPreviewWorker()
+    worker?.changeFont(request.size, completion: { size in
+      self.presenter?.setPostFontSize(response: PostPreview.ChangeFontSize.ViewModel(size: size))
     })
   }
 }

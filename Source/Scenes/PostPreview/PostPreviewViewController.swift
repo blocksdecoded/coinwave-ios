@@ -14,7 +14,8 @@ import UIKit
 import WebKit
 
 protocol PostPreviewDisplayLogic: class {
-  func displaySomething(viewModel: PostPreview.Something.ViewModel)
+  func displayPost(viewModel: PostPreview.LoadPost.ViewModel)
+  func setPostFontSize(viewModel: PostPreview.ChangeFontSize.ViewModel)
 }
 
 class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
@@ -28,6 +29,7 @@ class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
   let delay: CGFloat = 60
   
   var postUrl: String = ""
+  var postFontSize: Float = 0
   
   var navigationViewTopConstraint = NSLayoutConstraint()
   
@@ -37,9 +39,12 @@ class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
   
   private lazy var webView: WKWebView = {
     let webConfiguration = WKWebViewConfiguration()
+    webConfiguration.preferences.javaScriptEnabled = true
     let webView = WKWebView(frame: .zero, configuration: webConfiguration)
     webView.translatesAutoresizingMaskIntoConstraints = false
     webView.scrollView.delegate = self
+    webView.navigationDelegate = self
+    webView.uiDelegate = self
     return webView
   }()
   
@@ -124,13 +129,24 @@ class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
   // MARK: Do something
   
   func fetchPost() {
-    let request = PostPreview.Something.Request(postID: postID)
+    let request = PostPreview.LoadPost.Request(postID: postID)
     interactor?.fetchPost(request: request)
   }
   
-  func displaySomething(viewModel: PostPreview.Something.ViewModel) {
+  func displayPost(viewModel: PostPreview.LoadPost.ViewModel) {
     webView.loadHTMLString(viewModel.html, baseURL: nil)
     postUrl = viewModel.url
+    postFontSize = viewModel.fontSize
+  }
+  
+  func setPostFontSize(viewModel: PostPreview.ChangeFontSize.ViewModel) {
+    postFontSize = viewModel.size
+    applyFontSize(viewModel.size)
+  }
+  
+  private func applyFontSize(_ size: Float) {
+    let jsString = "setFontSize(\(size))"
+    webView.evaluateJavaScript(jsString, completionHandler: nil)
   }
   
   private func animateNavigationView(_ shouldHide: Bool) {
@@ -168,7 +184,7 @@ extension PostPreviewViewController: PostNavigationViewDelegate {
                                                         width: UIScreen.main.bounds.width,
                                                         height: UIScreen.main.bounds.height))
     fontChangeView.delegate = self
-    fontChangeView.fontSize = 10
+    fontChangeView.fontSize = postFontSize
     fontChangeView.presentView(fromView: view, animated: true)
   }
   
@@ -179,7 +195,7 @@ extension PostPreviewViewController: PostNavigationViewDelegate {
 
 extension PostPreviewViewController: FontSelectorViewDelegate {
   func fontSizeValueDidChanged(_ size: Float) {
-    
+    interactor?.changeFontSize(request: PostPreview.ChangeFontSize.Request(size: size))
   }
   
   func fontSelectorViewDidDismiss() {
@@ -218,6 +234,12 @@ extension PostPreviewViewController: UIScrollViewDelegate {
   
   func scrolledToBottom() {
     animateNavigationView(true)
+  }
+}
+
+extension PostPreviewViewController: WKNavigationDelegate & WKUIDelegate {
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    applyFontSize(postFontSize)
   }
 }
 

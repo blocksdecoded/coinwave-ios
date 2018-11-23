@@ -13,7 +13,8 @@
 import UIKit
 
 protocol PostPreviewPresentationLogic {
-  func presentSomething(response: PostPreview.Something.Response)
+  func presentPost(response: PostPreview.LoadPost.Response)
+  func setPostFontSize(response: PostPreview.ChangeFontSize.ViewModel)
 }
 
 class PostPreviewPresenter: PostPreviewPresentationLogic {
@@ -21,12 +22,16 @@ class PostPreviewPresenter: PostPreviewPresentationLogic {
   
   // MARK: Do something
   
-  func presentSomething(response: PostPreview.Something.Response) {
+  func presentPost(response: PostPreview.LoadPost.Response) {
     guard let html = response.post.html else {
       return
-    }
+    }    
     
-    let viewModel = PostPreview.Something.ViewModel(html: html, url: response.post.url)
-    viewController?.displaySomething(viewModel: viewModel)
+    let viewModel = PostPreview.LoadPost.ViewModel(html: html, url: response.post.url, fontSize: response.fontSize)
+    viewController?.displayPost(viewModel: viewModel)
+  }
+  
+  func setPostFontSize(response: PostPreview.ChangeFontSize.ViewModel) {
+    viewController?.setPostFontSize(viewModel: response)
   }
 }

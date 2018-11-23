@@ -14,18 +14,28 @@ import UIKit
 
 enum PostPreview {
   // MARK: Use cases
+  // swiftlint:disable nesting
+  enum ChangeFontSize {
+    struct Request {
+      let size: Float
+    }
+    struct ViewModel {
+      let size: Float
+    }
+  }
   
-  enum Something {
-    // swiftlint:disable nesting
+  enum LoadPost {
     struct Request {
       let postID: Int
     }
     struct Response {
       let post: Post
+      let fontSize: Float
     }
     struct ViewModel {
       let html: String
       let url: String
+      let fontSize: Float
     }
   }
 }
