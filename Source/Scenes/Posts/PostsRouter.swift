@@ -45,7 +45,7 @@ class PostsRouter: NSObject, PostsRoutingLogic, PostsDataPassing {
   // MARK: Navigation
   
   func navigateToPostPreview(source: PostsViewController, destination: PostPreviewViewController) {
-    source.show(destination, sender: nil)
+    source.navigationController?.pushViewController(destination, animated: true)
   }
   
   // MARK: Passing data

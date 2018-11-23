@@ -84,7 +84,7 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   // MARK: Routing
   
   private func openPost(index: Int) {
-    router?.navigateToPostPreview(source: self, destination: PostPreviewViewController())
+    router?.navigateToPostPreview(source: self, destination: PostPreviewViewController(postID: posts![index].id))
   }
   
   // MARK: View lifecycle

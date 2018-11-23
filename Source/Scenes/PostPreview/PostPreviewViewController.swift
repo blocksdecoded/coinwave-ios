@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import WebKit
 
 protocol PostPreviewDisplayLogic: class {
   func displaySomething(viewModel: PostPreview.Something.ViewModel)
@@ -19,15 +20,36 @@ protocol PostPreviewDisplayLogic: class {
 class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
   var interactor: PostPreviewBusinessLogic?
   var router: (NSObjectProtocol & PostPreviewRoutingLogic & PostPreviewDataPassing)?
+  
+  let postID: Int
+  
+  override var prefersStatusBarHidden: Bool {
+    return true
+  }
+  
+  private lazy var webView: WKWebView = {
+    let webConfiguration = WKWebViewConfiguration()
+    let webView = WKWebView(frame: .zero, configuration: webConfiguration)
+    webView.translatesAutoresizingMaskIntoConstraints = false
+    return webView
+  }()
 
   // MARK: Object lifecycle
   
+  init(postID: Int) {
+    self.postID = postID
+    super.init(nibName: nil, bundle: nil)
+    setup()
+  }
+  
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    self.postID = -1
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     setup()
   }
   
   required init?(coder aDecoder: NSCoder) {
+    self.postID = -1
     super.init(coder: aDecoder)
     setup()
   }
@@ -49,33 +71,43 @@ class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
   
   // MARK: Routing
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
-    }
-  }
-  
   // MARK: View lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    doSomething()
-    print(PostPreviewViewController.self)
+    navigationController?.interactivePopGestureRecognizer?.delegate = self
+    setupViews()
+    setupConstraints()
+    fetchPost()
+  }
+  
+  private func setupViews() {
+    view.addSubview(webView)
+  }
+  
+  private func setupConstraints() {
+    let webViewC = [
+      webView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      webView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+    ]
+    
+    NSLayoutConstraint.activate(webViewC)
   }
   
   // MARK: Do something
   
   //@IBOutlet weak var nameTextField: UITextField!
   
-  func doSomething() {
-    let request = PostPreview.Something.Request()
-    interactor?.doSomething(request: request)
+  func fetchPost() {
+    let request = PostPreview.Something.Request(postID: postID)
+    interactor?.fetchPost(request: request)
   }
   
   func displaySomething(viewModel: PostPreview.Something.ViewModel) {
-    //nameTextField.text = viewModel.name
+    webView.loadHTMLString(viewModel.html, baseURL: nil)
   }
 }
+
+extension PostPreviewViewController: UIGestureRecognizerDelegate {}

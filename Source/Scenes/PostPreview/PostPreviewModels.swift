@@ -18,10 +18,13 @@ enum PostPreview {
   enum Something {
     // swiftlint:disable nesting
     struct Request {
+      let postID: Int
     }
     struct Response {
+      let post: Post
     }
     struct ViewModel {
+      let html: String
     }
   }
 }

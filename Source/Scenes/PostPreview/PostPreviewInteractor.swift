@@ -13,7 +13,7 @@
 import UIKit
 
 protocol PostPreviewBusinessLogic {
-  func doSomething(request: PostPreview.Something.Request)
+  func fetchPost(request: PostPreview.Something.Request)
 }
 
 protocol PostPreviewDataStore {
@@ -27,11 +27,14 @@ class PostPreviewInteractor: PostPreviewBusinessLogic, PostPreviewDataStore {
   
   // MARK: Do something
   
-  func doSomething(request: PostPreview.Something.Request) {
+  func fetchPost(request: PostPreview.Something.Request) {
     worker = PostPreviewWorker()
-    worker?.doSomeWork()
-    
-    let response = PostPreview.Something.Response()
-    presenter?.presentSomething(response: response)
+    worker?.fetchPost(postID: request.postID, completion: { post in
+      guard let post = post else {
+        return
+      }
+      let response = PostPreview.Something.Response(post: post)
+      self.presenter?.presentSomething(response: response)
+    })
   }
 }

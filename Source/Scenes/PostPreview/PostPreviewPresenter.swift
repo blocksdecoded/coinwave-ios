@@ -22,7 +22,11 @@ class PostPreviewPresenter: PostPreviewPresentationLogic {
   // MARK: Do something
   
   func presentSomething(response: PostPreview.Something.Response) {
-    let viewModel = PostPreview.Something.ViewModel()
+    guard let html = response.post.html else {
+      return
+    }
+    
+    let viewModel = PostPreview.Something.ViewModel(html: html)
     viewController?.displaySomething(viewModel: viewModel)
   }
 }

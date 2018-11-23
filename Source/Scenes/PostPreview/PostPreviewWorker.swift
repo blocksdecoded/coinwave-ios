@@ -12,7 +12,8 @@
 
 import UIKit
 
-class PostPreviewWorker {
-  func doSomeWork() {
+class PostPreviewWorker {  
+  func fetchPost(postID: Int, completion: @escaping(Post?) -> Void) {
+    completion(DataStore.shared.loadPost(postID))
   }
 }

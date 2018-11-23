@@ -28,4 +28,12 @@ class DataStore {
       fatalError("Cannot insert posts")
     }
   }
+  
+  func loadPost(_ postId: Int) -> Post? {
+    do {
+      return try PostDataHelper.find(id: Int64(postId))
+    } catch {
+      fatalError("Cannot load post \(postId)")
+    }
+  }
 }
