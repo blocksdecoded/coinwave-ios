@@ -23,15 +23,13 @@ protocol CurrenciesDataStore {
 class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   var presenter: CurrenciesPresentationLogic?
   var worker: CurrenciesWorker?
-  //var name: String = ""
 
   // MARK: Do something
 
   func doSomething(request: Currencies.Something.Request) {
     worker = CurrenciesWorker()
-    worker?.doSomeWork()
-
-    let response = Currencies.Something.Response()
-    presenter?.presentSomething(response: response)
+    worker?.fetchCurrencies { currencies in
+      self.presenter?.presentCurrencies(response: Currencies.Something.Response(currencies: currencies))
+    }
   }
 }

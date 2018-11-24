@@ -19,7 +19,10 @@ class MainTabBarController: UITabBarController {
     let postsVC = PostsViewController()
     postsVC.tabBarItem = UITabBarItem(title: "Posts", image: nil, selectedImage: nil)
     
-    let viewControllersList = [postsVC]
+    let currenciesVC = CurrenciesViewController()
+    currenciesVC.tabBarItem = UITabBarItem(title: "Currencies", image: nil, selectedImage: nil)
+    
+    let viewControllersList = [currenciesVC, postsVC]
     viewControllers = viewControllersList
   }
 }

@@ -12,7 +12,22 @@
 
 import UIKit
 
-class CurrenciesWorker {
-  func doSomeWork() {
+class CurrenciesWorker {  
+  func fetchCurrencies(_ completion: @escaping ([Currency]) -> Void) {
+    DispatchQueue.global(qos: .background).async {
+      let networkManager = CurrenciesNetworkManager()
+      networkManager.getCurrencies(completion: { currencies, error in
+        if error != nil {
+          print(error!)
+        }
+        
+        guard let curs = currencies else {
+          return
+        }
+        DispatchQueue.main.async {
+          completion(curs)
+        }
+      })
+    }
   }
 }

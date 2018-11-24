@@ -13,16 +13,14 @@
 import UIKit
 
 protocol CurrenciesPresentationLogic {
-  func presentSomething(response: Currencies.Something.Response)
+  func presentCurrencies(response: Currencies.Something.Response)
 }
 
 class CurrenciesPresenter: CurrenciesPresentationLogic {
   weak var viewController: CurrenciesDisplayLogic?
-
-  // MARK: Do something
-
-  func presentSomething(response: Currencies.Something.Response) {
-    let viewModel = Currencies.Something.ViewModel()
+  
+  func presentCurrencies(response: Currencies.Something.Response) {
+    let viewModel = Currencies.Something.ViewModel(currencies: response.currencies)
     viewController?.displaySomething(viewModel: viewModel)
   }
 }

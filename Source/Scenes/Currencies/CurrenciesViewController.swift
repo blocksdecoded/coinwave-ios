@@ -17,8 +17,53 @@ protocol CurrenciesDisplayLogic: class {
 }
 
 class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
+  
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
+  
   var interactor: CurrenciesBusinessLogic?
   var router: (NSObjectProtocol & CurrenciesRoutingLogic & CurrenciesDataPassing)?
+  
+  private var currencies: [Currency]?
+  
+  private lazy var headerForCurrenciesList: UIView = {
+    let headerView = UIView()
+    headerView.translatesAutoresizingMaskIntoConstraints = false
+    
+    let firstColumn = columnTitle(text: "Name")
+    let secondColumn = columnTitle(text: "Market Cap")
+    let thirdColumn = columnTitle(text: "Volume (24h)")
+    let forthColumn = columnTitle(text: "Price (24h)")
+    
+    let stackView = UIStackView(arrangedSubviews: [firstColumn, secondColumn, thirdColumn, forthColumn])
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    stackView.axis = .horizontal
+    stackView.alignment = .fill
+    stackView.distribution = .fillEqually
+    
+    headerView.addSubview(stackView)
+    
+    NSLayoutConstraint.activate([
+      stackView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+      stackView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+      stackView.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
+      ])
+    
+    return headerView
+  }()
+  
+  private lazy var currenciesList: UITableView = {
+    let tableView = UITableView()
+    tableView.translatesAutoresizingMaskIntoConstraints = false
+    tableView.backgroundColor = .clear
+    tableView.register(TVCCrypto.create(), forCellReuseIdentifier: TVCCrypto.reuseID)
+    tableView.rowHeight = 60
+    tableView.separatorStyle = .none
+    tableView.dataSource = self
+    tableView.delegate = self
+    return tableView
+  }()
 
   // MARK: Object lifecycle
 
@@ -62,12 +107,38 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupViews()
+    setupConstraints()
     doSomething()
+  }
+  
+  private func setupViews() {
+    let factory = WidgetFactory()
+    factory.setGradientTo(view: view)
+    view.addSubview(headerForCurrenciesList)
+    view.addSubview(currenciesList)
+  }
+  
+  private func setupConstraints() {
+    
+    let headerForCurrenciesListC = [
+      headerForCurrenciesList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      headerForCurrenciesList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      headerForCurrenciesList.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      headerForCurrenciesList.heightAnchor.constraint(equalToConstant: 50)
+    ]
+    
+    let currenciesListC = [
+      currenciesList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      currenciesList.topAnchor.constraint(equalTo: headerForCurrenciesList.bottomAnchor),
+      currenciesList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      currenciesList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+    ]
+    
+    NSLayoutConstraint.activate(headerForCurrenciesListC + currenciesListC)
   }
 
   // MARK: Do something
-
-  //@IBOutlet weak var nameTextField: UITextField!
 
   func doSomething() {
     let request = Currencies.Something.Request()
@@ -75,6 +146,35 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   }
 
   func displaySomething(viewModel: Currencies.Something.ViewModel) {
-    //nameTextField.text = viewModel.name
+    currencies = viewModel.currencies
+    currenciesList.reloadData()
+  }
+  
+  private func columnTitle(text: String) -> UILabel {
+    let label = UILabel()
+    label.text = text
+    label.textAlignment = .center
+    label.textColor = UIColor.white.withAlphaComponent(0.7)
+    label.font = UIFont.systemFont(ofSize: 11)
+    return label
+  }
+}
+
+extension CurrenciesViewController: UITableViewDataSource, UITableViewDelegate {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return currencies?.count ?? 0
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: TVCCrypto.reuseID) as? TVCCrypto else {
+      return UITableViewCell()
+    }
+    
+    guard let currency = currencies?[indexPath.row] else {
+      fatalError()
+    }
+    
+    cell.onBind(currency, isTop: indexPath.row == 0)
+    return cell
   }
 }

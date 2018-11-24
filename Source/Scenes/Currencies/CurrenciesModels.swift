@@ -20,8 +20,10 @@ enum Currencies {
     struct Request {
     }
     struct Response {
+      let currencies: [Currency]
     }
     struct ViewModel {
+      let currencies: [Currency]
     }
   }
 }
