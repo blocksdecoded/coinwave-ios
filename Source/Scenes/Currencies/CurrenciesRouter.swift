@@ -14,6 +14,7 @@ import UIKit
 
 @objc protocol CurrenciesRoutingLogic {
   //func routeToSomewhere(segue: UIStoryboardSegue?)
+  func openDetails(currencyID: Int)
 }
 
 protocol CurrenciesDataPassing {
@@ -24,35 +25,10 @@ class CurrenciesRouter: NSObject, CurrenciesRoutingLogic, CurrenciesDataPassing 
   weak var viewController: CurrenciesViewController?
   var dataStore: CurrenciesDataStore?
 
-  // MARK: Routing
-
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController")
-  //    as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
   // MARK: Navigation
-
-  //func navigateToSomewhere(source: CurrenciesViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-
-  // MARK: Passing data
-
-  //func passDataToSomewhere(source: CurrenciesDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+  
+  func openDetails(currencyID: Int) {
+    let detailsVC = CurrencyDetailsViewController(currencyID: currencyID)
+    viewController?.navigationController?.pushViewController(detailsVC, animated: true)
+  }
 }

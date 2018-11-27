@@ -11,6 +11,57 @@
 		B501296521A91F3E001B6A04 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296421A91F3E001B6A04 /* CurrencyConverter.swift */; };
 		B501296621A91F3E001B6A04 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296421A91F3E001B6A04 /* CurrencyConverter.swift */; };
 		B501296721A91F3E001B6A04 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296421A91F3E001B6A04 /* CurrencyConverter.swift */; };
+		B501296F21A940DA001B6A04 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296921A940DA001B6A04 /* WatchlistPresenter.swift */; };
+		B501297021A940DA001B6A04 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296921A940DA001B6A04 /* WatchlistPresenter.swift */; };
+		B501297121A940DA001B6A04 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296921A940DA001B6A04 /* WatchlistPresenter.swift */; };
+		B501297221A940DA001B6A04 /* WatchlistWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296A21A940DA001B6A04 /* WatchlistWorker.swift */; };
+		B501297321A940DA001B6A04 /* WatchlistWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296A21A940DA001B6A04 /* WatchlistWorker.swift */; };
+		B501297421A940DA001B6A04 /* WatchlistWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296A21A940DA001B6A04 /* WatchlistWorker.swift */; };
+		B501297521A940DA001B6A04 /* WatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296B21A940DA001B6A04 /* WatchlistRouter.swift */; };
+		B501297621A940DA001B6A04 /* WatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296B21A940DA001B6A04 /* WatchlistRouter.swift */; };
+		B501297721A940DA001B6A04 /* WatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296B21A940DA001B6A04 /* WatchlistRouter.swift */; };
+		B501297821A940DA001B6A04 /* WatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296C21A940DA001B6A04 /* WatchlistModels.swift */; };
+		B501297921A940DA001B6A04 /* WatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296C21A940DA001B6A04 /* WatchlistModels.swift */; };
+		B501297A21A940DA001B6A04 /* WatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296C21A940DA001B6A04 /* WatchlistModels.swift */; };
+		B501297B21A940DA001B6A04 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296D21A940DA001B6A04 /* WatchlistViewController.swift */; };
+		B501297C21A940DA001B6A04 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296D21A940DA001B6A04 /* WatchlistViewController.swift */; };
+		B501297D21A940DA001B6A04 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296D21A940DA001B6A04 /* WatchlistViewController.swift */; };
+		B501297E21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296E21A940DA001B6A04 /* WatchlistInteractor.swift */; };
+		B501297F21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296E21A940DA001B6A04 /* WatchlistInteractor.swift */; };
+		B501298021A940DA001B6A04 /* WatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296E21A940DA001B6A04 /* WatchlistInteractor.swift */; };
+		B501298821A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298221A94BC0001B6A04 /* CurrencyDetailsPresenter.swift */; };
+		B501298921A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298221A94BC0001B6A04 /* CurrencyDetailsPresenter.swift */; };
+		B501298A21A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298221A94BC0001B6A04 /* CurrencyDetailsPresenter.swift */; };
+		B501298B21A94BC0001B6A04 /* CurrencyDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298321A94BC0001B6A04 /* CurrencyDetailsWorker.swift */; };
+		B501298C21A94BC0001B6A04 /* CurrencyDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298321A94BC0001B6A04 /* CurrencyDetailsWorker.swift */; };
+		B501298D21A94BC0001B6A04 /* CurrencyDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298321A94BC0001B6A04 /* CurrencyDetailsWorker.swift */; };
+		B501298E21A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298421A94BC0001B6A04 /* CurrencyDetailsRouter.swift */; };
+		B501298F21A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298421A94BC0001B6A04 /* CurrencyDetailsRouter.swift */; };
+		B501299021A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298421A94BC0001B6A04 /* CurrencyDetailsRouter.swift */; };
+		B501299121A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298521A94BC0001B6A04 /* CurrencyDetailsModels.swift */; };
+		B501299221A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298521A94BC0001B6A04 /* CurrencyDetailsModels.swift */; };
+		B501299321A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298521A94BC0001B6A04 /* CurrencyDetailsModels.swift */; };
+		B501299421A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298621A94BC0001B6A04 /* CurrencyDetailsViewController.swift */; };
+		B501299521A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298621A94BC0001B6A04 /* CurrencyDetailsViewController.swift */; };
+		B501299621A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298621A94BC0001B6A04 /* CurrencyDetailsViewController.swift */; };
+		B501299721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift */; };
+		B501299821A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift */; };
+		B501299921A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift */; };
+		B501299C21A9600E001B6A04 /* CurrencyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501299B21A9600E001B6A04 /* CurrencyChart.swift */; };
+		B501299D21A9600E001B6A04 /* CurrencyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501299B21A9600E001B6A04 /* CurrencyChart.swift */; };
+		B501299E21A9600E001B6A04 /* CurrencyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501299B21A9600E001B6A04 /* CurrencyChart.swift */; };
+		B50129A021A968C3001B6A04 /* CurrencySaveDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501299F21A968C3001B6A04 /* CurrencySaveDataHelper.swift */; };
+		B50129A121A968C3001B6A04 /* CurrencySaveDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501299F21A968C3001B6A04 /* CurrencySaveDataHelper.swift */; };
+		B50129A221A968C3001B6A04 /* CurrencySaveDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501299F21A968C3001B6A04 /* CurrencySaveDataHelper.swift */; };
+		B50129A521A96974001B6A04 /* SaveCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A421A96974001B6A04 /* SaveCurrency.swift */; };
+		B50129A621A96974001B6A04 /* SaveCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A421A96974001B6A04 /* SaveCurrency.swift */; };
+		B50129A721A96974001B6A04 /* SaveCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A421A96974001B6A04 /* SaveCurrency.swift */; };
+		B50129A921A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A821A96AD2001B6A04 /* CurrencyDataHelper.swift */; };
+		B50129AA21A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A821A96AD2001B6A04 /* CurrencyDataHelper.swift */; };
+		B50129AB21A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A821A96AD2001B6A04 /* CurrencyDataHelper.swift */; };
+		B50129AD21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
+		B50129AE21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
+		B50129AF21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
 		B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAD21A00F59000A74A5 /* AppDelegate.swift */; };
 		B5276AB021A00F59000A74A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAF21A00F59000A74A5 /* ViewController.swift */; };
 		B5276AB521A00F5A000A74A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB421A00F5A000A74A5 /* Assets.xcassets */; };
@@ -191,6 +242,23 @@
 		A987954D56EDBE59FCFB0C3C /* Pods-Cryptotracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.release.xcconfig"; sourceTree = "<group>"; };
 		B3C7929EE344E49051F23381 /* Pods-StagingCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StagingCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StagingCryptotracker/Pods-StagingCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		B501296421A91F3E001B6A04 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
+		B501296921A940DA001B6A04 /* WatchlistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPresenter.swift; sourceTree = "<group>"; };
+		B501296A21A940DA001B6A04 /* WatchlistWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistWorker.swift; sourceTree = "<group>"; };
+		B501296B21A940DA001B6A04 /* WatchlistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRouter.swift; sourceTree = "<group>"; };
+		B501296C21A940DA001B6A04 /* WatchlistModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistModels.swift; sourceTree = "<group>"; };
+		B501296D21A940DA001B6A04 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
+		B501296E21A940DA001B6A04 /* WatchlistInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistInteractor.swift; sourceTree = "<group>"; };
+		B501298221A94BC0001B6A04 /* CurrencyDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsPresenter.swift; sourceTree = "<group>"; };
+		B501298321A94BC0001B6A04 /* CurrencyDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsWorker.swift; sourceTree = "<group>"; };
+		B501298421A94BC0001B6A04 /* CurrencyDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsRouter.swift; sourceTree = "<group>"; };
+		B501298521A94BC0001B6A04 /* CurrencyDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsModels.swift; sourceTree = "<group>"; };
+		B501298621A94BC0001B6A04 /* CurrencyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewController.swift; sourceTree = "<group>"; };
+		B501298721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsInteractor.swift; sourceTree = "<group>"; };
+		B501299B21A9600E001B6A04 /* CurrencyChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChart.swift; sourceTree = "<group>"; };
+		B501299F21A968C3001B6A04 /* CurrencySaveDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySaveDataHelper.swift; sourceTree = "<group>"; };
+		B50129A421A96974001B6A04 /* SaveCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCurrency.swift; sourceTree = "<group>"; };
+		B50129A821A96AD2001B6A04 /* CurrencyDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataHelper.swift; sourceTree = "<group>"; };
+		B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsCell.swift; sourceTree = "<group>"; };
 		B5276AAA21A00F59000A74A5 /* Cryptotracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptotracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5276AAD21A00F59000A74A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5276AAF21A00F59000A74A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +362,49 @@
 				084EF5BB3FCB474B5135431A /* Pods_StagingCryptotracker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B501296821A940BA001B6A04 /* Watchlist */ = {
+			isa = PBXGroup;
+			children = (
+				B501296921A940DA001B6A04 /* WatchlistPresenter.swift */,
+				B501296A21A940DA001B6A04 /* WatchlistWorker.swift */,
+				B501296B21A940DA001B6A04 /* WatchlistRouter.swift */,
+				B501296C21A940DA001B6A04 /* WatchlistModels.swift */,
+				B501296D21A940DA001B6A04 /* WatchlistViewController.swift */,
+				B501296E21A940DA001B6A04 /* WatchlistInteractor.swift */,
+			);
+			path = Watchlist;
+			sourceTree = "<group>";
+		};
+		B501298121A94BA7001B6A04 /* CurrencyDetails */ = {
+			isa = PBXGroup;
+			children = (
+				B501298221A94BC0001B6A04 /* CurrencyDetailsPresenter.swift */,
+				B501298321A94BC0001B6A04 /* CurrencyDetailsWorker.swift */,
+				B501298421A94BC0001B6A04 /* CurrencyDetailsRouter.swift */,
+				B501298521A94BC0001B6A04 /* CurrencyDetailsModels.swift */,
+				B501298621A94BC0001B6A04 /* CurrencyDetailsViewController.swift */,
+				B501298721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift */,
+				B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */,
+			);
+			path = CurrencyDetails;
+			sourceTree = "<group>";
+		};
+		B501299A21A95FEB001B6A04 /* CurrencyChart */ = {
+			isa = PBXGroup;
+			children = (
+				B501299B21A9600E001B6A04 /* CurrencyChart.swift */,
+			);
+			path = CurrencyChart;
+			sourceTree = "<group>";
+		};
+		B50129A321A96967001B6A04 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B50129A421A96974001B6A04 /* SaveCurrency.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B5276AA121A00F59000A74A5 = {
@@ -412,6 +523,9 @@
 		B5276B5C21A29DB8000A74A5 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B501299A21A95FEB001B6A04 /* CurrencyChart */,
+				B501298121A94BA7001B6A04 /* CurrencyDetails */,
+				B501296821A940BA001B6A04 /* Watchlist */,
 				B5E93CF921A6A71A00D1705A /* PostPreview */,
 				B5276AEE21A011ED000A74A5 /* Currencies */,
 				B5276B4321A2816F000A74A5 /* Posts */,
@@ -493,6 +607,7 @@
 		B5E93D2B21A6B44B00D1705A /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
+				B50129A321A96967001B6A04 /* Models */,
 				B5E93D2C21A6B8DB00D1705A /* SQLite */,
 				B5E93D4521A6E64200D1705A /* DataStore.swift */,
 			);
@@ -508,6 +623,8 @@
 				B5E93D3921A6B9DD00D1705A /* PostDataHelper.swift */,
 				B5E93D3D21A6CEFC00D1705A /* CategoryDataHelper.swift */,
 				B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */,
+				B501299F21A968C3001B6A04 /* CurrencySaveDataHelper.swift */,
+				B50129A821A96AD2001B6A04 /* CurrencyDataHelper.swift */,
 			);
 			path = SQLite;
 			sourceTree = "<group>";
@@ -898,9 +1015,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50129A921A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */,
 				B5E93D4621A6E64200D1705A /* DataStore.swift in Sources */,
+				B501297821A940DA001B6A04 /* WatchlistModels.swift in Sources */,
+				B501298B21A94BC0001B6A04 /* CurrencyDetailsWorker.swift in Sources */,
 				B5276B8D21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
+				B50129AD21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */,
 				B5E93D8E21A90A6F00D1705A /* WidgetFactory.swift in Sources */,
+				B50129A021A968C3001B6A04 /* CurrencySaveDataHelper.swift in Sources */,
 				B5276B7021A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
 				B5276B6C21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B6821A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
@@ -908,13 +1030,17 @@
 				B5E93D8121A82AF600D1705A /* CurrenciesCell.swift in Sources */,
 				B5E93D0321A6A73500D1705A /* PostPreviewWorker.swift in Sources */,
 				B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */,
+				B501299721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */,
 				B5276AB021A00F59000A74A5 /* ViewController.swift in Sources */,
 				B5E93D0921A6A73500D1705A /* PostPreviewModels.swift in Sources */,
+				B501297521A940DA001B6A04 /* WatchlistRouter.swift in Sources */,
 				B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */,
 				B5276B5921A28183000A74A5 /* PostsInteractor.swift in Sources */,
+				B501299121A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
 				B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5276AF621A0124D000A74A5 /* CurrenciesWorker.swift in Sources */,
+				B501297221A940DA001B6A04 /* WatchlistWorker.swift in Sources */,
 				B5E93D0F21A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
 				B5E93D3621A6B9B000D1705A /* DataAccessError.swift in Sources */,
 				B5276B4D21A28183000A74A5 /* PostsWorker.swift in Sources */,
@@ -922,17 +1048,23 @@
 				B5E93D4B21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
 				B5276B5321A28183000A74A5 /* PostsModels.swift in Sources */,
 				B5276B8921A2A369000A74A5 /* Router.swift in Sources */,
+				B501296F21A940DA001B6A04 /* WatchlistPresenter.swift in Sources */,
 				B5276B6321A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276AFA21A0124D000A74A5 /* CurrenciesInteractor.swift in Sources */,
 				B5276B7D21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
 				B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */,
 				B5E93D0C21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
 				B5276B5021A28183000A74A5 /* PostsRouter.swift in Sources */,
+				B501298821A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */,
+				B501298E21A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */,
 				B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5E93D6421A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
+				B501299C21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
 				B5E93D3A21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
 				B5F5BFA721A426680012599B /* PostsCell.swift in Sources */,
+				B50129A521A96974001B6A04 /* SaveCurrency.swift in Sources */,
 				B5E93D3E21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
+				B501297E21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
 				B5E93D7121A8238800D1705A /* Quote.swift in Sources */,
 				B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B5E93D8721A82C5900D1705A /* TVCCrypto.swift in Sources */,
@@ -940,6 +1072,7 @@
 				B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */,
 				B5E93D6C21A8221000D1705A /* Currency.swift in Sources */,
 				B501296521A91F3E001B6A04 /* CurrencyConverter.swift in Sources */,
+				B501297B21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
 				B5276B5F21A29DD9000A74A5 /* Post.swift in Sources */,
 				B5276AF821A0124D000A74A5 /* CurrenciesModels.swift in Sources */,
 				B5276AF521A0124D000A74A5 /* CurrenciesPresenter.swift in Sources */,
@@ -950,6 +1083,7 @@
 				B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5E93D0021A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
 				B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
+				B501299421A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
 				B5276B7521A2A2FD000A74A5 /* EndPointType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -958,9 +1092,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50129AA21A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */,
 				B5276B7E21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
+				B501297921A940DA001B6A04 /* WatchlistModels.swift in Sources */,
+				B501298C21A94BC0001B6A04 /* CurrencyDetailsWorker.swift in Sources */,
 				B5276B5121A28183000A74A5 /* PostsRouter.swift in Sources */,
+				B50129AE21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */,
 				B5E93D8F21A90A6F00D1705A /* WidgetFactory.swift in Sources */,
+				B50129A121A968C3001B6A04 /* CurrencySaveDataHelper.swift in Sources */,
 				B5E93D6921A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */,
 				B5276B4B21A28183000A74A5 /* PostsPresenter.swift in Sources */,
 				B5276B8E21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
@@ -968,13 +1107,17 @@
 				B5E93D8221A82AF600D1705A /* CurrenciesCell.swift in Sources */,
 				B5276B5421A28183000A74A5 /* PostsModels.swift in Sources */,
 				B5E93D3721A6B9B000D1705A /* DataAccessError.swift in Sources */,
+				B501299821A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */,
 				B5E93CF121A6A3AE00D1705A /* Constants.swift in Sources */,
 				B5E93D1021A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
+				B501297621A940DA001B6A04 /* WatchlistRouter.swift in Sources */,
 				B5E93D3321A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5E93D7421A827D600D1705A /* CurrenciesPresenter.swift in Sources */,
+				B501299221A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
 				B5E93D5621A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5E93D6D21A8221000D1705A /* Currency.swift in Sources */,
 				B5276B5721A28183000A74A5 /* PostsViewController.swift in Sources */,
+				B501297321A940DA001B6A04 /* WatchlistWorker.swift in Sources */,
 				B5E93D4C21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
 				B5276AC321A00F9F000A74A5 /* AppDelegate.swift in Sources */,
 				B5E93D0D21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
@@ -982,17 +1125,23 @@
 				B5E93D6521A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B5276B6921A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
 				B5E93D7521A827D600D1705A /* CurrenciesWorker.swift in Sources */,
+				B501297021A940DA001B6A04 /* WatchlistPresenter.swift in Sources */,
 				B5276B5A21A28183000A74A5 /* PostsInteractor.swift in Sources */,
 				B5E93D2F21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B5276B7621A2A2FD000A74A5 /* EndPointType.swift in Sources */,
 				B5276B6D21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B4121A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 				B5E93D7921A827D600D1705A /* CurrenciesInteractor.swift in Sources */,
+				B501298921A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */,
+				B501298F21A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */,
 				B5E93D7821A827D600D1705A /* CurrenciesViewController.swift in Sources */,
 				B5276B8A21A2A369000A74A5 /* Router.swift in Sources */,
+				B501299D21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
 				B5276B6421A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276B7A21A2A313000A74A5 /* HTTPMethod.swift in Sources */,
+				B50129A621A96974001B6A04 /* SaveCurrency.swift in Sources */,
 				B5276B4E21A28183000A74A5 /* PostsWorker.swift in Sources */,
+				B501297F21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
 				B5E93D7721A827D600D1705A /* CurrenciesModels.swift in Sources */,
 				B5E93D5221A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B5E93D8821A82C5900D1705A /* TVCCrypto.swift in Sources */,
@@ -1000,6 +1149,7 @@
 				B5276B8221A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B5276B8621A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B501296621A91F3E001B6A04 /* CurrencyConverter.swift in Sources */,
+				B501297C21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
 				B5E93D0721A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
 				B5E93D0421A6A73500D1705A /* PostPreviewWorker.swift in Sources */,
 				B5E93D3B21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
@@ -1010,6 +1160,7 @@
 				B5276B7121A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
 				B5E93D7621A827D600D1705A /* CurrenciesRouter.swift in Sources */,
 				B5276B6021A29DD9000A74A5 /* Post.swift in Sources */,
+				B501299521A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
 				B5E93D4321A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1018,9 +1169,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50129AB21A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */,
 				B5276B7F21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
+				B501297A21A940DA001B6A04 /* WatchlistModels.swift in Sources */,
+				B501298D21A94BC0001B6A04 /* CurrencyDetailsWorker.swift in Sources */,
 				B5276B5221A28183000A74A5 /* PostsRouter.swift in Sources */,
+				B50129AF21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */,
 				B5E93D9021A90A6F00D1705A /* WidgetFactory.swift in Sources */,
+				B50129A221A968C3001B6A04 /* CurrencySaveDataHelper.swift in Sources */,
 				B5E93D6A21A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */,
 				B5276B4C21A28183000A74A5 /* PostsPresenter.swift in Sources */,
 				B5276B8F21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
@@ -1028,13 +1184,17 @@
 				B5E93D8321A82AF600D1705A /* CurrenciesCell.swift in Sources */,
 				B5276B5521A28183000A74A5 /* PostsModels.swift in Sources */,
 				B5E93D3821A6B9B000D1705A /* DataAccessError.swift in Sources */,
+				B501299921A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */,
 				B5E93CF221A6A3AE00D1705A /* Constants.swift in Sources */,
 				B5E93D1121A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
+				B501297721A940DA001B6A04 /* WatchlistRouter.swift in Sources */,
 				B5E93D3421A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5E93D7A21A827D700D1705A /* CurrenciesPresenter.swift in Sources */,
+				B501299321A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
 				B5E93D5721A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5E93D6E21A8221000D1705A /* Currency.swift in Sources */,
 				B5276B5821A28183000A74A5 /* PostsViewController.swift in Sources */,
+				B501297421A940DA001B6A04 /* WatchlistWorker.swift in Sources */,
 				B5E93D4D21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
 				B5276AD121A00FAC000A74A5 /* AppDelegate.swift in Sources */,
 				B5E93D0E21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
@@ -1042,17 +1202,23 @@
 				B5E93D6621A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B5276B6A21A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
 				B5E93D7B21A827D700D1705A /* CurrenciesWorker.swift in Sources */,
+				B501297121A940DA001B6A04 /* WatchlistPresenter.swift in Sources */,
 				B5276B5B21A28183000A74A5 /* PostsInteractor.swift in Sources */,
 				B5E93D3021A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B5276B7721A2A2FD000A74A5 /* EndPointType.swift in Sources */,
 				B5276B6E21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B4221A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 				B5E93D7F21A827D700D1705A /* CurrenciesInteractor.swift in Sources */,
+				B501298A21A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */,
+				B501299021A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */,
 				B5E93D7E21A827D700D1705A /* CurrenciesViewController.swift in Sources */,
 				B5276B8B21A2A369000A74A5 /* Router.swift in Sources */,
+				B501299E21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
 				B5276B6521A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276B7B21A2A313000A74A5 /* HTTPMethod.swift in Sources */,
+				B50129A721A96974001B6A04 /* SaveCurrency.swift in Sources */,
 				B5276B4F21A28183000A74A5 /* PostsWorker.swift in Sources */,
+				B501298021A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
 				B5E93D7D21A827D700D1705A /* CurrenciesModels.swift in Sources */,
 				B5E93D5321A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B5E93D8921A82C5900D1705A /* TVCCrypto.swift in Sources */,
@@ -1060,6 +1226,7 @@
 				B5276B8321A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B5276B8721A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B501296721A91F3E001B6A04 /* CurrencyConverter.swift in Sources */,
+				B501297D21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
 				B5E93D0821A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
 				B5E93D0521A6A73500D1705A /* PostPreviewWorker.swift in Sources */,
 				B5E93D3C21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
@@ -1070,6 +1237,7 @@
 				B5276B7221A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
 				B5E93D7C21A827D700D1705A /* CurrenciesRouter.swift in Sources */,
 				B5276B6121A29DD9000A74A5 /* Post.swift in Sources */,
+				B501299621A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
 				B5E93D4421A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

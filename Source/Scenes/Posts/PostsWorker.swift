@@ -15,6 +15,13 @@ import UIKit
 class PostsWorker {
   func fetchPosts(completion: @escaping (_ posts: [Post]) -> Void) {
     DispatchQueue.global(qos: .background).async {
+      
+      if let localPosts = DataStore.shared.loadPosts() {
+        DispatchQueue.main.async {
+          completion(localPosts)
+        }
+      }
+      
       let postsNetworkManager = PostsNetworkManager()
       postsNetworkManager.fetchPosts(completion: { posts, error in
         
@@ -27,11 +34,15 @@ class PostsWorker {
           fatalError("FUCK")
         }
         
-        DataStore.shared.insert(posts: postList)
+        
+        
+        DataStore.shared.insertPosts(postList)
         
         DispatchQueue.main.async {
           completion(postList)
         }
+        
+        
       })
     }
   }
@@ -52,7 +63,7 @@ class PostsWorker {
           fatalError("FUCK")
         }
         
-        DataStore.shared.insert(posts: postList)
+        DataStore.shared.insertPosts(postList)
         
         DispatchQueue.main.async {
           completion(postList)

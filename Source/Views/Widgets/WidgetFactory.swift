@@ -18,14 +18,46 @@ class WidgetFactory {
     return gradient
   }
   
-  func setGradientTo(view: UIView) {
+  @discardableResult
+  func setGradientTo(view: UIView) -> UIView {
     let gView = UIView(frame: view.bounds)
+    gView.translatesAutoresizingMaskIntoConstraints = false
     gView.backgroundColor = UIColor.clear
     view.addSubview(gView)
     view.sendSubviewToBack(gView)
+    
+    NSLayoutConstraint.activate([
+      gView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      gView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      gView.topAnchor.constraint(equalTo: view.topAnchor),
+      gView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    ])
+    
     gView.clipsToBounds = true
     let gradient = gradientLayer
     gradient.frame = gView.bounds
     gView.layer.insertSublayer(gradient, at: 0)
+    return gView
+  }
+  
+  func navigationView(title: String, color: UIColor) -> UIView {
+    let navView = UIView()
+    navView.translatesAutoresizingMaskIntoConstraints = false
+    
+    let titleLabel = UILabel()
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    titleLabel.text = title
+    titleLabel.textColor = color
+    titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+    
+    navView.addSubview(titleLabel)
+    
+    NSLayoutConstraint.activate([
+      titleLabel.leadingAnchor.constraint(equalTo: navView.leadingAnchor, constant: 20),
+      titleLabel.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: 20),
+      titleLabel.centerYAnchor.constraint(equalTo: navView.centerYAnchor)
+    ])
+    
+    return navView
   }
 }

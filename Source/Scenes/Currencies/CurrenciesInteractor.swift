@@ -28,6 +28,10 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
 
   func doSomething(request: Currencies.Something.Request) {
     worker = CurrenciesWorker()
+    if let currs = worker?.fetchLocalCurrencies() {
+      presenter?.presentCurrencies(response: Currencies.Something.Response(currencies: currs))
+    }
+    
     worker?.fetchCurrencies { currencies in
       self.presenter?.presentCurrencies(response: Currencies.Something.Response(currencies: currencies))
     }

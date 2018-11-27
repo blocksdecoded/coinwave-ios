@@ -32,5 +32,7 @@ class SQLiteDataStore {
     try PostDataHelper.createTable()
     try CategoryDataHelper.createTable()
     try PostCategoryDataHelper.createTable()
+    try CurrencySaveDataHelper.createTable()
+    try CurrencyDataHelper.createTable()
   }
 }

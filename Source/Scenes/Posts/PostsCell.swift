@@ -69,7 +69,6 @@ class PostsCell: UICollectionViewCell {
   
   private func setup() {
     backgroundColor = UIColor.white
-    
     setupViews()
     setupConstraints()
   }

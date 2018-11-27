@@ -12,11 +12,15 @@ class CurrencyConverter {
   
   private static let letters = ["k", "m", "b", "t", "p", "e"]
   
-  static func convert(_ value: Double) -> String {
+  static func convertShort(_ value: Double) -> String {
     
     let (short, bill) = classify(value)
     
     return "$\(toString(short))\(bill)"
+  }
+  
+  static func convertLong(_ value: Double) -> String {
+    return "$\(toString(value))"
   }
   
   private static func classify(_ value: Double) -> (Double, String) {

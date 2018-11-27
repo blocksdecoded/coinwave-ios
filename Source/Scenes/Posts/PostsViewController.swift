@@ -31,7 +31,7 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     let layout = UICollectionViewFlowLayout()
     layout.minimumLineSpacing = 0.5
     let postTable = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-    postTable.backgroundColor = .white
+    postTable.backgroundColor = .clear
     postTable.translatesAutoresizingMaskIntoConstraints = false
     postTable.delegate = self
     postTable.dataSource = self
@@ -67,6 +67,8 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   }
   
   private func setupViews() {
+    let factory = WidgetFactory()
+    factory.setGradientTo(view: view)
     view.addSubview(postsList)
   }
   

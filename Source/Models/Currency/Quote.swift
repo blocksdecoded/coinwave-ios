@@ -9,12 +9,26 @@
 import Foundation
 
 struct Quote {
-  let price: Double
-  let volume24h: Double
-  let marketCap: Double
-  let percentChange1h: Double
-  let percentChange24h: Double
+  let price: Double?
+  let volume24h: Double?
+  let marketCap: Double?
+  let percentChange1h: Double?
+  let percentChange24h: Double?
   let percentChange7d: Double?
+  
+  init(price: Double?,
+       volume24h: Double?,
+       marketCap: Double?,
+       percentChange1h: Double?,
+       percentChange24h: Double?,
+       percentChange7d: Double?) {
+    self.price = price
+    self.volume24h = volume24h
+    self.marketCap = marketCap
+    self.percentChange1h = percentChange1h
+    self.percentChange24h = percentChange24h
+    self.percentChange7d = percentChange7d
+  }
 }
 
 extension Quote: Codable {
@@ -35,6 +49,6 @@ extension Quote: Codable {
     marketCap = try quoteContainer.decode(Double.self, forKey: .marketCap)
     percentChange1h = try quoteContainer.decode(Double.self, forKey: .percentChange1h)
     percentChange24h = try quoteContainer.decode(Double.self, forKey: .percentChange24h)
-    percentChange7d = try quoteContainer.decode(Double?.self, forKey: .percentChange7d)
+    percentChange7d = try quoteContainer.decode(Double.self, forKey: .percentChange7d)
   }
 }

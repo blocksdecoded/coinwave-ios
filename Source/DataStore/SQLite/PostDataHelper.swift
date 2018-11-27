@@ -141,7 +141,7 @@ class PostDataHelper: DataHelperProtocol {
     }
     
     var result = [Post]()
-    let items = try db.prepare(table)
+    let items = try db.prepare(table.order(postDate.desc))
     for item in items {
       let categoriesIds = try PostCategoryDataHelper.find(post: item[postID])
       var categories = [Category]()

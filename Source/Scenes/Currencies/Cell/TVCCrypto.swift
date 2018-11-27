@@ -32,11 +32,11 @@ class TVCCrypto: UITableViewCell {
     topSeparatorHeight.constant = isTop ? 1 : 0.5
     name.text = crypto.symbol
     
-    marketCap.text = CurrencyConverter.convert(crypto.marketCap ?? 1)
-    volume.text = CurrencyConverter.convert(crypto.volume ?? 1)
-    price.text = CurrencyConverter.convert(crypto.price ?? 1)
+    marketCap.text = CurrencyConverter.convertShort(crypto.marketCap ?? 1)
+    volume.text = CurrencyConverter.convertShort(crypto.volume24h ?? 1)
+    price.text = CurrencyConverter.convertShort(crypto.price ?? 1)
     
-    if let percent = crypto.pricePercentChange {
+    if let percent = crypto.pricePercentChange24h {
       if percent < 0 {
         price.textColor = Constants.Colors.currencyDown
         pricePercent.textColor = Constants.Colors.currencyDown

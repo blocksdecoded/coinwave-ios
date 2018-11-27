@@ -27,6 +27,11 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   private var currencies: [Currency]?
   
+  private lazy var navigationView: UIView = {
+    let factory = WidgetFactory()
+    return factory.navigationView(title: "Currencies", color: .white)
+  }()
+  
   private lazy var headerForCurrenciesList: UIView = {
     let headerView = UIView()
     headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -102,6 +107,14 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       }
     }
   }
+  
+  private func openDetails(_ index: Int) {
+    guard let curr = currencies?[index] else {
+      return
+    }
+    
+    router?.openDetails(currencyID: curr.id)
+  }
 
   // MARK: View lifecycle
 
@@ -115,16 +128,24 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   private func setupViews() {
     let factory = WidgetFactory()
     factory.setGradientTo(view: view)
+    view.addSubview(navigationView)
     view.addSubview(headerForCurrenciesList)
     view.addSubview(currenciesList)
   }
   
   private func setupConstraints() {
     
+    let navigationViewC = [
+      navigationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      navigationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      navigationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      navigationView.heightAnchor.constraint(equalToConstant: 50)
+    ]
+    
     let headerForCurrenciesListC = [
       headerForCurrenciesList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
       headerForCurrenciesList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      headerForCurrenciesList.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      headerForCurrenciesList.topAnchor.constraint(equalTo: navigationView.bottomAnchor),
       headerForCurrenciesList.heightAnchor.constraint(equalToConstant: 50)
     ]
     
@@ -135,7 +156,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       currenciesList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
     ]
     
-    NSLayoutConstraint.activate(headerForCurrenciesListC + currenciesListC)
+    NSLayoutConstraint.activate(navigationViewC + headerForCurrenciesListC + currenciesListC)
   }
 
   // MARK: Do something
@@ -176,5 +197,10 @@ extension CurrenciesViewController: UITableViewDataSource, UITableViewDelegate {
     
     cell.onBind(currency, isTop: indexPath.row == 0)
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    openDetails(indexPath.row)
   }
 }
