@@ -30,31 +30,20 @@ struct CurrenciesNetworkManager: NetworkManager {
           }
           
           do {
-            print(String(data: responseData, encoding: .utf8))
             let apiResponse = try JSONDecoder().decode(CRRoot<CRDataList>.self, from: responseData)
             completion(apiResponse, nil)
           } catch {
             if let error = error as? DecodingError {
+              //TODO: Analytics
               switch error {
               case .dataCorrupted(let context):
-                print("Data corrupted")
-                print(context.debugDescription)
-                print(context.codingPath)
+                break
               case .keyNotFound(let key, let context):
-                print("Key not found")
-                print(key)
-                print(context.debugDescription)
-                print(context.codingPath)
+                break
               case .typeMismatch(let type, let context):
-                print("Type mismatch")
-                print(type)
-                print(context.debugDescription)
-                print(context.codingPath)
+                break
               case .valueNotFound(let type, let context):
-                print("Value not found")
-                print(type)
-                print(context.debugDescription)
-                print(context.codingPath)
+                break
               }
             }
             completion(nil, NetworkResponse.unableToDecode.rawValue)

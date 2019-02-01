@@ -60,9 +60,11 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Total supply:",
                                                              value: totalSupplyValue))
     
-    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 1h:", value: "\(response.curr.change)"))
-    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 24h:", value: "\(response.curr.change)"))
-    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 1w:", value: "\(response.curr.change)"))
+    var changeValue = "null"
+    if let change = response.curr.change {
+      changeValue = "\(change)"
+    }
+    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change:", value: changeValue))
 
     let viewModel = CurrencyDetails.Something.ViewModel(title: "\(response.curr.name) \(response.curr.symbol)",
                                                         saveCurrency: response.saveCurr,

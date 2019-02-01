@@ -169,7 +169,7 @@ class CRCoinDataHelper: DataHelperProtocol {
       }
     }
     
-    var iconType: CRCoin.IconType? = nil
+    var iconType: CRCoin.IconType?
     if let rawIconType = row[currIconType] {
       iconType = CRCoin.IconType(rawValue: rawIconType)
     }

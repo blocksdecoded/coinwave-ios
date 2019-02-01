@@ -38,6 +38,47 @@ class TVCCrypto: UITableViewCell {
     task = nil
   }
   
+  private func setIcon(_ coin: CRCoin) {
+    guard let iconType = coin.iconType,
+      let iconUrl = coin.iconUrlEncoded else {
+        return
+    }
+    
+    switch iconType {
+    case .pixel:
+      svgCryptoIcon.isHidden = true
+      cryptoIcon.kf.setImage(with: URL(string: iconUrl))
+    case .vector:
+      cryptoIcon.isHidden = true
+      svgCryptoIcon.contentMode = .scaleAspectFit
+      
+      if let svgData = DataCache.shared.read(for: iconUrl) {
+        svgCryptoIcon.image = SVGKImage(data: svgData)
+      } else {
+        guard let url = URL(string: iconUrl) else {
+          fatalError()
+        }
+        let request = URLRequest(url: url,
+                                 cachePolicy: .reloadRevalidatingCacheData,
+                                 timeoutInterval: 60 * 60 * 24 * 7)
+        let session = URLSession.shared
+        task = session.dataTask(with: request, completionHandler: { data, response, _ in
+          guard let response = response as? HTTPURLResponse else {
+            return
+          }
+          
+          if response.statusCode == 200 {
+            DataCache.shared.write(data: data!, for: iconUrl)
+            DispatchQueue.main.async {
+              self.svgCryptoIcon.image = SVGKImage(data: data!)
+            }
+          }
+        })
+        task?.resume()
+      }
+    }
+  }
+  
   func onBind(_ crypto: CRCoin, isTop: Bool) {
     topSeparatorHeight.constant = isTop ? 1 : 0.5
     name.text = crypto.symbol
@@ -76,43 +117,6 @@ class TVCCrypto: UITableViewCell {
       pricePercent.text = "null"
     }
     
-    guard let iconType = crypto.iconType,
-          let iconUrl = crypto.iconUrlEncoded else {
-      return
-    }
-    
-    switch iconType {
-    case .pixel:
-      svgCryptoIcon.isHidden = true
-      cryptoIcon.kf.setImage(with: URL(string: iconUrl))
-    case .vector:
-      cryptoIcon.isHidden = true
-      svgCryptoIcon.contentMode = .scaleAspectFit
-      
-      if let svgData = DataCache.shared.read(for: iconUrl) {
-        svgCryptoIcon.image = SVGKImage(data: svgData)
-      } else {
-        guard let url = URL(string: iconUrl) else {
-          fatalError()
-        }
-        let request = URLRequest(url: url,
-                                 cachePolicy: .reloadRevalidatingCacheData,
-                                 timeoutInterval: 60 * 60 * 24 * 7)
-        let session = URLSession.shared
-        task = session.dataTask(with: request, completionHandler: { data, response, _ in
-          guard let response = response as? HTTPURLResponse else {
-            return
-          }
-          
-          if response.statusCode == 200 {
-            DataCache.shared.write(data: data!, for: iconUrl)
-            DispatchQueue.main.async {
-              self.svgCryptoIcon.image = SVGKImage(data: data!)
-            }
-          }
-        })
-        task?.resume()
-      }
-    }
+    setIcon(crypto)
   }
 }
