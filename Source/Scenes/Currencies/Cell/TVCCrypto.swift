@@ -31,6 +31,13 @@ class TVCCrypto: UITableViewCell {
   @IBOutlet weak var topSeparatorHeight: NSLayoutConstraint!
   @IBOutlet weak var stackView: UIStackView!
   
+  private var task: URLSessionTask?
+  
+  override func prepareForReuse() {
+    task?.cancel()
+    task = nil
+  }
+  
   func onBind(_ crypto: CRCoin, isTop: Bool) {
     topSeparatorHeight.constant = isTop ? 1 : 0.5
     name.text = crypto.symbol
@@ -92,7 +99,7 @@ class TVCCrypto: UITableViewCell {
                                  cachePolicy: .reloadRevalidatingCacheData,
                                  timeoutInterval: 60 * 60 * 24 * 7)
         let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { data, response, _ in
+        task = session.dataTask(with: request, completionHandler: { data, response, _ in
           guard let response = response as? HTTPURLResponse else {
             return
           }
@@ -104,7 +111,7 @@ class TVCCrypto: UITableViewCell {
             }
           }
         })
-        task.resume()
+        task?.resume()
       }
     }
   }
