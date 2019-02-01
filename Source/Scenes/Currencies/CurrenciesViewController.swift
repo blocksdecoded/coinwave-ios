@@ -13,7 +13,9 @@
 import UIKit
 
 protocol CurrenciesDisplayLogic: class {
-  func displaySomething(viewModel: Currencies.Something.ViewModel)
+  func displaySomething(viewModel: Currencies.FetchCoins.ViewModel)
+  func displayNext(viewModel: Currencies.LoadNext.ViewModel)
+  func displayLoadAll()
 }
 
 class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
@@ -26,6 +28,8 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   var router: (NSObjectProtocol & CurrenciesRoutingLogic & CurrenciesDataPassing)?
   
   private var currencies: [CRCoin]?
+  private var loadingNext = false
+  private var loadAll = false
   
   private lazy var navigationView: UIView = {
     let factory = WidgetFactory()
@@ -162,13 +166,23 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   // MARK: Do something
 
   func doSomething() {
-    let request = Currencies.Something.Request()
+    let request = Currencies.FetchCoins.Request(limit: 50)
     interactor?.doSomething(request: request)
   }
 
-  func displaySomething(viewModel: Currencies.Something.ViewModel) {
+  func displaySomething(viewModel: Currencies.FetchCoins.ViewModel) {
     currencies = viewModel.currencies
     currenciesList.reloadData()
+  }
+  
+  func displayNext(viewModel: Currencies.LoadNext.ViewModel) {
+    loadingNext = false
+    currencies?.append(contentsOf: viewModel.coins)
+    currenciesList.reloadData()
+  }
+  
+  func displayLoadAll() {
+    loadAll = true
   }
   
   private func columnTitle(text: String) -> UILabel {
@@ -178,6 +192,10 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     label.textColor = UIColor.white.withAlphaComponent(0.7)
     label.font = UIFont.systemFont(ofSize: 11)
     return label
+  }
+  
+  private func loadNext() {
+    interactor?.loadNext()
   }
 }
 
@@ -193,6 +211,11 @@ extension CurrenciesViewController: UITableViewDataSource, UITableViewDelegate {
     
     guard let currency = currencies?[indexPath.row] else {
       fatalError()
+    }
+    
+    if indexPath.row + 3 >= currencies!.count - 1 && !loadingNext && !loadAll {
+      loadingNext = true
+      loadNext()
     }
     
     cell.onBind(currency, isTop: indexPath.row == 0)

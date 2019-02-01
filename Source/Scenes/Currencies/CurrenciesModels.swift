@@ -15,15 +15,33 @@ import UIKit
 enum Currencies {
   // MARK: Use cases
 
-  enum Something {
+  enum FetchCoins {
     // swiftlint:disable nesting
     struct Request {
+      let limit: Int
     }
+    
     struct Response {
-      let currencies: [CRCoin]
+      let currencies: CRRoot<CRDataList>
     }
+    
     struct ViewModel {
       let currencies: [CRCoin]
+    }
+  }
+  
+  enum LoadNext {
+    struct Request {
+      let limit: Int
+      let offset: Int
+    }
+    
+    struct Response {
+      let coin: CRRoot<CRDataList>
+    }
+    
+    struct ViewModel {
+      let coins: [CRCoin]
     }
   }
 }

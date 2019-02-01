@@ -35,35 +35,60 @@ class TVCCrypto: UITableViewCell {
     topSeparatorHeight.constant = isTop ? 1 : 0.5
     name.text = crypto.symbol
     
-    marketCap.text = CurrencyConverter.convertShort(crypto.marketCap)
-    volume.text = CurrencyConverter.convertShort(crypto.volume)
-    price.text = CurrencyConverter.convertShort(crypto.priceValue)
+    var marketCapValue = "null"
+    if let marketCap = crypto.marketCap {
+      marketCapValue = CurrencyConverter.convertShort(marketCap)
+    }
+    marketCap.text = marketCapValue
     
-    let percent = crypto.change
-    if percent < 0 {
-      price.textColor = Constants.Colors.currencyDown
-      pricePercent.textColor = Constants.Colors.currencyDown
-      pricePercent.text = "\(percent)%"
-      priceUpDownIcon.image = UIImage(named: "curr_arrow_down")
+    var volumeValue = "null"
+    if let volume = crypto.volume {
+      volumeValue = CurrencyConverter.convertShort(volume)
+    }
+    volume.text = volumeValue
+    
+    var priceValue = "null"
+    if let price = crypto.priceValue {
+      priceValue = CurrencyConverter.convertShort(price)
+    }
+    price.text = priceValue
+    
+    if let percent = crypto.change {
+      if percent < 0 {
+        price.textColor = Constants.Colors.currencyDown
+        pricePercent.textColor = Constants.Colors.currencyDown
+        pricePercent.text = "\(percent)%"
+        priceUpDownIcon.image = UIImage(named: "curr_arrow_down")
+      } else {
+        price.textColor = Constants.Colors.currencyUp
+        pricePercent.textColor = Constants.Colors.currencyUp
+        pricePercent.text = "+\(percent)%"
+        priceUpDownIcon.image = UIImage(named: "curr_arrow_up")
+      }
     } else {
-      price.textColor = Constants.Colors.currencyUp
-      pricePercent.textColor = Constants.Colors.currencyUp
-      pricePercent.text = "+\(percent)%"
-      priceUpDownIcon.image = UIImage(named: "curr_arrow_up")
+      pricePercent.text = "null"
     }
     
-    switch crypto.iconType {
+    guard let iconType = crypto.iconType,
+          let iconUrl = crypto.iconUrlEncoded else {
+      return
+    }
+    
+    switch iconType {
     case .pixel:
       svgCryptoIcon.isHidden = true
-      cryptoIcon.kf.setImage(with: URL(string: crypto.iconUrl))
+      cryptoIcon.kf.setImage(with: URL(string: iconUrl))
     case .vector:
       cryptoIcon.isHidden = true
       svgCryptoIcon.contentMode = .scaleAspectFit
       
-      if let svgData = DataCache.shared.read(for: crypto.iconUrl) {
+      if let svgData = DataCache.shared.read(for: iconUrl) {
         svgCryptoIcon.image = SVGKImage(data: svgData)
       } else {
-        let request = URLRequest(url: URL(string: crypto.iconUrl)!,
+        guard let url = URL(string: iconUrl) else {
+          fatalError()
+        }
+        let request = URLRequest(url: url,
                                  cachePolicy: .reloadRevalidatingCacheData,
                                  timeoutInterval: 60 * 60 * 24 * 7)
         let session = URLSession.shared
@@ -73,7 +98,7 @@ class TVCCrypto: UITableViewCell {
           }
           
           if response.statusCode == 200 {
-            DataCache.shared.write(data: data!, for: crypto.iconUrl)
+            DataCache.shared.write(data: data!, for: iconUrl)
             DispatchQueue.main.async {
               self.svgCryptoIcon.image = SVGKImage(data: data!)
             }

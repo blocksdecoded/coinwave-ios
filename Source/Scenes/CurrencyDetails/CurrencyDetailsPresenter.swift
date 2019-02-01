@@ -24,16 +24,42 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
   
   func presentSomething(response: CurrencyDetails.Something.Response) {
     var currInfo = [CurrencyDetails.Something.ViewModel.Info]()
+    
+    var priceValue = "null"
+    if let price = response.curr.priceValue {
+      priceValue = CurrencyConverter.convertLong(price)
+    }
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Price:",
-                    value: "\(CurrencyConverter.convertLong(response.curr.priceValue))"))
+                                                             value: priceValue))
+    
+    var marketCapValue = "null"
+    if let marketCap = response.curr.marketCap {
+      marketCapValue = CurrencyConverter.convertLong(marketCap)
+    }
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Market Cap:",
-                    value: "\(CurrencyConverter.convertLong(response.curr.marketCap))"))
+                                                             value: marketCapValue))
+    
+    var volumeValue = "null"
+    if let volume = response.curr.volume {
+      volumeValue = CurrencyConverter.convertLong(volume)
+    }
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Volume 24h:",
-                    value: "\(CurrencyConverter.convertLong(response.curr.volume))"))
+                                                             value: volumeValue))
+    
+    var circulatingSupplyValue = "null"
+    if let circulatingSupply = response.curr.circulatingSupply {
+      circulatingSupplyValue = CurrencyConverter.convertLong(circulatingSupply)
+    }
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Available supply:",
-                    value: "\(CurrencyConverter.convertLong(response.curr.circulatingSupply))"))
+                                                             value: circulatingSupplyValue))
+    
+    var totalSupplyValue = "null"
+    if let totalSupply = response.curr.totalSupply {
+      totalSupplyValue = CurrencyConverter.convertLong(totalSupply)
+    }
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Total supply:",
-                    value: "\(CurrencyConverter.convertLong(response.curr.totalSupply))"))
+                                                             value: totalSupplyValue))
+    
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 1h:", value: "\(response.curr.change)"))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 24h:", value: "\(response.curr.change)"))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 1w:", value: "\(response.curr.change)"))

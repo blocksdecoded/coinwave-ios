@@ -15,18 +15,18 @@ struct CRCoin: Decodable {
   let name: String
   let description: String?
   let color: String?
-  let iconType: IconType
-  let iconUrl: String
-  let websiteUrl: String
+  let iconType: IconType?
+  let iconUrl: String?
+  let websiteUrl: String?
   let confirmedSupply: Bool
   let type: CoinType
-  let volume: Double
-  let marketCap: Double
-  let price: String
-  let circulatingSupply: Double
-  let totalSupply: Double
-  let firstSeen: Double
-  let change: Double
+  let volume: Double?
+  let marketCap: Double?
+  let price: String?
+  let circulatingSupply: Double?
+  let totalSupply: Double?
+  let firstSeen: Double?
+  let change: Double?
   let rank: Double
   let history: [String?]
   let allTimeHigh: CRAllTimeHigh
@@ -50,29 +50,36 @@ extension CRCoin {
     slug = ""
     symbol = ""
     name = ""
-    description = ""
-    color = ""
-    iconType = .pixel
-    iconUrl = ""
-    websiteUrl = ""
+    description = nil
+    color = nil
+    iconType = nil
+    iconUrl = nil
+    websiteUrl = nil
     confirmedSupply = true
     type = .coin
-    volume = 1
-    marketCap = 1
-    price = ""
-    circulatingSupply = 1
-    totalSupply = 1
-    firstSeen = 1
-    change = 1
+    volume = nil
+    marketCap = nil
+    price = nil
+    circulatingSupply = nil
+    totalSupply = nil
+    firstSeen = nil
+    change = nil
     rank = 1
-    history = [String]()
+    history = [String?]()
     allTimeHigh = CRAllTimeHigh()
     penalty = false
   }
 }
 
 extension CRCoin {
-  var priceValue: Double {
-    return Double(price) ?? 0
+  var priceValue: Double? {
+    guard let price = price else {
+      return nil
+    }
+    return Double(price)
+  }
+  
+  var iconUrlEncoded: String? {
+    return iconUrl?.replacingOccurrences(of: " ", with: "%20")
   }
 }

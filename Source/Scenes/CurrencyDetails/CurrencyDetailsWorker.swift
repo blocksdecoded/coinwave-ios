@@ -22,7 +22,7 @@ class CurrencyDetailsWorker {
         }
         
         DispatchQueue.main.async {
-          completion(curr)
+          completion(curr.data.coin)
         }
       })
     }

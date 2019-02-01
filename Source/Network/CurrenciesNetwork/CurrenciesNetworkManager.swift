@@ -13,9 +13,9 @@ struct CurrenciesNetworkManager: NetworkManager {
   static let apiAccessLevel: CurrenciesApi.ApiAccessLevel = .pub
   private let router = Router<CurrenciesApi>()
   
-  func getCurrencies(completion: @escaping (_ currencies: [CRCoin]?, _ error: String?) -> Void) {
-    router.request(.list) { data, response, error in
-      
+  func getCurrencies(limit: Int, offset: Int,
+                     completion: @escaping (_ currencies: CRRoot<CRDataList>?, _ error: String?) -> Void) {
+    router.request(.list(limit: limit, offset: offset)) { data, response, error in
       if error != nil {
         completion(nil, "Please check your network connection")
       }
@@ -30,9 +30,33 @@ struct CurrenciesNetworkManager: NetworkManager {
           }
           
           do {
+            print(String(data: responseData, encoding: .utf8))
             let apiResponse = try JSONDecoder().decode(CRRoot<CRDataList>.self, from: responseData)
-            completion(apiResponse.data.coins, nil)
-          } catch {            
+            completion(apiResponse, nil)
+          } catch {
+            if let error = error as? DecodingError {
+              switch error {
+              case .dataCorrupted(let context):
+                print("Data corrupted")
+                print(context.debugDescription)
+                print(context.codingPath)
+              case .keyNotFound(let key, let context):
+                print("Key not found")
+                print(key)
+                print(context.debugDescription)
+                print(context.codingPath)
+              case .typeMismatch(let type, let context):
+                print("Type mismatch")
+                print(type)
+                print(context.debugDescription)
+                print(context.codingPath)
+              case .valueNotFound(let type, let context):
+                print("Value not found")
+                print(type)
+                print(context.debugDescription)
+                print(context.codingPath)
+              }
+            }
             completion(nil, NetworkResponse.unableToDecode.rawValue)
           }
         case .failure(let networkFailureError):
@@ -42,7 +66,7 @@ struct CurrenciesNetworkManager: NetworkManager {
     }
   }
   
-  func getCurrency(currID: Int, _ completion: @escaping(_ currency: CRCoin?, _ error: String?) -> Void) {
+  func getCurrency(currID: Int, _ completion: @escaping(_ currency: CRRoot<CRDataCoin>?, _ error: String?) -> Void) {
     router.request(.currency(currID)) { data, response, error in
       if error != nil {
         completion(nil, "Please check your network connection")
@@ -59,7 +83,7 @@ struct CurrenciesNetworkManager: NetworkManager {
           
           do {
             let apiResponse = try JSONDecoder().decode(CRRoot<CRDataCoin>.self, from: responseData)
-            completion(apiResponse.data.coin, nil)
+            completion(apiResponse, nil)
           } catch {
             completion(nil, NetworkResponse.unableToDecode.rawValue)
           }

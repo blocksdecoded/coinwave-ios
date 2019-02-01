@@ -22,15 +22,15 @@ class WatchlistWorker {
     return DataStore.shared.loadCurrencies()
   }
   
-  func fetchCurrencies(_ completion: @escaping([CRCoin]) -> Void) {
+  func fetchCurrencies(_ completion: @escaping(CRRoot<CRDataList>) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
-      networkManager.getCurrencies(completion: { currencies, _ in
+      networkManager.getCurrencies(limit: 50, offset: 0, completion: { currencies, _ in
         guard let currs = currencies else {
           return
         }
         
-        DataStore.shared.insertCurrencies(currs)
+        DataStore.shared.insertCurrencies(currs.data.coins)
         DispatchQueue.main.async {
           completion(currs)
         }

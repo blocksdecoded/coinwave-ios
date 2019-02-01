@@ -9,13 +9,13 @@
 import Foundation
 
 struct CRAllTimeHigh: Decodable {
-  let price: String
-  let timestamp: Double
+  let price: String?
+  let timestamp: Double?
 }
 
 extension CRAllTimeHigh {
   init() {
-    price = ""
-    timestamp = 1
+    price = nil
+    timestamp = nil
   }
 }

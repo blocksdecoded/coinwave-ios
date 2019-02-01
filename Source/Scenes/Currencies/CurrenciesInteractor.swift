@@ -13,7 +13,8 @@
 import UIKit
 
 protocol CurrenciesBusinessLogic {
-  func doSomething(request: Currencies.Something.Request)
+  func doSomething(request: Currencies.FetchCoins.Request)
+  func loadNext()
 }
 
 protocol CurrenciesDataStore {
@@ -21,19 +22,38 @@ protocol CurrenciesDataStore {
 }
 
 class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
+  
   var presenter: CurrenciesPresentationLogic?
   var worker: CurrenciesWorker?
+  
+  var data: CRRoot<CRDataList>?
 
   // MARK: Do something
 
-  func doSomething(request: Currencies.Something.Request) {
+  func doSomething(request: Currencies.FetchCoins.Request) {
     worker = CurrenciesWorker()
-    if let currs = worker?.fetchLocalCurrencies() {
-      presenter?.presentCurrencies(response: Currencies.Something.Response(currencies: currs))
+//    if let currs = worker?.fetchLocalCurrencies() {
+//      presenter?.presentCurrencies(response: Currencies.FetchCoins.Response(currencies: currs))
+//    }
+    
+    worker?.fetchCurrencies(limit: request.limit, offset: Constants.COINS_OFFSET) { currencies in
+      self.data = currencies
+      self.presenter?.presentCurrencies(response: Currencies.FetchCoins.Response(currencies: currencies))
+    }
+  }
+  
+  func loadNext() {
+    var offset = Constants.COINS_OFFSET
+    if let data = data {
+      offset = data.data.stats.offset + Constants.COINS_LIMIT
+      if offset > data.data.stats.total {
+        return
+      }
     }
     
-    worker?.fetchCurrencies { currencies in
-      self.presenter?.presentCurrencies(response: Currencies.Something.Response(currencies: currencies))
+    worker?.fetchCurrencies(limit: Constants.COINS_LIMIT, offset: offset) { currencies in
+      self.data = currencies
+      self.presenter?.presentNextCoins(response: Currencies.LoadNext.Response(coin: currencies))
     }
   }
 }

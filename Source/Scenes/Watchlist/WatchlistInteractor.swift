@@ -37,7 +37,7 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
     }
     
     worker?.fetchCurrencies({ currencies in
-      let response = Watchlist.Something.Response(currencies: self.filterCurrencies(currencies))
+      let response = Watchlist.Something.Response(currencies: self.filterCurrencies(currencies.data.coins))
       self.presenter?.presentSomething(response: response)
     })
   }

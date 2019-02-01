@@ -21,22 +21,22 @@ class CRCoinDataHelper: DataHelperProtocol {
   static let currName = Expression<String>("name")
   static let currDescription = Expression<String?>("description")
   static let currColor = Expression<String?>("color")
-  static let currIconType = Expression<String>("iconType")
-  static let currIconUrl = Expression<String>("iconUrl")
-  static let currWebsiteUrl = Expression<String>("websiteUrl")
+  static let currIconType = Expression<String?>("iconType")
+  static let currIconUrl = Expression<String?>("iconUrl")
+  static let currWebsiteUrl = Expression<String?>("websiteUrl")
   static let currConfirmedSupply = Expression<Bool>("confirmedSupply")
   static let currType = Expression<String>("type")
-  static let currVolume = Expression<Double>("volume")
-  static let currMarketCap = Expression<Double>("marketCap")
-  static let currPrice = Expression<String>("price")
-  static let currCirculatingSupply = Expression<Double>("circulatingSupply")
-  static let currTotalSupply = Expression<Double>("totalSupply")
-  static let currFirstSeen = Expression<Double>("firstSeen")
-  static let currChange = Expression<Double>("change")
+  static let currVolume = Expression<Double?>("volume")
+  static let currMarketCap = Expression<Double?>("marketCap")
+  static let currPrice = Expression<String?>("price")
+  static let currCirculatingSupply = Expression<Double?>("circulatingSupply")
+  static let currTotalSupply = Expression<Double?>("totalSupply")
+  static let currFirstSeen = Expression<Double?>("firstSeen")
+  static let currChange = Expression<Double?>("change")
   static let currRank = Expression<Double>("rank")
   static let currHistory = Expression<String>("history")
-  static let currAllTimeHighPrice = Expression<String>("allTimeHighPrice")
-  static let currAllTimeHighTimestamp = Expression<Double>("allTimeHighTimestamp")
+  static let currAllTimeHighPrice = Expression<String?>("allTimeHighPrice")
+  static let currAllTimeHighTimestamp = Expression<Double?>("allTimeHighTimestamp")
   static let currPenalty = Expression<Bool>("penalty")
   
   static func createTable() throws {
@@ -169,13 +169,18 @@ class CRCoinDataHelper: DataHelperProtocol {
       }
     }
     
+    var iconType: CRCoin.IconType? = nil
+    if let rawIconType = row[currIconType] {
+      iconType = CRCoin.IconType(rawValue: rawIconType)
+    }
+    
     return CRCoin(id: Int(row[currID]),
                   slug: row[currSlug],
                   symbol: row[currSymbol],
                   name: row[currName],
                   description: row[currDescription],
                   color: row[currColor],
-                  iconType: CRCoin.IconType(rawValue: row[currIconType])!,
+                  iconType: iconType,
                   iconUrl: row[currIconUrl],
                   websiteUrl: row[currWebsiteUrl],
                   confirmedSupply: row[currConfirmedSupply],
@@ -217,7 +222,7 @@ class CRCoinDataHelper: DataHelperProtocol {
       currName <- item.name,
       currDescription <- item.description,
       currColor <- item.color,
-      currIconType <- item.iconType.rawValue,
+      currIconType <- item.iconType?.rawValue,
       currIconUrl <- item.iconUrl,
       currWebsiteUrl <- item.websiteUrl,
       currConfirmedSupply <- item.confirmedSupply,

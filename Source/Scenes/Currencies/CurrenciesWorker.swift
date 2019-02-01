@@ -18,10 +18,10 @@ class CurrenciesWorker {
     return DataStore.shared.loadCurrencies()
   }
   
-  func fetchCurrencies(_ completion: @escaping ([CRCoin]) -> Void) {
+  func fetchCurrencies(limit: Int, offset: Int, _ completion: @escaping (CRRoot<CRDataList>) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
-      networkManager.getCurrencies(completion: { currencies, error in
+      networkManager.getCurrencies(limit: limit, offset: offset, completion: { currencies, error in
         if error != nil {
           print(error!)
         }
