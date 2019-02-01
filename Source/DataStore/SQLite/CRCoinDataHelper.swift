@@ -68,6 +68,7 @@ class CRCoinDataHelper: DataHelperProtocol {
         t.column(currHistory)
         t.column(currAllTimeHighPrice)
         t.column(currAllTimeHighTimestamp)
+        t.column(currPenalty)
       })
     } catch _ {
       // Error throw if table already exists
@@ -231,7 +232,8 @@ class CRCoinDataHelper: DataHelperProtocol {
       currRank <- item.rank,
       currHistory <- history,
       currAllTimeHighPrice <- item.allTimeHigh.price,
-      currAllTimeHighTimestamp <- item.allTimeHigh.timestamp
+      currAllTimeHighTimestamp <- item.allTimeHigh.timestamp,
+      currPenalty <- item.penalty
     ]
   }
 }

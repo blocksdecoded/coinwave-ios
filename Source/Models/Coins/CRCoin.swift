@@ -70,3 +70,9 @@ extension CRCoin {
     penalty = false
   }
 }
+
+extension CRCoin {
+  var priceValue: Double {
+    return Double(price) ?? 0
+  }
+}
