@@ -32,13 +32,13 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
 
   func doSomething(request: Currencies.FetchCoins.Request) {
     worker = CurrenciesWorker()
-//    if let currs = worker?.fetchLocalCurrencies() {
-//      presenter?.presentCurrencies(response: Currencies.FetchCoins.Response(currencies: currs))
-//    }
+    if let currs = worker?.fetchLocalCurrencies() {
+      presenter?.presentCurrencies(response: Currencies.FetchCoins.ViewModel(currencies: currs))
+    }
     
     worker?.fetchCurrencies(limit: request.limit, offset: Constants.COINS_OFFSET) { currencies in
       self.data = currencies
-      self.presenter?.presentCurrencies(response: Currencies.FetchCoins.Response(currencies: currencies))
+      self.presenter?.presentCurrencies(response: Currencies.FetchCoins.ViewModel(currencies: currencies.data.coins))
     }
   }
   
