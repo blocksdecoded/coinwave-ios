@@ -31,18 +31,12 @@ class PostsWorker {
         }
         
         guard let postList = posts else {
-          fatalError("FUCK")
+          fatalError("no posts")
         }
-        
-        
-        
         DataStore.shared.insertPosts(postList)
-        
         DispatchQueue.main.async {
           completion(postList)
         }
-        
-        
       })
     }
   }
@@ -60,7 +54,7 @@ class PostsWorker {
         }
         
         guard let postList = posts else {
-          fatalError("FUCK")
+          fatalError("no posts")
         }
         
         DataStore.shared.insertPosts(postList)

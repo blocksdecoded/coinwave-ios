@@ -63,7 +63,9 @@ class TVCCrypto: UITableViewCell {
       if let svgData = DataCache.shared.read(for: crypto.iconUrl) {
         svgCryptoIcon.image = SVGKImage(data: svgData)
       } else {
-        let request = URLRequest(url: URL(string: crypto.iconUrl)!, cachePolicy: .reloadRevalidatingCacheData, timeoutInterval: 60 * 60 * 24 * 7)
+        let request = URLRequest(url: URL(string: crypto.iconUrl)!,
+                                 cachePolicy: .reloadRevalidatingCacheData,
+                                 timeoutInterval: 60 * 60 * 24 * 7)
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, _ in
           guard let response = response as? HTTPURLResponse else {

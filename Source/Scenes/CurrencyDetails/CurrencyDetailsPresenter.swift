@@ -24,40 +24,20 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
   
   func presentSomething(response: CurrencyDetails.Something.Response) {
     var currInfo = [CurrencyDetails.Something.ViewModel.Info]()
-    
-    if let price = response.curr.price {
-      currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Price:",
-                                                               value: "\(CurrencyConverter.convertLong(price))"))
-    }
-    
-    if let marketCap = response.curr.marketCap {
-      currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Market Cap:",
-                                                               value: "\(CurrencyConverter.convertLong(marketCap))"))
-    }
-    
-    if let volume24h = response.curr.volume24h {
-      currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Volume 24h:",
-                                                               value: "\(CurrencyConverter.convertLong(volume24h))"))
-    }
-    
+    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Price:",
+                    value: "\(CurrencyConverter.convertLong(response.curr.priceValue))"))
+    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Market Cap:",
+                    value: "\(CurrencyConverter.convertLong(response.curr.marketCap))"))
+    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Volume 24h:",
+                    value: "\(CurrencyConverter.convertLong(response.curr.volume))"))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Available supply:",
-            value: "\(CurrencyConverter.convertLong(response.curr.circulatingSupply))"))
-    
+                    value: "\(CurrencyConverter.convertLong(response.curr.circulatingSupply))"))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Total supply:",
-              value: "\(CurrencyConverter.convertLong(response.curr.totalSupply))"))
-    
-    if let percent1h = response.curr.pricePercentChange1h {
-      currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 1h:", value: "\(percent1h)"))
-    }
-    
-    if let percent24h = response.curr.pricePercentChange24h {
-      currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 24h:", value: "\(percent24h)"))
-    }
-    
-    if let percent7d = response.curr.pricePercentChange7d {
-      currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 1w:", value: "\(percent7d)"))
-    }
-    
+                    value: "\(CurrencyConverter.convertLong(response.curr.totalSupply))"))
+    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 1h:", value: "\(response.curr.change)"))
+    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 24h:", value: "\(response.curr.change)"))
+    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change 1w:", value: "\(response.curr.change)"))
+
     let viewModel = CurrencyDetails.Something.ViewModel(title: "\(response.curr.name) \(response.curr.symbol)",
                                                         saveCurrency: response.saveCurr,
                                                         info: currInfo)
@@ -65,6 +45,7 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
   }
   
   func favorites(response: CurrencyDetails.AddFavorite.Response) {
-    viewController?.changeFavorites(viewModel: CurrencyDetails.AddFavorite.ViewModel(saveCurrency: response.saveCurrency))
+    viewController?.changeFavorites(viewModel: CurrencyDetails.AddFavorite
+      .ViewModel(saveCurrency: response.saveCurrency))
   }
 }

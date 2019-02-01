@@ -18,7 +18,6 @@ class DataCache {
   }
   
   func read(for key: String) -> Data? {
-    return memCache.object(forKey: key as NSString) as? Data
-    
+    return memCache.object(forKey: key as NSString) as Data?
   }
 }

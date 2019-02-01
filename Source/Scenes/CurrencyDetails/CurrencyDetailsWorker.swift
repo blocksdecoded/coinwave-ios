@@ -13,10 +13,10 @@
 import UIKit
 
 class CurrencyDetailsWorker {
-  func doSomeWork(currID: Int, _ completion: @escaping(Currency) -> Void) {
+  func doSomeWork(currID: Int, _ completion: @escaping(CRCoin) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
-      networkManager.getCurrency(currID: currID, { currency, error in
+      networkManager.getCurrency(currID: currID, { currency, _ in
         guard let curr = currency else {
           fatalError()
         }

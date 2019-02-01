@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct CRRoot: Decodable {
+struct CRRoot<T: Decodable>: Decodable {
   let status: Status
-  let data: CRData
+  let data: T
  
   enum Status: String, Decodable {
     case success

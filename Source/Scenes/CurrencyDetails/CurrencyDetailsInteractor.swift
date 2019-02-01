@@ -31,7 +31,8 @@ class CurrencyDetailsInteractor: CurrencyDetailsBusinessLogic, CurrencyDetailsDa
   func doSomething(request: CurrencyDetails.Something.Request) {
     worker = CurrencyDetailsWorker()
     worker?.doSomeWork(currID: request.currID, { currency in
-      let response = CurrencyDetails.Something.Response(curr: currency, saveCurr: self.worker?.loadSaveCurrency(currID: currency.id))
+      let response = CurrencyDetails.Something.Response(curr: currency,
+                     saveCurr: self.worker?.loadSaveCurrency(currID: currency.id))
       self.presenter?.presentSomething(response: response)
     })
   }

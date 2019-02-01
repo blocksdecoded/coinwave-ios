@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CRData: Decodable {
+struct CRDataList: Decodable {
   let stats: CRStats
   let base: CRBase
   let coins: [CRCoin]

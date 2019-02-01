@@ -35,7 +35,7 @@ enum CurrencyDetails {
       let currID: Int
     }
     struct Response {
-      let curr: Currency
+      let curr: CRCoin
       let saveCurr: SaveCurrency?
     }
     struct ViewModel {

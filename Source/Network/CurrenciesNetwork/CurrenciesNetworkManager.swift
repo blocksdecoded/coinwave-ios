@@ -30,30 +30,9 @@ struct CurrenciesNetworkManager: NetworkManager {
           }
           
           do {
-            let apiResponse = try JSONDecoder().decode(CRRoot.self, from: responseData)
+            let apiResponse = try JSONDecoder().decode(CRRoot<CRDataList>.self, from: responseData)
             completion(apiResponse.data.coins, nil)
-          } catch {
-            print(error.localizedDescription)
-            if let decodeError = error as? DecodingError {
-              switch decodeError {
-              case .dataCorrupted(let context):
-                print("dataCorrupted")
-              case .keyNotFound(let key, let context):
-                print("key not found")
-              case .typeMismatch(let type, let context):
-                print("mismatch")
-                print(type)
-                print(context)
-                print(context.debugDescription)
-                print(context.codingPath)
-              case .valueNotFound(let type, let context):
-                print("value not found")
-                print(type)
-                print(context)
-                print(context.debugDescription)
-                print(context.codingPath)
-              }
-            }
+          } catch {            
             completion(nil, NetworkResponse.unableToDecode.rawValue)
           }
         case .failure(let networkFailureError):
@@ -63,7 +42,7 @@ struct CurrenciesNetworkManager: NetworkManager {
     }
   }
   
-  func getCurrency(currID: Int, _ completion: @escaping(_ currency: Currency?, _ error: String?) -> Void) {
+  func getCurrency(currID: Int, _ completion: @escaping(_ currency: CRCoin?, _ error: String?) -> Void) {
     router.request(.currency(currID)) { data, response, error in
       if error != nil {
         completion(nil, "Please check your network connection")
@@ -79,8 +58,8 @@ struct CurrenciesNetworkManager: NetworkManager {
           }
           
           do {
-            let apiResponse = try JSONDecoder().decode(SingleCurrency.self, from: responseData)
-            completion(apiResponse.data, nil)
+            let apiResponse = try JSONDecoder().decode(CRRoot<CRDataCoin>.self, from: responseData)
+            completion(apiResponse.data.coin, nil)
           } catch {
             completion(nil, NetworkResponse.unableToDecode.rawValue)
           }

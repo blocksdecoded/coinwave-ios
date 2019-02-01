@@ -137,9 +137,9 @@
 		B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
 		B572E9402202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
 		B572E9412202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
-		B572E9432202AF0F00778DA8 /* CRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRData.swift */; };
-		B572E9442202AF0F00778DA8 /* CRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRData.swift */; };
-		B572E9452202AF0F00778DA8 /* CRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRData.swift */; };
+		B572E9432202AF0F00778DA8 /* CRDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRDataList.swift */; };
+		B572E9442202AF0F00778DA8 /* CRDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRDataList.swift */; };
+		B572E9452202AF0F00778DA8 /* CRDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRDataList.swift */; };
 		B572E9472202AFBA00778DA8 /* CRStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9462202AFBA00778DA8 /* CRStats.swift */; };
 		B572E9482202AFBA00778DA8 /* CRStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9462202AFBA00778DA8 /* CRStats.swift */; };
 		B572E9492202AFBA00778DA8 /* CRStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9462202AFBA00778DA8 /* CRStats.swift */; };
@@ -248,6 +248,9 @@
 		B5E93D8E21A90A6F00D1705A /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */; };
 		B5E93D8F21A90A6F00D1705A /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */; };
 		B5E93D9021A90A6F00D1705A /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */; };
+		B5F14D2B22040B5300DE5E62 /* CRDataCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */; };
+		B5F14D2C22040B5300DE5E62 /* CRDataCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */; };
+		B5F14D2D22040B5300DE5E62 /* CRDataCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */; };
 		B5F5BFA721A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F5BFA821A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F5BFA921A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
@@ -315,7 +318,7 @@
 		B5276B8821A2A369000A74A5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B572E93E2202AD4F00778DA8 /* CRRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRRoot.swift; sourceTree = "<group>"; };
-		B572E9422202AF0F00778DA8 /* CRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRData.swift; sourceTree = "<group>"; };
+		B572E9422202AF0F00778DA8 /* CRDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataList.swift; sourceTree = "<group>"; };
 		B572E9462202AFBA00778DA8 /* CRStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRStats.swift; sourceTree = "<group>"; };
 		B572E94A2202AFDF00778DA8 /* CRBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRBase.swift; sourceTree = "<group>"; };
 		B572E94E2202AFF700778DA8 /* CRCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoin.swift; sourceTree = "<group>"; };
@@ -348,6 +351,7 @@
 		B5E93D8521A82C5900D1705A /* TVCCrypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVCCrypto.swift; sourceTree = "<group>"; };
 		B5E93D8621A82C5900D1705A /* TVCCrypto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TVCCrypto.xib; sourceTree = "<group>"; };
 		B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFactory.swift; sourceTree = "<group>"; };
+		B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataCoin.swift; sourceTree = "<group>"; };
 		B5F5BFA621A426680012599B /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -599,11 +603,12 @@
 			isa = PBXGroup;
 			children = (
 				B572E93E2202AD4F00778DA8 /* CRRoot.swift */,
-				B572E9422202AF0F00778DA8 /* CRData.swift */,
+				B572E9422202AF0F00778DA8 /* CRDataList.swift */,
 				B572E9462202AFBA00778DA8 /* CRStats.swift */,
 				B572E94A2202AFDF00778DA8 /* CRBase.swift */,
 				B572E94E2202AFF700778DA8 /* CRCoin.swift */,
 				B572E9522202B31900778DA8 /* CRAllTimeHigh.swift */,
+				B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */,
 			);
 			path = Coins;
 			sourceTree = "<group>";
@@ -1115,7 +1120,8 @@
 				B5276B6321A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276AFA21A0124D000A74A5 /* CurrenciesInteractor.swift in Sources */,
 				B5276B7D21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
-				B572E9432202AF0F00778DA8 /* CRData.swift in Sources */,
+				B5F14D2B22040B5300DE5E62 /* CRDataCoin.swift in Sources */,
+				B572E9432202AF0F00778DA8 /* CRDataList.swift in Sources */,
 				B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */,
 				B5E93D0C21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
 				B5276B5021A28183000A74A5 /* PostsRouter.swift in Sources */,
@@ -1199,7 +1205,8 @@
 				B5276B5A21A28183000A74A5 /* PostsInteractor.swift in Sources */,
 				B5E93D2F21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B5276B7621A2A2FD000A74A5 /* EndPointType.swift in Sources */,
-				B572E9442202AF0F00778DA8 /* CRData.swift in Sources */,
+				B5F14D2C22040B5300DE5E62 /* CRDataCoin.swift in Sources */,
+				B572E9442202AF0F00778DA8 /* CRDataList.swift in Sources */,
 				B5276B6D21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B4121A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 				B5E93D7921A827D600D1705A /* CurrenciesInteractor.swift in Sources */,
@@ -1283,7 +1290,8 @@
 				B5276B5B21A28183000A74A5 /* PostsInteractor.swift in Sources */,
 				B5E93D3021A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B5276B7721A2A2FD000A74A5 /* EndPointType.swift in Sources */,
-				B572E9452202AF0F00778DA8 /* CRData.swift in Sources */,
+				B5F14D2D22040B5300DE5E62 /* CRDataCoin.swift in Sources */,
+				B572E9452202AF0F00778DA8 /* CRDataList.swift in Sources */,
 				B5276B6E21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B4221A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 				B5E93D7F21A827D700D1705A /* CurrenciesInteractor.swift in Sources */,
