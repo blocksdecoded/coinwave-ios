@@ -43,19 +43,19 @@ class DataStore {
     }
   }
   
-  func insertCurrencies(_ currencies: [Currency]) {
+  func insertCurrencies(_ currencies: [CRCoin]) {
     do {
       for curr in currencies {
-        try CurrencyDataHelper.insertOrUpdate(item: curr)
+        try CRCoinDataHelper.insertOrUpdate(item: curr)
       }
     } catch {
       fatalError("Cannot insert curencies")
     }
   }
   
-  func loadCurrencies() -> [Currency]? {
+  func loadCurrencies() -> [CRCoin]? {
     do {
-      return try CurrencyDataHelper.findAll()
+      return try CRCoinDataHelper.findAll()
     } catch {
       fatalError("Cannot load currencies")
     }

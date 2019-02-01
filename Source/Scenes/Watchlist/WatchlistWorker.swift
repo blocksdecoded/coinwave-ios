@@ -18,17 +18,16 @@ class WatchlistWorker {
     return DataStore.shared.loadSaveCurrency()
   }
   
-  func fetchLocalCurrencies() -> [Currency]? {
+  func fetchLocalCurrencies() -> [CRCoin]? {
     return DataStore.shared.loadCurrencies()
   }
   
-  func fetchCurrencies(_ completion: @escaping([Currency]) -> Void) {
+  func fetchCurrencies(_ completion: @escaping([CRCoin]) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
       networkManager.getCurrencies(completion: { currencies, error in
         
         guard let currs = currencies else {
-          print(error)
           return
         }
         

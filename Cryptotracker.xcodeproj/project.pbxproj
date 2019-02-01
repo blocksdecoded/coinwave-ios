@@ -56,9 +56,6 @@
 		B50129A521A96974001B6A04 /* SaveCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A421A96974001B6A04 /* SaveCurrency.swift */; };
 		B50129A621A96974001B6A04 /* SaveCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A421A96974001B6A04 /* SaveCurrency.swift */; };
 		B50129A721A96974001B6A04 /* SaveCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A421A96974001B6A04 /* SaveCurrency.swift */; };
-		B50129A921A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A821A96AD2001B6A04 /* CurrencyDataHelper.swift */; };
-		B50129AA21A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A821A96AD2001B6A04 /* CurrencyDataHelper.swift */; };
-		B50129AB21A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129A821A96AD2001B6A04 /* CurrencyDataHelper.swift */; };
 		B50129AD21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
 		B50129AE21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
 		B50129AF21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
@@ -137,6 +134,30 @@
 		B5276B8D21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
 		B5276B8E21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
 		B5276B8F21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
+		B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
+		B572E9402202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
+		B572E9412202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
+		B572E9432202AF0F00778DA8 /* CRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRData.swift */; };
+		B572E9442202AF0F00778DA8 /* CRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRData.swift */; };
+		B572E9452202AF0F00778DA8 /* CRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRData.swift */; };
+		B572E9472202AFBA00778DA8 /* CRStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9462202AFBA00778DA8 /* CRStats.swift */; };
+		B572E9482202AFBA00778DA8 /* CRStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9462202AFBA00778DA8 /* CRStats.swift */; };
+		B572E9492202AFBA00778DA8 /* CRStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9462202AFBA00778DA8 /* CRStats.swift */; };
+		B572E94B2202AFDF00778DA8 /* CRBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94A2202AFDF00778DA8 /* CRBase.swift */; };
+		B572E94C2202AFDF00778DA8 /* CRBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94A2202AFDF00778DA8 /* CRBase.swift */; };
+		B572E94D2202AFDF00778DA8 /* CRBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94A2202AFDF00778DA8 /* CRBase.swift */; };
+		B572E94F2202AFF700778DA8 /* CRCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94E2202AFF700778DA8 /* CRCoin.swift */; };
+		B572E9502202AFF700778DA8 /* CRCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94E2202AFF700778DA8 /* CRCoin.swift */; };
+		B572E9512202AFF700778DA8 /* CRCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94E2202AFF700778DA8 /* CRCoin.swift */; };
+		B572E9532202B31900778DA8 /* CRAllTimeHigh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9522202B31900778DA8 /* CRAllTimeHigh.swift */; };
+		B572E9542202B31900778DA8 /* CRAllTimeHigh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9522202B31900778DA8 /* CRAllTimeHigh.swift */; };
+		B572E9552202B31900778DA8 /* CRAllTimeHigh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9522202B31900778DA8 /* CRAllTimeHigh.swift */; };
+		B572E9572202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */; };
+		B572E9582202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */; };
+		B572E9592202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */; };
+		B572E95B2202F34900778DA8 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E95A2202F34900778DA8 /* DataCache.swift */; };
+		B572E95C2202F34900778DA8 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E95A2202F34900778DA8 /* DataCache.swift */; };
+		B572E95D2202F34900778DA8 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E95A2202F34900778DA8 /* DataCache.swift */; };
 		B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
 		B5E93CF121A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
 		B5E93CF221A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
@@ -257,7 +278,6 @@
 		B501299B21A9600E001B6A04 /* CurrencyChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChart.swift; sourceTree = "<group>"; };
 		B501299F21A968C3001B6A04 /* CurrencySaveDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySaveDataHelper.swift; sourceTree = "<group>"; };
 		B50129A421A96974001B6A04 /* SaveCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCurrency.swift; sourceTree = "<group>"; };
-		B50129A821A96AD2001B6A04 /* CurrencyDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataHelper.swift; sourceTree = "<group>"; };
 		B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsCell.swift; sourceTree = "<group>"; };
 		B5276AAA21A00F59000A74A5 /* Cryptotracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptotracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5276AAD21A00F59000A74A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -294,6 +314,14 @@
 		B5276B8421A2A353000A74A5 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		B5276B8821A2A369000A74A5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B572E93E2202AD4F00778DA8 /* CRRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRRoot.swift; sourceTree = "<group>"; };
+		B572E9422202AF0F00778DA8 /* CRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRData.swift; sourceTree = "<group>"; };
+		B572E9462202AFBA00778DA8 /* CRStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRStats.swift; sourceTree = "<group>"; };
+		B572E94A2202AFDF00778DA8 /* CRBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRBase.swift; sourceTree = "<group>"; };
+		B572E94E2202AFF700778DA8 /* CRCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoin.swift; sourceTree = "<group>"; };
+		B572E9522202B31900778DA8 /* CRAllTimeHigh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRAllTimeHigh.swift; sourceTree = "<group>"; };
+		B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinDataHelper.swift; sourceTree = "<group>"; };
+		B572E95A2202F34900778DA8 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 		B5E93CEF21A6A3AE00D1705A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Heavy.otf"; sourceTree = "<group>"; };
 		B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewPresenter.swift; sourceTree = "<group>"; };
@@ -536,6 +564,7 @@
 		B5276B5D21A29DC9000A74A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B572E93D2202AC5700778DA8 /* Coins */,
 				B5E93D6F21A822F900D1705A /* Currency */,
 				B5276B5E21A29DD9000A74A5 /* Post.swift */,
 			);
@@ -564,6 +593,19 @@
 				B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		B572E93D2202AC5700778DA8 /* Coins */ = {
+			isa = PBXGroup;
+			children = (
+				B572E93E2202AD4F00778DA8 /* CRRoot.swift */,
+				B572E9422202AF0F00778DA8 /* CRData.swift */,
+				B572E9462202AFBA00778DA8 /* CRStats.swift */,
+				B572E94A2202AFDF00778DA8 /* CRBase.swift */,
+				B572E94E2202AFF700778DA8 /* CRCoin.swift */,
+				B572E9522202B31900778DA8 /* CRAllTimeHigh.swift */,
+			);
+			path = Coins;
 			sourceTree = "<group>";
 		};
 		B5E93CEE21A6A39800D1705A /* Common */ = {
@@ -610,6 +652,7 @@
 				B50129A321A96967001B6A04 /* Models */,
 				B5E93D2C21A6B8DB00D1705A /* SQLite */,
 				B5E93D4521A6E64200D1705A /* DataStore.swift */,
+				B572E95A2202F34900778DA8 /* DataCache.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -624,7 +667,7 @@
 				B5E93D3D21A6CEFC00D1705A /* CategoryDataHelper.swift */,
 				B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */,
 				B501299F21A968C3001B6A04 /* CurrencySaveDataHelper.swift */,
-				B50129A821A96AD2001B6A04 /* CurrencyDataHelper.swift */,
+				B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */,
 			);
 			path = SQLite;
 			sourceTree = "<group>";
@@ -849,15 +892,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSVG/SwiftSVG.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSVG.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -873,15 +922,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSVG/SwiftSVG.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSVG.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -897,15 +952,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-StagingCryptotracker/Pods-StagingCryptotracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSVG/SwiftSVG.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSVG.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -960,7 +1021,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		B5276AFC21A01E75000A74A5 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1015,7 +1076,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50129A921A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */,
+				B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */,
 				B5E93D4621A6E64200D1705A /* DataStore.swift in Sources */,
 				B501297821A940DA001B6A04 /* WatchlistModels.swift in Sources */,
 				B501298B21A94BC0001B6A04 /* CurrencyDetailsWorker.swift in Sources */,
@@ -1037,6 +1098,7 @@
 				B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */,
 				B5276B5921A28183000A74A5 /* PostsInteractor.swift in Sources */,
 				B501299121A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
+				B572E95B2202F34900778DA8 /* DataCache.swift in Sources */,
 				B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5276AF621A0124D000A74A5 /* CurrenciesWorker.swift in Sources */,
@@ -1048,10 +1110,12 @@
 				B5E93D4B21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
 				B5276B5321A28183000A74A5 /* PostsModels.swift in Sources */,
 				B5276B8921A2A369000A74A5 /* Router.swift in Sources */,
+				B572E9472202AFBA00778DA8 /* CRStats.swift in Sources */,
 				B501296F21A940DA001B6A04 /* WatchlistPresenter.swift in Sources */,
 				B5276B6321A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276AFA21A0124D000A74A5 /* CurrenciesInteractor.swift in Sources */,
 				B5276B7D21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
+				B572E9432202AF0F00778DA8 /* CRData.swift in Sources */,
 				B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */,
 				B5E93D0C21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
 				B5276B5021A28183000A74A5 /* PostsRouter.swift in Sources */,
@@ -1067,9 +1131,11 @@
 				B501297E21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
 				B5E93D7121A8238800D1705A /* Quote.swift in Sources */,
 				B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
+				B572E9532202B31900778DA8 /* CRAllTimeHigh.swift in Sources */,
 				B5E93D8721A82C5900D1705A /* TVCCrypto.swift in Sources */,
 				B5276B7921A2A313000A74A5 /* HTTPMethod.swift in Sources */,
 				B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */,
+				B572E94F2202AFF700778DA8 /* CRCoin.swift in Sources */,
 				B5E93D6C21A8221000D1705A /* Currency.swift in Sources */,
 				B501296521A91F3E001B6A04 /* CurrencyConverter.swift in Sources */,
 				B501297B21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
@@ -1079,10 +1145,12 @@
 				B5E93D4221A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
 				B5E93D6821A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */,
 				B5E93D0621A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
+				B572E9572202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */,
 				B5276B4A21A28183000A74A5 /* PostsPresenter.swift in Sources */,
 				B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5E93D0021A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
 				B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
+				B572E94B2202AFDF00778DA8 /* CRBase.swift in Sources */,
 				B501299421A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
 				B5276B7521A2A2FD000A74A5 /* EndPointType.swift in Sources */,
 			);
@@ -1092,7 +1160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50129AA21A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */,
+				B572E9402202AD4F00778DA8 /* CRRoot.swift in Sources */,
 				B5276B7E21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
 				B501297921A940DA001B6A04 /* WatchlistModels.swift in Sources */,
 				B501298C21A94BC0001B6A04 /* CurrencyDetailsWorker.swift in Sources */,
@@ -1114,6 +1182,7 @@
 				B5E93D3321A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5E93D7421A827D600D1705A /* CurrenciesPresenter.swift in Sources */,
 				B501299221A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
+				B572E95C2202F34900778DA8 /* DataCache.swift in Sources */,
 				B5E93D5621A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5E93D6D21A8221000D1705A /* Currency.swift in Sources */,
 				B5276B5721A28183000A74A5 /* PostsViewController.swift in Sources */,
@@ -1125,10 +1194,12 @@
 				B5E93D6521A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B5276B6921A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
 				B5E93D7521A827D600D1705A /* CurrenciesWorker.swift in Sources */,
+				B572E9482202AFBA00778DA8 /* CRStats.swift in Sources */,
 				B501297021A940DA001B6A04 /* WatchlistPresenter.swift in Sources */,
 				B5276B5A21A28183000A74A5 /* PostsInteractor.swift in Sources */,
 				B5E93D2F21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B5276B7621A2A2FD000A74A5 /* EndPointType.swift in Sources */,
+				B572E9442202AF0F00778DA8 /* CRData.swift in Sources */,
 				B5276B6D21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B4121A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 				B5E93D7921A827D600D1705A /* CurrenciesInteractor.swift in Sources */,
@@ -1144,9 +1215,11 @@
 				B501297F21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
 				B5E93D7721A827D600D1705A /* CurrenciesModels.swift in Sources */,
 				B5E93D5221A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
+				B572E9542202B31900778DA8 /* CRAllTimeHigh.swift in Sources */,
 				B5E93D8821A82C5900D1705A /* TVCCrypto.swift in Sources */,
 				B5F5BFA821A426680012599B /* PostsCell.swift in Sources */,
 				B5276B8221A2A33F000A74A5 /* NetworkError.swift in Sources */,
+				B572E9502202AFF700778DA8 /* CRCoin.swift in Sources */,
 				B5276B8621A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B501296621A91F3E001B6A04 /* CurrencyConverter.swift in Sources */,
 				B501297C21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
@@ -1156,10 +1229,12 @@
 				B5E93D3F21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
 				B5E93D4721A6E64200D1705A /* DataStore.swift in Sources */,
 				B5E93D0A21A6A73500D1705A /* PostPreviewModels.swift in Sources */,
+				B572E9582202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */,
 				B5E93D0121A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
 				B5276B7121A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
 				B5E93D7621A827D600D1705A /* CurrenciesRouter.swift in Sources */,
 				B5276B6021A29DD9000A74A5 /* Post.swift in Sources */,
+				B572E94C2202AFDF00778DA8 /* CRBase.swift in Sources */,
 				B501299521A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
 				B5E93D4321A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
 			);
@@ -1169,7 +1244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50129AB21A96AD2001B6A04 /* CurrencyDataHelper.swift in Sources */,
+				B572E9412202AD4F00778DA8 /* CRRoot.swift in Sources */,
 				B5276B7F21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
 				B501297A21A940DA001B6A04 /* WatchlistModels.swift in Sources */,
 				B501298D21A94BC0001B6A04 /* CurrencyDetailsWorker.swift in Sources */,
@@ -1191,6 +1266,7 @@
 				B5E93D3421A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5E93D7A21A827D700D1705A /* CurrenciesPresenter.swift in Sources */,
 				B501299321A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
+				B572E95D2202F34900778DA8 /* DataCache.swift in Sources */,
 				B5E93D5721A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5E93D6E21A8221000D1705A /* Currency.swift in Sources */,
 				B5276B5821A28183000A74A5 /* PostsViewController.swift in Sources */,
@@ -1202,10 +1278,12 @@
 				B5E93D6621A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B5276B6A21A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
 				B5E93D7B21A827D700D1705A /* CurrenciesWorker.swift in Sources */,
+				B572E9492202AFBA00778DA8 /* CRStats.swift in Sources */,
 				B501297121A940DA001B6A04 /* WatchlistPresenter.swift in Sources */,
 				B5276B5B21A28183000A74A5 /* PostsInteractor.swift in Sources */,
 				B5E93D3021A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B5276B7721A2A2FD000A74A5 /* EndPointType.swift in Sources */,
+				B572E9452202AF0F00778DA8 /* CRData.swift in Sources */,
 				B5276B6E21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B4221A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 				B5E93D7F21A827D700D1705A /* CurrenciesInteractor.swift in Sources */,
@@ -1221,9 +1299,11 @@
 				B501298021A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
 				B5E93D7D21A827D700D1705A /* CurrenciesModels.swift in Sources */,
 				B5E93D5321A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
+				B572E9552202B31900778DA8 /* CRAllTimeHigh.swift in Sources */,
 				B5E93D8921A82C5900D1705A /* TVCCrypto.swift in Sources */,
 				B5F5BFA921A426680012599B /* PostsCell.swift in Sources */,
 				B5276B8321A2A33F000A74A5 /* NetworkError.swift in Sources */,
+				B572E9512202AFF700778DA8 /* CRCoin.swift in Sources */,
 				B5276B8721A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B501296721A91F3E001B6A04 /* CurrencyConverter.swift in Sources */,
 				B501297D21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
@@ -1233,10 +1313,12 @@
 				B5E93D4021A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
 				B5E93D4821A6E64200D1705A /* DataStore.swift in Sources */,
 				B5E93D0B21A6A73500D1705A /* PostPreviewModels.swift in Sources */,
+				B572E9592202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */,
 				B5E93D0221A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
 				B5276B7221A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
 				B5E93D7C21A827D700D1705A /* CurrenciesRouter.swift in Sources */,
 				B5276B6121A29DD9000A74A5 /* Post.swift in Sources */,
+				B572E94D2202AFDF00778DA8 /* CRBase.swift in Sources */,
 				B501299621A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
 				B5E93D4421A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
 			);

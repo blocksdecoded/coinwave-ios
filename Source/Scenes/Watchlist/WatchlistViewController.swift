@@ -83,7 +83,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     return table
   }()
   
-  private var currencies: [Currency]?
+  private var currencies: [CRCoin]?
 
   // MARK: Object lifecycle
   

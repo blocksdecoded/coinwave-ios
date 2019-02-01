@@ -14,11 +14,11 @@ import UIKit
 
 class CurrenciesWorker {
   
-  func fetchLocalCurrencies() -> [Currency]? {
+  func fetchLocalCurrencies() -> [CRCoin]? {
     return DataStore.shared.loadCurrencies()
   }
   
-  func fetchCurrencies(_ completion: @escaping ([Currency]) -> Void) {
+  func fetchCurrencies(_ completion: @escaping ([CRCoin]) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
       networkManager.getCurrencies(completion: { currencies, error in

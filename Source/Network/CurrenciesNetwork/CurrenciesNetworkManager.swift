@@ -9,10 +9,11 @@
 import Foundation
 
 struct CurrenciesNetworkManager: NetworkManager {
-  static let apiVersion: CurrenciesApi.ApiVersions = .v2
+  static let apiVersion: CurrenciesApi.ApiVersions = .v1
+  static let apiAccessLevel: CurrenciesApi.ApiAccessLevel = .pub
   private let router = Router<CurrenciesApi>()
   
-  func getCurrencies(completion: @escaping (_ currencies: [Currency]?, _ error: String?) -> Void) {
+  func getCurrencies(completion: @escaping (_ currencies: [CRCoin]?, _ error: String?) -> Void) {
     router.request(.list) { data, response, error in
       
       if error != nil {
@@ -29,9 +30,30 @@ struct CurrenciesNetworkManager: NetworkManager {
           }
           
           do {
-            let apiResponse = try JSONDecoder().decode(CurrencyList.self, from: responseData)
-            completion(apiResponse.data, nil)
+            let apiResponse = try JSONDecoder().decode(CRRoot.self, from: responseData)
+            completion(apiResponse.data.coins, nil)
           } catch {
+            print(error.localizedDescription)
+            if let decodeError = error as? DecodingError {
+              switch decodeError {
+              case .dataCorrupted(let context):
+                print("dataCorrupted")
+              case .keyNotFound(let key, let context):
+                print("key not found")
+              case .typeMismatch(let type, let context):
+                print("mismatch")
+                print(type)
+                print(context)
+                print(context.debugDescription)
+                print(context.codingPath)
+              case .valueNotFound(let type, let context):
+                print("value not found")
+                print(type)
+                print(context)
+                print(context.debugDescription)
+                print(context.codingPath)
+              }
+            }
             completion(nil, NetworkResponse.unableToDecode.rawValue)
           }
         case .failure(let networkFailureError):

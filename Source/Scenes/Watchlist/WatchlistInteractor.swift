@@ -42,8 +42,8 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
     })
   }
   
-  private func filterCurrencies(_ currencies: [Currency]) -> [Currency] {
-    var watchlist = [Currency]()
+  private func filterCurrencies(_ currencies: [CRCoin]) -> [CRCoin] {
+    var watchlist = [CRCoin]()
     if let saveCurrencies = worker?.fetchSaveCurrencies() {
       for sCurr in saveCurrencies {
         if sCurr.isWatchlist {

@@ -41,11 +41,18 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Vi2-Qc-QzH">
                                         <rect key="frame" x="0.0" y="4" width="89" height="54.5"/>
                                         <subviews>
+                                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="7pW-Bu-poS" customClass="SVGKFastImageView">
+                                                <rect key="frame" x="35.5" y="0.0" width="18" height="18"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="7pW-Bu-poS" secondAttribute="height" multiplier="1:1" id="ddf-xv-rJN"/>
+                                                </constraints>
+                                            </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Sh-3g-qOm">
-                                                <rect key="frame" x="9.5" y="0.0" width="70" height="27.5"/>
+                                                <rect key="frame" x="9.5" y="18" width="70" height="18.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Efn-O3-C9m">
-                                                <rect key="frame" x="23.5" y="27.5" width="42" height="27"/>
+                                                <rect key="frame" x="23.5" y="36.5" width="42" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -200,6 +207,8 @@
                 <outlet property="price" destination="NuS-rP-gxs" id="Jse-CP-lQO"/>
                 <outlet property="pricePercent" destination="ZkX-bj-3lm" id="kYx-bg-hJ7"/>
                 <outlet property="priceUpDownIcon" destination="Rl8-I8-Ysz" id="fsD-Gw-3qQ"/>
+                <outlet property="stackView" destination="Vi2-Qc-QzH" id="zC7-28-6JL"/>
+                <outlet property="svgCryptoIcon" destination="7pW-Bu-poS" id="onZ-Zp-mpE"/>
                 <outlet property="topSeparationLine" destination="0g0-vo-QqC" id="eor-Ie-Fjt"/>
                 <outlet property="topSeparatorHeight" destination="MEQ-sN-mVf" id="8Vh-E7-QmW"/>
                 <outlet property="volume" destination="E96-9x-rHu" id="UP6-Cb-Zp5"/>

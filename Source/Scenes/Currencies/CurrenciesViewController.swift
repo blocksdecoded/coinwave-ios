@@ -25,7 +25,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   var interactor: CurrenciesBusinessLogic?
   var router: (NSObjectProtocol & CurrenciesRoutingLogic & CurrenciesDataPassing)?
   
-  private var currencies: [Currency]?
+  private var currencies: [CRCoin]?
   
   private lazy var navigationView: UIView = {
     let factory = WidgetFactory()

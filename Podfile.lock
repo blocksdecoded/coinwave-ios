@@ -1,22 +1,48 @@
 PODS:
+  - CocoaLumberjack (3.4.2):
+    - CocoaLumberjack/Default (= 3.4.2)
+    - CocoaLumberjack/Extensions (= 3.4.2)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Extensions (3.4.2):
+    - CocoaLumberjack/Default
   - Kingfisher (4.10.1)
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
+  - SVGKit (2.1.0):
+    - CocoaLumberjack (~> 3.0)
+  - SwiftSVG (2.2.0)
 
 DEPENDENCIES:
   - Kingfisher (= 4.10.1)
   - SQLite.swift
+  - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `3.x`)
+  - SwiftSVG
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - CocoaLumberjack
     - Kingfisher
     - SQLite.swift
+    - SwiftSVG
+
+EXTERNAL SOURCES:
+  SVGKit:
+    :branch: 3.x
+    :git: https://github.com/SVGKit/SVGKit.git
+
+CHECKOUT OPTIONS:
+  SVGKit:
+    :commit: cc0d7edf67af2bd10a6a895f1b4982b22a8b172a
+    :git: https://github.com/SVGKit/SVGKit.git
 
 SPEC CHECKSUMS:
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
+  SVGKit: 8a2fc74258bdb2abb54d3b65f3dd68b0277a9c4d
+  SwiftSVG: 19bc4e434dcf236ece45ddf75f5ee1d3ef8061e6
 
-PODFILE CHECKSUM: 7f3731c8cc1418fca20f2073d16ac0040d4cf744
+PODFILE CHECKSUM: 2c8b8d83f8f71789049cdee1f272b90a0041521d
 
 COCOAPODS: 1.5.3

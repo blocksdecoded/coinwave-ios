@@ -26,6 +26,7 @@ class PostsCell: UICollectionViewCell {
   
   private lazy var postImage: UIImageView = {
     let image = UIImageView()
+    image.contentMode = .scaleAspectFit
     image.translatesAutoresizingMaskIntoConstraints = false
     return image
   }()
@@ -109,6 +110,12 @@ class PostsCell: UICollectionViewCell {
     ]
     
     NSLayoutConstraint.activate(titleC + imageC + imageMaskC + underlineC)
+    
+    contentView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      contentView.heightAnchor.constraint(equalToConstant: 200),
+      contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+      ])
   }
   
   func onBind(_ post: Posts.FetchPosts.ViewModel.DisplayedPost) {

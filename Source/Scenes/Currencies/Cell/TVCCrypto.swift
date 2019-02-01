@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SVGKit
 
 class TVCCrypto: UITableViewCell {
   static var reuseID: String {
@@ -24,19 +25,22 @@ class TVCCrypto: UITableViewCell {
   @IBOutlet weak var price: UILabel!
   @IBOutlet weak var topSeparationLine: UIView!
   @IBOutlet weak var cryptoIcon: UIImageView!
+  @IBOutlet weak var svgCryptoIcon: SVGKFastImageView!
   @IBOutlet weak var pricePercent: UILabel!
   @IBOutlet weak var priceUpDownIcon: UIImageView!
   @IBOutlet weak var topSeparatorHeight: NSLayoutConstraint!
+  @IBOutlet weak var stackView: UIStackView!
   
-  func onBind(_ crypto: Currency, isTop: Bool) {
+  func onBind(_ crypto: CRCoin, isTop: Bool) {
     topSeparatorHeight.constant = isTop ? 1 : 0.5
     name.text = crypto.symbol
     
-    marketCap.text = CurrencyConverter.convertShort(crypto.marketCap ?? 1)
-    volume.text = CurrencyConverter.convertShort(crypto.volume24h ?? 1)
-    price.text = CurrencyConverter.convertShort(crypto.price ?? 1)
+    marketCap.text = CurrencyConverter.convertShort(crypto.marketCap)
+    volume.text = CurrencyConverter.convertShort(crypto.volume)
+    price.text = CurrencyConverter.convertShort(1)
     
-    if let percent = crypto.pricePercentChange24h {
+//    if let percent = crypto.change {
+      let percent = crypto.change
       if percent < 0 {
         price.textColor = Constants.Colors.currencyDown
         pricePercent.textColor = Constants.Colors.currencyDown
@@ -48,10 +52,27 @@ class TVCCrypto: UITableViewCell {
         pricePercent.text = "+\(percent)%"
         priceUpDownIcon.image = UIImage(named: "curr_arrow_up")
       }
-    } else {
-      pricePercent.text = "1"
-    }
+//    } else {
+//      pricePercent.text = "1"
+//    }
     
-    cryptoIcon.kf.setImage(with: URL(string: "https://s2.coinmarketcap.com/static/img/coins/32x32/\(crypto.id).png"))
+    switch crypto.iconType {
+    case .pixel:
+      svgCryptoIcon.isHidden = true
+      cryptoIcon.kf.setImage(with: URL(string: crypto.iconUrl))
+    case .vector:
+      cryptoIcon.isHidden = true
+      svgCryptoIcon.contentMode = .scaleAspectFit
+      
+      if let svgData = DataCache.shared.read(for: crypto.iconUrl) {
+        svgCryptoIcon.image = SVGKImage(data: svgData)
+      } else {
+        //swiftlint:disable force_try
+        let data = try! Data(contentsOf: URL(string: crypto.iconUrl)!)
+        
+        DataCache.shared.write(data: data, for: crypto.iconUrl)
+        svgCryptoIcon.image = SVGKImage(data: data)
+      }
+    }
   }
 }

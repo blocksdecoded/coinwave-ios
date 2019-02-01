@@ -33,6 +33,6 @@ class SQLiteDataStore {
     try CategoryDataHelper.createTable()
     try PostCategoryDataHelper.createTable()
     try CurrencySaveDataHelper.createTable()
-    try CurrencyDataHelper.createTable()
+    try CRCoinDataHelper.createTable()
   }
 }

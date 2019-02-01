@@ -20,10 +20,10 @@ enum Watchlist {
     struct Request {
     }
     struct Response {
-      let currencies: [Currency]
+      let currencies: [CRCoin]
     }
     struct ViewModel {
-      let currencies: [Currency]
+      let currencies: [CRCoin]
     }
   }
 }
