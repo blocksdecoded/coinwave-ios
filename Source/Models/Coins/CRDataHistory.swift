@@ -9,6 +9,6 @@
 import Foundation
 
 struct CRDataHistory: Decodable {
-  let change: Double
+  let change: Double?
   let history: [CRPrice]
 }

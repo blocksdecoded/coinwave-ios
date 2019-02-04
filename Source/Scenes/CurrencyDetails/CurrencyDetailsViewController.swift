@@ -26,6 +26,14 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     return .lightContent
   }
   
+  private let todayBtnTag = 100001
+  private let weekBtnTag = 100002
+  private let monthBtnTag = 100003
+  private let yearBtnTag = 100004
+  private let year5BtnTag = 100005
+  
+  private var tmpButton: UIButton?
+  
   private lazy var titleLbl: UILabel = {
     let titleLabel = UILabel()
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +55,32 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     chart.translatesAutoresizingMaskIntoConstraints = false
     return chart
   }()
+  
+  private lazy var periodStack: UIStackView = {
+    let todayBtn = getButton(title: "Today", tag: todayBtnTag, isSelected: true)
+    tmpButton = todayBtn
+    let stack = UIStackView(arrangedSubviews: [todayBtn,
+                                   getButton(title: "1W", tag: weekBtnTag, isSelected: false),
+                                   getButton(title: "1M", tag: monthBtnTag, isSelected: false),
+                                   getButton(title: "1Y", tag: yearBtnTag, isSelected: false),
+                                   getButton(title: "All", tag: year5BtnTag, isSelected: false)])
+    stack.translatesAutoresizingMaskIntoConstraints = false
+    stack.axis = .horizontal
+    stack.distribution = .equalSpacing
+    return stack
+  }()
+  
+  func getButton(title: String, tag: Int, isSelected: Bool) -> UIButton {
+    let button = UIButton()
+    button.setTitle(title, for: .normal)
+    button.tag = tag
+    button.setTitleColor(UIColor(red: 29.0/255.0, green: 233.0/255.0, blue: 182.0/255.0, alpha: 1.0), for: .selected)
+    button.setTitleColor(UIColor(red: 170.0/255.0, green: 174.0/255.0, blue: 179.0/255.0, alpha: 1.0), for: .normal)
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+    button.isSelected = isSelected
+    button.addTarget(self, action: #selector(changePeriod(sender:)), for: .touchUpInside)
+    return button
+  }
   
   private lazy var infoTable: UITableView = {
     let table = UITableView()
@@ -132,8 +166,9 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     navigationView.addSubview(titleLbl)
     navigationView.addSubview(favoriteBtn)
     view.addSubview(navigationView)
-    view.addSubview(chart)
+    view.addSubview(periodStack)
     view.addSubview(infoTable)
+    view.addSubview(chart)
   }
   
   private func setupConstraints() {
@@ -145,10 +180,17 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
       chart.heightAnchor.constraint(equalToConstant: 200)
     ]
     
+    let periodC = [
+      periodStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+      view.trailingAnchor.constraint(equalTo: periodStack.trailingAnchor, constant: 20),
+      periodStack.topAnchor.constraint(equalTo: chart.bottomAnchor),
+      periodStack.heightAnchor.constraint(equalToConstant: 50)
+    ]
+    
     let infoTableC = [
       infoTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
       infoTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      infoTable.topAnchor.constraint(equalTo: chart.bottomAnchor),
+      infoTable.topAnchor.constraint(equalTo: periodStack.bottomAnchor),
       infoTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ]
     
@@ -173,6 +215,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     ]
     
     NSLayoutConstraint.activate(infoTableC +
+      periodC +
       titleLblC +
       navigationC +
       favoriteC +
@@ -218,6 +261,28 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
                                                                                                  isWatchlist: false,
                                                                                                  isFavorite: false))
     interactor?.addToFavorites(request: request)
+  }
+  
+  @objc private func changePeriod(sender: UIButton) {
+    tmpButton?.isSelected = false
+    tmpButton = sender
+    tmpButton?.isSelected = true
+    var timeframe: CRTimeframe
+    switch sender.tag {
+    case todayBtnTag:
+      timeframe = .h24
+    case weekBtnTag:
+      timeframe = .d7
+    case monthBtnTag:
+      timeframe = .d30
+    case yearBtnTag:
+      timeframe = .y1
+    case year5BtnTag:
+      timeframe = .y5
+    default:
+      return
+    }
+    chart.load(coinID: currencyID, time: timeframe)
   }
 }
 

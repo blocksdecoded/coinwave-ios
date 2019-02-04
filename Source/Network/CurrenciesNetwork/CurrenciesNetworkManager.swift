@@ -34,17 +34,7 @@ struct CurrenciesNetworkManager: NetworkManager {
             completion(apiResponse, nil)
           } catch {
             if let error = error as? DecodingError {
-              //TODO: Analytics
-              switch error {
-              case .dataCorrupted(let context):
-                break
-              case .keyNotFound(let key, let context):
-                break
-              case .typeMismatch(let type, let context):
-                break
-              case .valueNotFound(let type, let context):
-                break
-              }
+              self.decodingError(error)
             }
             completion(nil, NetworkResponse.unableToDecode.rawValue)
           }
@@ -74,6 +64,9 @@ struct CurrenciesNetworkManager: NetworkManager {
             let apiResponse = try JSONDecoder().decode(CRRoot<CRDataCoin>.self, from: responseData)
             completion(apiResponse, nil)
           } catch {
+            if let error = error as? DecodingError {
+              self.decodingError(error)
+            }
             completion(nil, NetworkResponse.unableToDecode.rawValue)
           }
         case .failure(let networkFailureError):
@@ -102,12 +95,41 @@ struct CurrenciesNetworkManager: NetworkManager {
             let apiResponse = try JSONDecoder().decode(CRRoot<CRDataHistory>.self, from: responseData)
             completion(apiResponse, nil)
           } catch {
+            if let error = error as? DecodingError {
+              self.decodingError(error)
+            }
             completion(nil, NetworkResponse.unableToDecode.rawValue)
+            
           }
         case .failure(let networkFailureError):
           completion(nil, networkFailureError)
         }
       }
+    }
+  }
+  
+  private func decodingError(_ error: DecodingError) {
+    //TODO: Analytics
+    switch error {
+    case .dataCorrupted(let context):
+      print("Data corrupted")
+      print(context.debugDescription)
+      print(context.codingPath)
+    case .keyNotFound(let key, let context):
+      print("Key not found")
+      print(key.debugDescription)
+      print(context.debugDescription)
+      print(context.codingPath)
+    case .typeMismatch(let type, let context):
+      print("Type mismatch")
+      print(type)
+      print(context.debugDescription)
+      print(context.codingPath)
+    case .valueNotFound(let type, let context):
+      print("Value not found")
+      print(type)
+      print(context.debugDescription)
+      print(context.codingPath)
     }
   }
 }

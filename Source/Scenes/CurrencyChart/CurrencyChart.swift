@@ -18,6 +18,8 @@ class CurrencyChart: UIView {
   private let version: Version
   private var gradientLayer: CAGradientLayer?
   
+  private let cache = NSCache<NSString, AnyObject>()
+  
   private lazy var infoView: CurrencyChartInfoView = {
     let view = CurrencyChartInfoView()
     view.translatesAutoresizingMaskIntoConstraints = false
@@ -132,21 +134,29 @@ class CurrencyChart: UIView {
   }
   
   func load(coinID: Int, time: CRTimeframe) {
-    let networkManager = CurrenciesNetworkManager()
-    networkManager.getHistory(currID: coinID, time: time) { root, error in
-      if let error = error {
-        print(error)
-        fatalError()
+    
+    let key = "\(coinID)_\(time.value)"
+    
+    
+    
+    if let root = cache.object(forKey: key as NSString) as? CRRoot<CRDataHistory> {
+      self.setChartData(prices: root.data.history)
+    } else {
+      let networkManager = CurrenciesNetworkManager()
+      networkManager.getHistory(currID: coinID, time: time) { root, error in
+        if let error = error {
+          print(error)
+          fatalError()
+        }
+        
+        guard let root = root else {
+          fatalError()
+        }
+        self.cache.setObject(root as AnyObject, forKey: key as NSString)
+        DispatchQueue.main.async {
+          self.setChartData(prices: root.data.history)
+        }
       }
-      
-      guard let root = root else {
-        fatalError()
-      }
-      
-      DispatchQueue.main.async {
-        self.setChartData(prices: root.data.history)
-      }
-      
     }
   }
   
@@ -195,7 +205,7 @@ class CurrencyChart: UIView {
     
     let chartData = LineChartData(dataSet: chartDataSet)
     chartView.data = chartData
-    chartView.animate(xAxisDuration: 1)
+    chartView.animate(xAxisDuration: 2)
   }
 }
 
