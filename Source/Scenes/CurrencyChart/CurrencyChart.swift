@@ -18,6 +18,12 @@ class CurrencyChart: UIView {
   private let version: Version
   private var gradientLayer: CAGradientLayer?
   
+  private lazy var infoView: CurrencyChartInfoView = {
+    let view = CurrencyChartInfoView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
   private lazy var detailsGradientLayer: CAGradientLayer = {
     let gradient = CAGradientLayer()
     gradient.colors = [UIColor(red: 29.0/255.0, green: 196.0/255.0, blue: 233.0/255.0, alpha: 1.0).cgColor,
@@ -47,6 +53,8 @@ class CurrencyChart: UIView {
     chart.backgroundColor = .clear
     chart.translatesAutoresizingMaskIntoConstraints = false
     chart.noDataText = "No history data"
+    
+    chart.delegate = self
     
     return chart
   }()
@@ -87,6 +95,8 @@ class CurrencyChart: UIView {
   private func setupViews() {
     setupLayer()
     addSubview(chartView)
+    addSubview(infoView)
+    infoView.isHidden = true
   }
   
   private func setupConstraints() {
@@ -95,6 +105,11 @@ class CurrencyChart: UIView {
       trailingAnchor.constraint(equalTo: chartView.trailingAnchor, constant: 0),
       chartView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
       chartView.bottomAnchor.constraint(equalTo: bottomAnchor)
+    ])
+    
+    NSLayoutConstraint.activate([
+      infoView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+      infoView.centerXAnchor.constraint(equalTo: centerXAnchor)
     ])
   }
   
@@ -181,5 +196,12 @@ class CurrencyChart: UIView {
     let chartData = LineChartData(dataSet: chartDataSet)
     chartView.data = chartData
     chartView.animate(xAxisDuration: 1)
+  }
+}
+
+extension CurrencyChart: ChartViewDelegate {
+  func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+    infoView.isHidden = false
+    infoView.setInfo(price: entry.y, timestamp: entry.x)
   }
 }
