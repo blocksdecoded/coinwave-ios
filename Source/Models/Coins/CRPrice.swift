@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct CRAllTimeHigh: Decodable {
+struct CRPrice: Decodable {
   let price: String?
   let timestamp: Double?
 }
 
-extension CRAllTimeHigh {
+extension CRPrice {
   init() {
     price = nil
     timestamp = nil

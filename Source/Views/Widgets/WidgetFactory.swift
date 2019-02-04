@@ -18,6 +18,8 @@ class WidgetFactory {
     return gradient
   }
   
+  
+  
   @discardableResult
   func setGradientTo(view: UIView) -> UIView {
     let gView = UIView(frame: view.bounds)

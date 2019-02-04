@@ -29,7 +29,7 @@ struct CRCoin: Decodable {
   let change: Double?
   let rank: Double
   let history: [String?]
-  let allTimeHigh: CRAllTimeHigh
+  let allTimeHigh: CRPrice
   let penalty: Bool
   
   enum IconType: String, Decodable {
@@ -66,7 +66,7 @@ extension CRCoin {
     change = nil
     rank = 1
     history = [String?]()
-    allTimeHigh = CRAllTimeHigh()
+    allTimeHigh = CRPrice()
     penalty = false
   }
 }

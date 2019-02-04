@@ -155,7 +155,7 @@ class CRCoinDataHelper: DataHelperProtocol {
   }
   
   private static func convert(row: Row) -> CRCoin {
-    let allTimeHigh = CRAllTimeHigh(price: row[currAllTimeHighPrice],
+    let allTimeHigh = CRPrice(price: row[currAllTimeHighPrice],
                                     timestamp: row[currAllTimeHighTimestamp])
     
     let sqlHistory = row[currHistory].split(separator: ":")

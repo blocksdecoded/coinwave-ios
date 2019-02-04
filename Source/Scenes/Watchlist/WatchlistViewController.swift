@@ -32,7 +32,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }()
   
   private lazy var chart: CurrencyChart = {
-    let chart = CurrencyChart()
+    let chart = CurrencyChart(version: .favorite)
     chart.translatesAutoresizingMaskIntoConstraints = false
     return chart
   }()

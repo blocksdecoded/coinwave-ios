@@ -43,7 +43,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   }()
   
   private lazy var chart: CurrencyChart = {
-    let chart = CurrencyChart()
+    let chart = CurrencyChart(version: .details)
     chart.translatesAutoresizingMaskIntoConstraints = false
     return chart
   }()
@@ -123,6 +123,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     setupViews()
     setupConstraints()
     doSomething(currID: currencyID)
+    chart.load(coinID: currencyID, time: .h24)
   }
   
   private func setupViews() {

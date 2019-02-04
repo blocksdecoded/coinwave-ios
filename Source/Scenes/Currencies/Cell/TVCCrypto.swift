@@ -67,7 +67,7 @@ class TVCCrypto: UITableViewCell {
             return
           }
           
-          if response.statusCode == 200 {
+          if response.statusCode == 200 && data != nil {
             DataCache.shared.write(data: data!, for: iconUrl)
             DispatchQueue.main.async {
               self.svgCryptoIcon.image = SVGKImage(data: data!)

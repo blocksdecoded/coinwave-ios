@@ -82,4 +82,32 @@ struct CurrenciesNetworkManager: NetworkManager {
       }
     }
   }
+  
+  func getHistory(currID: Int, time: CRTimeframe, _ completion: @escaping(CRRoot<CRDataHistory>?, _ error: String?) -> Void) {
+    router.request(.hsitory(currID, time)) { data, response, error in
+      if error != nil {
+        completion(nil, "Please check yur network connection")
+      }
+      
+      if let response = response as? HTTPURLResponse {
+        let result = self.handleNetworkResponse(response)
+        switch result {
+        case .success:
+          guard let responseData = data else {
+            completion(nil, NetworkResponse.noData.rawValue)
+            return
+          }
+          
+          do {
+            let apiResponse = try JSONDecoder().decode(CRRoot<CRDataHistory>.self, from: responseData)
+            completion(apiResponse, nil)
+          } catch {
+            completion(nil, NetworkResponse.unableToDecode.rawValue)
+          }
+        case .failure(let networkFailureError):
+          completion(nil, networkFailureError)
+        }
+      }
+    }
+  }
 }

@@ -8,6 +8,7 @@ def sharedPods
   pod 'Kingfisher', '4.10.1'
   pod 'SQLite.swift'
   pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '3.x'
+  pod 'Charts'
 end
 
 target 'Cryptotracker' do
