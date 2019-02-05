@@ -113,6 +113,48 @@ class CurrencySaveDataHelper: DataHelperProtocol {
     return result
   }
   
+  static func watchlistIds() throws -> [Int64]? {
+    guard let db = SQLiteDataStore.sharedInstance.db else {
+      throw DataAccessError.datastoreConnection
+    }
+    
+    let items = try db.prepare(table.filter(currWatchlist == true && currFavorite == false).select(currID))
+    
+    var result = [Int64]()
+    for item in items {
+      result.append(item[currID])
+    }
+    return result
+  }
+  
+  static func watchlist() throws -> [SaveCurrency]? {
+    guard let db = SQLiteDataStore.sharedInstance.db else {
+      throw DataAccessError.datastoreConnection
+    }
+    
+    let items = try db.prepare(table.filter(currWatchlist == true && currFavorite == false))
+    
+    var result = [SaveCurrency]()
+    for item in items {
+      result.append(convert(row: item))
+    }
+    return result
+  }
+  
+  static func favorite() throws -> SaveCurrency? {
+    guard let db = SQLiteDataStore.sharedInstance.db else {
+      throw DataAccessError.datastoreConnection
+    }
+    
+    let items = try db.prepare(table.filter(currFavorite == true))
+    
+    for item in items {
+      return convert(row: item)
+    }
+    
+    return nil
+  }
+  
   private static func convert(row: Row) -> SaveCurrency {
     return SaveCurrency(id: Int(row[currID]),
                         isWatchlist: row[currWatchlist],

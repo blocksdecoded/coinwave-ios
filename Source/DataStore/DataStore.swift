@@ -8,6 +8,8 @@
 
 import Foundation
 
+//TODO: Analytics
+
 class DataStore {
   static let shared = DataStore()
   
@@ -35,11 +37,27 @@ class DataStore {
     }
   }
   
-  func loadSaveCurrency() -> [SaveCurrency]? {
+  func loadWatchlistIds() -> [Int64]? {
     do {
-      return try CurrencySaveDataHelper.findAll()
+      return try CurrencySaveDataHelper.watchlistIds()
     } catch {
-      fatalError("Cannot load save currencies")
+      fatalError("Cannot load watchlist ids")
+    }
+  }
+  
+  func loadWatchlist() -> [SaveCurrency]? {
+    do {
+      return try CurrencySaveDataHelper.watchlist()
+    } catch {
+      fatalError("Cannot load watchlist")
+    }
+  }
+  
+  func loadFavorite() -> SaveCurrency? {
+    do {
+      return try CurrencySaveDataHelper.favorite()
+    } catch {
+      fatalError("Cannot load favorite")
     }
   }
   

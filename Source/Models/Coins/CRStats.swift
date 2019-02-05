@@ -11,8 +11,8 @@ import Foundation
 struct CRStats: Decodable {
   let total: Int
   let offset: Int
-  let limit: Int
-  let order: Order
+  let limit: Int?
+  let order: Order?
   let base: String
   
   enum Order: String, Decodable {

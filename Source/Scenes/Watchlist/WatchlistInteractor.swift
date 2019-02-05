@@ -14,7 +14,6 @@ import UIKit
 
 protocol WatchlistBusinessLogic {
   func doSomething(request: Watchlist.Something.Request)
-  func updateLocalWatchlist()
 }
 
 protocol WatchlistDataStore {
@@ -31,33 +30,18 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   func doSomething(request: Watchlist.Something.Request) {
     worker = WatchlistWorker()
     
-    if let localCurrencies = worker?.fetchLocalCurrencies() {
-      let response = Watchlist.Something.Response(currencies: filterCurrencies(localCurrencies))
-      self.presenter?.presentSomething(response: response)
+    guard let ids = worker?.fetchWatchlistIds(),
+          ids.count > 0 else {
+            print("no ids")
+      //TODO: present empty list
+      return
     }
     
-    worker?.fetchCurrencies({ currencies in
-      let response = Watchlist.Something.Response(currencies: self.filterCurrencies(currencies.data.coins))
+    let strIds = ids.map { String($0) }.joined(separator: ",")
+    
+    worker?.fetchCurrencies(ids: strIds, { currencies in
+      let response = Watchlist.Something.Response(currencies: currencies.data.coins)
       self.presenter?.presentSomething(response: response)
     })
-  }
-  
-  private func filterCurrencies(_ currencies: [CRCoin]) -> [CRCoin] {
-    var watchlist = [CRCoin]()
-    if let saveCurrencies = worker?.fetchSaveCurrencies() {
-      for sCurr in saveCurrencies where sCurr.isWatchlist {
-        watchlist.append(contentsOf: currencies.filter { $0.id == sCurr.id })
-      }
-    }
-    return watchlist
-  }
-  
-  func updateLocalWatchlist() {
-    worker = WatchlistWorker()
-    
-    if let localCurrencies = worker?.fetchLocalCurrencies() {
-      let response = Watchlist.Something.Response(currencies: filterCurrencies(localCurrencies))
-      self.presenter?.presentSomething(response: response)
-    }
   }
 }

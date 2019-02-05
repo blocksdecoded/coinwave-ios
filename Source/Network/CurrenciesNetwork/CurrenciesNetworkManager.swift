@@ -13,9 +13,9 @@ struct CurrenciesNetworkManager: NetworkManager {
   static let apiAccessLevel: CurrenciesApi.ApiAccessLevel = .pub
   private let router = Router<CurrenciesApi>()
   
-  func getCurrencies(limit: Int, offset: Int,
+  func getCurrencies(limit: Int, offset: Int, ids: String?,
                      completion: @escaping (_ currencies: CRRoot<CRDataList>?, _ error: String?) -> Void) {
-    router.request(.list(limit: limit, offset: offset)) { data, response, error in
+    router.request(.list(limit: limit, offset: offset, ids: ids)) { data, response, error in
       if error != nil {
         completion(nil, "Please check your network connection")
       }

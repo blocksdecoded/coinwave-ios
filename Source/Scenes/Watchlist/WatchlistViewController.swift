@@ -121,11 +121,6 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     doSomething()
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    interactor?.updateLocalWatchlist()
-  }
-  
   private func setupViews() {
     let factory = WidgetFactory()
     factory.setGradientTo(view: view)

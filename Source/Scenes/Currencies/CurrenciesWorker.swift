@@ -21,7 +21,7 @@ class CurrenciesWorker {
   func fetchCurrencies(limit: Int, offset: Int, _ completion: @escaping (CRRoot<CRDataList>) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
-      networkManager.getCurrencies(limit: limit, offset: offset, completion: { currencies, error in
+      networkManager.getCurrencies(limit: limit, offset: offset, ids: nil, completion: { currencies, error in
         if error != nil {
           print(error!)
         }
