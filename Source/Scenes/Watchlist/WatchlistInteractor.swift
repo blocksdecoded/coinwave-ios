@@ -14,6 +14,7 @@ import UIKit
 
 protocol WatchlistBusinessLogic {
   func doSomething(request: Watchlist.Something.Request)
+  func fetchFavorite()
 }
 
 protocol WatchlistDataStore {

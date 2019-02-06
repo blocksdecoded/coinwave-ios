@@ -54,6 +54,21 @@ class CurrencyChart: UIView {
     return gradient
   }()
   
+  private lazy var nameLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = UIFont.systemFont(ofSize: 16)
+    label.textColor = .white
+    return label
+  }()
+  
+  private lazy var priceLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = UIFont.systemFont(ofSize: 14)
+    return label
+  }()
+  
   private lazy var chartView: LineChartView = {
     let chart = LineChartView()
     chart.xAxis.enabled = false
@@ -116,29 +131,71 @@ class CurrencyChart: UIView {
   
   private func setup() {
     setupViews()
-    setupConstraints()
+    switch version {
+    case .details:
+      setupConstraints()
+    case .favorite:
+      setupConstraintsForFavorite()
+    }
   }
   
   private func setupViews() {
     setupLayer()
+    
+    switch version {
+    case .favorite:
+      addSubview(nameLabel)
+      addSubview(priceLabel)
+    case .details:
+      break
+    }
+    
     addSubview(chartView)
     addSubview(infoView)
-    infoView.isHidden = true
     
+    infoView.isHidden = true
   }
   
   private func setupConstraints() {
-    NSLayoutConstraint.activate([
+    let chartC = [
       chartView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
       trailingAnchor.constraint(equalTo: chartView.trailingAnchor, constant: 0),
       chartView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
       chartView.bottomAnchor.constraint(equalTo: bottomAnchor)
-    ])
+    ]
     
-    NSLayoutConstraint.activate([
+    let infoViewC = [
       infoView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
       infoView.centerXAnchor.constraint(equalTo: centerXAnchor)
-    ])
+    ]
+    
+    NSLayoutConstraint.activate(chartC + infoViewC)
+  }
+  
+  private func setupConstraintsForFavorite() {
+    let nameLabelC = [
+      nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+      nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
+    ]
+    
+    let priceLabelC = [
+      priceLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
+      trailingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 8)
+    ]
+    
+    let chartC = [
+      chartView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+      trailingAnchor.constraint(equalTo: chartView.trailingAnchor, constant: 0),
+      chartView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 0),
+      chartView.bottomAnchor.constraint(equalTo: bottomAnchor)
+    ]
+    
+    let infoViewC = [
+      infoView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+      infoView.centerXAnchor.constraint(equalTo: centerXAnchor)
+    ]
+    
+    NSLayoutConstraint.activate(chartC + infoViewC + nameLabelC + priceLabelC)
   }
   
   private func setupLayer() {
@@ -170,15 +227,30 @@ class CurrencyChart: UIView {
       self.setChartData(prices: root.data.history)
     } else {
       let networkManager = CurrenciesNetworkManager()
-      networkManager.getCurrency(currID: <#T##Int#>, <#T##completion: (CRRoot<CRDataCoin>?, String?) -> Void##(CRRoot<CRDataCoin>?, String?) -> Void#>)
+      
+      networkManager.getCurrency(currID: coinID) { data, error in
+        if let error = error {
+          print(error)
+          return
+        }
+        
+        guard let data = data else {
+          return
+        }
+        
+        DispatchQueue.main.async {
+          self.setCoinData(coin: data.data.coin)
+        }
+      }
+      
       networkManager.getHistory(currID: coinID, time: time) { root, error in
         if let error = error {
           print(error)
-          fatalError()
+          return
         }
         
         guard let root = root else {
-          fatalError()
+          return
         }
         self.cache.setObject(root as AnyObject, forKey: key as NSString)
         DispatchQueue.main.async {
@@ -197,6 +269,24 @@ class CurrencyChart: UIView {
       chooseFavButton.widthAnchor.constraint(equalToConstant: 120),
       chooseFavButton.heightAnchor.constraint(equalToConstant: 30)
     ])
+  }
+  
+  private func setCoinData(coin: CRCoin) {
+    nameLabel.text = coin.name
+    
+    var priceValue = "null"
+    if let price = coin.priceValue {
+      priceValue = CurrencyConverter.convertLong(price)
+    }
+    priceLabel.text = priceValue
+    
+    if let percent = coin.change {
+      if percent < 0 {
+        priceLabel.textColor = Constants.Colors.currencyDown
+      } else {
+        priceLabel.textColor = Constants.Colors.currencyUp
+      }
+    }
   }
   
   private func setChartData(prices: [CRPrice]) {
