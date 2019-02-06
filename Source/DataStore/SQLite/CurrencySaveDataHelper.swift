@@ -87,6 +87,20 @@ class CurrencySaveDataHelper: DataHelperProtocol {
     }
   }
   
+  static func setFavorite(id: Int, isFavorite: Bool) throws {
+    guard let db = SQLiteDataStore.sharedInstance.db else {
+      throw DataAccessError.datastoreConnection
+    }
+    
+    let prevFavorite = table.filter(currFavorite == true)
+    let prevUpdate = prevFavorite.update([currFavorite <- false])
+    try db.run(prevUpdate)
+    
+    let coin = table.filter(currID == Int64(id))
+    let update = coin.update([currFavorite <- isFavorite])
+    try db.run(update)
+  }
+  
   static func find(id: Int64) throws -> SaveCurrency? {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
@@ -141,15 +155,15 @@ class CurrencySaveDataHelper: DataHelperProtocol {
     return result
   }
   
-  static func favorite() throws -> SaveCurrency? {
+  static func favorite() throws -> Int64? {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
     
-    let items = try db.prepare(table.filter(currFavorite == true))
+    let items = try db.prepare(table.filter(currFavorite == true).select(currID))
     
     for item in items {
-      return convert(row: item)
+      return item[currID]
     }
     
     return nil

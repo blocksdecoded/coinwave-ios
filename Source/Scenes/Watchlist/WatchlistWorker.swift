@@ -42,4 +42,8 @@ class WatchlistWorker {
       
     }
   }
+  
+  func fetchFavorite() -> Int64? {
+    return DataStore.shared.loadFavorite()
+  }
 }

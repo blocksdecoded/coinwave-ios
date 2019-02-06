@@ -28,8 +28,6 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   // MARK: Do something
   
   func doSomething(request: Watchlist.Something.Request) {
-    worker = WatchlistWorker()
-    
     guard let ids = worker?.fetchWatchlistIds(),
           ids.count > 0 else {
             print("no ids")
@@ -43,5 +41,14 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
       let response = Watchlist.Something.Response(currencies: currencies.data.coins)
       self.presenter?.presentSomething(response: response)
     })
+  }
+  
+  func fetchFavorite() {
+    guard let id = worker?.fetchFavorite() else {
+      presenter?.presentNoFavorite()
+      return
+    }
+    
+    presenter?.presentFavorite(response: Watchlist.Favorite.Response(id: Int(id)))
   }
 }

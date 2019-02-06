@@ -15,6 +15,7 @@ import UIKit
 protocol CurrenciesBusinessLogic {
   func doSomething(request: Currencies.FetchCoins.Request)
   func loadNext()
+  func setFavorite(id: Int, isFavorite: Bool)
 }
 
 protocol CurrenciesDataStore {
@@ -55,5 +56,9 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
       self.data = currencies
       self.presenter?.presentNextCoins(response: Currencies.LoadNext.Response(coin: currencies))
     }
+  }
+  
+  func setFavorite(id: Int, isFavorite: Bool) {
+    worker?.setFavorite(id: id, isFavorite: isFavorite)
   }
 }

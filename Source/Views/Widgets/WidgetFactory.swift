@@ -42,18 +42,34 @@ class WidgetFactory {
     return gView
   }
   
+  func navigationViewWithBack(title: String, color: UIColor) -> UIView {
+    let navView = UIView()
+    navView.translatesAutoresizingMaskIntoConstraints = false
+    let backButton = backButtonForNavigation()
+    navView.addSubview(backButton)
+    NSLayoutConstraint.activate([
+      backButton.leadingAnchor.constraint(equalTo: navView.leadingAnchor, constant: 10),
+      backButton.centerYAnchor.constraint(equalTo: navView.centerYAnchor),
+      backButton.widthAnchor.constraint(equalToConstant: 40),
+      backButton.heightAnchor.constraint(equalToConstant: 40)
+    ])
+    
+    let titleLabel = titleForNavigation(title: title, color: color)
+    navView.addSubview(titleLabel)
+    NSLayoutConstraint.activate([
+      titleLabel.centerXAnchor.constraint(equalTo: navView.centerXAnchor),
+      titleLabel.centerYAnchor.constraint(equalTo: navView.centerYAnchor)
+    ])
+    
+    return navView
+  }
+  
   func navigationView(title: String, color: UIColor) -> UIView {
     let navView = UIView()
     navView.translatesAutoresizingMaskIntoConstraints = false
     
-    let titleLabel = UILabel()
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    titleLabel.text = title
-    titleLabel.textColor = color
-    titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
-    
+    let titleLabel = titleForNavigation(title: title, color: color)
     navView.addSubview(titleLabel)
-    
     NSLayoutConstraint.activate([
       titleLabel.leadingAnchor.constraint(equalTo: navView.leadingAnchor, constant: 20),
       titleLabel.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: 20),
@@ -61,5 +77,21 @@ class WidgetFactory {
     ])
     
     return navView
+  }
+  
+  func backButtonForNavigation() -> UIButton {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setImage(UIImage(named: "left_arrow"), for: .normal)
+    return button
+  }
+  
+  private func titleForNavigation(title: String, color: UIColor) -> UILabel {
+    let titleLabel = UILabel()
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    titleLabel.text = title
+    titleLabel.textColor = color
+    titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+    return titleLabel
   }
 }

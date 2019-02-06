@@ -35,4 +35,8 @@ class CurrenciesWorker {
       })
     }
   }
+  
+  func setFavorite(id: Int, isFavorite: Bool) {
+    DataStore.shared.setFavorite(id: id, isFavorite: isFavorite)
+  }
 }

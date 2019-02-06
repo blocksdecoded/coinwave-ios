@@ -14,6 +14,9 @@ import UIKit
 
 protocol WatchlistDisplayLogic: class {
   func displaySomething(viewModel: Watchlist.Something.ViewModel)
+  func displayFavorite(viewModel: Watchlist.Favorite.ViewModel)
+  func displayNoFavorite()
+  func displayNoWatchlist()
 }
 
 class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
@@ -34,6 +37,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   private lazy var chart: CurrencyChart = {
     let chart = CurrencyChart(version: .favorite)
     chart.translatesAutoresizingMaskIntoConstraints = false
+    chart.delegate = self
     return chart
   }()
   
@@ -104,9 +108,11 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     let interactor = WatchlistInteractor()
     let presenter = WatchlistPresenter()
     let router = WatchlistRouter()
+    let worker = WatchlistWorker()
     viewController.interactor = interactor
     viewController.router = router
     interactor.presenter = presenter
+    interactor.worker = worker
     presenter.viewController = viewController
     router.viewController = viewController
     router.dataStore = interactor
@@ -119,6 +125,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     setupViews()
     setupConstraints()
     doSomething()
+    loadFavorite()
   }
   
   private func setupViews() {
@@ -191,9 +198,25 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     interactor?.doSomething(request: request)
   }
   
+  func loadFavorite() {
+    interactor?.fetchFavorite()
+  }
+  
   func displaySomething(viewModel: Watchlist.Something.ViewModel) {
     currencies = viewModel.currencies
     watchTable.reloadData()
+  }
+  
+  func displayFavorite(viewModel: Watchlist.Favorite.ViewModel) {
+    chart.load(coinID: viewModel.id, time: .h24)
+  }
+  
+  func displayNoFavorite() {
+    chart.noCoin()
+  }
+  
+  func displayNoWatchlist() {
+    //TODO: no watchlist
   }
 }
 
@@ -219,5 +242,19 @@ extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     openDetails(indexPath.row)
+  }
+}
+
+extension WatchlistViewController: CurrencyChartDelegate {
+  func onChooseFavorite() {
+    let favorites = CurrenciesViewController(version: .favorite)
+    favorites.favoritePickerDelegate = self
+    self.navigationController?.pushViewController(favorites, animated: true)
+  }
+}
+
+extension WatchlistViewController: OnPickFavoriteDelegate {
+  func onPickedFavorite() {
+    interactor?.fetchFavorite()
   }
 }

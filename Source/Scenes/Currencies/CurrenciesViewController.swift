@@ -12,6 +12,10 @@
 
 import UIKit
 
+protocol OnPickFavoriteDelegate: class {
+  func onPickedFavorite()
+}
+
 protocol CurrenciesDisplayLogic: class {
   func displaySomething(viewModel: Currencies.FetchCoins.ViewModel)
   func displayNext(viewModel: Currencies.LoadNext.ViewModel)
@@ -19,6 +23,10 @@ protocol CurrenciesDisplayLogic: class {
 }
 
 class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
+  enum Version {
+    case list
+    case favorite
+  }
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
@@ -27,13 +35,20 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   var interactor: CurrenciesBusinessLogic?
   var router: (NSObjectProtocol & CurrenciesRoutingLogic & CurrenciesDataPassing)?
   
+  weak var favoritePickerDelegate: OnPickFavoriteDelegate?
+  private let version: Version
   private var currencies: [CRCoin]?
   private var loadingNext = false
   private var loadAll = false
   
   private lazy var navigationView: UIView = {
     let factory = WidgetFactory()
-    return factory.navigationView(title: "Currencies", color: .white)
+    switch version {
+    case .list:
+      return factory.navigationView(title: "Currencies", color: .white)
+    case .favorite:
+      return factory.navigationViewWithBack(title: "Pick favorite", color: .white)
+    }
   }()
   
   private lazy var headerForCurrenciesList: UIView = {
@@ -75,13 +90,21 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   }()
 
   // MARK: Object lifecycle
+  
+  init(version: Version) {
+    self.version = version
+    super.init(nibName: nil, bundle: nil)
+    setup()
+  }
 
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    self.version = .list
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     setup()
   }
 
   required init?(coder aDecoder: NSCoder) {
+    self.version = .list
     super.init(coder: aDecoder)
     setup()
   }
@@ -119,11 +142,22 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     
     router?.openDetails(currencyID: curr.id)
   }
+  
+  private func onPickFavorite(_ index: Int) {
+    guard let coin = currencies?[index] else {
+      return
+    }
+    
+    interactor?.setFavorite(id: coin.id, isFavorite: true)
+    favoritePickerDelegate?.onPickedFavorite()
+    self.navigationController?.popViewController(animated: true)
+  }
 
   // MARK: View lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    navigationController?.interactivePopGestureRecognizer?.delegate = self
     setupViews()
     setupConstraints()
     doSomething()
@@ -224,6 +258,13 @@ extension CurrenciesViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    openDetails(indexPath.row)
+    switch version {
+    case .list:
+      openDetails(indexPath.row)
+    case .favorite:
+      onPickFavorite(indexPath.row)
+    }
   }
 }
+
+extension CurrenciesViewController: UIGestureRecognizerDelegate {}

@@ -9,16 +9,34 @@
 import UIKit
 import Charts
 
+protocol CurrencyChartDelegate: class {
+  func onChooseFavorite()
+}
+
 class CurrencyChart: UIView {
-  
   enum Version {
     case favorite
     case details
   }
+  
+  weak var delegate: CurrencyChartDelegate?
+  
   private let version: Version
   private var gradientLayer: CAGradientLayer?
   
   private let cache = NSCache<NSString, AnyObject>()
+  
+  private var isButtonShowed = false
+  private lazy var chooseFavButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setTitle("Choose favorite", for: .normal)
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+    button.backgroundColor = UIColor(red: 40.0/255.0, green: 52.0/255.0, blue: 59.0/255.0, alpha: 1.0)
+    button.layer.cornerRadius = 10
+    button.addTarget(self, action: #selector(pickFavorite), for: .touchUpInside)
+    return button
+  }()
   
   private lazy var infoView: CurrencyChartInfoView = {
     let view = CurrencyChartInfoView()
@@ -55,6 +73,13 @@ class CurrencyChart: UIView {
     chart.backgroundColor = .clear
     chart.translatesAutoresizingMaskIntoConstraints = false
     chart.noDataText = "No history data"
+    
+    switch version {
+    case .details:
+      chart.noDataTextColor = .black
+    case .favorite:
+      chart.noDataTextColor = .white
+    }
     
     chart.delegate = self
     
@@ -99,6 +124,7 @@ class CurrencyChart: UIView {
     addSubview(chartView)
     addSubview(infoView)
     infoView.isHidden = true
+    
   }
   
   private func setupConstraints() {
@@ -134,15 +160,17 @@ class CurrencyChart: UIView {
   }
   
   func load(coinID: Int, time: CRTimeframe) {
+    if isButtonShowed {
+      chooseFavButton.removeFromSuperview()
+    }
     
     let key = "\(coinID)_\(time.value)"
-    
-    
     
     if let root = cache.object(forKey: key as NSString) as? CRRoot<CRDataHistory> {
       self.setChartData(prices: root.data.history)
     } else {
       let networkManager = CurrenciesNetworkManager()
+      networkManager.getCurrency(currID: <#T##Int#>, <#T##completion: (CRRoot<CRDataCoin>?, String?) -> Void##(CRRoot<CRDataCoin>?, String?) -> Void#>)
       networkManager.getHistory(currID: coinID, time: time) { root, error in
         if let error = error {
           print(error)
@@ -158,6 +186,17 @@ class CurrencyChart: UIView {
         }
       }
     }
+  }
+  
+  func noCoin() {
+    isButtonShowed = true
+    addSubview(chooseFavButton)
+    NSLayoutConstraint.activate([
+      chooseFavButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+      chooseFavButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+      chooseFavButton.widthAnchor.constraint(equalToConstant: 120),
+      chooseFavButton.heightAnchor.constraint(equalToConstant: 30)
+    ])
   }
   
   private func setChartData(prices: [CRPrice]) {
@@ -186,7 +225,7 @@ class CurrencyChart: UIView {
                             UIColor.clear.cgColor] as CFArray
       
     case .favorite:
-      color = NSUIColor(red: 29.0/255.0, green: 231.0/255.0, blue: 185.0/255.0, alpha: 1.0)
+      color = NSUIColor(red: 29.0/255.0, green: 200.0/255.0, blue: 229.0/255.0, alpha: 1.0)
       gradientColors = [UIColor(red: 29.0/255.0, green: 231.0/255.0, blue: 185.0/255.0, alpha: 1.0).cgColor,
                         UIColor.clear.cgColor] as CFArray
     }
@@ -206,6 +245,10 @@ class CurrencyChart: UIView {
     let chartData = LineChartData(dataSet: chartDataSet)
     chartView.data = chartData
     chartView.animate(xAxisDuration: 2)
+  }
+  
+  @objc private func pickFavorite() {
+    delegate?.onChooseFavorite()
   }
 }
 

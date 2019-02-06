@@ -26,4 +26,13 @@ enum Watchlist {
       let currencies: [CRCoin]
     }
   }
+  
+  enum Favorite {
+    struct Response {
+      let id: Int
+    }
+    struct ViewModel {
+      let id: Int
+    }
+  }
 }
