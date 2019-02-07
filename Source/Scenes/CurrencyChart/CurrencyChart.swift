@@ -273,12 +273,7 @@ class CurrencyChart: UIView {
   
   private func setCoinData(coin: CRCoin) {
     nameLabel.text = coin.name
-    
-    var priceValue = "null"
-    if let price = coin.priceValue {
-      priceValue = CurrencyConverter.convertLong(price)
-    }
-    priceLabel.text = priceValue
+    priceLabel.text = coin.priceStrLong
     
     if let percent = coin.change {
       if percent < 0 {

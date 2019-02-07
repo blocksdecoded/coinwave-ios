@@ -11,10 +11,13 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol CurrencyDetailsDisplayLogic: class {
   func displaySomething(viewModel: CurrencyDetails.Something.ViewModel)
   func changeFavorites(viewModel: CurrencyDetails.AddFavorite.ViewModel)
+  func openCoinWebsite(site: String)
+  func openNoCoinWebsite()
 }
 
 class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLogic {
@@ -60,9 +63,9 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     let todayBtn = getButton(title: "Today", tag: todayBtnTag, isSelected: true)
     tmpButton = todayBtn
     let stack = UIStackView(arrangedSubviews: [todayBtn,
-                                   getButton(title: "1W", tag: weekBtnTag, isSelected: false),
-                                   getButton(title: "1M", tag: monthBtnTag, isSelected: false),
-                                   getButton(title: "1Y", tag: yearBtnTag, isSelected: false),
+                                   getButton(title: "Week", tag: weekBtnTag, isSelected: false),
+                                   getButton(title: "Month", tag: monthBtnTag, isSelected: false),
+                                   getButton(title: "Year", tag: yearBtnTag, isSelected: false),
                                    getButton(title: "All", tag: year5BtnTag, isSelected: false)])
     stack.translatesAutoresizingMaskIntoConstraints = false
     stack.axis = .horizontal
@@ -90,6 +93,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     table.delegate = self
     table.separatorStyle = .none
     table.register(CurrencyDetailsCell.self, forCellReuseIdentifier: CurrencyDetailsCell.reuseID)
+    table.register(CurrencyDetailsBottomCell.self, forCellReuseIdentifier: CurrencyDetailsBottomCell.reuseID)
     return table
   }()
   
@@ -256,6 +260,23 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     favoriteBtn.setImage(UIImage(named: isFilledStar ? "filled_star" : "empty_star"), for: .normal)
   }
   
+  func openCoinWebsite(site: String) {
+    if let url = URL(string: site) {
+      let webVC = SFSafariViewController(url: url)
+      webVC.delegate = self
+      present(webVC, animated: true, completion: nil)
+    }
+  }
+  
+  func openNoCoinWebsite() {
+    let alert = UIAlertController(title: "No website", message: nil, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+      alert.dismiss(animated: true, completion: nil)
+    })
+    alert.addAction(okAction)
+    present(alert, animated: true, completion: nil)
+  }
+  
   @objc private func addFavorite() {
     let request = CurrencyDetails.AddFavorite.Request(saveCurrency: saveCurrency ?? SaveCurrency(id: currencyID,
                                                                                                  isWatchlist: false,
@@ -287,23 +308,51 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
 }
 
 extension CurrencyDetailsViewController: UITableViewDelegate, UITableViewDataSource {
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return info?.count ?? 0
+    if section == 0 {
+      return info?.count ?? 0
+    }
+    return 1
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyDetailsCell.reuseID) as? CurrencyDetailsCell
-      else {
-      fatalError("\(CurrencyDetailsCell.self) not registered")
+    if indexPath.section == 0 {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyDetailsCell.reuseID) as? CurrencyDetailsCell
+        else {
+        fatalError("\(CurrencyDetailsCell.self) not registered")
+      }
+      
+      guard let info = info?[indexPath.row] else {
+        fatalError("No info for \(indexPath.row)")
+      }
+      
+      cell.onBind(info)
+      
+      return cell
+    } else {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyDetailsBottomCell.reuseID) as? CurrencyDetailsBottomCell
+        else {
+          fatalError("\(CurrencyDetailsBottomCell.self) not registered")
+      }
+      cell.delegate = self
+      return cell
     }
-    
-    guard let info = info?[indexPath.row] else {
-      fatalError("No info for \(indexPath.row)")
-    }
-    
-    cell.onBind(info)
-    
-    return cell
+  }
+}
+
+extension CurrencyDetailsViewController: CurrencyDetailsBottomCellDelegate {
+  func onOpenWebSite() {
+    interactor?.onOpenWeb()
+  }
+}
+
+extension CurrencyDetailsViewController: SFSafariViewControllerDelegate {
+  func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+    dismiss(animated: true, completion: nil)
   }
 }
 

@@ -15,65 +15,48 @@ import UIKit
 protocol CurrencyDetailsPresentationLogic {
   func presentSomething(response: CurrencyDetails.Something.Response)
   func favorites(response: CurrencyDetails.AddFavorite.Response)
+  func presentWebsite()
 }
 
 class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
   weak var viewController: CurrencyDetailsDisplayLogic?
+  var coinSite: String?
   
   // MARK: Do something
   
   func presentSomething(response: CurrencyDetails.Something.Response) {
     var currInfo = [CurrencyDetails.Something.ViewModel.Info]()
-    
-    var priceValue = "null"
-    if let price = response.curr.priceValue {
-      priceValue = CurrencyConverter.convertLong(price)
-    }
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Price:",
-                                                             value: priceValue))
-    
-    var marketCapValue = "null"
-    if let marketCap = response.curr.marketCap {
-      marketCapValue = CurrencyConverter.convertLong(marketCap)
-    }
+                                                             value: response.curr.priceStrLong, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Market Cap:",
-                                                             value: marketCapValue))
-    
-    var volumeValue = "null"
-    if let volume = response.curr.volume {
-      volumeValue = CurrencyConverter.convertLong(volume)
-    }
+                                                             value: response.curr.marketCapStrLong, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Volume 24h:",
-                                                             value: volumeValue))
-    
-    var circulatingSupplyValue = "null"
-    if let circulatingSupply = response.curr.circulatingSupply {
-      circulatingSupplyValue = CurrencyConverter.convertLong(circulatingSupply)
-    }
+                                                             value: response.curr.volumeStrLong, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Available supply:",
-                                                             value: circulatingSupplyValue))
-    
-    var totalSupplyValue = "null"
-    if let totalSupply = response.curr.totalSupply {
-      totalSupplyValue = CurrencyConverter.convertLong(totalSupply)
-    }
+                                                             value: response.curr.circulatingSupplyStrLong, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Total supply:",
-                                                             value: totalSupplyValue))
-    
-    var changeValue = "null"
-    if let change = response.curr.change {
-      changeValue = "\(change)"
-    }
-    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change:", value: changeValue))
+                                                             value: response.curr.totalSupplyStrLong, valueColor: nil))
+    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change:",
+                                                             value: response.curr.changeStr, valueColor: response.curr.changeColor))
 
     let viewModel = CurrencyDetails.Something.ViewModel(title: "\(response.curr.name) \(response.curr.symbol)",
                                                         saveCurrency: response.saveCurr,
                                                         info: currInfo)
     viewController?.displaySomething(viewModel: viewModel)
+    
+    coinSite = response.curr.websiteUrl
   }
   
   func favorites(response: CurrencyDetails.AddFavorite.Response) {
     viewController?.changeFavorites(viewModel: CurrencyDetails.AddFavorite
       .ViewModel(saveCurrency: response.saveCurrency))
+  }
+  
+  func presentWebsite() {
+    if coinSite != nil {
+      viewController?.openCoinWebsite(site: coinSite!)
+    } else {
+      viewController?.openNoCoinWebsite()
+    }
   }
 }

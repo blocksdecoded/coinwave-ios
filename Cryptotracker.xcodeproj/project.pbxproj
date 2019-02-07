@@ -263,6 +263,9 @@
 		B5F5BFA721A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F5BFA821A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F5BFA921A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
+		B5FCEA88220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */; };
+		B5FCEA89220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */; };
+		B5FCEA8A220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */; };
 		C07B6C3481306E5A4E4462D0 /* Pods_StagingCryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084EF5BB3FCB474B5135431A /* Pods_StagingCryptotracker.framework */; };
 		C0CE4935DE67B38D9BD096C9 /* Pods_Cryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D2C2A8FD287D294CF24F89F /* Pods_Cryptotracker.framework */; };
 /* End PBXBuildFile section */
@@ -365,6 +368,7 @@
 		B5F046EE2207EFA5007B7C0D /* CurrencyChartInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChartInfoView.swift; sourceTree = "<group>"; };
 		B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataCoin.swift; sourceTree = "<group>"; };
 		B5F5BFA621A426680012599B /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
+		B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsBottomCell.swift; sourceTree = "<group>"; };
 		BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B2530050E251A72770FCB3 /* Pods_DebugCryptotracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugCryptotracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -431,6 +435,7 @@
 				B501298621A94BC0001B6A04 /* CurrencyDetailsViewController.swift */,
 				B501298721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift */,
 				B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */,
+				B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */,
 			);
 			path = CurrencyDetails;
 			sourceTree = "<group>";
@@ -1096,6 +1101,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5FCEA88220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */,
 				B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */,
 				B5E93D4621A6E64200D1705A /* DataStore.swift in Sources */,
 				B501297821A940DA001B6A04 /* WatchlistModels.swift in Sources */,
@@ -1184,6 +1190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5FCEA89220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */,
 				B572E9402202AD4F00778DA8 /* CRRoot.swift in Sources */,
 				B5276B7E21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
 				B501297921A940DA001B6A04 /* WatchlistModels.swift in Sources */,
@@ -1272,6 +1279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5FCEA8A220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */,
 				B572E9412202AD4F00778DA8 /* CRRoot.swift in Sources */,
 				B5276B7F21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
 				B501297A21A940DA001B6A04 /* WatchlistModels.swift in Sources */,

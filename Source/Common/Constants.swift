@@ -16,6 +16,7 @@ struct Constants {
   struct Colors {
     static let currencyUp = UIColor(red: 29.0/255.0, green: 227.0/255.0, blue: 191.0/255.0, alpha: 1.0)
     static let currencyDown = UIColor(red: 244.0/255.0, green: 66.0/255.0, blue: 54.0/255.0, alpha: 1.0)
+    static let def = UIColor(red: 170.0/255.0, green: 174.0/255.0, blue: 179.0/255.0, alpha: 1.0)
   }
   
   //swiftlint:disable identifier_name

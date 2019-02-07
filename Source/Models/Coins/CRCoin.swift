@@ -6,6 +6,7 @@
 //  Copyright © 2019 makeuseof. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 struct CRCoin: Decodable {
@@ -77,6 +78,92 @@ extension CRCoin {
       return nil
     }
     return Double(price)
+  }
+  
+  var priceStrShort: String {
+    var str = "null"
+    if let price = priceValue {
+      str = CurrencyConverter.convertShort(price)
+    }
+    return str
+  }
+  
+  var priceStrLong: String {
+    var str = "null"
+    if let price = priceValue {
+      str = CurrencyConverter.convertLong(price)
+    }
+    return str
+  }
+  
+  var marketCapStrShort: String {
+    var str = "null"
+    if let marketCap = marketCap {
+      str = CurrencyConverter.convertShort(marketCap)
+    }
+    return str
+  }
+  
+  var marketCapStrLong: String {
+    var str = "null"
+    if let marketCap = marketCap {
+      str = CurrencyConverter.convertLong(marketCap)
+    }
+    return str
+  }
+  
+  var volumeStrShort: String {
+    var str = "null"
+    if let volume = volume {
+      str = CurrencyConverter.convertShort(volume)
+    }
+    return str
+  }
+  
+  var volumeStrLong: String {
+    var str = "null"
+    if let volume = volume {
+      str = CurrencyConverter.convertLong(volume)
+    }
+    return str
+  }
+  
+  var circulatingSupplyStrLong: String {
+    var str = "null"
+    if let value = circulatingSupply {
+      str = CurrencyConverter.convertLong(value)
+    }
+    return str
+  }
+  
+  var totalSupplyStrLong: String {
+    var str = "null"
+    if let value = totalSupply {
+      str = CurrencyConverter.convertLong(value)
+    }
+    return str
+  }
+  
+  var changeStr: String {
+    var str = "null"
+    if let value = change {
+      if value < 0 {
+        str = "\(value)%"
+      } else {
+        str = "+\(value)%"
+      }
+    }
+    return str
+  }
+  
+  var changeColor: UIColor {
+    if let value = change {
+      if value < 0 {
+        return Constants.Colors.currencyDown
+      }
+      return Constants.Colors.currencyUp
+    }
+    return Constants.Colors.def
   }
   
   var iconUrlEncoded: String? {

@@ -26,7 +26,6 @@ class CurrencyDetailsCell: UITableViewCell {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.font = UIFont.systemFont(ofSize: 12) //TODO: Change to avenir book
-    label.textColor = UIColor(red: 170.0/255.0, green: 174.0/255.0, blue: 179.0/255.0, alpha: 1.0)
     label.textAlignment = .right
     return label
   }()
@@ -71,5 +70,6 @@ class CurrencyDetailsCell: UITableViewCell {
   func onBind(_ info: CurrencyDetails.Something.ViewModel.Info) {
     nameLbl.text = info.name
     valueLbl.text = info.value
+    valueLbl.textColor = info.valueColor ?? Constants.Colors.def
   }
 }

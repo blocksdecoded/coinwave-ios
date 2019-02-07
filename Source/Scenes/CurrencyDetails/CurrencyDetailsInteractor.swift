@@ -15,6 +15,7 @@ import UIKit
 protocol CurrencyDetailsBusinessLogic {
   func doSomething(request: CurrencyDetails.Something.Request)
   func addToFavorites(request: CurrencyDetails.AddFavorite.Request)
+  func onOpenWeb()
 }
 
 protocol CurrencyDetailsDataStore {
@@ -48,5 +49,9 @@ class CurrencyDetailsInteractor: CurrencyDetailsBusinessLogic, CurrencyDetailsDa
     worker?.addToFavorites(curr)
     let response = CurrencyDetails.AddFavorite.Response(saveCurrency: curr)
     self.presenter?.favorites(response: response)
+  }
+  
+  func onOpenWeb() {
+    presenter?.presentWebsite()
   }
 }

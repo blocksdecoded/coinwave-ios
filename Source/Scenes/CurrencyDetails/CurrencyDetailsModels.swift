@@ -45,6 +45,7 @@ enum CurrencyDetails {
       struct Info {
         let name: String
         let value: String
+        let valueColor: UIColor?
       }
     }
   }

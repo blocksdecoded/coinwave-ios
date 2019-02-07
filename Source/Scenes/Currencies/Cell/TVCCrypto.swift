@@ -82,35 +82,20 @@ class TVCCrypto: UITableViewCell {
   func onBind(_ crypto: CRCoin, isTop: Bool) {
     topSeparatorHeight.constant = isTop ? 1 : 0.5
     name.text = crypto.symbol
-    
-    var marketCapValue = "null"
-    if let marketCap = crypto.marketCap {
-      marketCapValue = CurrencyConverter.convertShort(marketCap)
-    }
-    marketCap.text = marketCapValue
-    
-    var volumeValue = "null"
-    if let volume = crypto.volume {
-      volumeValue = CurrencyConverter.convertShort(volume)
-    }
-    volume.text = volumeValue
-    
-    var priceValue = "null"
-    if let price = crypto.priceValue {
-      priceValue = CurrencyConverter.convertShort(price)
-    }
-    price.text = priceValue
+    marketCap.text = crypto.marketCapStrShort
+    volume.text = crypto.volumeStrShort
+    price.text = crypto.priceStrShort
     
     if let percent = crypto.change {
       if percent < 0 {
         price.textColor = Constants.Colors.currencyDown
         pricePercent.textColor = Constants.Colors.currencyDown
-        pricePercent.text = "\(percent)%"
+        pricePercent.text = crypto.changeStr
         priceUpDownIcon.image = UIImage(named: "curr_arrow_down")
       } else {
         price.textColor = Constants.Colors.currencyUp
         pricePercent.textColor = Constants.Colors.currencyUp
-        pricePercent.text = "+\(percent)%"
+        pricePercent.text = crypto.changeStr
         priceUpDownIcon.image = UIImage(named: "curr_arrow_up")
       }
     } else {
