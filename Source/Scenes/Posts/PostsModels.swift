@@ -32,6 +32,7 @@ enum Posts {
         let title: String
         let image: FeaturedImage?
         let date: String
+        let url: String
       }
       var displayedPosts: [DisplayedPost]
     }

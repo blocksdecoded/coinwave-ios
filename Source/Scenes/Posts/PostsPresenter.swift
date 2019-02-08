@@ -22,7 +22,7 @@ class PostsPresenter: PostsPresentationLogic {
   
   func presentPosts(response: Posts.FetchPosts.Response) {
     let displayedPosts = response.posts.map {
-      Posts.FetchPosts.ViewModel.DisplayedPost(id: $0.id, title: $0.title, image: $0.image, date: $0.date)
+      Posts.FetchPosts.ViewModel.DisplayedPost(id: $0.id, title: $0.title, image: $0.image, date: $0.date, url: $0.url)
     }
     let viewModel = Posts.FetchPosts.ViewModel(displayedPosts: displayedPosts)
     viewController?.displayPosts(viewModel: viewModel)
@@ -30,7 +30,7 @@ class PostsPresenter: PostsPresentationLogic {
   
   func presentNextPosts(response: Posts.FetchPosts.Response) {
     let displayedPosts = response.posts.map {
-      Posts.FetchPosts.ViewModel.DisplayedPost(id: $0.id, title: $0.title, image: $0.image, date: $0.date)
+      Posts.FetchPosts.ViewModel.DisplayedPost(id: $0.id, title: $0.title, image: $0.image, date: $0.date, url: $0.url)
     }
     let viewModel = Posts.FetchPosts.ViewModel(displayedPosts: displayedPosts)
     viewController?.displayNextPosts(viewModel: viewModel)

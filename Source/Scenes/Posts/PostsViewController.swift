@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol PostsDisplayLogic: class {
   func displayPosts(viewModel: Posts.FetchPosts.ViewModel)
@@ -86,7 +87,11 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   // MARK: Routing
   
   private func openPost(index: Int) {
-    router?.navigateToPostPreview(source: self, destination: PostPreviewViewController(postID: posts![index].id))
+    if let url = URL(string: posts![index].url) {
+      let webVC = SFSafariViewController(url: url)
+      webVC.delegate = self
+      present(webVC, animated: true, completion: nil)
+    }
   }
   
   // MARK: View lifecycle
@@ -167,5 +172,11 @@ extension PostsViewController: UICollectionViewDelegateFlowLayout & UICollection
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     openPost(index: indexPath.row)
+  }
+}
+
+extension PostsViewController: SFSafariViewControllerDelegate {
+  func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+    dismiss(animated: true, completion: nil)
   }
 }
