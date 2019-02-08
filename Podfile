@@ -9,6 +9,7 @@ def sharedPods
   pod 'SQLite.swift'
   pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '3.x'
   pod 'Charts'
+  pod 'SideMenu'
 end
 
 target 'Cryptotracker' do

@@ -11,6 +11,9 @@ import UIKit
 struct Constants {
   struct Fonts {
     static let heavy = "SFUIDisplay-Heavy"
+    static let regular = ""
+    static let bold = ""
+    static let light = "SFProText-Light"
   }
   
   struct Colors {

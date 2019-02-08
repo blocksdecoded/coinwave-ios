@@ -9,6 +9,7 @@ PODS:
   - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
   - Kingfisher (4.10.1)
+  - SideMenu (5.0.3)
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
@@ -18,6 +19,7 @@ PODS:
 DEPENDENCIES:
   - Charts
   - Kingfisher (= 4.10.1)
+  - SideMenu
   - SQLite.swift
   - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `3.x`)
 
@@ -26,6 +28,7 @@ SPEC REPOS:
     - Charts
     - CocoaLumberjack
     - Kingfisher
+    - SideMenu
     - SQLite.swift
 
 EXTERNAL SOURCES:
@@ -42,9 +45,10 @@ SPEC CHECKSUMS:
   Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SVGKit: 8a2fc74258bdb2abb54d3b65f3dd68b0277a9c4d
 
-PODFILE CHECKSUM: a00a01b35cdc68dcd3accc703a7c5643832649b0
+PODFILE CHECKSUM: 7abe211a6b3dd2dff3e9f0125606b8a64e7f52b4
 
 COCOAPODS: 1.5.3

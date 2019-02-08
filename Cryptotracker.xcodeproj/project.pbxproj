@@ -266,6 +266,12 @@
 		B5FCEA88220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */; };
 		B5FCEA89220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */; };
 		B5FCEA8A220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */; };
+		B5FCEA8C220D6B4200E4B433 /* VCMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */; };
+		B5FCEA8D220D6B4200E4B433 /* VCMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */; };
+		B5FCEA8E220D6B4200E4B433 /* VCMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */; };
+		B5FCEA90220D900800E4B433 /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */; };
+		B5FCEA91220D900800E4B433 /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */; };
+		B5FCEA92220D900800E4B433 /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */; };
 		C07B6C3481306E5A4E4462D0 /* Pods_StagingCryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084EF5BB3FCB474B5135431A /* Pods_StagingCryptotracker.framework */; };
 		C0CE4935DE67B38D9BD096C9 /* Pods_Cryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D2C2A8FD287D294CF24F89F /* Pods_Cryptotracker.framework */; };
 /* End PBXBuildFile section */
@@ -369,6 +375,8 @@
 		B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataCoin.swift; sourceTree = "<group>"; };
 		B5F5BFA621A426680012599B /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsBottomCell.swift; sourceTree = "<group>"; };
+		B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCMenu.swift; sourceTree = "<group>"; };
+		B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Light.otf"; sourceTree = "<group>"; };
 		BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B2530050E251A72770FCB3 /* Pods_DebugCryptotracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugCryptotracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -653,6 +661,7 @@
 		B5E93CF421A6A41200D1705A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */,
 				B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */,
 			);
 			path = Fonts;
@@ -701,6 +710,7 @@
 			isa = PBXGroup;
 			children = (
 				B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */,
+				B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -880,6 +890,7 @@
 				B5276AB821A00F5A000A74A5 /* LaunchScreen.storyboard in Resources */,
 				B5E93CF621A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AB521A00F5A000A74A5 /* Assets.xcassets in Resources */,
+				B5FCEA90220D900800E4B433 /* SFProText-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,6 +902,7 @@
 				B5276AC621A00F9F000A74A5 /* LaunchScreen.storyboard in Resources */,
 				B5E93CF721A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AC721A00F9F000A74A5 /* Assets.xcassets in Resources */,
+				B5FCEA91220D900800E4B433 /* SFProText-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,6 +914,7 @@
 				B5276AD421A00FAC000A74A5 /* LaunchScreen.storyboard in Resources */,
 				B5E93CF821A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AD521A00FAC000A74A5 /* Assets.xcassets in Resources */,
+				B5FCEA92220D900800E4B433 /* SFProText-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +935,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -932,6 +946,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -952,6 +967,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -962,6 +978,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -982,6 +999,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -992,6 +1010,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1155,6 +1174,7 @@
 				B501299C21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
 				B5E93D3A21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
 				B5F5BFA721A426680012599B /* PostsCell.swift in Sources */,
+				B5FCEA8C220D6B4200E4B433 /* VCMenu.swift in Sources */,
 				B50129A521A96974001B6A04 /* SaveCurrency.swift in Sources */,
 				B5E93D3E21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
 				B501297E21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
@@ -1244,6 +1264,7 @@
 				B501299D21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
 				B5276B6421A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276B7A21A2A313000A74A5 /* HTTPMethod.swift in Sources */,
+				B5FCEA8D220D6B4200E4B433 /* VCMenu.swift in Sources */,
 				B50129A621A96974001B6A04 /* SaveCurrency.swift in Sources */,
 				B5276B4E21A28183000A74A5 /* PostsWorker.swift in Sources */,
 				B501297F21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
@@ -1333,6 +1354,7 @@
 				B501299E21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
 				B5276B6521A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276B7B21A2A313000A74A5 /* HTTPMethod.swift in Sources */,
+				B5FCEA8E220D6B4200E4B433 /* VCMenu.swift in Sources */,
 				B50129A721A96974001B6A04 /* SaveCurrency.swift in Sources */,
 				B5276B4F21A28183000A74A5 /* PostsWorker.swift in Sources */,
 				B501298021A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
