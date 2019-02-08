@@ -75,19 +75,21 @@ extension MainTabBarController: MenuDelegate {
   }
   
   func secondClicked() {
-    
+    selectedIndex = 1
   }
   
   func thirdClicked() {
-    
+    //Share
+
   }
   
   func fourthClicked() {
+    //Rate
     
   }
   
   func fifthClicked() {
-    
+    //Contact
   }
 }
 

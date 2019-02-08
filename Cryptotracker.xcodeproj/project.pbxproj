@@ -275,6 +275,9 @@
 		B5FCEA94220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */; };
 		B5FCEA95220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */; };
 		B5FCEA96220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */; };
+		B5FCEA98220DB0C400E4B433 /* SEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA97220DB0C400E4B433 /* SEmail.swift */; };
+		B5FCEA99220DB0C400E4B433 /* SEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA97220DB0C400E4B433 /* SEmail.swift */; };
+		B5FCEA9A220DB0C400E4B433 /* SEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA97220DB0C400E4B433 /* SEmail.swift */; };
 		C07B6C3481306E5A4E4462D0 /* Pods_StagingCryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084EF5BB3FCB474B5135431A /* Pods_StagingCryptotracker.framework */; };
 		C0CE4935DE67B38D9BD096C9 /* Pods_Cryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D2C2A8FD287D294CF24F89F /* Pods_Cryptotracker.framework */; };
 /* End PBXBuildFile section */
@@ -381,6 +384,7 @@
 		B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCMenu.swift; sourceTree = "<group>"; };
 		B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Light.otf"; sourceTree = "<group>"; };
 		B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		B5FCEA97220DB0C400E4B433 /* SEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEmail.swift; sourceTree = "<group>"; };
 		BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B2530050E251A72770FCB3 /* Pods_DebugCryptotracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugCryptotracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -651,6 +655,7 @@
 				B5E93CEF21A6A3AE00D1705A /* Constants.swift */,
 				B501296421A91F3E001B6A04 /* CurrencyConverter.swift */,
 				B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */,
+				B5FCEA97220DB0C400E4B433 /* SEmail.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1207,6 +1212,7 @@
 				B5E93D0021A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
 				B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 				B572E94B2202AFDF00778DA8 /* CRBase.swift in Sources */,
+				B5FCEA98220DB0C400E4B433 /* SEmail.swift in Sources */,
 				B501299421A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
 				B5276B7521A2A2FD000A74A5 /* EndPointType.swift in Sources */,
 			);
@@ -1298,6 +1304,7 @@
 				B5E93D7621A827D600D1705A /* CurrenciesRouter.swift in Sources */,
 				B5276B6021A29DD9000A74A5 /* Post.swift in Sources */,
 				B572E94C2202AFDF00778DA8 /* CRBase.swift in Sources */,
+				B5FCEA99220DB0C400E4B433 /* SEmail.swift in Sources */,
 				B501299521A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
 				B5E93D4321A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
 			);
@@ -1389,6 +1396,7 @@
 				B5E93D7C21A827D700D1705A /* CurrenciesRouter.swift in Sources */,
 				B5276B6121A29DD9000A74A5 /* Post.swift in Sources */,
 				B572E94D2202AFDF00778DA8 /* CRBase.swift in Sources */,
+				B5FCEA9A220DB0C400E4B433 /* SEmail.swift in Sources */,
 				B501299621A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
 				B5E93D4421A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
 			);

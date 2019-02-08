@@ -97,8 +97,13 @@ class CurrencySaveDataHelper: DataHelperProtocol {
     try db.run(prevUpdate)
     
     let coin = table.filter(currID == Int64(id))
-    let update = coin.update([currFavorite <- isFavorite])
-    try db.run(update)
+    let count = try db.scalar(coin.count)
+    if count > 0 {
+      let update = coin.update([currFavorite <- isFavorite])
+      try db.run(update)
+    } else {
+      try insert(item: SaveCurrency(id: id, isWatchlist: false, isFavorite: true))
+    }
   }
   
   static func find(id: Int64) throws -> SaveCurrency? {
@@ -132,7 +137,7 @@ class CurrencySaveDataHelper: DataHelperProtocol {
       throw DataAccessError.datastoreConnection
     }
     
-    let items = try db.prepare(table.filter(currWatchlist == true && currFavorite == false).select(currID))
+    let items = try db.prepare(table.filter(currWatchlist == true).select(currID))
     
     var result = [Int64]()
     for item in items {
@@ -146,7 +151,7 @@ class CurrencySaveDataHelper: DataHelperProtocol {
       throw DataAccessError.datastoreConnection
     }
     
-    let items = try db.prepare(table.filter(currWatchlist == true && currFavorite == false))
+    let items = try db.prepare(table.filter(currWatchlist == true))
     
     var result = [SaveCurrency]()
     for item in items {
