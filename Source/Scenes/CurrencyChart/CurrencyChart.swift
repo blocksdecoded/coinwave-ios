@@ -24,6 +24,10 @@ class CurrencyChart: UIView {
   private let version: Version
   private var gradientLayer: CAGradientLayer?
   
+  private var isShowStart = false
+  private var isShowDone = false
+  private var hideTimer: Timer?
+  
   private let cache = NSCache<NSString, AnyObject>()
   
   private var isButtonShowed = false
@@ -154,6 +158,7 @@ class CurrencyChart: UIView {
     addSubview(infoView)
     
     infoView.isHidden = true
+    infoView.alpha = 0
   }
   
   private func setupConstraints() {
@@ -339,7 +344,44 @@ class CurrencyChart: UIView {
 
 extension CurrencyChart: ChartViewDelegate {
   func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-    infoView.isHidden = false
     infoView.setInfo(price: entry.y, timestamp: entry.x)
+    if isShowDone {
+      hideInfo()
+    } else {
+      if !isShowStart {
+        isShowStart = true
+        infoView.isHidden = false
+        showInfo()
+      }
+    }
+  }
+  
+  private func hideInfo() {
+    if hideTimer != nil {
+      hideTimer?.invalidate()
+      hideTimer = nil
+    }
+    
+    hideTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { timer in
+      UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+        self.infoView.alpha = 0
+      }, completion: { _ in
+        self.infoView.alpha = 0
+        self.infoView.isHidden = true
+        self.isShowDone = false
+      })
+      timer.invalidate()
+    })
+  }
+  
+  private func showInfo() {
+    UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+      self.infoView.alpha = 1
+    }, completion: { _ in
+      self.infoView.alpha = 1
+      self.isShowDone = true
+      self.isShowStart = false
+      self.hideInfo()
+    })
   }
 }
