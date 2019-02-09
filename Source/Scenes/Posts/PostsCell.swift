@@ -9,10 +9,16 @@
 import UIKit
 import Kingfisher
 
+protocol PostsCellDelegate: class {
+  func onReadMore(_ cell: PostsCell)
+}
+
 class PostsCell: UICollectionViewCell {
   static var reuseID: String {
     return String(describing: self)
   }
+  
+  weak var delegate: PostsCellDelegate?
   
   private let readBtnWidth: CGFloat = 100
   private let readBtnHeight: CGFloat = 40
@@ -53,6 +59,8 @@ class PostsCell: UICollectionViewCell {
   private lazy var readBtn: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
+    button.setImage(UIImage(named: "arrow_right")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    button.imageView?.tintColor = UIColor(red: 18.0/255.0, green: 23.0/255.0, blue: 28.0/255.0, alpha: 1.0)
     button.setTitle("Read more", for: .normal)
     button.titleLabel?.font = UIFont(name: Constants.Fonts.light, size: 10)
     button.setTitleColor(UIColor(red: 18.0/255.0, green: 23.0/255.0, blue: 28.0/255.0, alpha: 1.0), for: .normal)
@@ -69,6 +77,13 @@ class PostsCell: UICollectionViewCell {
     button.layer.insertSublayer(gradient, at: 0)
     
     button.layer.masksToBounds = true
+    
+    button.bringSubviewToFront(button.imageView!)
+    
+    button.semanticContentAttribute = UIApplication.shared
+      .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
+    
+    button.addTarget(self, action: #selector(readClicked), for: .touchUpInside)
     
     return button
   }()
@@ -154,5 +169,9 @@ class PostsCell: UICollectionViewCell {
     }
 
     postImage.kf.setImage(with: URL(string: imageUrl))
+  }
+  
+  @objc private func readClicked() {
+    delegate?.onReadMore(self)
   }
 }

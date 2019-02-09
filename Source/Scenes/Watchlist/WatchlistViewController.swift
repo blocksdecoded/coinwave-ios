@@ -97,6 +97,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     let table = UITableView()
     table.translatesAutoresizingMaskIntoConstraints = false
     table.backgroundColor = .clear
+    table.rowHeight = 60
     table.delegate = self
     table.dataSource = self
     table.register(TVCCrypto.create(), forCellReuseIdentifier: TVCCrypto.reuseID)
@@ -136,6 +137,12 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }
   
   // MARK: View lifecycle
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    let request = Watchlist.Something.Request()
+    interactor?.doSomething(request: request)
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()

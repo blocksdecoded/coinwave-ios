@@ -182,6 +182,7 @@ extension PostsViewController: UICollectionViewDelegateFlowLayout & UICollection
     if indexPath.row + 3 >= posts!.count - 1 {
       loadNextPosts()
     }
+    cell.delegate = self
     
     cell.onBind(post)
     
@@ -202,5 +203,15 @@ extension PostsViewController: UICollectionViewDelegateFlowLayout & UICollection
 extension PostsViewController: SFSafariViewControllerDelegate {
   func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
     dismiss(animated: true, completion: nil)
+  }
+}
+
+extension PostsViewController: PostsCellDelegate {
+  func onReadMore(_ cell: PostsCell) {
+    guard let index = postsList.indexPath(for: cell) else {
+      return
+    }
+    
+    openPost(index: index.row)
   }
 }
