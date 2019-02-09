@@ -94,7 +94,7 @@ class PostsCell: UICollectionViewCell {
   // MARK: Setup cell
   
   private func setup() {
-    backgroundColor = UIColor.white
+    contentView.backgroundColor = UIColor.darkRandom()
     setupViews()
     setupConstraints()
   }

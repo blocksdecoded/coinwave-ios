@@ -24,8 +24,8 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   
   var posts: [Posts.FetchPosts.ViewModel.DisplayedPost]?
   
-  override var prefersStatusBarHidden: Bool {
-    return true
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
 
   private lazy var postsList: UICollectionView = {
@@ -52,6 +52,11 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     setup()
   }
   
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    postsList.contentInset = UIEdgeInsets(top: -(view.safeAreaInsets.top), left: 0, bottom: 0, right: 0)
+  }
+  
   // MARK: Setup
   
   private func setup() {
@@ -75,7 +80,7 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   
   private func setupConstraints() {
     let postsTableC = [
-      postsList.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      postsList.topAnchor.constraint(equalTo: view.topAnchor),
       postsList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
       postsList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
       postsList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
