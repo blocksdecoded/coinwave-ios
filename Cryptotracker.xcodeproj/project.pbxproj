@@ -826,6 +826,7 @@
 				B5276AC521A00F9F000A74A5 /* Resources */,
 				B5276AFC21A01E75000A74A5 /* SwiftLint */,
 				1140D5DCFD36090EEB79F467 /* [CP] Embed Pods Frameworks */,
+				B5FCEA9B220DB76F00E4B433 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -1104,6 +1105,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		B5FCEA9B220DB76F00E4B433 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Fabric;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" a1913f7ef45473ccd9922c0a7ee2ee06690f81e1 83addb1810900c2c667ad287ef803bbda5cb0fe0205aca6e63e4e652907d1868\n";
 		};
 		D5DE15271E9E4ADFBBFD7F37 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1582,7 +1602,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDebug;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U4R65QQKZ7;
 				INFOPLIST_FILE = CryptotrackerDebug/Info.plist;
@@ -1590,7 +1610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.cryptotracker.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.coinchart.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1601,7 +1621,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A0CC2CCCAA2E062ED9822C81 /* Pods-DebugCryptotracker.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDebug;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U4R65QQKZ7;
 				INFOPLIST_FILE = CryptotrackerDebug/Info.plist;
@@ -1609,7 +1629,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.cryptotracker.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.coinchart.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

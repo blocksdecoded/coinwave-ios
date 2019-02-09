@@ -10,6 +10,8 @@ def sharedPods
   pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '3.x'
   pod 'Charts'
   pod 'SideMenu'
+  pod 'Fabric'
+  pod 'Crashlytics'
 end
 
 target 'Cryptotracker' do
