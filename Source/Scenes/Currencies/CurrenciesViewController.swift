@@ -32,6 +32,8 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     return .lightContent
   }
   
+  weak var sideMenuDelegate: SideMenuDelegate?
+  
   var interactor: CurrenciesBusinessLogic?
   var router: (NSObjectProtocol & CurrenciesRoutingLogic & CurrenciesDataPassing)?
   
@@ -41,14 +43,42 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   private var loadingNext = false
   private var loadAll = false
   
-  private lazy var navigationView: UIView = {
-    let factory = WidgetFactory()
+  private lazy var backButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setImage(UIImage(named: "left_arrow"), for: .normal)
+    button.contentHorizontalAlignment = .fill
+    button.contentVerticalAlignment = .fill
+    button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
+    return button
+  }()
+  
+  private lazy var menuBtn: BDHamburger = {
+    let button = BDHamburger.instance()
+    button.addTarget(self, action: #selector(menuClicked), for: .touchUpInside)
+    return button
+  }()
+  
+  private lazy var titleLbl: UILabel = {
+    let titleLabel = UILabel()
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    
     switch version {
     case .list:
-      return factory.navigationView(title: "Currencies", color: .white)
+      titleLabel.text = "Currencies"
     case .favorite:
-      return factory.navigationViewWithBack(title: "Pick favorite", color: .white)
+      titleLabel.text = "Pick favorite"
     }
+    
+    titleLabel.textColor = .white
+    titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+    return titleLabel
+  }()
+  
+  private lazy var navigationView: UIView = {
+    let view = UIView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
   }()
   
   private lazy var headerForCurrenciesList: UIView = {
@@ -166,6 +196,14 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   private func setupViews() {
     let factory = WidgetFactory()
     factory.setGradientTo(view: view)
+    
+    switch version {
+    case .list:
+      navigationView.addSubview(menuBtn)
+    case .favorite:
+      navigationView.addSubview(backButton)
+    }
+    navigationView.addSubview(titleLbl)
     view.addSubview(navigationView)
     view.addSubview(headerForCurrenciesList)
     view.addSubview(currenciesList)
@@ -177,7 +215,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       navigationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
       navigationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
       navigationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      navigationView.heightAnchor.constraint(equalToConstant: 50)
+      navigationView.heightAnchor.constraint(equalToConstant: 100)
     ]
     
     let headerForCurrenciesListC = [
@@ -195,6 +233,27 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     ]
     
     NSLayoutConstraint.activate(navigationViewC + headerForCurrenciesListC + currenciesListC)
+    
+    switch version {
+    case .list:
+      NSLayoutConstraint.activate([
+        menuBtn.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
+        menuBtn.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
+        menuBtn.widthAnchor.constraint(equalToConstant: 25),
+        menuBtn.heightAnchor.constraint(equalToConstant: 25),
+        titleLbl.leadingAnchor.constraint(equalTo: menuBtn.trailingAnchor, constant: 16),
+        titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
+      ])
+    case .favorite:
+      NSLayoutConstraint.activate([
+        backButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
+        backButton.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
+        backButton.widthAnchor.constraint(equalToConstant: 25),
+        backButton.heightAnchor.constraint(equalToConstant: 25),
+        titleLbl.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 16),
+        titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
+      ])
+    }
   }
 
   // MARK: Do something
@@ -230,6 +289,14 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   private func loadNext() {
     interactor?.loadNext()
+  }
+  
+  @objc private func menuClicked() {
+    sideMenuDelegate?.openMenu()
+  }
+  
+  @objc private func backClicked() {
+    navigationController?.popViewController(animated: true)
   }
 }
 

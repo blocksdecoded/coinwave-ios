@@ -19,6 +19,7 @@ protocol PostsDisplayLogic: class {
 }
 
 class PostsViewController: UIViewController, PostsDisplayLogic {
+  weak var sideMenuDelegate: SideMenuDelegate?
   var interactor: PostsBusinessLogic?
   var router: (NSObjectProtocol & PostsRoutingLogic & PostsDataPassing)?
   
@@ -27,6 +28,12 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
+  
+  private lazy var menuBtn: BDHamburger = {
+    let button = BDHamburger.instance()
+    button.addTarget(self, action: #selector(menuClicked), for: .touchUpInside)
+    return button
+  }()
 
   private lazy var postsList: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -76,6 +83,7 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     let factory = WidgetFactory()
     factory.setGradientTo(view: view)
     view.addSubview(postsList)
+    view.addSubview(menuBtn)
   }
   
   private func setupConstraints() {
@@ -86,7 +94,14 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
       postsList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
     ]
     
-    NSLayoutConstraint.activate(postsTableC)
+    let menuBtnC = [
+      menuBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      menuBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+      menuBtn.heightAnchor.constraint(equalToConstant: 25),
+      menuBtn.widthAnchor.constraint(equalToConstant: 25)
+    ]
+    
+    NSLayoutConstraint.activate(postsTableC + menuBtnC)
   }
   
   // MARK: Routing
@@ -142,6 +157,10 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     }
     
     interactor?.fetchNextPosts(request: Posts.FetchPosts.Request(date: post.date))
+  }
+  
+  @objc private func menuClicked() {
+    sideMenuDelegate?.openMenu()
   }
 }
 

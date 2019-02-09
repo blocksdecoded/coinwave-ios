@@ -25,13 +25,30 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     return .default
   }
   
+  weak var sideMenuDelegate: SideMenuDelegate?
+  
   var interactor: WatchlistBusinessLogic?
   var router: (NSObjectProtocol & WatchlistRoutingLogic & WatchlistDataPassing)?
   
   private lazy var navigationView: UIView = {
-    let factory = WidgetFactory()
-    return factory.navigationView(title: "Watchlist",
-                                  color: UIColor(red: 40.0/255.0, green: 51.0/255.0, blue: 59.0/255.0, alpha: 0.7))
+    let view = UIView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
+  private lazy var titleLbl: UILabel = {
+    let titleLabel = UILabel()
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    titleLabel.text = "Watchlist"
+    titleLabel.textColor = UIColor(red: 40.0/255.0, green: 51.0/255.0, blue: 59.0/255.0, alpha: 0.7)
+    titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+    return titleLabel
+  }()
+  
+  private lazy var menuBtn: BDHamburger = {
+    let button = BDHamburger.instance()
+    button.addTarget(self, action: #selector(menuClicked), for: .touchUpInside)
+    return button
   }()
   
   private lazy var chart: CurrencyChart = {
@@ -132,7 +149,8 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     let factory = WidgetFactory()
     factory.setGradientTo(view: view)
     addCircleLayer()
-    
+    navigationView.addSubview(titleLbl)
+    navigationView.addSubview(menuBtn)
     view.addSubview(navigationView)
     view.addSubview(chart)
     view.addSubview(headerForCurrenciesList)
@@ -168,7 +186,19 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
       view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: watchTable.bottomAnchor)
     ]
     
-    NSLayoutConstraint.activate(chartC + navigationViewC + headerForCurrenciesListC + watchTableC)
+    let menuBtnC = [
+      menuBtn.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
+      menuBtn.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
+      menuBtn.widthAnchor.constraint(equalToConstant: 25),
+      menuBtn.heightAnchor.constraint(equalToConstant: 25)
+    ]
+    
+    let titleLblC = [
+      titleLbl.leadingAnchor.constraint(equalTo: menuBtn.trailingAnchor, constant: 16),
+      titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
+    ]
+    
+    NSLayoutConstraint.activate(chartC + navigationViewC + headerForCurrenciesListC + watchTableC + menuBtnC + titleLblC)
   }
   
   private func addCircleLayer() {
@@ -217,6 +247,10 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   func displayNoWatchlist() {
     //TODO: no watchlist
+  }
+  
+  @objc private func menuClicked() {
+    sideMenuDelegate?.openMenu()
   }
 }
 

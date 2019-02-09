@@ -278,6 +278,9 @@
 		B5FCEA98220DB0C400E4B433 /* SEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA97220DB0C400E4B433 /* SEmail.swift */; };
 		B5FCEA99220DB0C400E4B433 /* SEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA97220DB0C400E4B433 /* SEmail.swift */; };
 		B5FCEA9A220DB0C400E4B433 /* SEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA97220DB0C400E4B433 /* SEmail.swift */; };
+		B5FCEA9D220EB77100E4B433 /* BDHamburger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */; };
+		B5FCEA9E220EB77100E4B433 /* BDHamburger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */; };
+		B5FCEA9F220EB77100E4B433 /* BDHamburger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */; };
 		C07B6C3481306E5A4E4462D0 /* Pods_StagingCryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084EF5BB3FCB474B5135431A /* Pods_StagingCryptotracker.framework */; };
 		C0CE4935DE67B38D9BD096C9 /* Pods_Cryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D2C2A8FD287D294CF24F89F /* Pods_Cryptotracker.framework */; };
 /* End PBXBuildFile section */
@@ -385,6 +388,7 @@
 		B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Light.otf"; sourceTree = "<group>"; };
 		B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B5FCEA97220DB0C400E4B433 /* SEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEmail.swift; sourceTree = "<group>"; };
+		B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDHamburger.swift; sourceTree = "<group>"; };
 		BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B2530050E251A72770FCB3 /* Pods_DebugCryptotracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugCryptotracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -740,6 +744,7 @@
 				B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */,
 				B5E93D5421A7E68000D1705A /* PostNavigationView.swift */,
 				B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */,
+				B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -1213,6 +1218,7 @@
 				B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B572E9532202B31900778DA8 /* CRPrice.swift in Sources */,
 				B5E93D8721A82C5900D1705A /* TVCCrypto.swift in Sources */,
+				B5FCEA9D220EB77100E4B433 /* BDHamburger.swift in Sources */,
 				B5276B7921A2A313000A74A5 /* HTTPMethod.swift in Sources */,
 				B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */,
 				B572E94F2202AFF700778DA8 /* CRCoin.swift in Sources */,
@@ -1305,6 +1311,7 @@
 				B5E93D5221A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B572E9542202B31900778DA8 /* CRPrice.swift in Sources */,
 				B5E93D8821A82C5900D1705A /* TVCCrypto.swift in Sources */,
+				B5FCEA9E220EB77100E4B433 /* BDHamburger.swift in Sources */,
 				B5F5BFA821A426680012599B /* PostsCell.swift in Sources */,
 				B5276B8221A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B572E9502202AFF700778DA8 /* CRCoin.swift in Sources */,
@@ -1397,6 +1404,7 @@
 				B5E93D5321A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B572E9552202B31900778DA8 /* CRPrice.swift in Sources */,
 				B5E93D8921A82C5900D1705A /* TVCCrypto.swift in Sources */,
+				B5FCEA9F220EB77100E4B433 /* BDHamburger.swift in Sources */,
 				B5F5BFA921A426680012599B /* PostsCell.swift in Sources */,
 				B5276B8321A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B572E9512202AFF700778DA8 /* CRCoin.swift in Sources */,

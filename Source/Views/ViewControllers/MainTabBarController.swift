@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-protocol SideMenuDelegate {
+protocol SideMenuDelegate: class {
   func openMenu()
 }
 
@@ -26,12 +26,15 @@ class MainTabBarController: UITabBarController {
   
   private func setup() {
     let postsVC = PostsViewController()
+    postsVC.sideMenuDelegate = self
     postsVC.tabBarItem = UITabBarItem(title: "Posts", image: UIImage(named: "earth"), selectedImage: nil)
 
     let currenciesVC = CurrenciesViewController()
+    currenciesVC.sideMenuDelegate = self
     currenciesVC.tabBarItem = UITabBarItem(title: "Currencies", image: UIImage(named: "list"), selectedImage: nil)
 
     let watchlistVC = WatchlistViewController()
+    watchlistVC.sideMenuDelegate = self
     watchlistVC.tabBarItem = UITabBarItem(title: "Watchlist", image: UIImage(named: "star"), selectedImage: nil)
 
     let viewControllersList = [watchlistVC, currenciesVC, postsVC]
@@ -101,8 +104,12 @@ extension MainTabBarController: OnPickFavoriteDelegate {
     
     watchVC.loadFavorite()
   }
-  
-  
+}
+
+extension MainTabBarController: SideMenuDelegate {
+  func openMenu() {
+    present(SideMenuManager.defaultManager.menuLeftNavigationController!, animated: true, completion: nil)
+  }
 }
 
 extension MainTabBarController: UIGestureRecognizerDelegate {}
