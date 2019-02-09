@@ -37,6 +37,16 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   
   private var tmpButton: UIButton?
   
+  private lazy var backButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setImage(UIImage(named: "left_arrow"), for: .normal)
+    button.contentHorizontalAlignment = .fill
+    button.contentVerticalAlignment = .fill
+    button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
+    return button
+  }()
+  
   private lazy var titleLbl: UILabel = {
     let titleLabel = UILabel()
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -167,6 +177,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   private func setupViews() {
     addCircleLayer()
     view.backgroundColor = .white
+    navigationView.addSubview(backButton)
     navigationView.addSubview(titleLbl)
     navigationView.addSubview(favoriteBtn)
     view.addSubview(navigationView)
@@ -218,12 +229,20 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
       favoriteBtn.heightAnchor.constraint(equalToConstant: 30)
     ]
     
+    let backButtonC = [
+      backButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
+      backButton.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
+      backButton.widthAnchor.constraint(equalToConstant: 25),
+      backButton.heightAnchor.constraint(equalToConstant: 25)
+    ]
+    
     NSLayoutConstraint.activate(infoTableC +
       periodC +
       titleLblC +
       navigationC +
       favoriteC +
-      chartC)
+      chartC +
+      backButtonC)
   }
   
   private func addCircleLayer() {
@@ -304,6 +323,10 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
       return
     }
     chart.load(coinID: currencyID, time: timeframe)
+  }
+  
+  @objc private func backClicked() {
+    navigationController?.popViewController(animated: true)
   }
 }
 
