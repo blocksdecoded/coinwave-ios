@@ -95,6 +95,12 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     return button
   }
   
+  private lazy var refreshControl: UIRefreshControl = {
+    let refresh = UIRefreshControl()
+    refresh.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+    return refresh
+  }()
+  
   private lazy var infoTable: UITableView = {
     let table = UITableView()
     table.translatesAutoresizingMaskIntoConstraints = false
@@ -102,6 +108,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     table.dataSource = self
     table.delegate = self
     table.separatorStyle = .none
+    table.refreshControl = refreshControl
     table.register(CurrencyDetailsCell.self, forCellReuseIdentifier: CurrencyDetailsCell.reuseID)
     table.register(CurrencyDetailsBottomCell.self, forCellReuseIdentifier: CurrencyDetailsBottomCell.reuseID)
     return table
@@ -265,6 +272,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   }
   
   func displaySomething(viewModel: CurrencyDetails.Something.ViewModel) {
+    refreshControl.endRefreshing()
     titleLbl.text = viewModel.title
     saveCurrency = viewModel.saveCurrency
     let isFilledStar = saveCurrency?.isWatchlist ?? false
@@ -327,6 +335,12 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   
   @objc private func backClicked() {
     navigationController?.popViewController(animated: true)
+  }
+  
+  @objc private func refreshTable() {
+    let request = CurrencyDetails.Something.Request(currID: currencyID)
+    interactor?.doSomething(request: request)
+    chart.load(coinID: currencyID, time: .h24)
   }
 }
 

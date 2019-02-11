@@ -37,7 +37,7 @@ class MainTabBarController: UITabBarController {
     watchlistVC.sideMenuDelegate = self
     watchlistVC.tabBarItem = UITabBarItem(title: "Watchlist", image: UIImage(named: "star"), selectedImage: nil)
 
-    let viewControllersList = [watchlistVC, currenciesVC, postsVC]
+    let viewControllersList = [currenciesVC, watchlistVC, postsVC]
     viewControllers = viewControllersList
   }
   
@@ -78,7 +78,7 @@ extension MainTabBarController: MenuDelegate {
   }
   
   func secondClicked() {
-    selectedIndex = 1
+    selectedIndex = 0
   }
   
   func thirdClicked() {

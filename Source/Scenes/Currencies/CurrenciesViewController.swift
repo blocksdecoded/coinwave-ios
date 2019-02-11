@@ -107,6 +107,12 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     return headerView
   }()
   
+  private lazy var refreshControl: UIRefreshControl = {
+    let refresh = UIRefreshControl()
+    refresh.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+    return refresh
+  }()
+  
   private lazy var currenciesList: UITableView = {
     let tableView = UITableView()
     tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -116,6 +122,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     tableView.separatorStyle = .none
     tableView.dataSource = self
     tableView.delegate = self
+    tableView.refreshControl = refreshControl
     return tableView
   }()
 
@@ -264,6 +271,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   }
 
   func displaySomething(viewModel: Currencies.FetchCoins.ViewModel) {
+    refreshControl.endRefreshing()
     currencies = viewModel.currencies
     currenciesList.reloadData()
   }
@@ -297,6 +305,11 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   @objc private func backClicked() {
     navigationController?.popViewController(animated: true)
+  }
+  
+  @objc private func refreshTable() {
+    let request = Currencies.FetchCoins.Request(limit: 50)
+    interactor?.doSomething(request: request)
   }
 }
 

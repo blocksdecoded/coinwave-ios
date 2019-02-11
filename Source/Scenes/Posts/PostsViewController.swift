@@ -34,6 +34,12 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     button.addTarget(self, action: #selector(menuClicked), for: .touchUpInside)
     return button
   }()
+  
+  private lazy var refreshControl: UIRefreshControl = {
+    let refresh = UIRefreshControl()
+    refresh.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+    return refresh
+  }()
 
   private lazy var postsList: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -44,6 +50,7 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     postTable.delegate = self
     postTable.dataSource = self
     postTable.register(PostsCell.self, forCellWithReuseIdentifier: PostsCell.reuseID)
+    postTable.refreshControl = refreshControl
     return postTable
   }()
   
@@ -128,6 +135,7 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   }
   
   func displayPosts(viewModel: Posts.FetchPosts.ViewModel) {
+    refreshControl.endRefreshing()
     posts = viewModel.displayedPosts
     postsList.reloadData()
   }
@@ -161,6 +169,10 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   
   @objc private func menuClicked() {
     sideMenuDelegate?.openMenu()
+  }
+  
+  @objc private func refreshTable() {
+    interactor?.fetchPosts()
   }
 }
 

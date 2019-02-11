@@ -93,6 +93,12 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     return label
   }
   
+  private lazy var refreshControl: UIRefreshControl = {
+    let refresh = UIRefreshControl()
+    refresh.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+    return refresh
+  }()
+  
   private lazy var watchTable: UITableView = {
     let table = UITableView()
     table.translatesAutoresizingMaskIntoConstraints = false
@@ -100,6 +106,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     table.rowHeight = 60
     table.delegate = self
     table.dataSource = self
+    table.refreshControl = refreshControl
     table.register(TVCCrypto.create(), forCellReuseIdentifier: TVCCrypto.reuseID)
     table.separatorStyle = .none
     return table
@@ -240,6 +247,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }
   
   func displaySomething(viewModel: Watchlist.Something.ViewModel) {
+    refreshControl.endRefreshing()
     currencies = viewModel.currencies
     watchTable.reloadData()
   }
@@ -254,10 +262,16 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   func displayNoWatchlist() {
     //TODO: no watchlist
+    refreshControl.endRefreshing()
   }
   
   @objc private func menuClicked() {
     sideMenuDelegate?.openMenu()
+  }
+  
+  @objc private func refreshTable() {
+    interactor?.doSomething(request: Watchlist.Something.Request())
+    interactor?.fetchFavorite()
   }
 }
 
