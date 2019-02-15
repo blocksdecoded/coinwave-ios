@@ -78,7 +78,9 @@ extension MainTabBarController: MenuDelegate {
   }
   
   func secondClicked() {
-    selectedIndex = 0
+    let addToWatchlist = AddToWatchlistViewController()
+    menuVC?.dismiss(animated: true, completion: nil)
+    self.navigationController?.pushViewController(addToWatchlist, animated: true)
   }
   
   func thirdClicked() {

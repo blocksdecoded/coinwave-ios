@@ -34,6 +34,7 @@ class TVCCrypto: UITableViewCell {
   private var task: URLSessionTask?
   
   override func prepareForReuse() {
+    super.prepareForReuse()
     task?.cancel()
     task = nil
   }

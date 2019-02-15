@@ -69,6 +69,14 @@ class DataStore {
     }
   }
   
+  func setWatchlist(id: Int, isWatchlist: Bool) {
+    do {
+      try CurrencySaveDataHelper.setWatchlist(id: id, isWatchlist: isWatchlist)
+    } catch {
+      fatalError("Cannot set watchlist")
+    }
+  }
+  
   func insertCurrencies(_ currencies: [CRCoin]) {
     do {
       for curr in currencies {

@@ -106,6 +106,21 @@ class CurrencySaveDataHelper: DataHelperProtocol {
     }
   }
   
+  static func setWatchlist(id: Int, isWatchlist: Bool) throws {
+    guard let db = SQLiteDataStore.sharedInstance.db else {
+      throw DataAccessError.datastoreConnection
+    }
+    
+    let coin = table.filter(currID == Int64(id))
+    let count = try db.scalar(coin.count)
+    if count > 0 {
+      let update = coin.update([currWatchlist <- isWatchlist])
+      try db.run(update)
+    } else {
+      try insert(item: SaveCurrency(id: id, isWatchlist: true, isFavorite: false))
+    }
+  }
+  
   static func find(id: Int64) throws -> SaveCurrency? {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
