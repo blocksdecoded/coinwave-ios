@@ -37,6 +37,14 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   
   private var tmpButton: UIButton?
   
+  private lazy var topCircle: UIImageView = {
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.image = UIImage(named: "top_circle_black")
+    imageView.contentMode = .scaleAspectFit
+    return imageView
+  }()
+  
   private lazy var backButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
@@ -182,8 +190,8 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   }
   
   private func setupViews() {
-    addCircleLayer()
     view.backgroundColor = .white
+    view.addSubview(topCircle)
     navigationView.addSubview(backButton)
     navigationView.addSubview(titleLbl)
     navigationView.addSubview(favoriteBtn)
@@ -194,6 +202,11 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   }
   
   private func setupConstraints() {
+    let topCircleC = [
+      topCircle.topAnchor.constraint(equalTo: view.topAnchor),
+      topCircle.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      view.trailingAnchor.constraint(equalTo: topCircle.trailingAnchor)
+    ]
     
     let chartC = [
       chart.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
@@ -249,17 +262,8 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
       navigationC +
       favoriteC +
       chartC +
-      backButtonC)
-  }
-  
-  private func addCircleLayer() {
-    let circleLayer = CAShapeLayer()
-    let radius: CGFloat = 300
-    circleLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 2.0 * radius, height: 2.0 * radius),
-                                    cornerRadius: radius).cgPath
-    circleLayer.position = CGPoint(x: view.frame.midX - radius, y: -400)
-    circleLayer.fillColor = UIColor(red: 19.0/255.0, green: 25.0/255.0, blue: 30.0/255.0, alpha: 1.0).cgColor
-    view.layer.addSublayer(circleLayer)
+      backButtonC +
+      topCircleC)
   }
   
   // MARK: Do something

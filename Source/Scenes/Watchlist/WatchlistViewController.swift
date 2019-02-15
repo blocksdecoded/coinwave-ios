@@ -30,6 +30,14 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   var interactor: WatchlistBusinessLogic?
   var router: (NSObjectProtocol & WatchlistRoutingLogic & WatchlistDataPassing)?
   
+  private lazy var topCircle: UIImageView = {
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.image = UIImage(named: "top_circle_white")
+    imageView.contentMode = .scaleAspectFit
+    return imageView
+  }()
+  
   private lazy var navigationView: UIView = {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
@@ -162,7 +170,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   private func setupViews() {
     let factory = WidgetFactory()
     factory.setGradientTo(view: view)
-    addCircleLayer()
+    view.addSubview(topCircle)
     navigationView.addSubview(titleLbl)
     navigationView.addSubview(menuBtn)
     view.addSubview(navigationView)
@@ -172,6 +180,12 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }
   
   private func setupConstraints() {
+    let topCircleC = [
+      topCircle.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      topCircle.topAnchor.constraint(equalTo: view.topAnchor),
+      view.trailingAnchor.constraint(equalTo: topCircle.trailingAnchor)
+    ]
+    
     let navigationViewC = [
       navigationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
       navigationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -212,17 +226,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
       titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
     ]
     
-    NSLayoutConstraint.activate(chartC + navigationViewC + headerForCurrenciesListC + watchTableC + menuBtnC + titleLblC)
-  }
-  
-  private func addCircleLayer() {
-    let circleLayer = CAShapeLayer()
-    let radius: CGFloat = 300
-    circleLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 2.0 * radius, height: 2.0 * radius),
-                                    cornerRadius: radius).cgPath
-    circleLayer.position = CGPoint(x: view.frame.midX - radius, y: -400)
-    circleLayer.fillColor = UIColor.white.cgColor
-    view.layer.addSublayer(circleLayer)
+    NSLayoutConstraint.activate(chartC + navigationViewC + headerForCurrenciesListC + watchTableC + menuBtnC + titleLblC + topCircleC)
   }
   
   // MARK: Do something
