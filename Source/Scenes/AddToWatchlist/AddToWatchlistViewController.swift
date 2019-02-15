@@ -35,6 +35,12 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
     return (self.view.frame.width - minimumInterSpacing - (2 * currListMargin)) / 2
   }()
   
+  private lazy var refreshControl: UIRefreshControl = {
+    let refresh = UIRefreshControl()
+    refresh.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+    return refresh
+  }()
+  
   private lazy var currenciesList: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.itemSize = CGSize(width: cellWidth, height: 70)
@@ -46,8 +52,34 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
     collView.backgroundColor = .clear
     collView.delegate = self
     collView.dataSource = self
+    collView.refreshControl = refreshControl
     collView.contentInset = UIEdgeInsets(top: 20, left: currListMargin, bottom: 0, right: currListMargin)
     return collView
+  }()
+  
+  private lazy var backButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setImage(UIImage(named: "left_arrow"), for: .normal)
+    button.contentHorizontalAlignment = .fill
+    button.contentVerticalAlignment = .fill
+    button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
+    return button
+  }()
+  
+  private lazy var titleLbl: UILabel = {
+    let titleLabel = UILabel()
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    titleLabel.text = "Add to watchlist"
+    titleLabel.textColor = .white
+    titleLabel.font = UIFont(name: Constants.Fonts.regular, size: 18)
+    return titleLabel
+  }()
+  
+  private lazy var navigationView: UIView = {
+    let view = UIView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
   }()
 
   // MARK: Object lifecycle
@@ -105,18 +137,37 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   
   private func setupViews() {
     view.backgroundColor = .white
+    navigationView.addSubview(backButton)
+    navigationView.addSubview(titleLbl)
+    view.addSubview(navigationView)
     view.addSubview(currenciesList)
   }
   
   private func setupConstraints() {
+    let navigationViewC = [
+      navigationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      navigationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      navigationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      navigationView.heightAnchor.constraint(equalToConstant: 100)
+    ]
+    
+    let navigationInnerC = [
+      backButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
+      backButton.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
+      backButton.widthAnchor.constraint(equalToConstant: 40),
+      backButton.heightAnchor.constraint(equalToConstant: 40),
+      titleLbl.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor),
+      titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
+    ]
+    
     let currsListC = [
       currenciesList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      currenciesList.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      currenciesList.topAnchor.constraint(equalTo: navigationView.bottomAnchor),
       currenciesList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
       view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: currenciesList.trailingAnchor)
     ]
     
-    NSLayoutConstraint.activate(currsListC)
+    NSLayoutConstraint.activate(currsListC + navigationViewC + navigationInnerC)
   }
   
   private func setupBackground() {
@@ -130,6 +181,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   }
   
   func displaySomething(viewModel: AddToWatchlist.Something.ViewModel) {
+    refreshControl.endRefreshing()
     coins = viewModel.coins
     currenciesList.reloadData()
   }
@@ -138,6 +190,15 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
     let oldCoin = coins![viewModel.position]
     coins?[viewModel.position] = oldCoin.set(watchlist: viewModel.isWatchlist)
     currenciesList.reloadItems(at: [IndexPath(item: viewModel.position, section: 0)])
+  }
+  
+  @objc private func backClicked() {
+    navigationController?.popViewController(animated: true)
+  }
+  
+  @objc private func refreshTable() {
+    let request = AddToWatchlist.Something.Request()
+    interactor?.doSomething(request: request)
   }
 }
 

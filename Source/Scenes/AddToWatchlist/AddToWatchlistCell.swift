@@ -148,8 +148,8 @@ class AddToWatchlistCell: UICollectionViewCell {
     let starIVC = [
       starIV.centerXAnchor.constraint(equalTo: starBack.centerXAnchor),
       starIV.centerYAnchor.constraint(equalTo: starBack.centerYAnchor),
-      starIV.widthAnchor.constraint(equalToConstant: 35),
-      starIV.heightAnchor.constraint(equalToConstant: 35)
+      starIV.widthAnchor.constraint(equalToConstant: 25),
+      starIV.heightAnchor.constraint(equalToConstant: 25)
     ]
     
     let lblBackViewC = [

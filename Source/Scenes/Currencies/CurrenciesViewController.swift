@@ -255,8 +255,8 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       NSLayoutConstraint.activate([
         backButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
         backButton.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
-        backButton.widthAnchor.constraint(equalToConstant: 25),
-        backButton.heightAnchor.constraint(equalToConstant: 25),
+        backButton.widthAnchor.constraint(equalToConstant: 40),
+        backButton.heightAnchor.constraint(equalToConstant: 40),
         titleLbl.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 16),
         titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
       ])
