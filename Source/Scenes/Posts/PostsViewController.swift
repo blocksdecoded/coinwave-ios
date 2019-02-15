@@ -44,6 +44,7 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   private lazy var postsList: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.minimumLineSpacing = 0.5
+    layout.itemSize = CGSize(width: view.frame.width, height: 200)
     let postTable = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     postTable.backgroundColor = .clear
     postTable.translatesAutoresizingMaskIntoConstraints = false
@@ -103,7 +104,7 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     
     let menuBtnC = [
       menuBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      menuBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+      menuBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50 - 12.5),
       menuBtn.heightAnchor.constraint(equalToConstant: 25),
       menuBtn.widthAnchor.constraint(equalToConstant: 25)
     ]
@@ -199,12 +200,6 @@ extension PostsViewController: UICollectionViewDelegateFlowLayout & UICollection
     cell.onBind(post)
     
     return cell
-  }
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: collectionView.frame.width, height: 200)
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

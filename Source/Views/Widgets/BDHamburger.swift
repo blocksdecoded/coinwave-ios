@@ -22,6 +22,7 @@ class BDHamburger: UIButton {
     button.translatesAutoresizingMaskIntoConstraints = false
     button.backgroundColor = UIColor(red: 34.0/255.0, green: 43.0/255.0, blue: 50.0/255.0, alpha: 1.0)
     button.setImage(UIImage(named: "hamburger"), for: .normal)
+    button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -1, bottom: 0, right: 1)
     return button
   }
   

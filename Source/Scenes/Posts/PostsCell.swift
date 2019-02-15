@@ -140,8 +140,8 @@ class PostsCell: UICollectionViewCell {
     let imageC = [
       postImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
       postImage.topAnchor.constraint(equalTo: contentView.topAnchor),
-      trailingAnchor.constraint(equalTo: postImage.trailingAnchor),
-      bottomAnchor.constraint(equalTo: postImage.bottomAnchor)
+      contentView.trailingAnchor.constraint(equalTo: postImage.trailingAnchor),
+      contentView.bottomAnchor.constraint(equalTo: postImage.bottomAnchor)
     ]
     
     let imageMaskC = [
