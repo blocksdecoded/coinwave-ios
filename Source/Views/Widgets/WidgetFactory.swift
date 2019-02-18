@@ -18,7 +18,15 @@ class WidgetFactory {
     return gradient
   }
   
-  
+  func getGradientLayer() -> CAGradientLayer {
+    let (start, end) = UIColor.darkRandomPair()
+    let gradient = CAGradientLayer()
+    gradient.colors = [start.cgColor,
+                       end.cgColor]
+    gradient.startPoint = CGPoint(x: 0.5, y: 0)
+    gradient.endPoint = CGPoint(x: 0.5, y: 1)
+    return gradient
+  }
   
   @discardableResult
   func setGradientTo(view: UIView) -> UIView {
@@ -37,6 +45,27 @@ class WidgetFactory {
     
     gView.clipsToBounds = true
     let gradient = gradientLayer
+    gradient.frame = gView.bounds
+    gView.layer.insertSublayer(gradient, at: 0)
+    return gView
+  }
+  
+  func setGradientToCell(view: UIView) -> UIView {
+    let gView = UIView(frame: view.bounds)
+    gView.translatesAutoresizingMaskIntoConstraints = false
+    gView.backgroundColor = UIColor.clear
+    view.addSubview(gView)
+    view.sendSubviewToBack(gView)
+    
+    NSLayoutConstraint.activate([
+      gView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      gView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      gView.topAnchor.constraint(equalTo: view.topAnchor),
+      gView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+      ])
+    
+    gView.clipsToBounds = true
+    let gradient = getGradientLayer()
     gradient.frame = gView.bounds
     gView.layer.insertSublayer(gradient, at: 0)
     return gView

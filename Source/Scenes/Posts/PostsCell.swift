@@ -22,6 +22,8 @@ class PostsCell: UICollectionViewCell {
   
   private let readBtnWidth: CGFloat = 100
   private let readBtnHeight: CGFloat = 40
+  private let widgets = WidgetFactory()
+  private var backGradientView: UIView?
   
   private lazy var bdLogo: UIImageView = {
     let image = UIImage(named: "post_background_icon")
@@ -103,13 +105,13 @@ class PostsCell: UICollectionViewCell {
   override func prepareForReuse() {
     postTitle.text = "Default text"
     postImage.image = nil
-    contentView.backgroundColor = UIColor.darkRandom()
+    setGradientBackground()
   }
   
   // MARK: Setup cell
   
   private func setup() {
-    contentView.backgroundColor = UIColor.darkRandom()
+    setGradientBackground()
     setupViews()
     setupConstraints()
   }
@@ -169,6 +171,15 @@ class PostsCell: UICollectionViewCell {
     }
 
     postImage.kf.setImage(with: URL(string: imageUrl))
+  }
+  
+  private func setGradientBackground() {
+    if backGradientView != nil {
+      backGradientView!.removeFromSuperview()
+      backGradientView = nil
+    }
+    
+    backGradientView = widgets.setGradientToCell(view: contentView)
   }
   
   @objc private func readClicked() {
