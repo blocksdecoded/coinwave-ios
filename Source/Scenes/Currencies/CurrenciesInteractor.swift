@@ -14,8 +14,7 @@ import UIKit
 
 protocol CurrenciesBusinessLogic {
   func doSomething(request: Currencies.FetchCoins.Request)
-  func loadNext()
-  func setFavorite(id: Int, isFavorite: Bool)
+  func setFavorite(id: Int, symbol: String, isFavorite: Bool)
 }
 
 protocol CurrenciesDataStore {
@@ -43,22 +42,7 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
     }
   }
   
-  func loadNext() {
-    var offset = Constants.COINS_OFFSET
-    if let data = data {
-      offset = data.data.stats.offset + Constants.COINS_LIMIT
-      if offset > data.data.stats.total {
-        return
-      }
-    }
-    
-    worker?.fetchCurrencies(limit: Constants.COINS_LIMIT, offset: offset) { currencies in
-      self.data = currencies
-      self.presenter?.presentNextCoins(response: Currencies.LoadNext.Response(coin: currencies))
-    }
-  }
-  
-  func setFavorite(id: Int, isFavorite: Bool) {
-    worker?.setFavorite(id: id, isFavorite: isFavorite)
+  func setFavorite(id: Int, symbol: String, isFavorite: Bool) {
+    worker?.setFavorite(id: id, symbol: symbol, isFavorite: isFavorite)
   }
 }

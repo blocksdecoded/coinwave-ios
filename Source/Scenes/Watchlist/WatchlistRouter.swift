@@ -14,7 +14,7 @@ import UIKit
 
 @objc protocol WatchlistRoutingLogic {
   //func routeToSomewhere(segue: UIStoryboardSegue?)
-  func openDetails(currencyID: Int)
+  func openDetails(currencyID: Int, currencySymbol: String)
 }
 
 protocol WatchlistDataPassing {
@@ -27,8 +27,8 @@ class WatchlistRouter: NSObject, WatchlistRoutingLogic, WatchlistDataPassing {
   
   // MARK: Routing
   
-  func openDetails(currencyID: Int) {
-    let detailsVC = CurrencyDetailsViewController(currencyID: currencyID)
+  func openDetails(currencyID: Int, currencySymbol: String) {
+    let detailsVC = CurrencyDetailsViewController(currencyID: currencyID, currencySymbol: currencySymbol)
     viewController?.navigationController?.pushViewController(detailsVC, animated: true)
   }
   

@@ -14,7 +14,7 @@ import UIKit
 
 @objc protocol CurrenciesRoutingLogic {
   //func routeToSomewhere(segue: UIStoryboardSegue?)
-  func openDetails(currencyID: Int)
+  func openDetails(currencyID: Int, currencySymbol: String)
 }
 
 protocol CurrenciesDataPassing {
@@ -27,8 +27,8 @@ class CurrenciesRouter: NSObject, CurrenciesRoutingLogic, CurrenciesDataPassing 
 
   // MARK: Navigation
   
-  func openDetails(currencyID: Int) {
-    let detailsVC = CurrencyDetailsViewController(currencyID: currencyID)
+  func openDetails(currencyID: Int, currencySymbol: String) {
+    let detailsVC = CurrencyDetailsViewController(currencyID: currencyID, currencySymbol: currencySymbol)
     viewController?.navigationController?.pushViewController(detailsVC, animated: true)
   }
 }

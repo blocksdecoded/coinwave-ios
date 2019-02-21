@@ -221,7 +221,7 @@ class CurrencyChart: UIView {
     layer.masksToBounds = false
   }
   
-  func load(coinID: Int, time: CRTimeframe) {
+  func load(coinID: Int, coinSymbol: String, time: CRTimeframe) {
     if isButtonShowed {
       chooseFavButton.removeFromSuperview()
     }
@@ -248,7 +248,7 @@ class CurrencyChart: UIView {
         }
       }
       
-      networkManager.getHistory(currID: coinID, time: time) { root, error in
+      networkManager.getHistory(currID: coinSymbol, time: time) { root, error in
         if let error = error {
           print(error)
           return

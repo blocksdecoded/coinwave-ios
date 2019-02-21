@@ -15,6 +15,7 @@ import UIKit
 protocol PostsPresentationLogic {
   func presentPosts(response: Posts.FetchPosts.Response)
   func presentNextPosts(response: Posts.FetchPosts.Response)
+  func presentError(_ error: NetworkResultError)
 }
 
 class PostsPresenter: PostsPresentationLogic {
@@ -34,5 +35,9 @@ class PostsPresenter: PostsPresentationLogic {
     }
     let viewModel = Posts.FetchPosts.ViewModel(displayedPosts: displayedPosts)
     viewController?.displayNextPosts(viewModel: viewModel)
+  }
+  
+  func presentError(_ error: NetworkResultError) {
+    viewController?.displayError(error.rawValue)
   }
 }

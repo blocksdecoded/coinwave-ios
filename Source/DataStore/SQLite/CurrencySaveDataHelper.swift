@@ -16,6 +16,7 @@ class CurrencySaveDataHelper: DataHelperProtocol {
   static let TABLE_NAME = "CurrencySave"
   static let table = Table(TABLE_NAME)
   static let currID = Expression<Int64>("id")
+  static let currSymbol = Expression<String>("symbol")
   static let currWatchlist = Expression<Bool>("is_watchlist")
   static let currFavorite = Expression<Bool>("is_favorite")
   
@@ -27,6 +28,7 @@ class CurrencySaveDataHelper: DataHelperProtocol {
     do {
       _ = try db.run(table.create(ifNotExists: true) { t in
         t.column(currID, primaryKey: true)
+        t.column(currSymbol)
         t.column(currWatchlist)
         t.column(currFavorite)
       })
@@ -87,7 +89,7 @@ class CurrencySaveDataHelper: DataHelperProtocol {
     }
   }
   
-  static func setFavorite(id: Int, isFavorite: Bool) throws {
+  static func setFavorite(id: Int, symbol: String, isFavorite: Bool) throws {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
@@ -102,11 +104,11 @@ class CurrencySaveDataHelper: DataHelperProtocol {
       let update = coin.update([currFavorite <- isFavorite])
       try db.run(update)
     } else {
-      try insert(item: SaveCurrency(id: id, isWatchlist: false, isFavorite: true))
+      try insert(item: SaveCurrency(id: id, symbol: symbol, isWatchlist: false, isFavorite: true))
     }
   }
   
-  static func setWatchlist(id: Int, isWatchlist: Bool) throws {
+  static func setWatchlist(id: Int, symbol: String, isWatchlist: Bool) throws {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
@@ -117,7 +119,7 @@ class CurrencySaveDataHelper: DataHelperProtocol {
       let update = coin.update([currWatchlist <- isWatchlist])
       try db.run(update)
     } else {
-      try insert(item: SaveCurrency(id: id, isWatchlist: true, isFavorite: false))
+      try insert(item: SaveCurrency(id: id, symbol: symbol, isWatchlist: true, isFavorite: false))
     }
   }
   
@@ -175,7 +177,7 @@ class CurrencySaveDataHelper: DataHelperProtocol {
     return result
   }
   
-  static func favorite() throws -> Int64? {
+  static func favorite() throws -> SaveCurrency? {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
@@ -183,7 +185,7 @@ class CurrencySaveDataHelper: DataHelperProtocol {
     let items = try db.prepare(table.filter(currFavorite == true).select(currID))
     
     for item in items {
-      return item[currID]
+      return convert(row: item)
     }
     
     return nil
@@ -191,6 +193,7 @@ class CurrencySaveDataHelper: DataHelperProtocol {
   
   private static func convert(row: Row) -> SaveCurrency {
     return SaveCurrency(id: Int(row[currID]),
+                        symbol: row[currSymbol],
                         isWatchlist: row[currWatchlist],
                         isFavorite: row[currFavorite])
   }
@@ -203,6 +206,7 @@ class CurrencySaveDataHelper: DataHelperProtocol {
   
   private static func updateSetters(item: SaveCurrency) -> [Setter] {
     return [
+      currSymbol <- item.symbol,
       currWatchlist <- item.isWatchlist,
       currFavorite <- item.isFavorite
     ]

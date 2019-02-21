@@ -236,7 +236,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
       return
     }
     
-    router?.openDetails(currencyID: curr.id)
+    router?.openDetails(currencyID: curr.id, currencySymbol: curr.symbol)
   }
   
   //@IBOutlet weak var nameTextField: UITextField!
@@ -257,7 +257,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }
   
   func displayFavorite(viewModel: Watchlist.Favorite.ViewModel) {
-    chart.load(coinID: viewModel.id, time: .h24)
+    chart.load(coinID: viewModel.id, coinSymbol: viewModel.symbol, time: .h24)
   }
   
   func displayNoFavorite() {

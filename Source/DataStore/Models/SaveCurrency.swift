@@ -10,6 +10,7 @@ import Foundation
 
 struct SaveCurrency {
   let id: Int
+  let symbol: String
   var isWatchlist: Bool
   var isFavorite: Bool
 }

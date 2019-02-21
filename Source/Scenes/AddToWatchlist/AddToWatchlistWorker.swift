@@ -44,7 +44,7 @@ class AddToWatchlistWorker {
   
   func addToWatchlist(_ input: AddToWatchlist.Add.Request,_ completion: @escaping(AddToWatchlist.Add.Response) -> Void) {
     let resultIsWatchlist = !input.isWatchlist
-    DataStore.shared.setWatchlist(id: input.id, isWatchlist: resultIsWatchlist)
+    DataStore.shared.setWatchlist(id: input.id, symbol: input.symbol, isWatchlist: resultIsWatchlist)
     completion(AddToWatchlist.Add.Response(position: input.position, isWatchlist: resultIsWatchlist))
   }
 }

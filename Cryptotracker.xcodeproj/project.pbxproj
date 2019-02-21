@@ -167,6 +167,9 @@
 		B5CB3660221422ED00087C41 /* AddToWatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */; };
 		B5CB3661221422ED00087C41 /* AddToWatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */; };
 		B5CB3662221422ED00087C41 /* AddToWatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */; };
+		B5E1D6BF221D6CCB005419C8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */; };
+		B5E1D6C0221D6CCB005419C8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */; };
+		B5E1D6C1221D6CCB005419C8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */; };
 		B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
 		B5E93CF121A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
 		B5E93CF221A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
@@ -376,6 +379,7 @@
 		B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinDataHelper.swift; sourceTree = "<group>"; };
 		B572E95A2202F34900778DA8 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 		B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistCell.swift; sourceTree = "<group>"; };
+		B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		B5E93CEF21A6A3AE00D1705A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Heavy.otf"; sourceTree = "<group>"; };
 		B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewPresenter.swift; sourceTree = "<group>"; };
@@ -774,6 +778,7 @@
 				B5E93D5421A7E68000D1705A /* PostNavigationView.swift */,
 				B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */,
 				B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */,
+				B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -1211,6 +1216,7 @@
 				B5276B6C21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B6821A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
 				B5276B5621A28183000A74A5 /* PostsViewController.swift in Sources */,
+				B5E1D6BF221D6CCB005419C8 /* ErrorView.swift in Sources */,
 				B5E93D8121A82AF600D1705A /* CurrenciesCell.swift in Sources */,
 				B5E93D0321A6A73500D1705A /* PostPreviewWorker.swift in Sources */,
 				B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */,
@@ -1311,6 +1317,7 @@
 				B5276B4B21A28183000A74A5 /* PostsPresenter.swift in Sources */,
 				B5276B8E21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
 				B5276AC221A00F9F000A74A5 /* ViewController.swift in Sources */,
+				B5E1D6C0221D6CCB005419C8 /* ErrorView.swift in Sources */,
 				B5E93D8221A82AF600D1705A /* CurrenciesCell.swift in Sources */,
 				B5276B5421A28183000A74A5 /* PostsModels.swift in Sources */,
 				B5E93D3721A6B9B000D1705A /* DataAccessError.swift in Sources */,
@@ -1411,6 +1418,7 @@
 				B5276B4C21A28183000A74A5 /* PostsPresenter.swift in Sources */,
 				B5276B8F21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
 				B5276AD021A00FAC000A74A5 /* ViewController.swift in Sources */,
+				B5E1D6C1221D6CCB005419C8 /* ErrorView.swift in Sources */,
 				B5E93D8321A82AF600D1705A /* CurrenciesCell.swift in Sources */,
 				B5276B5521A28183000A74A5 /* PostsModels.swift in Sources */,
 				B5E93D3821A6B9B000D1705A /* DataAccessError.swift in Sources */,

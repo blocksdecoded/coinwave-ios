@@ -16,6 +16,7 @@ import SafariServices
 protocol PostsDisplayLogic: class {
   func displayPosts(viewModel: Posts.FetchPosts.ViewModel)
   func displayNextPosts(viewModel: Posts.FetchPosts.ViewModel)
+  func displayError(_ error: String)
 }
 
 class PostsViewController: UIViewController, PostsDisplayLogic {
@@ -28,6 +29,12 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
+  
+  private lazy var errorView: ErrorView = {
+    let errorView = ErrorView()
+    errorView.translatesAutoresizingMaskIntoConstraints = false
+    return errorView
+  }()
   
   private lazy var menuBtn: BDHamburger = {
     let button = BDHamburger.instance()
@@ -92,6 +99,7 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     factory.setGradientTo(view: view)
     view.addSubview(postsList)
     view.addSubview(menuBtn)
+    view.addSubview(errorView)
   }
   
   private func setupConstraints() {
@@ -109,7 +117,12 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
       menuBtn.widthAnchor.constraint(equalToConstant: 25)
     ]
     
-    NSLayoutConstraint.activate(postsTableC + menuBtnC)
+    let errorViewC = [
+      errorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ]
+    
+    NSLayoutConstraint.activate(postsTableC + menuBtnC + errorViewC)
   }
   
   // MARK: Routing
@@ -158,6 +171,10 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     postsList.performBatchUpdates({
       postsList.insertItems(at: insertingIndexes)
     }, completion: nil)
+  }
+  
+  func displayError(_ error: String) {
+    
   }
   
   private func loadNextPosts() {

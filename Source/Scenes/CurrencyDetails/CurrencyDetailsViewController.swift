@@ -22,6 +22,7 @@ protocol CurrencyDetailsDisplayLogic: class {
 
 class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLogic {
   private let currencyID: Int
+  private let currencySymbol: String
   var interactor: CurrencyDetailsBusinessLogic?
   var router: (NSObjectProtocol & CurrencyDetailsRoutingLogic & CurrencyDetailsDataPassing)?
   
@@ -134,20 +135,23 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
 
   // MARK: Object lifecycle
   
-  init(currencyID: Int) {
+  init(currencyID: Int, currencySymbol: String) {
     self.currencyID = currencyID
+    self.currencySymbol = currencySymbol
     super.init(nibName: nil, bundle: nil)
     setup()
   }
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     currencyID = -1
+    currencySymbol = ""
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     setup()
   }
   
   required init?(coder aDecoder: NSCoder) {
     currencyID = -1
+    currencySymbol = ""
     super.init(coder: aDecoder)
     setup()
   }
@@ -186,7 +190,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     setupViews()
     setupConstraints()
     doSomething(currID: currencyID)
-    chart.load(coinID: currencyID, time: .h24)
+    chart.load(coinID: currencyID, coinSymbol: currencySymbol, time: .h24)
   }
   
   private func setupViews() {
@@ -310,6 +314,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   
   @objc private func addFavorite() {
     let request = CurrencyDetails.AddFavorite.Request(saveCurrency: saveCurrency ?? SaveCurrency(id: currencyID,
+                                                                                                 symbol: currencySymbol,
                                                                                                  isWatchlist: false,
                                                                                                  isFavorite: false))
     interactor?.addToFavorites(request: request)
@@ -334,7 +339,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     default:
       return
     }
-    chart.load(coinID: currencyID, time: timeframe)
+    chart.load(coinID: currencyID, coinSymbol: currencySymbol, time: timeframe)
   }
   
   @objc private func backClicked() {
@@ -344,7 +349,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   @objc private func refreshTable() {
     let request = CurrencyDetails.Something.Request(currID: currencyID)
     interactor?.doSomething(request: request)
-    chart.load(coinID: currencyID, time: .h24)
+    chart.load(coinID: currencyID, coinSymbol: currencySymbol, time: .h24)
   }
 }
 

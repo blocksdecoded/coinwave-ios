@@ -45,11 +45,11 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   }
   
   func fetchFavorite() {
-    guard let id = worker?.fetchFavorite() else {
+    guard let coin = worker?.fetchFavorite() else {
       presenter?.presentNoFavorite()
       return
     }
     
-    presenter?.presentFavorite(response: Watchlist.Favorite.Response(id: Int(id)))
+    presenter?.presentFavorite(response: Watchlist.Favorite.Response(id: Int(coin.id), symbol: coin.symbol))
   }
 }

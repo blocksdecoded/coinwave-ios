@@ -30,9 +30,11 @@ enum Watchlist {
   enum Favorite {
     struct Response {
       let id: Int
+      let symbol: String
     }
     struct ViewModel {
       let id: Int
+      let symbol: String
     }
   }
 }

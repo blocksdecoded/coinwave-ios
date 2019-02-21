@@ -18,8 +18,6 @@ protocol OnPickFavoriteDelegate: class {
 
 protocol CurrenciesDisplayLogic: class {
   func displaySomething(viewModel: Currencies.FetchCoins.ViewModel)
-  func displayNext(viewModel: Currencies.LoadNext.ViewModel)
-  func displayLoadAll()
 }
 
 class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
@@ -40,8 +38,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   weak var favoritePickerDelegate: OnPickFavoriteDelegate?
   private let version: Version
   private var currencies: [CRCoin]?
-  private var loadingNext = false
-  private var loadAll = false
   
   private lazy var backButton: UIButton = {
     let button = UIButton()
@@ -177,7 +173,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       return
     }
     
-    router?.openDetails(currencyID: curr.id)
+    router?.openDetails(currencyID: curr.id, currencySymbol: curr.symbol)
   }
   
   private func onPickFavorite(_ index: Int) {
@@ -185,7 +181,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       return
     }
     
-    interactor?.setFavorite(id: coin.id, isFavorite: true)
+    interactor?.setFavorite(id: coin.id, symbol: coin.symbol, isFavorite: true)
     favoritePickerDelegate?.onPickedFavorite()
     self.navigationController?.popViewController(animated: true)
   }
@@ -276,16 +272,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     currenciesList.reloadData()
   }
   
-  func displayNext(viewModel: Currencies.LoadNext.ViewModel) {
-    loadingNext = false
-    currencies?.append(contentsOf: viewModel.coins)
-    currenciesList.reloadData()
-  }
-  
-  func displayLoadAll() {
-    loadAll = true
-  }
-  
   private func columnTitle(text: String) -> UILabel {
     let label = UILabel()
     label.text = text
@@ -293,10 +279,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     label.textColor = UIColor.white.withAlphaComponent(0.7)
     label.font = UIFont.systemFont(ofSize: 11)
     return label
-  }
-  
-  private func loadNext() {
-    interactor?.loadNext()
   }
   
   @objc private func menuClicked() {
@@ -325,11 +307,6 @@ extension CurrenciesViewController: UITableViewDataSource, UITableViewDelegate {
     
     guard let currency = currencies?[indexPath.row] else {
       fatalError()
-    }
-    
-    if indexPath.row + 3 >= currencies!.count - 1 && !loadingNext && !loadAll {
-      loadingNext = true
-      loadNext()
     }
     
     cell.onBind(currency, isTop: indexPath.row == 0)

@@ -13,54 +13,49 @@
 import UIKit
 
 class PostsWorker {
-  func fetchPosts(completion: @escaping (_ posts: [Post]) -> Void) {
+  func fetchPosts(completion: @escaping (_ posts: [Post]?, _ error: NetworkResultError?) -> Void) {
     DispatchQueue.global(qos: .background).async {
-      
-      if let localPosts = DataStore.shared.loadPosts() {
-        DispatchQueue.main.async {
-          completion(localPosts)
-        }
-      }
-      
       let postsNetworkManager = PostsNetworkManager()
       postsNetworkManager.fetchPosts(completion: { posts, error in
-        
         if error != nil {
-          print(error!)
+          DispatchQueue.main.async {
+            completion(nil, .network)
+          }
           return
         }
         
-        guard let postList = posts else {
-          fatalError("no posts")
+        if posts == nil {
+          DispatchQueue.main.async {
+            completion(nil, .noData)
+          }
         }
-        DataStore.shared.insertPosts(postList)
+        
         DispatchQueue.main.async {
-          completion(postList)
+          completion(posts, nil)
         }
       })
     }
   }
   
-  func fetchNextPosts(date: String, completion: @escaping (_ posts: [Post]) -> Void) {
+  func fetchNextPosts(date: String, completion: @escaping (_ posts: [Post]?,  _ error: NetworkResultError?) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let postsNetworkManager = PostsNetworkManager()
       postsNetworkManager.fetchNextPosts(date: date, completion: { posts, error in
         if error != nil {
-          print(error!)
           DispatchQueue.main.async {
-            completion([Post]())
+            completion(nil, .network)
           }
           return
         }
         
-        guard let postList = posts else {
-          fatalError("no posts")
+        if posts == nil {
+          DispatchQueue.main.async {
+            completion(nil, .noData)
+          }
         }
         
-        DataStore.shared.insertPosts(postList)
-        
         DispatchQueue.main.async {
-          completion(postList)
+          completion(posts, nil)
         }
       })
     }

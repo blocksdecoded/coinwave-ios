@@ -44,6 +44,7 @@ enum AddToWatchlist {
   enum Add {
     struct Request {
       let id: Int
+      let symbol: String
       let isWatchlist: Bool
       let position: Int
     }

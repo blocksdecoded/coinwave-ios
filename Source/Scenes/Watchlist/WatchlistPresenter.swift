@@ -33,6 +33,6 @@ class WatchlistPresenter: WatchlistPresentationLogic {
   }
   
   func presentFavorite(response: Watchlist.Favorite.Response) {
-    viewController?.displayFavorite(viewModel: Watchlist.Favorite.ViewModel(id: response.id))
+    viewController?.displayFavorite(viewModel: Watchlist.Favorite.ViewModel(id: response.id, symbol: response.symbol))
   }
 }

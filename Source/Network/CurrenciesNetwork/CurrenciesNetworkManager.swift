@@ -9,8 +9,6 @@
 import Foundation
 
 struct CurrenciesNetworkManager: NetworkManager {
-  static let apiVersion: CurrenciesApi.ApiVersions = .v1
-  static let apiAccessLevel: CurrenciesApi.ApiAccessLevel = .pub
   private let router = Router<CurrenciesApi>()
   
   func getCurrencies(limit: Int, offset: Int, ids: String?,
@@ -76,7 +74,7 @@ struct CurrenciesNetworkManager: NetworkManager {
     }
   }
   
-  func getHistory(currID: Int, time: CRTimeframe, _ completion: @escaping(CRRoot<CRDataHistory>?, _ error: String?) -> Void) {
+  func getHistory(currID: String, time: CRTimeframe, _ completion: @escaping(CRRoot<CRDataHistory>?, _ error: String?) -> Void) {
     router.request(.hsitory(currID, time)) { data, response, error in
       if error != nil {
         completion(nil, "Please check yur network connection")

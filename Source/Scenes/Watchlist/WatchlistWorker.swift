@@ -43,7 +43,7 @@ class WatchlistWorker {
     }
   }
   
-  func fetchFavorite() -> Int64? {
+  func fetchFavorite() -> SaveCurrency? {
     return DataStore.shared.loadFavorite()
   }
 }

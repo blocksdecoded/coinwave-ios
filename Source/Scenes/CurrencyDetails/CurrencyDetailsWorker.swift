@@ -18,7 +18,8 @@ class CurrencyDetailsWorker {
       let networkManager = CurrenciesNetworkManager()
       networkManager.getCurrency(currID: currID, { currency, _ in
         guard let curr = currency else {
-          fatalError()
+          print("Handle error here: no data")
+          return
         }
         
         DispatchQueue.main.async {

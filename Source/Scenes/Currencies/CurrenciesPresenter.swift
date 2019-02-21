@@ -14,8 +14,6 @@ import UIKit
 
 protocol CurrenciesPresentationLogic {
   func presentCurrencies(response: Currencies.FetchCoins.ViewModel)
-  func presentNextCoins(response: Currencies.LoadNext.Response)
-  func presentLoadAll()
 }
 
 class CurrenciesPresenter: CurrenciesPresentationLogic {
@@ -24,14 +22,5 @@ class CurrenciesPresenter: CurrenciesPresentationLogic {
   func presentCurrencies(response: Currencies.FetchCoins.ViewModel) {
     let viewModel = Currencies.FetchCoins.ViewModel(currencies: response.currencies)
     viewController?.displaySomething(viewModel: viewModel)
-  }
-  
-  func presentNextCoins(response: Currencies.LoadNext.Response) {
-    let viewModel = Currencies.LoadNext.ViewModel(coins: response.coin.data.coins)
-    viewController?.displayNext(viewModel: viewModel)
-  }
-  
-  func presentLoadAll() {
-    viewController?.displayLoadAll()
   }
 }

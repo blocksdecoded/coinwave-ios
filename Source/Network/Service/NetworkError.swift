@@ -13,3 +13,8 @@ public enum NetworkError: String, Error {
   case encodingFailed = "Parameter encoding failed."
   case missingURL = "URL is nil."
 }
+
+public enum NetworkResultError: String {
+  case network = "Connection error, please check your internet connection and press \"retry\""
+  case noData = "No available data. Please, retry later"
+}

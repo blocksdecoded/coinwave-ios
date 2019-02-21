@@ -53,7 +53,7 @@ class DataStore {
     }
   }
   
-  func loadFavorite() -> Int64? {
+  func loadFavorite() -> SaveCurrency? {
     do {
       return try CurrencySaveDataHelper.favorite()
     } catch {
@@ -61,17 +61,17 @@ class DataStore {
     }
   }
   
-  func setFavorite(id: Int, isFavorite: Bool) {
+  func setFavorite(id: Int, symbol: String, isFavorite: Bool) {
     do {
-      try CurrencySaveDataHelper.setFavorite(id: id, isFavorite: isFavorite)
+      try CurrencySaveDataHelper.setFavorite(id: id, symbol: symbol, isFavorite: isFavorite)
     } catch {
       fatalError("Cannot set favorite")
     }
   }
   
-  func setWatchlist(id: Int, isWatchlist: Bool) {
+  func setWatchlist(id: Int, symbol: String, isWatchlist: Bool) {
     do {
-      try CurrencySaveDataHelper.setWatchlist(id: id, isWatchlist: isWatchlist)
+      try CurrencySaveDataHelper.setWatchlist(id: id, symbol: symbol, isWatchlist: isWatchlist)
     } catch {
       fatalError("Cannot set watchlist")
     }
