@@ -23,24 +23,22 @@ protocol WatchlistDataStore {
 
 class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   var presenter: WatchlistPresentationLogic?
-  var worker: WatchlistWorker?
-  //var name: String = ""
+  var worker: CoinsWorker?
   
-  // MARK: Do something
-  
-  func doSomething(request: Watchlist.Something.Request) {    
-    worker?.fetchCurrencies { currencies in
-      let response = Watchlist.Something.Response(currencies: currencies)
+  func doSomething(request: Watchlist.Something.Request) {
+    worker?.fetchWatchlist { coins in
+      let response = Watchlist.Something.Response(currencies: coins!)
       self.presenter?.presentSomething(response: response)
     }
   }
   
   func fetchFavorite() {
-    guard let coin = worker?.fetchFavorite() else {
-      presenter?.presentNoFavorite()
-      return
+    worker?.fetchFavorite { coin in
+      if coin == nil {
+        self.presenter?.presentNoFavorite()
+      } else {
+        self.presenter?.presentFavorite(response: Watchlist.Favorite.Response(id: Int(coin!.id), symbol: coin!.symbol))
+      }
     }
-    
-    presenter?.presentFavorite(response: Watchlist.Favorite.Response(id: Int(coin.id), symbol: coin.symbol))
   }
 }

@@ -24,17 +24,19 @@ protocol CurrencyDetailsDataStore {
 
 class CurrencyDetailsInteractor: CurrencyDetailsBusinessLogic, CurrencyDetailsDataStore {
   var presenter: CurrencyDetailsPresentationLogic?
-  var worker: CurrencyDetailsWorker?
+  var worker: CoinsWorker?
   //var name: String = ""
   
   // MARK: Do something
   
   func doSomething(request: CurrencyDetails.Something.Request) {
-    worker = CurrencyDetailsWorker()
-    worker?.doSomeWork(currID: request.currID, { currency in
-      let response = CurrencyDetails.Something.Response(coin: currency)
+    worker?.fetchCoin(request.currID) { coin in
+      guard let coinCoin = coin else {
+        fatalError("No coin")
+      }
+      let response = CurrencyDetails.Something.Response(coin: coinCoin)
       self.presenter?.presentSomething(response: response)
-    })
+    }
   }
   
   func addToFavorites(request: CurrencyDetails.AddFavorite.Request) {

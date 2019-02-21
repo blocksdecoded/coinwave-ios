@@ -13,12 +13,24 @@ import Foundation
 class DataStore {
   static let shared = DataStore()
   
+  private let updateTime: TimeInterval = 60 * 5
+  
+  private var lastUpdate: Date?
+  
   private init() {
     do {
       try SQLiteDataStore.sharedInstance.createTables()
     } catch {
       fatalError("Cant create tables")
     }
+  }
+  
+  func isCoinsOutdated() -> Bool {
+    guard let lastUpdate = lastUpdate else {
+      return true
+    }
+    
+    return Date().timeIntervalSince(lastUpdate) >= updateTime
   }
   
   func loadWatchlist() -> [CRCoin]? {
@@ -54,6 +66,7 @@ class DataStore {
   }
   
   func insertCoins(_ coins: [CRCoin]) {
+    lastUpdate = Date()
     do {
       for curr in coins {
         try CRCoinDataHelper.insertOrUpdate(item: curr)

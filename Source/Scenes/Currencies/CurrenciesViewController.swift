@@ -149,9 +149,11 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     let interactor = CurrenciesInteractor()
     let presenter = CurrenciesPresenter()
     let router = CurrenciesRouter()
+    let worker = CoinsWorker()
     viewController.interactor = interactor
     viewController.router = router
     interactor.presenter = presenter
+    interactor.worker = worker
     presenter.viewController = viewController
     router.viewController = viewController
     router.dataStore = interactor

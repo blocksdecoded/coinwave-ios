@@ -23,10 +23,9 @@ protocol AddToWatchlistDataStore {
 
 class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataStore {
   var presenter: AddToWatchlistPresentationLogic?
-  var worker: AddToWatchlistWorker?
+  var worker: CoinsWorker?
 
   func doSomething(request: AddToWatchlist.Something.Request) {
-    worker = AddToWatchlistWorker()
     worker?.fetchCoins { currencies in
       if currencies == nil {
         self.presenter?.presentEmptyList()
@@ -38,9 +37,9 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
   }
   
   func addToWatchlist(id: AddToWatchlist.Add.Request) {
-    worker = AddToWatchlistWorker()
-    worker?.addToWatchlist(id) { response in
-      self.presenter?.addToWatchlist(response: response)
-    }
+    var mutableCoin = id.coin
+    mutableCoin.isWatchlist = !mutableCoin.isWatchlist
+    worker?.update(mutableCoin)
+    self.presenter?.addToWatchlist(response: AddToWatchlist.Add.Response(position: id.position, coin: id.coin))
   }
 }

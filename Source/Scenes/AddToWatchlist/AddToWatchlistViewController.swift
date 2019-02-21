@@ -101,9 +101,11 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
     let interactor = AddToWatchlistInteractor()
     let presenter = AddToWatchlistPresenter()
     let router = AddToWatchlistRouter()
+    let worker = CoinsWorker()
     viewController.interactor = interactor
     viewController.router = router
     interactor.presenter = presenter
+    interactor.worker = worker
     presenter.viewController = viewController
     router.viewController = viewController
     router.dataStore = interactor

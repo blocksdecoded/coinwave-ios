@@ -24,21 +24,13 @@ protocol CurrenciesDataStore {
 class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   
   var presenter: CurrenciesPresentationLogic?
-  var worker: CurrenciesWorker?
+  var worker: CoinsWorker?
   
   var data: CRRoot<CRDataList>?
 
-  // MARK: Do something
-
   func doSomething(request: Currencies.FetchCoins.Request) {
-    worker = CurrenciesWorker()
-    if let currs = worker?.fetchLocalCurrencies() {
-      presenter?.presentCurrencies(response: Currencies.FetchCoins.ViewModel(currencies: currs))
-    }
-    
-    worker?.fetchCurrencies(limit: request.limit, offset: Constants.COINS_OFFSET) { currencies in
-      self.data = currencies
-      self.presenter?.presentCurrencies(response: Currencies.FetchCoins.ViewModel(currencies: currencies.data.coins))
+    worker?.fetchCoins { coins in
+      self.presenter?.presentCurrencies(response: Currencies.FetchCoins.ViewModel(currencies: coins!))
     }
   }
   

@@ -141,7 +141,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     let interactor = WatchlistInteractor()
     let presenter = WatchlistPresenter()
     let router = WatchlistRouter()
-    let worker = WatchlistWorker()
+    let worker = CoinsWorker()
     viewController.interactor = interactor
     viewController.router = router
     interactor.presenter = presenter
