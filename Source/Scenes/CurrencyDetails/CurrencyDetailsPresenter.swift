@@ -27,29 +27,29 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
   func presentSomething(response: CurrencyDetails.Something.Response) {
     var currInfo = [CurrencyDetails.Something.ViewModel.Info]()
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Price:",
-                                                             value: response.curr.priceStrLong, valueColor: nil))
+                                                             value: response.coin.priceStrLong, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Market Cap:",
-                                                             value: response.curr.marketCapStrLong, valueColor: nil))
+                                                             value: response.coin.marketCapStrLong, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Volume 24h:",
-                                                             value: response.curr.volumeStrLong, valueColor: nil))
+                                                             value: response.coin.volumeStrLong, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Available supply:",
-                                                             value: response.curr.circulatingSupplyStrLong, valueColor: nil))
+                                                             value: response.coin.circulatingSupplyStrLong, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Total supply:",
-                                                             value: response.curr.totalSupplyStrLong, valueColor: nil))
+                                                             value: response.coin.totalSupplyStrLong, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change:",
-                                                             value: response.curr.changeStr, valueColor: response.curr.changeColor))
+                                                             value: response.coin.changeStr, valueColor: response.coin.changeColor))
 
-    let viewModel = CurrencyDetails.Something.ViewModel(title: "\(response.curr.name) \(response.curr.symbol)",
-                                                        saveCurrency: response.saveCurr,
+    let viewModel = CurrencyDetails.Something.ViewModel(title: "\(response.coin.name) \(response.coin.symbol)",
+                                                        saveCurrency: response.coin,
                                                         info: currInfo)
     viewController?.displaySomething(viewModel: viewModel)
     
-    coinSite = response.curr.websiteUrl
+    coinSite = response.coin.websiteUrl
   }
   
   func favorites(response: CurrencyDetails.AddFavorite.Response) {
     viewController?.changeFavorites(viewModel: CurrencyDetails.AddFavorite
-      .ViewModel(saveCurrency: response.saveCurrency))
+      .ViewModel(coin: response.coin))
   }
   
   func presentWebsite() {

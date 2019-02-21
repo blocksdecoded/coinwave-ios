@@ -17,15 +17,15 @@ enum CurrencyDetails {
   
   enum AddFavorite {
     struct Request {
-      let saveCurrency: SaveCurrency
+      let coin: CRCoin
     }
     
     struct Response {
-      let saveCurrency: SaveCurrency
+      let coin: CRCoin
     }
     
     struct ViewModel {
-      let saveCurrency: SaveCurrency
+      let coin: CRCoin
     }
   }
   
@@ -35,12 +35,11 @@ enum CurrencyDetails {
       let currID: Int
     }
     struct Response {
-      let curr: CRCoin
-      let saveCurr: SaveCurrency?
+      let coin: CRCoin
     }
     struct ViewModel {
       let title: String
-      let saveCurrency: SaveCurrency?
+      let saveCurrency: CRCoin?
       let info: [Info]
       struct Info {
         let name: String

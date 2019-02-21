@@ -15,25 +15,14 @@ import UIKit
 class CurrencyDetailsWorker {
   func doSomeWork(currID: Int, _ completion: @escaping(CRCoin) -> Void) {
     DispatchQueue.global(qos: .background).async {
-      let networkManager = CurrenciesNetworkManager()
-      networkManager.getCurrency(currID: currID, { currency, _ in
-        guard let curr = currency else {
-          print("Handle error here: no data")
-          return
-        }
-        
-        DispatchQueue.main.async {
-          completion(curr.data.coin)
-        }
-      })
+      let coin = DataStore.shared.fetchCoin(currID)!
+      DispatchQueue.main.async {
+        completion(coin)
+      }
     }
   }
   
-  func loadSaveCurrency(currID: Int) -> SaveCurrency? {
-    return DataStore.shared.loadSaveCurrency(currID)
-  }
-  
-  func addToFavorites(_ currency: SaveCurrency) {
-    DataStore.shared.insertSaveCurrency(currency)
+  func update(_ coin: CRCoin) {
+    DataStore.shared.fullUpdate(coin)
   }
 }

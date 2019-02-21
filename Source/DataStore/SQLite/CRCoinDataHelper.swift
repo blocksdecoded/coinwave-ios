@@ -38,6 +38,8 @@ class CRCoinDataHelper: DataHelperProtocol {
   static let currAllTimeHighPrice = Expression<String?>("allTimeHighPrice")
   static let currAllTimeHighTimestamp = Expression<Double?>("allTimeHighTimestamp")
   static let currPenalty = Expression<Bool>("penalty")
+  static let currIsWatchlist = Expression<Bool>("isWatchlist")
+  static let currIsFavorite = Expression<Bool>("isFavorite")
   
   static func createTable() throws {
     guard let db = SQLiteDataStore.sharedInstance.db else {
@@ -69,6 +71,8 @@ class CRCoinDataHelper: DataHelperProtocol {
         t.column(currAllTimeHighPrice)
         t.column(currAllTimeHighTimestamp)
         t.column(currPenalty)
+        t.column(currIsWatchlist)
+        t.column(currIsFavorite)
       })
     } catch _ {
       // Error throw if table already exists
@@ -154,6 +158,55 @@ class CRCoinDataHelper: DataHelperProtocol {
     return result
   }
   
+  static func watchlist() throws -> [CRCoin]? {
+    guard let db = SQLiteDataStore.sharedInstance.db else {
+      throw DataAccessError.datastoreConnection
+    }
+    
+    var result = [CRCoin]()
+    let query = table.filter(currIsWatchlist == true)
+    let favs = try db.prepare(query)
+    for fav in favs {
+      result.append(convert(row: fav))
+    }
+    return result
+  }
+  
+  static func favorite() throws -> CRCoin? {
+    guard let db = SQLiteDataStore.sharedInstance.db else {
+      throw DataAccessError.datastoreConnection
+    }
+    
+    let query = table.filter(currIsFavorite == true)
+    let favs = try db.prepare(query)
+    for fav in favs {
+      return convert(row: fav)
+    }
+    
+    return nil
+  }
+  
+  static func resetFavorite() throws {
+    guard let db = SQLiteDataStore.sharedInstance.db else {
+      throw DataAccessError.datastoreConnection
+    }
+    
+    let prevFavorite = table.filter(currIsFavorite == true)
+    let prevUpdate = prevFavorite.update([currIsFavorite <- false])
+    try db.run(prevUpdate)
+  }
+  
+  static func fullUpdate(item: CRCoin) throws {
+    guard let db = SQLiteDataStore.sharedInstance.db else {
+      throw DataAccessError.datastoreConnection
+    }
+    
+    print("IsFavorite \(item.isFavorite)")
+    
+    let curr = table.filter(currID == Int64(item.id))
+    try db.run(curr.update(fullUpdateSetters(item: item)))
+  }
+  
   private static func convert(row: Row) -> CRCoin {
     let allTimeHigh = CRPrice(price: row[currAllTimeHighPrice],
                                     timestamp: row[currAllTimeHighTimestamp])
@@ -195,11 +248,13 @@ class CRCoinDataHelper: DataHelperProtocol {
                   rank: row[currRank],
                   history: history,
                   allTimeHigh: allTimeHigh,
-                  penalty: row[currPenalty])
+                  penalty: row[currPenalty],
+                  isWatchlist: row[currIsWatchlist],
+                  isFavorite: row[currIsFavorite])
   }
   
   private static func insertSetters(item: CRCoin) -> [Setter] {
-    var setters = updateSetters(item: item)
+    var setters = fullUpdateSetters(item: item)
     setters.insert(currID <- Int64(item.id), at: 0)
     return setters
   }
@@ -239,6 +294,46 @@ class CRCoinDataHelper: DataHelperProtocol {
       currAllTimeHighPrice <- item.allTimeHigh.price,
       currAllTimeHighTimestamp <- item.allTimeHigh.timestamp,
       currPenalty <- item.penalty
+    ]
+  }
+  
+  private static func fullUpdateSetters(item: CRCoin) -> [Setter] {
+    var history = ""
+    
+    for index in 0..<item.history.count {
+      if index == 0 {
+        history = "\(item.history[index] ?? "")"
+      } else {
+        history = "\(history):\(item.history[index] ?? " ")"
+      }
+    }
+    
+    return [
+      currID <- Int64(item.id),
+      currSlug <- item.slug,
+      currSymbol <- item.symbol,
+      currName <- item.name,
+      currDescription <- item.description,
+      currColor <- item.color,
+      currIconType <- item.iconType?.rawValue,
+      currIconUrl <- item.iconUrl,
+      currWebsiteUrl <- item.websiteUrl,
+      currConfirmedSupply <- item.confirmedSupply,
+      currType <- item.type.rawValue,
+      currVolume <- item.volume,
+      currMarketCap <- item.marketCap,
+      currPrice <- item.price,
+      currCirculatingSupply <- item.circulatingSupply,
+      currTotalSupply <- item.totalSupply,
+      currFirstSeen <- item.firstSeen,
+      currChange <- item.change,
+      currRank <- item.rank,
+      currHistory <- history,
+      currAllTimeHighPrice <- item.allTimeHigh.price,
+      currAllTimeHighTimestamp <- item.allTimeHigh.timestamp,
+      currPenalty <- item.penalty,
+      currIsWatchlist <- item.isWatchlist,
+      currIsFavorite <- item.isFavorite
     ]
   }
 }

@@ -181,7 +181,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       return
     }
     
-    interactor?.setFavorite(id: coin.id, symbol: coin.symbol, isFavorite: true)
+    interactor?.setFavorite(coin)
     favoritePickerDelegate?.onPickedFavorite()
     self.navigationController?.popViewController(animated: true)
   }

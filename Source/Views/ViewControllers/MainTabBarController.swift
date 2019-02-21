@@ -100,7 +100,7 @@ extension MainTabBarController: MenuDelegate {
 
 extension MainTabBarController: OnPickFavoriteDelegate {
   func onPickedFavorite() {
-    guard let watchVC = viewControllers?[0] as? WatchlistViewController else {
+    guard let watchVC = viewControllers?[1] as? WatchlistViewController else {
       return
     }
     

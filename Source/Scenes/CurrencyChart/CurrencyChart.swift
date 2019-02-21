@@ -231,23 +231,11 @@ class CurrencyChart: UIView {
     if let root = cache.object(forKey: key as NSString) as? CRRoot<CRDataHistory> {
       self.setChartData(prices: root.data.history)
     } else {
+      
+      let coin = DataStore.shared.fetchCoin(coinID)!
+      setCoinData(coin: coin)
+      
       let networkManager = CurrenciesNetworkManager()
-      
-      networkManager.getCurrency(currID: coinID) { data, error in
-        if let error = error {
-          print(error)
-          return
-        }
-        
-        guard let data = data else {
-          return
-        }
-        
-        DispatchQueue.main.async {
-          self.setCoinData(coin: data.data.coin)
-        }
-      }
-      
       networkManager.getHistory(currID: coinSymbol, time: time) { root, error in
         if let error = error {
           print(error)

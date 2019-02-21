@@ -28,20 +28,11 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   
   // MARK: Do something
   
-  func doSomething(request: Watchlist.Something.Request) {
-    guard let ids = worker?.fetchWatchlistIds(),
-          ids.count > 0 else {
-            print("no ids")
-      //TODO: present empty list
-      return
-    }
-    
-    let strIds = ids.map { String($0) }.joined(separator: ",")
-    
-    worker?.fetchCurrencies(ids: strIds, { currencies in
-      let response = Watchlist.Something.Response(currencies: currencies.data.coins)
+  func doSomething(request: Watchlist.Something.Request) {    
+    worker?.fetchCurrencies { currencies in
+      let response = Watchlist.Something.Response(currencies: currencies)
       self.presenter?.presentSomething(response: response)
-    })
+    }
   }
   
   func fetchFavorite() {

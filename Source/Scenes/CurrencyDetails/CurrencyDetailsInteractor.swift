@@ -32,22 +32,16 @@ class CurrencyDetailsInteractor: CurrencyDetailsBusinessLogic, CurrencyDetailsDa
   func doSomething(request: CurrencyDetails.Something.Request) {
     worker = CurrencyDetailsWorker()
     worker?.doSomeWork(currID: request.currID, { currency in
-      let response = CurrencyDetails.Something.Response(curr: currency,
-                     saveCurr: self.worker?.loadSaveCurrency(currID: currency.id))
+      let response = CurrencyDetails.Something.Response(coin: currency)
       self.presenter?.presentSomething(response: response)
     })
   }
   
   func addToFavorites(request: CurrencyDetails.AddFavorite.Request) {
-    var curr = request.saveCurrency
-    if curr.isWatchlist {
-      curr.isWatchlist = false
-      curr.isFavorite = false
-    } else {
-      curr.isWatchlist = true
-    }
-    worker?.addToFavorites(curr)
-    let response = CurrencyDetails.AddFavorite.Response(saveCurrency: curr)
+    var coin = request.coin
+    coin.isWatchlist = !coin.isWatchlist
+    worker?.update(coin)
+    let response = CurrencyDetails.AddFavorite.Response(coin: coin)
     self.presenter?.favorites(response: response)
   }
   

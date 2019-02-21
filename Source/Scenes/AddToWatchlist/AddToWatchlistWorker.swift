@@ -13,29 +13,9 @@
 import UIKit
 
 class AddToWatchlistWorker {
-  func fetchCurrencies(_ completion: @escaping(CRRoot<CRDataList>?) -> Void) {
+  func fetchCoins(_ completion: @escaping([CRCoin]?) -> Void) {
     DispatchQueue.global(qos: .background).async {
-      let coinsNetworkManager = CurrenciesNetworkManager()
-      coinsNetworkManager.getCurrencies(limit: 100, offset: 0, ids: nil, completion: { currencies, error in
-        DispatchQueue.main.async {
-          if error != nil {
-            print(error!)
-          }
-          
-          guard let curs = currencies else {
-            return
-          }
-          DispatchQueue.main.async {
-            completion(curs)
-          }
-        }
-      })
-    }
-  }
-  
-  func fetchSavedWatchlist(_ completion: @escaping([SaveCurrency]?) -> Void) {
-    DispatchQueue.global(qos: .background).async {
-      let savedCurrency = DataStore.shared.loadWatchlist()
+      let savedCurrency = DataStore.shared.loadCoins()
       DispatchQueue.main.async {
         completion(savedCurrency)
       }
@@ -43,8 +23,9 @@ class AddToWatchlistWorker {
   }
   
   func addToWatchlist(_ input: AddToWatchlist.Add.Request,_ completion: @escaping(AddToWatchlist.Add.Response) -> Void) {
-    let resultIsWatchlist = !input.isWatchlist
-    DataStore.shared.setWatchlist(id: input.id, symbol: input.symbol, isWatchlist: resultIsWatchlist)
-    completion(AddToWatchlist.Add.Response(position: input.position, isWatchlist: resultIsWatchlist))
+    var coin = input.coin
+    coin.isWatchlist = !coin.isWatchlist
+    DataStore.shared.fullUpdate(coin)
+    completion(AddToWatchlist.Add.Response(position: input.position, coin: coin))
   }
 }

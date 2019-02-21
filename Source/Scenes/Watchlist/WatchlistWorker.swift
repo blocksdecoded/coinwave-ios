@@ -13,37 +13,24 @@
 import UIKit
 
 class WatchlistWorker {
-  
-  func fetchSaveCurrencies() -> [SaveCurrency]? {
-    return DataStore.shared.loadWatchlist()
-  }
-  
-  func fetchLocalCurrencies() -> [CRCoin]? {
-    return DataStore.shared.loadCurrencies()
-  }
-  
-  func fetchWatchlistIds() -> [Int64]? {
-    return DataStore.shared.loadWatchlistIds()
-  }
-  
-  func fetchCurrencies(ids: String?, _ completion: @escaping(CRRoot<CRDataList>) -> Void) {
+  func fetchCurrencies(_ completion: @escaping([CRCoin]) -> Void) {
     DispatchQueue.global(qos: .background).async {
-      let networkManager = CurrenciesNetworkManager()
-      networkManager.getCurrencies(limit: 50, offset: 0, ids: ids, completion: { currencies, _ in
-        guard let currs = currencies else {
-          return
-        }
-        
-        DataStore.shared.insertCurrencies(currs.data.coins)
-        DispatchQueue.main.async {
-          completion(currs)
-        }
-      })
-      
+      let coins = DataStore.shared.loadWatchlist()!
+      DispatchQueue.main.async {
+        completion(coins)
+      }
     }
   }
   
-  func fetchFavorite() -> SaveCurrency? {
+  func fetchWatchlist() -> [CRCoin]? {
+    return DataStore.shared.loadWatchlist()
+  }
+  
+  func fetchCoins() -> [CRCoin]? {
+    return DataStore.shared.loadCoins()
+  }
+  
+  func fetchFavorite() -> CRCoin? {
     return DataStore.shared.loadFavorite()
   }
 }

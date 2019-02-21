@@ -35,6 +35,6 @@ class AddToWatchlistPresenter: AddToWatchlistPresentationLogic {
   }
   
   func addToWatchlist(response: AddToWatchlist.Add.Response) {
-    viewController?.refreshCoin(viewModel: AddToWatchlist.Add.ViewModel(position: response.position, isWatchlist: response.isWatchlist))
+    viewController?.refreshCoin(viewModel: AddToWatchlist.Add.ViewModel(position: response.position, coin: response.coin))
   }
 }

@@ -29,7 +29,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   private let minimumLineSpacing: CGFloat = 20
   private let currListMargin: CGFloat = 10
   
-  private var coins: [AddToWatchlist.Coin]?
+  private var coins: [CRCoin]?
   
   private lazy var cellWidth: CGFloat = {
     return (self.view.frame.width - minimumInterSpacing - (2 * currListMargin)) / 2
@@ -187,8 +187,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   }
   
   func refreshCoin(viewModel: AddToWatchlist.Add.ViewModel) {
-    let oldCoin = coins![viewModel.position]
-    coins?[viewModel.position] = oldCoin.set(watchlist: viewModel.isWatchlist)
+    coins?[viewModel.position] = viewModel.coin
     currenciesList.reloadItems(at: [IndexPath(item: viewModel.position, section: 0)])
   }
   
@@ -224,7 +223,7 @@ extension AddToWatchlistViewController: UICollectionViewDelegate, UICollectionVi
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let coin = coins![indexPath.item]
-    interactor?.addToWatchlist(id: AddToWatchlist.Add.Request(id: coin.id, symbol: coin.symbol, isWatchlist: coin.isWatchlist, position: indexPath.item))
+    interactor?.addToWatchlist(id: AddToWatchlist.Add.Request(coin: coin, position: indexPath.item))
   }
 }
 

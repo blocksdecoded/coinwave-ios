@@ -21,65 +21,41 @@ class DataStore {
     }
   }
   
-  func insertSaveCurrency(_ currency: SaveCurrency) {
+  func loadWatchlist() -> [CRCoin]? {
     do {
-      try CurrencySaveDataHelper.insertOrUpdate(item: currency)
-    } catch {
-      fatalError("Cannot insert save curencies")
-    }
-  }
-  
-  func loadSaveCurrency(_ id: Int) -> SaveCurrency? {
-    do {
-      return try CurrencySaveDataHelper.find(id: Int64(id))
-    } catch {
-      fatalError("Cannot load save currency")
-    }
-  }
-  
-  func loadWatchlistIds() -> [Int64]? {
-    do {
-      return try CurrencySaveDataHelper.watchlistIds()
-    } catch {
-      fatalError("Cannot load watchlist ids")
-    }
-  }
-  
-  func loadWatchlist() -> [SaveCurrency]? {
-    do {
-      return try CurrencySaveDataHelper.watchlist()
+      return try CRCoinDataHelper.watchlist()
     } catch {
       fatalError("Cannot load watchlist")
     }
   }
   
-  func loadFavorite() -> SaveCurrency? {
+  func loadFavorite() -> CRCoin? {
     do {
-      return try CurrencySaveDataHelper.favorite()
+      return try CRCoinDataHelper.favorite()
     } catch {
       fatalError("Cannot load favorite")
     }
   }
   
-  func setFavorite(id: Int, symbol: String, isFavorite: Bool) {
+  func resetFavorite() {
     do {
-      try CurrencySaveDataHelper.setFavorite(id: id, symbol: symbol, isFavorite: isFavorite)
+      try CRCoinDataHelper.resetFavorite()
     } catch {
-      fatalError("Cannot set favorite")
+      fatalError("Cannot insert coin")
     }
   }
   
-  func setWatchlist(id: Int, symbol: String, isWatchlist: Bool) {
+  func fullUpdate(_ coin: CRCoin) {
     do {
-      try CurrencySaveDataHelper.setWatchlist(id: id, symbol: symbol, isWatchlist: isWatchlist)
+      try CRCoinDataHelper.fullUpdate(item: coin)
     } catch {
-      fatalError("Cannot set watchlist")
+      fatalError("Cannot insert coin")
     }
   }
   
-  func insertCurrencies(_ currencies: [CRCoin]) {
+  func insertCoins(_ coins: [CRCoin]) {
     do {
-      for curr in currencies {
+      for curr in coins {
         try CRCoinDataHelper.insertOrUpdate(item: curr)
       }
     } catch {
@@ -87,11 +63,19 @@ class DataStore {
     }
   }
   
-  func loadCurrencies() -> [CRCoin]? {
+  func loadCoins() -> [CRCoin]? {
     do {
       return try CRCoinDataHelper.findAll()
     } catch {
       fatalError("Cannot load currencies")
+    }
+  }
+  
+  func fetchCoin(_ id: Int) -> CRCoin? {
+    do {
+      return try CRCoinDataHelper.find(id: Int64(id))
+    } catch {
+      fatalError("Cannot fetch coin \(id)")
     }
   }
   

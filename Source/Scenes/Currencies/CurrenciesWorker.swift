@@ -15,13 +15,13 @@ import UIKit
 class CurrenciesWorker {
   
   func fetchLocalCurrencies() -> [CRCoin]? {
-    return DataStore.shared.loadCurrencies()
+    return DataStore.shared.loadCoins()
   }
   
   func fetchCurrencies(limit: Int, offset: Int, _ completion: @escaping (CRRoot<CRDataList>) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
-      networkManager.getCurrencies(limit: limit, offset: offset, ids: nil, completion: { currencies, error in
+      networkManager.getCurrencies { currencies, error in
         if error != nil {
           print(error!)
         }
@@ -29,14 +29,18 @@ class CurrenciesWorker {
         guard let curs = currencies else {
           return
         }
+        
+        DataStore.shared.insertCoins(curs.data.coins)
+        
         DispatchQueue.main.async {
           completion(curs)
         }
-      })
+      }
     }
   }
   
-  func setFavorite(id: Int, symbol: String, isFavorite: Bool) {
-    DataStore.shared.setFavorite(id: id, symbol: symbol, isFavorite: isFavorite)
+  func setFavorite(_ coin: CRCoin) {
+    DataStore.shared.resetFavorite()
+    DataStore.shared.fullUpdate(coin)
   }
 }

@@ -131,7 +131,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   }()
   
   private var info: [CurrencyDetails.Something.ViewModel.Info]?
-  private var saveCurrency: SaveCurrency?
+  private var saveCurrency: CRCoin?
 
   // MARK: Object lifecycle
   
@@ -290,7 +290,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   }
   
   func changeFavorites(viewModel: CurrencyDetails.AddFavorite.ViewModel) {
-    saveCurrency = viewModel.saveCurrency
+    saveCurrency = viewModel.coin
     let isFilledStar = saveCurrency?.isWatchlist ?? false
     favoriteBtn.setImage(UIImage(named: isFilledStar ? "filled_star" : "empty_star"), for: .normal)
   }
@@ -313,10 +313,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   }
   
   @objc private func addFavorite() {
-    let request = CurrencyDetails.AddFavorite.Request(saveCurrency: saveCurrency ?? SaveCurrency(id: currencyID,
-                                                                                                 symbol: currencySymbol,
-                                                                                                 isWatchlist: false,
-                                                                                                 isFavorite: false))
+    let request = CurrencyDetails.AddFavorite.Request(coin: saveCurrency!)
     interactor?.addToFavorites(request: request)
   }
   

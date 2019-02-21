@@ -13,50 +13,34 @@
 import UIKit
 
 enum AddToWatchlist {
-  struct Coin {
-    let id: Int
-    let isWatchlist: Bool
-    let name: String
-    let symbol: String
-    let icon: CRCoin.IconType?
-    let iconUrl: String?
-    
-    func set(watchlist: Bool) -> Coin {
-      return Coin(id: id, isWatchlist: watchlist, name: name, symbol: symbol, icon: icon, iconUrl: iconUrl)
-    }
-  }
-  
   // MARK: Use cases
-  
   enum Something {
     // swiftlint:disable nesting
     struct Request {
     }
     struct Response {
-      let coins: [Coin]
+      let coins: [CRCoin]
     }
     struct ViewModel {
-      let coins: [Coin]
+      let coins: [CRCoin]
     }
     
   }
   
   enum Add {
     struct Request {
-      let id: Int
-      let symbol: String
-      let isWatchlist: Bool
+      let coin: CRCoin
       let position: Int
     }
     
     struct Response {
       let position: Int
-      let isWatchlist: Bool
+      let coin: CRCoin
     }
     
     struct ViewModel {
       let position: Int
-      let isWatchlist: Bool
+      let coin: CRCoin
     }
   }
 }

@@ -14,7 +14,7 @@ import UIKit
 
 protocol CurrenciesBusinessLogic {
   func doSomething(request: Currencies.FetchCoins.Request)
-  func setFavorite(id: Int, symbol: String, isFavorite: Bool)
+  func setFavorite(_ coin: CRCoin)
 }
 
 protocol CurrenciesDataStore {
@@ -42,7 +42,9 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
     }
   }
   
-  func setFavorite(id: Int, symbol: String, isFavorite: Bool) {
-    worker?.setFavorite(id: id, symbol: symbol, isFavorite: isFavorite)
+  func setFavorite(_ coin: CRCoin) {
+    var mutableCoin = coin
+    mutableCoin.isFavorite = true
+    worker?.setFavorite(mutableCoin)
   }
 }

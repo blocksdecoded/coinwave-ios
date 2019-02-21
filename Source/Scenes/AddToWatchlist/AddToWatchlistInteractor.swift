@@ -24,37 +24,15 @@ protocol AddToWatchlistDataStore {
 class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataStore {
   var presenter: AddToWatchlistPresentationLogic?
   var worker: AddToWatchlistWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
+
   func doSomething(request: AddToWatchlist.Something.Request) {
     worker = AddToWatchlistWorker()
-    worker?.fetchCurrencies { currencies in
-      self.worker?.fetchSavedWatchlist { savedCurrencies in
-        
-        if currencies == nil && savedCurrencies == nil {
-          self.presenter?.presentEmptyList()
-        } else {
-          var list = [AddToWatchlist.Coin]()
-          if let currs = currencies?.data.coins {
-            if let saved = savedCurrencies {
-              for curr in currs {
-                list.append(AddToWatchlist.Coin(id: curr.id, isWatchlist: saved.filter { $0.id == curr.id }.first?.isWatchlist ?? false,
-                                                          name: curr.name,
-                                                          symbol: curr.symbol,
-                                                          icon: curr.iconType,
-                                                          iconUrl: curr.iconUrlEncoded))
-              }
-            } else {
-              for curr in currs {
-                list.append(AddToWatchlist.Coin(id: curr.id, isWatchlist: false, name: curr.name, symbol: curr.symbol, icon: curr.iconType, iconUrl: curr.iconUrl))
-              }
-            }
-          }
-          let response = AddToWatchlist.Something.Response(coins: list)
-          self.presenter?.presentSomething(response: response)
-        }
+    worker?.fetchCoins { currencies in
+      if currencies == nil {
+        self.presenter?.presentEmptyList()
+      } else {
+        let response = AddToWatchlist.Something.Response(coins: currencies!)
+        self.presenter?.presentSomething(response: response)
       }
     }
   }

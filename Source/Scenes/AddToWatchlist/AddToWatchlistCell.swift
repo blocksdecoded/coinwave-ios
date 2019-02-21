@@ -176,7 +176,7 @@ class AddToWatchlistCell: UICollectionViewCell {
     NSLayoutConstraint.activate(backViewC + lblBackViewC + starBackC + starIVC + nameC + iconC + symbolC + svgIconC)
   }
   
-  func onBind(_ coin: AddToWatchlist.Coin) {
+  func onBind(_ coin: CRCoin) {
     starIV.image = UIImage(named: coin.isWatchlist ? "filled_star" : "empty_star_gray")
     
     name.text = coin.name
@@ -184,8 +184,8 @@ class AddToWatchlistCell: UICollectionViewCell {
     setIcon(coin)
   }
   
-  private func setIcon(_ coin: AddToWatchlist.Coin) {
-    guard let iconType = coin.icon,
+  private func setIcon(_ coin: CRCoin) {
+    guard let iconType = coin.iconType,
       let iconUrl = coin.iconUrl else {
         return
     }
