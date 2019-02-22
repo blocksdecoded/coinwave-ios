@@ -29,8 +29,16 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   var data: CRRoot<CRDataList>?
 
   func doSomething(request: Currencies.FetchCoins.Request) {
-    worker?.fetchCoins { coins in
-      self.presenter?.presentCurrencies(response: Currencies.FetchCoins.ViewModel(currencies: coins!))
+    worker?.fetchCoins { coins, error in
+      if error != nil {
+        self.presenter?.presentError(error!)
+      } else {
+        if coins != nil && !coins!.isEmpty {
+          self.presenter?.presentCurrencies(response: Currencies.FetchCoins.ViewModel(currencies: coins!))
+        } else {
+          self.presenter?.presentError(.noData)
+        }
+      }
     }
   }
   

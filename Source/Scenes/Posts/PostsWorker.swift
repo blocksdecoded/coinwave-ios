@@ -13,7 +13,7 @@
 import UIKit
 
 class PostsWorker {
-  func fetchPosts(completion: @escaping (_ posts: [Post]?, _ error: NetworkResultError?) -> Void) {
+  func fetchPosts(completion: @escaping (_ posts: [Post]?, _ error: CTError?) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let postsNetworkManager = PostsNetworkManager()
       postsNetworkManager.fetchPosts(completion: { posts, error in
@@ -37,7 +37,7 @@ class PostsWorker {
     }
   }
   
-  func fetchNextPosts(date: String, completion: @escaping (_ posts: [Post]?,  _ error: NetworkResultError?) -> Void) {
+  func fetchNextPosts(date: String, completion: @escaping (_ posts: [Post]?, _ error: CTError?) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let postsNetworkManager = PostsNetworkManager()
       postsNetworkManager.fetchNextPosts(date: date, completion: { posts, error in

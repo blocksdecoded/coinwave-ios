@@ -14,8 +14,8 @@ import UIKit
 
 protocol AddToWatchlistPresentationLogic {
   func presentSomething(response: AddToWatchlist.Something.Response)
-  func presentEmptyList()
   func addToWatchlist(response: AddToWatchlist.Add.Response)
+  func presentError(_ error: CTError)
 }
 
 class AddToWatchlistPresenter: AddToWatchlistPresentationLogic {
@@ -30,11 +30,13 @@ class AddToWatchlistPresenter: AddToWatchlistPresentationLogic {
     viewController?.displaySomething(viewModel: viewModel)
   }
   
-  func presentEmptyList() {
-    
+  func addToWatchlist(response: AddToWatchlist.Add.Response) {
+    let viewModel = AddToWatchlist.Add.ViewModel(position: response.position,
+                                                 coin: response.coin)
+    viewController?.refreshCoin(viewModel: viewModel)
   }
   
-  func addToWatchlist(response: AddToWatchlist.Add.Response) {
-    viewController?.refreshCoin(viewModel: AddToWatchlist.Add.ViewModel(position: response.position, coin: response.coin))
+  func presentError(_ error: CTError) {
+    viewController?.displayError(error.rawValue)
   }
 }

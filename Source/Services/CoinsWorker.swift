@@ -9,46 +9,61 @@
 import Foundation
 
 class CoinsWorker {
-  func fetchCoins(_ completion: @escaping ([CRCoin]?) -> Void) {
+  func fetchCoins(_ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
       fetchRemoteCoins(completion)
     } else {
       if let coins = fetchLocalCoins() {
-        completion(coins)
+        completion(coins, nil)
       } else {
         fetchRemoteCoins(completion)
       }
     }
   }
   
-  func fetchCoin(_ id: Int, _ completion: @escaping (CRCoin?) -> Void) {
+  func fetchCoin(_ coinId: Int, _ completion: @escaping (CRCoin?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
-      fetchRemoteCoins {_ in}
-      completion(fetchLocalCoin(id))
+      fetchRemoteCoins { _, error in
+        if error != nil {
+          completion(nil, error)
+        } else {
+          completion(self.fetchLocalCoin(coinId), nil)
+        }
+      }
     } else {
-      if let coin = fetchLocalCoin(id) {
-        completion(coin)
+      if let coin = fetchLocalCoin(coinId) {
+        completion(coin, nil)
       } else {
-        fatalError("No coin")
+        completion(nil, .noData)
       }
     }
   }
   
-  func fetchWatchlist(_ completion: @escaping ([CRCoin]?) -> Void) {
+  func fetchWatchlist(_ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
-      fetchRemoteCoins { _ in }
-      completion(DataStore.shared.loadWatchlist())
+      fetchRemoteCoins { _, error in
+        if error != nil {
+          completion(nil, error)
+        } else {
+          completion(DataStore.shared.loadWatchlist(), nil)
+        }
+      }
     } else {
-      completion(DataStore.shared.loadWatchlist())
+      completion(DataStore.shared.loadWatchlist(), nil)
     }
   }
   
-  func fetchFavorite(_ completion: @escaping (CRCoin?) -> Void) {
+  func fetchFavorite(_ completion: @escaping (CRCoin?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
-      fetchRemoteCoins { _ in }
-      completion(DataStore.shared.loadFavorite())
+      fetchRemoteCoins { _, error in
+        if error != nil {
+          completion(nil, error)
+        } else {
+          completion(DataStore.shared.loadFavorite(), nil)
+        }
+      }
     } else {
-      completion(DataStore.shared.loadFavorite())
+      completion(DataStore.shared.loadFavorite(), nil)
     }
   }
   
@@ -65,29 +80,29 @@ class CoinsWorker {
     return DataStore.shared.loadCoins()
   }
   
-  private func fetchRemoteCoins(_ completion: @escaping ([CRCoin]?) -> Void) {
+  private func fetchRemoteCoins(_ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
       networkManager.getCurrencies { currencies, error in
         if error != nil {
-          print(error!)
+          completion(nil, .network)
         }
         
         guard let curs = currencies else {
-          completion(nil)
+          completion(nil, .noData)
           return
         }
         
         DataStore.shared.insertCoins(curs.data.coins)
         
         DispatchQueue.main.async {
-          completion(curs.data.coins)
+          completion(curs.data.coins, nil)
         }
       }
     }
   }
   
-  private func fetchLocalCoin(_ id: Int) -> CRCoin? {
-    return DataStore.shared.fetchCoin(id)
+  private func fetchLocalCoin(_ coinId: Int) -> CRCoin? {
+    return DataStore.shared.fetchCoin(coinId)
   }
 }

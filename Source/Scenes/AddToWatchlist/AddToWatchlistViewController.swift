@@ -15,6 +15,7 @@ import UIKit
 protocol AddToWatchlistDisplayLogic: class {
   func displaySomething(viewModel: AddToWatchlist.Something.ViewModel)
   func refreshCoin(viewModel: AddToWatchlist.Add.ViewModel)
+  func displayError(_ string: String)
 }
 
 class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic {
@@ -186,6 +187,10 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
     refreshControl.endRefreshing()
     coins = viewModel.coins
     currenciesList.reloadData()
+  }
+  
+  func displayError(_ string: String) {
+    //TODO: Display error
   }
   
   func refreshCoin(viewModel: AddToWatchlist.Add.ViewModel) {

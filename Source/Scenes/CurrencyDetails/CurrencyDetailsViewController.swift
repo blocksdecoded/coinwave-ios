@@ -18,6 +18,7 @@ protocol CurrencyDetailsDisplayLogic: class {
   func changeFavorites(viewModel: CurrencyDetails.AddFavorite.ViewModel)
   func openCoinWebsite(site: String)
   func openNoCoinWebsite()
+  func displayError(_ string: String)
 }
 
 class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLogic {
@@ -289,6 +290,10 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     favoriteBtn.setImage(UIImage(named: isFilledStar ? "filled_star" : "empty_star"), for: .normal)
     info = viewModel.info
     infoTable.reloadData()
+  }
+  
+  func displayError(_ string: String) {
+    //TODO: Display error
   }
   
   func changeFavorites(viewModel: CurrencyDetails.AddFavorite.ViewModel) {

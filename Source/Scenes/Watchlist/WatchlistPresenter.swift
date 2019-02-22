@@ -16,6 +16,7 @@ protocol WatchlistPresentationLogic {
   func presentSomething(response: Watchlist.Something.Response)
   func presentFavorite(response: Watchlist.Favorite.Response)
   func presentNoFavorite()
+  func presentError(_ error: CTError)
 }
 
 class WatchlistPresenter: WatchlistPresentationLogic {
@@ -34,5 +35,9 @@ class WatchlistPresenter: WatchlistPresentationLogic {
   
   func presentFavorite(response: Watchlist.Favorite.Response) {
     viewController?.displayFavorite(viewModel: Watchlist.Favorite.ViewModel(id: response.id, symbol: response.symbol))
+  }
+  
+  func presentError(_ error: CTError) {
+    viewController?.displayError(error.rawValue)
   }
 }

@@ -16,6 +16,7 @@ protocol CurrencyDetailsPresentationLogic {
   func presentSomething(response: CurrencyDetails.Something.Response)
   func favorites(response: CurrencyDetails.AddFavorite.Response)
   func presentWebsite()
+  func presentError(_ error: CTError)
 }
 
 class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
@@ -58,5 +59,9 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
     } else {
       viewController?.openNoCoinWebsite()
     }
+  }
+  
+  func presentError(_ error: CTError) {
+    viewController?.displayError(error.rawValue)
   }
 }

@@ -26,12 +26,16 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
   var worker: CoinsWorker?
 
   func doSomething(request: AddToWatchlist.Something.Request) {
-    worker?.fetchCoins { currencies in
-      if currencies == nil {
-        self.presenter?.presentEmptyList()
+    worker?.fetchCoins { currencies, error in
+      if error != nil {
+        self.presenter?.presentError(error!)
       } else {
-        let response = AddToWatchlist.Something.Response(coins: currencies!)
-        self.presenter?.presentSomething(response: response)
+        if currencies != nil && !currencies!.isEmpty {
+          let response = AddToWatchlist.Something.Response(coins: currencies!)
+          self.presenter?.presentSomething(response: response)
+        } else {
+          self.presenter?.presentError(.noData)
+        }
       }
     }
   }

@@ -14,6 +14,7 @@ import UIKit
 
 protocol CurrenciesPresentationLogic {
   func presentCurrencies(response: Currencies.FetchCoins.ViewModel)
+  func presentError(_ error: CTError)
 }
 
 class CurrenciesPresenter: CurrenciesPresentationLogic {
@@ -22,5 +23,9 @@ class CurrenciesPresenter: CurrenciesPresentationLogic {
   func presentCurrencies(response: Currencies.FetchCoins.ViewModel) {
     let viewModel = Currencies.FetchCoins.ViewModel(currencies: response.currencies)
     viewController?.displaySomething(viewModel: viewModel)
+  }
+  
+  func presentError(_ error: CTError) {
+    viewController?.displayError(error.rawValue)
   }
 }

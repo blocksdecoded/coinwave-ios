@@ -17,6 +17,7 @@ protocol WatchlistDisplayLogic: class {
   func displayFavorite(viewModel: Watchlist.Favorite.ViewModel)
   func displayNoFavorite()
   func displayNoWatchlist()
+  func displayError(_ string: String)
 }
 
 class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
@@ -267,6 +268,10 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   func displayNoWatchlist() {
     //TODO: no watchlist
     refreshControl.endRefreshing()
+  }
+  
+  func displayError(_ string: String) {
+    //TODO: Display error
   }
   
   @objc private func menuClicked() {

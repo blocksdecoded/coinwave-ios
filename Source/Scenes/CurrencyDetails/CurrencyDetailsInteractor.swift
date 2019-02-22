@@ -30,12 +30,17 @@ class CurrencyDetailsInteractor: CurrencyDetailsBusinessLogic, CurrencyDetailsDa
   // MARK: Do something
   
   func doSomething(request: CurrencyDetails.Something.Request) {
-    worker?.fetchCoin(request.currID) { coin in
-      guard let coinCoin = coin else {
-        fatalError("No coin")
+    worker?.fetchCoin(request.currID) { coin, error  in
+      if error != nil {
+        self.presenter?.presentError(error!)
+      } else {
+        if let coinCoin = coin {
+          let response = CurrencyDetails.Something.Response(coin: coinCoin)
+          self.presenter?.presentSomething(response: response)
+        } else {
+          self.presenter?.presentError(.noData)
+        }
       }
-      let response = CurrencyDetails.Something.Response(coin: coinCoin)
-      self.presenter?.presentSomething(response: response)
     }
   }
   

@@ -18,6 +18,7 @@ protocol OnPickFavoriteDelegate: class {
 
 protocol CurrenciesDisplayLogic: class {
   func displaySomething(viewModel: Currencies.FetchCoins.ViewModel)
+  func displayError(_ string: String)
 }
 
 class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
@@ -272,6 +273,10 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     refreshControl.endRefreshing()
     currencies = viewModel.currencies
     currenciesList.reloadData()
+  }
+  
+  func displayError(_ string: String) {
+    //TODO: Display error
   }
   
   private func columnTitle(text: String) -> UILabel {

@@ -26,18 +26,35 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   var worker: CoinsWorker?
   
   func doSomething(request: Watchlist.Something.Request) {
-    worker?.fetchWatchlist { coins in
-      let response = Watchlist.Something.Response(currencies: coins!)
-      self.presenter?.presentSomething(response: response)
+    worker?.fetchWatchlist { coins, error in
+      if error != nil {
+        self.presenter?.presentError(error!)
+      } else {
+        if coins != nil && !coins!.isEmpty {
+          let response = Watchlist.Something.Response(currencies: coins!)
+          self.presenter?.presentSomething(response: response)
+        } else {
+          self.presenter?.presentError(.noData)
+        }
+      }
     }
   }
   
   func fetchFavorite() {
-    worker?.fetchFavorite { coin in
-      if coin == nil {
-        self.presenter?.presentNoFavorite()
+    worker?.fetchFavorite { coin, error in
+      if error != nil {
+        switch error! {
+        case .network:
+          self.presenter?.presentError(error!)
+        case .noData:
+          self.presenter?.presentNoFavorite()
+        }
       } else {
-        self.presenter?.presentFavorite(response: Watchlist.Favorite.Response(id: Int(coin!.id), symbol: coin!.symbol))
+        if coin == nil {
+          self.presenter?.presentNoFavorite()
+        } else {
+          self.presenter?.presentFavorite(response: Watchlist.Favorite.Response(id: Int(coin!.id), symbol: coin!.symbol))
+        }
       }
     }
   }
