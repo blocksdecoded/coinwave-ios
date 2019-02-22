@@ -12,6 +12,9 @@ PODS:
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
   - Kingfisher (4.10.1)
+  - NVActivityIndicatorView (4.5.1):
+    - NVActivityIndicatorView/Presenter (= 4.5.1)
+  - NVActivityIndicatorView/Presenter (4.5.1)
   - SideMenu (5.0.3)
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
@@ -24,6 +27,7 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - Kingfisher (= 4.10.1)
+  - NVActivityIndicatorView
   - SideMenu
   - SQLite.swift
   - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `3.x`)
@@ -35,6 +39,7 @@ SPEC REPOS:
     - Crashlytics
     - Fabric
     - Kingfisher
+    - NVActivityIndicatorView
     - SideMenu
     - SQLite.swift
 
@@ -54,10 +59,11 @@ SPEC CHECKSUMS:
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  NVActivityIndicatorView: ec34a7b88c51fab270004a1a1f32116e711010cd
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SVGKit: 8a2fc74258bdb2abb54d3b65f3dd68b0277a9c4d
 
-PODFILE CHECKSUM: b953248bef61e7169a449338deba6ec774286e3a
+PODFILE CHECKSUM: e968fd5e49c4350a9d7a7b93724578cd0b61a909
 
 COCOAPODS: 1.5.3

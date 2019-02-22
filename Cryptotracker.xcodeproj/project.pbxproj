@@ -164,6 +164,9 @@
 		B5E1D6C9221FBAC7005419C8 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C8221FBAC7005419C8 /* CTError.swift */; };
 		B5E1D6CA221FBAC7005419C8 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C8221FBAC7005419C8 /* CTError.swift */; };
 		B5E1D6CB221FBAC7005419C8 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C8221FBAC7005419C8 /* CTError.swift */; };
+		B5E1D6CD221FE494005419C8 /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E1D6CC221FE494005419C8 /* SFProText-Semibold.otf */; };
+		B5E1D6CE221FE494005419C8 /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E1D6CC221FE494005419C8 /* SFProText-Semibold.otf */; };
+		B5E1D6CF221FE494005419C8 /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E1D6CC221FE494005419C8 /* SFProText-Semibold.otf */; };
 		B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
 		B5E93CF121A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
 		B5E93CF221A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
@@ -363,6 +366,7 @@
 		B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsWorker.swift; sourceTree = "<group>"; };
 		B5E1D6C8221FBAC7005419C8 /* CTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTError.swift; sourceTree = "<group>"; };
+		B5E1D6CC221FE494005419C8 /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.otf"; sourceTree = "<group>"; };
 		B5E93CEF21A6A3AE00D1705A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Heavy.otf"; sourceTree = "<group>"; };
 		B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewPresenter.swift; sourceTree = "<group>"; };
@@ -688,6 +692,7 @@
 		B5E93CF421A6A41200D1705A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				B5E1D6CC221FE494005419C8 /* SFProText-Semibold.otf */,
 				B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */,
 				B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */,
 			);
@@ -929,6 +934,7 @@
 				B5276AB821A00F5A000A74A5 /* LaunchScreen.storyboard in Resources */,
 				B5E93CF621A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AB521A00F5A000A74A5 /* Assets.xcassets in Resources */,
+				B5E1D6CD221FE494005419C8 /* SFProText-Semibold.otf in Resources */,
 				B5FCEA90220D900800E4B433 /* SFProText-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -941,6 +947,7 @@
 				B5276AC621A00F9F000A74A5 /* LaunchScreen.storyboard in Resources */,
 				B5E93CF721A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AC721A00F9F000A74A5 /* Assets.xcassets in Resources */,
+				B5E1D6CE221FE494005419C8 /* SFProText-Semibold.otf in Resources */,
 				B5FCEA91220D900800E4B433 /* SFProText-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -953,6 +960,7 @@
 				B5276AD421A00FAC000A74A5 /* LaunchScreen.storyboard in Resources */,
 				B5E93CF821A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AD521A00FAC000A74A5 /* Assets.xcassets in Resources */,
+				B5E1D6CF221FE494005419C8 /* SFProText-Semibold.otf in Resources */,
 				B5FCEA92220D900800E4B433 /* SFProText-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -972,6 +980,7 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
@@ -983,6 +992,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
@@ -1004,6 +1014,7 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
@@ -1015,6 +1026,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
@@ -1036,6 +1048,7 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
@@ -1047,6 +1060,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",

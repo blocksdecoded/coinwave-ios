@@ -12,6 +12,7 @@
 
 import UIKit
 import SafariServices
+import NVActivityIndicatorView
 
 protocol PostsDisplayLogic: class {
   func displayPosts(viewModel: Posts.FetchPosts.ViewModel)
@@ -30,8 +31,15 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     return .lightContent
   }
   
+  private lazy var loadingView: NVActivityIndicatorView = {
+    let view = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
   private lazy var errorView: ErrorView = {
-    let errorView = ErrorView()
+    let errorView = ErrorView(frame: CGRect.zero)
+    errorView.delegate = self
     errorView.translatesAutoresizingMaskIntoConstraints = false
     return errorView
   }()
@@ -99,7 +107,9 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
     factory.setGradientTo(view: view)
     view.addSubview(postsList)
     view.addSubview(menuBtn)
+    view.addSubview(loadingView)
     view.addSubview(errorView)
+    errorView.isHidden = true
   }
   
   private func setupConstraints() {
@@ -122,7 +132,14 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
       errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ]
     
-    NSLayoutConstraint.activate(postsTableC + menuBtnC + errorViewC)
+    let loadingViewC = [
+      loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+      loadingView.widthAnchor.constraint(equalToConstant: 50),
+      loadingView.heightAnchor.constraint(equalToConstant: 50)
+    ]
+    
+    NSLayoutConstraint.activate(postsTableC + menuBtnC + errorViewC + loadingViewC)
   }
   
   // MARK: Routing
@@ -145,11 +162,15 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   }
   
   private func loadPosts() {
+    loadingView.isHidden = false
+    loadingView.startAnimating()
     interactor?.fetchPosts()
   }
   
   func displayPosts(viewModel: Posts.FetchPosts.ViewModel) {
     refreshControl.endRefreshing()
+    loadingView.stopAnimating()
+    loadingView.isHidden = true
     posts = viewModel.displayedPosts
     postsList.reloadData()
   }
@@ -174,7 +195,11 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   }
   
   func displayError(_ error: String) {
-    
+    errorView.isHidden = false
+    postsList.isHidden = true
+    loadingView.stopAnimating()
+    loadingView.isHidden = true
+    errorView.setText(error)
   }
   
   private func loadNextPosts() {
@@ -237,5 +262,13 @@ extension PostsViewController: PostsCellDelegate {
     }
     
     openPost(index: index.row)
+  }
+}
+
+extension PostsViewController: ErrorViewDelegate {
+  func onRetry() {
+    errorView.isHidden = true
+    postsList.isHidden = false
+    loadPosts()
   }
 }

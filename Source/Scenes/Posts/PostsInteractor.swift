@@ -32,7 +32,6 @@ class PostsInteractor: PostsBusinessLogic, PostsDataStore {
   func fetchPosts() {
     worker = PostsWorker()
     worker?.fetchPosts(completion: { posts, error in
-      
       if error == nil {
         let response = Posts.FetchPosts.Response(posts: posts!)
         self.presenter?.presentPosts(response: response)

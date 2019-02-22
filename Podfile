@@ -12,6 +12,7 @@ def sharedPods
   pod 'SideMenu'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'NVActivityIndicatorView'
 end
 
 target 'Cryptotracker' do

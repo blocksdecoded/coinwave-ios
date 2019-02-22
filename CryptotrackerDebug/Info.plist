@@ -43,6 +43,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SFProText-Semibold.otf</string>
 		<string>SFUIDisplay-Heavy.otf</string>
 		<string>SFProText-Light.otf</string>
 	</array>

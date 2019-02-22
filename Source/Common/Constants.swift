@@ -14,6 +14,7 @@ struct Constants {
     static let regular = ""
     static let bold = ""
     static let light = "SFProText-Light"
+    static let semibold = "SFProText-Semibold"
   }
   
   struct Colors {
