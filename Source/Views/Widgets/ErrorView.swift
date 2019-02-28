@@ -120,8 +120,10 @@ class ErrorView: UIView {
     )
   }
   
-  func setText(_ text: String) {
+  func setText(_ text: String, hideWarning: Bool = false, hideButton: Bool = false) {
     self.text.text = text
+    self.warningIcon.isHidden = hideWarning
+    self.button.isHidden = hideButton
   }
   
   @objc private func onRetry() {

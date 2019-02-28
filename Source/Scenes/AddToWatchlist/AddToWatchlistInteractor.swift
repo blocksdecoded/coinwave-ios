@@ -44,6 +44,6 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
     var mutableCoin = id.coin
     mutableCoin.isWatchlist = !mutableCoin.isWatchlist
     worker?.update(mutableCoin)
-    self.presenter?.addToWatchlist(response: AddToWatchlist.Add.Response(position: id.position, coin: id.coin))
+    self.presenter?.addToWatchlist(response: AddToWatchlist.Add.Response(position: id.position, coin: mutableCoin))
   }
 }

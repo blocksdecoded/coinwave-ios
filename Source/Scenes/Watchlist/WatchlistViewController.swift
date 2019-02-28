@@ -11,17 +11,17 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 protocol WatchlistDisplayLogic: class {
   func displaySomething(viewModel: Watchlist.Something.ViewModel)
   func displayFavorite(viewModel: Watchlist.Favorite.ViewModel)
   func displayNoFavorite()
-  func displayNoWatchlist()
+  func displayNoWatchlist(_ string: String)
   func displayError(_ string: String)
 }
 
 class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
-  
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .default
   }
@@ -30,6 +30,19 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   var interactor: WatchlistBusinessLogic?
   var router: (NSObjectProtocol & WatchlistRoutingLogic & WatchlistDataPassing)?
+  
+  private lazy var loadingView: NVActivityIndicatorView = {
+    let view = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
+  private lazy var errorView: ErrorView = {
+    let errorView = ErrorView(frame: CGRect.zero)
+    errorView.delegate = self
+    errorView.translatesAutoresizingMaskIntoConstraints = false
+    return errorView
+  }()
   
   private lazy var topCircle: UIImageView = {
     let imageView = UIImageView()
@@ -50,7 +63,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.text = "Watchlist"
     titleLabel.textColor = UIColor(red: 40.0/255.0, green: 51.0/255.0, blue: 59.0/255.0, alpha: 0.7)
-    titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+    titleLabel.font = UIFont(name: Constants.Fonts.regular, size: 24)
     return titleLabel
   }()
   
@@ -98,7 +111,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     label.text = text
     label.textAlignment = .center
     label.textColor = UIColor.white.withAlphaComponent(0.7)
-    label.font = UIFont.systemFont(ofSize: 11)
+    label.font = UIFont(name: Constants.Fonts.light, size: 11)
     return label
   }
   
@@ -156,8 +169,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    let request = Watchlist.Something.Request()
-    interactor?.doSomething(request: request)
+    doSomething()
   }
   
   override func viewDidLoad() {
@@ -178,6 +190,8 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     view.addSubview(chart)
     view.addSubview(headerForCurrenciesList)
     view.addSubview(watchTable)
+    view.addSubview(loadingView)
+    view.addSubview(errorView)
   }
   
   private func setupConstraints() {
@@ -227,7 +241,19 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
       titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
     ]
     
-    NSLayoutConstraint.activate(chartC + navigationViewC + headerForCurrenciesListC + watchTableC + menuBtnC + titleLblC + topCircleC)
+    let errorViewC = [
+      errorView.centerXAnchor.constraint(equalTo: watchTable.centerXAnchor),
+      errorView.centerYAnchor.constraint(equalTo: watchTable.centerYAnchor, constant: -104)
+    ]
+    
+    let loadingViewC = [
+      loadingView.centerXAnchor.constraint(equalTo: watchTable.centerXAnchor),
+      loadingView.centerYAnchor.constraint(equalTo: watchTable.centerYAnchor),
+      loadingView.widthAnchor.constraint(equalToConstant: 50),
+      loadingView.heightAnchor.constraint(equalToConstant: 50)
+    ]
+    
+    NSLayoutConstraint.activate(chartC + navigationViewC + headerForCurrenciesListC + watchTableC + menuBtnC + titleLblC + topCircleC + loadingViewC + errorViewC)
   }
   
   // MARK: Do something
@@ -243,6 +269,11 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   //@IBOutlet weak var nameTextField: UITextField!
   
   func doSomething() {
+    errorView.isHidden = true
+    loadingView.isHidden = false
+    loadingView.startAnimating()
+    watchTable.isHidden = true
+    headerForCurrenciesList.isHidden = true
     let request = Watchlist.Something.Request()
     interactor?.doSomething(request: request)
   }
@@ -253,6 +284,11 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   func displaySomething(viewModel: Watchlist.Something.ViewModel) {
     refreshControl.endRefreshing()
+    errorView.isHidden = true
+    loadingView.stopAnimating()
+    loadingView.isHidden = true
+    watchTable.isHidden = false
+    headerForCurrenciesList.isHidden = false
     currencies = viewModel.currencies
     watchTable.reloadData()
   }
@@ -265,13 +301,24 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     chart.noCoin()
   }
   
-  func displayNoWatchlist() {
-    //TODO: no watchlist
+  func displayNoWatchlist(_ string: String) {
     refreshControl.endRefreshing()
+    errorView.isHidden = false
+    errorView.setText(string, hideWarning: true, hideButton: true)
+    loadingView.stopAnimating()
+    loadingView.isHidden = true
+    watchTable.isHidden = true
+    headerForCurrenciesList.isHidden = true
   }
   
   func displayError(_ string: String) {
-    //TODO: Display error
+    errorView.isHidden = false
+    errorView.setText(string, hideWarning: true)
+    loadingView.stopAnimating()
+    loadingView.isHidden = true
+    watchTable.isHidden = true
+    headerForCurrenciesList.isHidden = true
+    chart.showError()
   }
   
   @objc private func menuClicked() {
@@ -319,6 +366,13 @@ extension WatchlistViewController: CurrencyChartDelegate {
 
 extension WatchlistViewController: OnPickFavoriteDelegate {
   func onPickedFavorite() {
+    interactor?.fetchFavorite()
+  }
+}
+
+extension WatchlistViewController: ErrorViewDelegate {
+  func onRetry() {
+    doSomething()
     interactor?.fetchFavorite()
   }
 }

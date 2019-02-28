@@ -9,10 +9,21 @@
 import UIKit
 
 struct Constants {
+  
+  static var appVersion: String {
+    #if DEVELOPMENT
+    return "\(Bundle.main.appVersion ?? "")(\(Bundle.main.buildVersion ?? "")) debug"
+    #elseif STAGING
+    return "\(Bundle.main.appVersion ?? "")(\(Bundle.main.buildVersion ?? "")) staging"
+    #else
+    return Bundle.main.appVersion ?? ""
+    #endif
+  }
+  
   struct Fonts {
     static let heavy = "SFUIDisplay-Heavy"
-    static let regular = ""
-    static let bold = ""
+    static let regular = "SFProText-Regular"
+    static let bold = "SFProText-Bold"
     static let light = "SFProText-Light"
     static let semibold = "SFProText-Semibold"
   }
@@ -26,4 +37,20 @@ struct Constants {
   //swiftlint:disable identifier_name
   static let COINS_LIMIT = 50
   static let COINS_OFFSET = 0
+}
+
+extension Bundle {
+  var appVersion: String? {
+    if let name = object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+      return name
+    }
+    return nil
+  }
+  
+  var buildVersion: String? {
+    if let name = object(forInfoDictionaryKey: "CFBundleVersion") as? String {
+      return name
+    }
+    return nil
+  }
 }

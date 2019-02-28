@@ -40,10 +40,8 @@ class CurrencyConverter {
   
   private static func toString(_ value: Double) -> String {
     let formatter = NumberFormatter()
-    formatter.groupingSeparator = ","
-    formatter.numberStyle = .decimal
-    formatter.minimumFractionDigits = 0
-    formatter.maximumFractionDigits = 2
+    formatter.positiveFormat = "#,###,###,###,###,##0.00"
+    formatter.negativeFormat = "#,###,###,###,###,##0.00"
     return formatter.string(for: NSNumber(value: value)) ?? ""
   }
   

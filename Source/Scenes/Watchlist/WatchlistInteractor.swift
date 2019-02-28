@@ -30,9 +30,13 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
       if error != nil {
         self.presenter?.presentError(error!)
       } else {
-        if coins != nil && !coins!.isEmpty {
-          let response = Watchlist.Something.Response(currencies: coins!)
-          self.presenter?.presentSomething(response: response)
+        if coins != nil {
+          if coins!.isEmpty {
+            self.presenter?.presentError(.emptyWatchlist)
+          } else {
+            let response = Watchlist.Something.Response(currencies: coins!)
+            self.presenter?.presentSomething(response: response)
+          }
         } else {
           self.presenter?.presentError(.noData)
         }
@@ -48,6 +52,8 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
           self.presenter?.presentError(error!)
         case .noData:
           self.presenter?.presentNoFavorite()
+        default:
+          break
         }
       } else {
         if coin == nil {

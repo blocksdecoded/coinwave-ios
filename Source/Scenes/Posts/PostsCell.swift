@@ -64,7 +64,7 @@ class PostsCell: UICollectionViewCell {
     button.setImage(UIImage(named: "arrow_right")?.withRenderingMode(.alwaysTemplate), for: .normal)
     button.imageView?.tintColor = UIColor(red: 18.0/255.0, green: 23.0/255.0, blue: 28.0/255.0, alpha: 1.0)
     button.setTitle("Read more", for: .normal)
-    button.titleLabel?.font = UIFont(name: Constants.Fonts.light, size: 10)
+    button.titleLabel?.font = UIFont(name: Constants.Fonts.regular, size: 10)
     button.setTitleColor(UIColor(red: 18.0/255.0, green: 23.0/255.0, blue: 28.0/255.0, alpha: 1.0), for: .normal)
     
     button.layer.cornerRadius = readBtnHeight / 2
@@ -86,6 +86,9 @@ class PostsCell: UICollectionViewCell {
       .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
     
     button.addTarget(self, action: #selector(readClicked), for: .touchUpInside)
+    
+    button.imageEdgeInsets = UIEdgeInsets(top: 0.5, left: 2.5, bottom: -0.5, right: -2.5)
+    button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -2.5, bottom: 0, right: 2.5)
     
     return button
   }()

@@ -85,11 +85,15 @@ class CoinsWorker {
       let networkManager = CurrenciesNetworkManager()
       networkManager.getCurrencies { currencies, error in
         if error != nil {
-          completion(nil, .network)
+          DispatchQueue.main.async {
+            completion(nil, .network)
+          }
         }
         
         guard let curs = currencies else {
-          completion(nil, .noData)
+          DispatchQueue.main.async {
+            completion(nil, .noData)
+          }
           return
         }
         

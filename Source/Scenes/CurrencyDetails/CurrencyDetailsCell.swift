@@ -41,6 +41,7 @@ class CurrencyDetailsCell: UITableViewCell {
   }
   
   private func setup() {
+    selectionStyle = .none
     setupViews()
     setupConstraints()
   }

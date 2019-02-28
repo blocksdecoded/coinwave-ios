@@ -47,6 +47,18 @@
 		B50129AD21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
 		B50129AE21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
 		B50129AF21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
+		B51ECC6422253F69006CE6FC /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6322253F68006CE6FC /* SFProText-Semibold.otf */; };
+		B51ECC6522253F69006CE6FC /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6322253F68006CE6FC /* SFProText-Semibold.otf */; };
+		B51ECC6622253F69006CE6FC /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6322253F68006CE6FC /* SFProText-Semibold.otf */; };
+		B51ECC6A22253FB5006CE6FC /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6722253FB4006CE6FC /* SFProText-Bold.otf */; };
+		B51ECC6B22253FB5006CE6FC /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6722253FB4006CE6FC /* SFProText-Bold.otf */; };
+		B51ECC6C22253FB5006CE6FC /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6722253FB4006CE6FC /* SFProText-Bold.otf */; };
+		B51ECC6D22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6822253FB5006CE6FC /* SFProText-Heavy.otf */; };
+		B51ECC6E22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6822253FB5006CE6FC /* SFProText-Heavy.otf */; };
+		B51ECC6F22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6822253FB5006CE6FC /* SFProText-Heavy.otf */; };
+		B51ECC7022253FB5006CE6FC /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6922253FB5006CE6FC /* SFProText-Regular.otf */; };
+		B51ECC7122253FB5006CE6FC /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6922253FB5006CE6FC /* SFProText-Regular.otf */; };
+		B51ECC7222253FB5006CE6FC /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6922253FB5006CE6FC /* SFProText-Regular.otf */; };
 		B5217EAD2205948C00FF6DD5 /* CRTimeframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */; };
 		B5217EAE2205948C00FF6DD5 /* CRTimeframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */; };
 		B5217EAF2205948C00FF6DD5 /* CRTimeframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */; };
@@ -66,7 +78,6 @@
 		B5276AD421A00FAC000A74A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB621A00F5A000A74A5 /* LaunchScreen.storyboard */; };
 		B5276AD521A00FAC000A74A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB421A00F5A000A74A5 /* Assets.xcassets */; };
 		B5276AF521A0124D000A74A5 /* CurrenciesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AEF21A0124D000A74A5 /* CurrenciesPresenter.swift */; };
-		B5276AF621A0124D000A74A5 /* CurrenciesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF021A0124D000A74A5 /* CurrenciesWorker.swift */; };
 		B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF121A0124D000A74A5 /* CurrenciesRouter.swift */; };
 		B5276AF821A0124D000A74A5 /* CurrenciesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */; };
 		B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF321A0124D000A74A5 /* CurrenciesViewController.swift */; };
@@ -164,15 +175,9 @@
 		B5E1D6C9221FBAC7005419C8 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C8221FBAC7005419C8 /* CTError.swift */; };
 		B5E1D6CA221FBAC7005419C8 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C8221FBAC7005419C8 /* CTError.swift */; };
 		B5E1D6CB221FBAC7005419C8 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C8221FBAC7005419C8 /* CTError.swift */; };
-		B5E1D6CD221FE494005419C8 /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E1D6CC221FE494005419C8 /* SFProText-Semibold.otf */; };
-		B5E1D6CE221FE494005419C8 /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E1D6CC221FE494005419C8 /* SFProText-Semibold.otf */; };
-		B5E1D6CF221FE494005419C8 /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E1D6CC221FE494005419C8 /* SFProText-Semibold.otf */; };
 		B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
 		B5E93CF121A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
 		B5E93CF221A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
-		B5E93CF621A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */; };
-		B5E93CF721A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */; };
-		B5E93CF821A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */; };
 		B5E93D0021A6A73500D1705A /* PostPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */; };
 		B5E93D0121A6A73500D1705A /* PostPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */; };
 		B5E93D0221A6A73500D1705A /* PostPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */; };
@@ -228,13 +233,11 @@
 		B5E93D6921A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D6721A8214600D1705A /* CurrenciesNetworkManager.swift */; };
 		B5E93D6A21A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D6721A8214600D1705A /* CurrenciesNetworkManager.swift */; };
 		B5E93D7421A827D600D1705A /* CurrenciesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AEF21A0124D000A74A5 /* CurrenciesPresenter.swift */; };
-		B5E93D7521A827D600D1705A /* CurrenciesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF021A0124D000A74A5 /* CurrenciesWorker.swift */; };
 		B5E93D7621A827D600D1705A /* CurrenciesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF121A0124D000A74A5 /* CurrenciesRouter.swift */; };
 		B5E93D7721A827D600D1705A /* CurrenciesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */; };
 		B5E93D7821A827D600D1705A /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF321A0124D000A74A5 /* CurrenciesViewController.swift */; };
 		B5E93D7921A827D600D1705A /* CurrenciesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF421A0124D000A74A5 /* CurrenciesInteractor.swift */; };
 		B5E93D7A21A827D700D1705A /* CurrenciesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AEF21A0124D000A74A5 /* CurrenciesPresenter.swift */; };
-		B5E93D7B21A827D700D1705A /* CurrenciesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF021A0124D000A74A5 /* CurrenciesWorker.swift */; };
 		B5E93D7C21A827D700D1705A /* CurrenciesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF121A0124D000A74A5 /* CurrenciesRouter.swift */; };
 		B5E93D7D21A827D700D1705A /* CurrenciesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */; };
 		B5E93D7E21A827D700D1705A /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF321A0124D000A74A5 /* CurrenciesViewController.swift */; };
@@ -317,6 +320,10 @@
 		B501298721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsInteractor.swift; sourceTree = "<group>"; };
 		B501299B21A9600E001B6A04 /* CurrencyChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChart.swift; sourceTree = "<group>"; };
 		B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsCell.swift; sourceTree = "<group>"; };
+		B51ECC6322253F68006CE6FC /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.otf"; sourceTree = "<group>"; };
+		B51ECC6722253FB4006CE6FC /* SFProText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Bold.otf"; sourceTree = "<group>"; };
+		B51ECC6822253FB5006CE6FC /* SFProText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Heavy.otf"; sourceTree = "<group>"; };
+		B51ECC6922253FB5006CE6FC /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
 		B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRTimeframe.swift; sourceTree = "<group>"; };
 		B5217EB02205960100FF6DD5 /* CRDataHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataHistory.swift; sourceTree = "<group>"; };
 		B5276AAA21A00F59000A74A5 /* Cryptotracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptotracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,7 +337,6 @@
 		B5276ADA21A00FAC000A74A5 /* StagingCryptotracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StagingCryptotracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5276ADB21A00FAC000A74A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = /Users/abaikirov/WORK/MakeUseOf/Cryptotracker/Cryptotracker/CryptotrackerStaging/Info.plist; sourceTree = "<absolute>"; };
 		B5276AEF21A0124D000A74A5 /* CurrenciesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesPresenter.swift; sourceTree = "<group>"; };
-		B5276AF021A0124D000A74A5 /* CurrenciesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesWorker.swift; sourceTree = "<group>"; };
 		B5276AF121A0124D000A74A5 /* CurrenciesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesRouter.swift; sourceTree = "<group>"; };
 		B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesModels.swift; sourceTree = "<group>"; };
 		B5276AF321A0124D000A74A5 /* CurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesViewController.swift; sourceTree = "<group>"; };
@@ -366,9 +372,7 @@
 		B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsWorker.swift; sourceTree = "<group>"; };
 		B5E1D6C8221FBAC7005419C8 /* CTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTError.swift; sourceTree = "<group>"; };
-		B5E1D6CC221FE494005419C8 /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.otf"; sourceTree = "<group>"; };
 		B5E93CEF21A6A3AE00D1705A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Heavy.otf"; sourceTree = "<group>"; };
 		B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewPresenter.swift; sourceTree = "<group>"; };
 		B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewWorker.swift; sourceTree = "<group>"; };
 		B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewRouter.swift; sourceTree = "<group>"; };
@@ -562,7 +566,6 @@
 			children = (
 				B5E93D8421A82C3600D1705A /* Cell */,
 				B5276AEF21A0124D000A74A5 /* CurrenciesPresenter.swift */,
-				B5276AF021A0124D000A74A5 /* CurrenciesWorker.swift */,
 				B5276AF121A0124D000A74A5 /* CurrenciesRouter.swift */,
 				B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */,
 				B5276AF321A0124D000A74A5 /* CurrenciesViewController.swift */,
@@ -692,9 +695,11 @@
 		B5E93CF421A6A41200D1705A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				B5E1D6CC221FE494005419C8 /* SFProText-Semibold.otf */,
+				B51ECC6722253FB4006CE6FC /* SFProText-Bold.otf */,
+				B51ECC6822253FB5006CE6FC /* SFProText-Heavy.otf */,
+				B51ECC6922253FB5006CE6FC /* SFProText-Regular.otf */,
+				B51ECC6322253F68006CE6FC /* SFProText-Semibold.otf */,
 				B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */,
-				B5E93CF521A6A42900D1705A /* SFUIDisplay-Heavy.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -930,11 +935,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B51ECC6A22253FB5006CE6FC /* SFProText-Bold.otf in Resources */,
 				B5E93D8A21A82C5900D1705A /* TVCCrypto.xib in Resources */,
+				B51ECC7022253FB5006CE6FC /* SFProText-Regular.otf in Resources */,
 				B5276AB821A00F5A000A74A5 /* LaunchScreen.storyboard in Resources */,
-				B5E93CF621A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AB521A00F5A000A74A5 /* Assets.xcassets in Resources */,
-				B5E1D6CD221FE494005419C8 /* SFProText-Semibold.otf in Resources */,
+				B51ECC6422253F69006CE6FC /* SFProText-Semibold.otf in Resources */,
+				B51ECC6D22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */,
 				B5FCEA90220D900800E4B433 /* SFProText-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -943,11 +950,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B51ECC6B22253FB5006CE6FC /* SFProText-Bold.otf in Resources */,
 				B5E93D8B21A82C5900D1705A /* TVCCrypto.xib in Resources */,
+				B51ECC7122253FB5006CE6FC /* SFProText-Regular.otf in Resources */,
 				B5276AC621A00F9F000A74A5 /* LaunchScreen.storyboard in Resources */,
-				B5E93CF721A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AC721A00F9F000A74A5 /* Assets.xcassets in Resources */,
-				B5E1D6CE221FE494005419C8 /* SFProText-Semibold.otf in Resources */,
+				B51ECC6522253F69006CE6FC /* SFProText-Semibold.otf in Resources */,
+				B51ECC6E22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */,
 				B5FCEA91220D900800E4B433 /* SFProText-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -956,11 +965,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B51ECC6C22253FB5006CE6FC /* SFProText-Bold.otf in Resources */,
 				B5E93D8C21A82C5900D1705A /* TVCCrypto.xib in Resources */,
+				B51ECC7222253FB5006CE6FC /* SFProText-Regular.otf in Resources */,
 				B5276AD421A00FAC000A74A5 /* LaunchScreen.storyboard in Resources */,
-				B5E93CF821A6A42900D1705A /* SFUIDisplay-Heavy.otf in Resources */,
 				B5276AD521A00FAC000A74A5 /* Assets.xcassets in Resources */,
-				B5E1D6CF221FE494005419C8 /* SFProText-Semibold.otf in Resources */,
+				B51ECC6622253F69006CE6FC /* SFProText-Semibold.otf in Resources */,
+				B51ECC6F22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */,
 				B5FCEA92220D900800E4B433 /* SFProText-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -980,7 +991,6 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
@@ -992,7 +1002,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
@@ -1014,7 +1023,6 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
@@ -1026,7 +1034,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
@@ -1048,7 +1055,6 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
@@ -1060,7 +1066,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
@@ -1218,7 +1223,6 @@
 				B572E95B2202F34900778DA8 /* DataCache.swift in Sources */,
 				B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
-				B5276AF621A0124D000A74A5 /* CurrenciesWorker.swift in Sources */,
 				B5E93D0F21A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
 				B5E93D3621A6B9B000D1705A /* DataAccessError.swift in Sources */,
 				B5E1D6C5221EDC2A005419C8 /* CoinsWorker.swift in Sources */,
@@ -1320,7 +1324,6 @@
 				B5E1D6C6221EDC2A005419C8 /* CoinsWorker.swift in Sources */,
 				B5E93D6521A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B5276B6921A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
-				B5E93D7521A827D600D1705A /* CurrenciesWorker.swift in Sources */,
 				B572E9482202AFBA00778DA8 /* CRStats.swift in Sources */,
 				B501297021A940DA001B6A04 /* WatchlistPresenter.swift in Sources */,
 				B5276B5A21A28183000A74A5 /* PostsInteractor.swift in Sources */,
@@ -1416,7 +1419,6 @@
 				B5E1D6C7221EDC2A005419C8 /* CoinsWorker.swift in Sources */,
 				B5E93D6621A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B5276B6A21A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
-				B5E93D7B21A827D700D1705A /* CurrenciesWorker.swift in Sources */,
 				B572E9492202AFBA00778DA8 /* CRStats.swift in Sources */,
 				B501297121A940DA001B6A04 /* WatchlistPresenter.swift in Sources */,
 				B5276B5B21A28183000A74A5 /* PostsInteractor.swift in Sources */,
@@ -1664,6 +1666,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.coinchart.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1683,6 +1686,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.coinchart.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1702,6 +1706,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTAGING";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.cryptotracker.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1721,6 +1726,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTAGING";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.cryptotracker.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

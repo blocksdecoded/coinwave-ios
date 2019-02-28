@@ -85,7 +85,7 @@ class TVCCrypto: UITableViewCell {
     name.text = crypto.symbol
     marketCap.text = crypto.marketCapStrShort
     volume.text = crypto.volumeStrShort
-    price.text = crypto.priceStrShort
+    price.text = crypto.priceStrLong
     
     if let percent = crypto.change {
       if percent < 0 {

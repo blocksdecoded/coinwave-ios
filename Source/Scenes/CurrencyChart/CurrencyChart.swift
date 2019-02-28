@@ -48,6 +48,13 @@ class CurrencyChart: UIView {
     return view
   }()
   
+  private lazy var warningView: UIImageView = {
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.image = UIImage(named: "warning_gradient")
+    return imageView
+  }()
+  
   private lazy var detailsGradientLayer: CAGradientLayer = {
     let gradient = CAGradientLayer()
     gradient.colors = [UIColor(red: 29.0/255.0, green: 196.0/255.0, blue: 233.0/255.0, alpha: 1.0).cgColor,
@@ -61,7 +68,7 @@ class CurrencyChart: UIView {
   private lazy var nameLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont.systemFont(ofSize: 16)
+    label.font = UIFont(name: Constants.Fonts.regular, size: 16)
     label.textColor = .white
     return label
   }()
@@ -69,7 +76,7 @@ class CurrencyChart: UIView {
   private lazy var priceLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont.systemFont(ofSize: 14)
+    label.font = UIFont(name: Constants.Fonts.semibold, size: 12)
     return label
   }()
   
@@ -150,6 +157,7 @@ class CurrencyChart: UIView {
     case .favorite:
       addSubview(nameLabel)
       addSubview(priceLabel)
+      addSubview(warningView)
     case .details:
       break
     }
@@ -200,7 +208,14 @@ class CurrencyChart: UIView {
       infoView.centerXAnchor.constraint(equalTo: centerXAnchor)
     ]
     
-    NSLayoutConstraint.activate(chartC + infoViewC + nameLabelC + priceLabelC)
+    let warningC = [
+      warningView.centerYAnchor.constraint(equalTo: centerYAnchor),
+      warningView.centerXAnchor.constraint(equalTo: centerXAnchor),
+      warningView.widthAnchor.constraint(equalToConstant: 118),
+      warningView.heightAnchor.constraint(equalToConstant: 104)
+    ]
+    
+    NSLayoutConstraint.activate(chartC + infoViewC + nameLabelC + priceLabelC + warningC)
   }
   
   private func setupLayer() {
@@ -222,6 +237,9 @@ class CurrencyChart: UIView {
   }
   
   func load(coinID: Int, coinSymbol: String, time: CRTimeframe) {
+    warningView.isHidden = true
+    chartView.isHidden = false
+    chooseFavButton.isHidden = false
     if isButtonShowed {
       chooseFavButton.removeFromSuperview()
     }
@@ -262,6 +280,12 @@ class CurrencyChart: UIView {
       chooseFavButton.widthAnchor.constraint(equalToConstant: 120),
       chooseFavButton.heightAnchor.constraint(equalToConstant: 30)
     ])
+  }
+  
+  func showError() {
+    warningView.isHidden = false
+    chartView.isHidden = true
+    chooseFavButton.isHidden = true
   }
   
   private func setCoinData(coin: CRCoin) {

@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 protocol OnPickFavoriteDelegate: class {
   func onPickedFavorite()
@@ -40,12 +41,23 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   private let version: Version
   private var currencies: [CRCoin]?
   
+  private lazy var loadingView: NVActivityIndicatorView = {
+    let view = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
+  private lazy var errorView: ErrorView = {
+    let errorView = ErrorView(frame: CGRect.zero)
+    errorView.delegate = self
+    errorView.translatesAutoresizingMaskIntoConstraints = false
+    return errorView
+  }()
+  
   private lazy var backButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setImage(UIImage(named: "left_arrow"), for: .normal)
-    button.contentHorizontalAlignment = .fill
-    button.contentVerticalAlignment = .fill
     button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
     return button
   }()
@@ -62,13 +74,13 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     
     switch version {
     case .list:
-      titleLabel.text = "Currencies"
+      titleLabel.text = "Cryptocurrencies"
     case .favorite:
       titleLabel.text = "Pick favorite"
     }
     
     titleLabel.textColor = .white
-    titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+    titleLabel.font = UIFont(name: Constants.Fonts.regular, size: 24)
     return titleLabel
   }()
   
@@ -213,6 +225,8 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     view.addSubview(navigationView)
     view.addSubview(headerForCurrenciesList)
     view.addSubview(currenciesList)
+    view.addSubview(loadingView)
+    view.addSubview(errorView)
   }
   
   private func setupConstraints() {
@@ -238,7 +252,19 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       currenciesList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
     ]
     
-    NSLayoutConstraint.activate(navigationViewC + headerForCurrenciesListC + currenciesListC)
+    let errorViewC = [
+      errorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ]
+    
+    let loadingViewC = [
+      loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+      loadingView.widthAnchor.constraint(equalToConstant: 50),
+      loadingView.heightAnchor.constraint(equalToConstant: 50)
+    ]
+    
+    NSLayoutConstraint.activate(navigationViewC + headerForCurrenciesListC + currenciesListC + errorViewC + loadingViewC)
     
     switch version {
     case .list:
@@ -265,18 +291,33 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   // MARK: Do something
 
   func doSomething() {
+    errorView.isHidden = true
+    loadingView.isHidden = false
+    loadingView.startAnimating()
+    currenciesList.isHidden = true
+    headerForCurrenciesList.isHidden = true
     let request = Currencies.FetchCoins.Request(limit: 50)
     interactor?.doSomething(request: request)
   }
 
   func displaySomething(viewModel: Currencies.FetchCoins.ViewModel) {
     refreshControl.endRefreshing()
+    errorView.isHidden = true
+    loadingView.stopAnimating()
+    loadingView.isHidden = true
+    currenciesList.isHidden = false
+    headerForCurrenciesList.isHidden = false
     currencies = viewModel.currencies
     currenciesList.reloadData()
   }
   
   func displayError(_ string: String) {
-    //TODO: Display error
+    errorView.isHidden = false
+    errorView.setText(string)
+    loadingView.stopAnimating()
+    loadingView.isHidden = true
+    currenciesList.isHidden = true
+    headerForCurrenciesList.isHidden = true
   }
   
   private func columnTitle(text: String) -> UILabel {
@@ -284,7 +325,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     label.text = text
     label.textAlignment = .center
     label.textColor = UIColor.white.withAlphaComponent(0.7)
-    label.font = UIFont.systemFont(ofSize: 11)
+    label.font = UIFont(name: Constants.Fonts.light, size: 11)
     return label
   }
   
@@ -328,6 +369,12 @@ extension CurrenciesViewController: UITableViewDataSource, UITableViewDelegate {
     case .favorite:
       onPickFavorite(indexPath.row)
     }
+  }
+}
+
+extension CurrenciesViewController: ErrorViewDelegate {
+  func onRetry() {
+    doSomething()
   }
 }
 

@@ -38,6 +38,10 @@ class WatchlistPresenter: WatchlistPresentationLogic {
   }
   
   func presentError(_ error: CTError) {
-    viewController?.displayError(error.rawValue)
+    if error == .emptyWatchlist {
+      viewController?.displayNoWatchlist(error.rawValue)
+    } else {
+      viewController?.displayError(error.rawValue)
+    }
   }
 }
