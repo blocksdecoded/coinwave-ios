@@ -9,7 +9,7 @@
 import Foundation
 
 enum CTError: String {
-  case network = "Connection error, please check your internet connection and press \"retry\""
+  case network = "You are currently offline.\nCheck your internet connection"
   case noData = "No available data. Please, retry later"
-  case emptyWatchlist = "Your watchlist is empty. Please, choose one from menu \"Add to wathclist\""
+  case emptyWatchlist = "Your watchlist is empty"
 }
