@@ -51,7 +51,7 @@ class CurrencyChart: UIView {
   private lazy var warningView: UIImageView = {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.image = UIImage(named: "warning_gradient")
+    imageView.image = UIImage(named: "warning")
     return imageView
   }()
   

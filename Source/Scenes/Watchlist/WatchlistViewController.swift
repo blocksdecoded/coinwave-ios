@@ -28,6 +28,8 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   weak var sideMenuDelegate: SideMenuDelegate?
   
+  private var isEmptyWatchlist = false
+  
   var interactor: WatchlistBusinessLogic?
   var router: (NSObjectProtocol & WatchlistRoutingLogic & WatchlistDataPassing)?
   
@@ -302,9 +304,10 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }
   
   func displayNoWatchlist(_ string: String) {
+    isEmptyWatchlist = true
     refreshControl.endRefreshing()
     errorView.isHidden = false
-    errorView.setText(string, hideWarning: true, hideButton: true)
+    errorView.setText(string, hideWarning: true, buttonText: "ADD COIN")
     loadingView.stopAnimating()
     loadingView.isHidden = true
     watchTable.isHidden = true
@@ -372,7 +375,13 @@ extension WatchlistViewController: OnPickFavoriteDelegate {
 
 extension WatchlistViewController: ErrorViewDelegate {
   func onRetry() {
-    doSomething()
-    interactor?.fetchFavorite()
+    if isEmptyWatchlist {
+      isEmptyWatchlist = false
+      let addToWatchlist = AddToWatchlistViewController()
+      self.navigationController?.pushViewController(addToWatchlist, animated: true)
+    } else {
+      doSomething()
+      interactor?.fetchFavorite()
+    }
   }
 }

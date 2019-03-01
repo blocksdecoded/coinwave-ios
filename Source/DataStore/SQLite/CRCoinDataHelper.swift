@@ -201,8 +201,6 @@ class CRCoinDataHelper: DataHelperProtocol {
       throw DataAccessError.datastoreConnection
     }
     
-    print("IsFavorite \(item.isFavorite)")
-    
     let curr = table.filter(currID == Int64(item.id))
     try db.run(curr.update(fullUpdateSetters(item: item)))
   }

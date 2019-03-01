@@ -30,7 +30,7 @@ class ErrorView: UIView {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textColor = .white
-    label.font = UIFont(name: Constants.Fonts.regular, size: 20)
+    label.font = UIFont(name: Constants.Fonts.regular, size: 17)
     label.numberOfLines = 0
     label.textAlignment = .center
     return label
@@ -111,7 +111,7 @@ class ErrorView: UIView {
     ]
     
     let viewC = [
-      widthAnchor.constraint(equalToConstant: 250),
+      widthAnchor.constraint(equalToConstant: 300),
       heightAnchor.constraint(equalToConstant: 300)
     ]
     
@@ -120,10 +120,11 @@ class ErrorView: UIView {
     )
   }
   
-  func setText(_ text: String, hideWarning: Bool = false, hideButton: Bool = false) {
+  func setText(_ text: String, hideWarning: Bool = false, hideButton: Bool = false, buttonText: String = "RETRY") {
     self.text.text = text
     self.warningIcon.isHidden = hideWarning
     self.button.isHidden = hideButton
+    self.button.setTitle(buttonText, for: .normal)
   }
   
   @objc private func onRetry() {
