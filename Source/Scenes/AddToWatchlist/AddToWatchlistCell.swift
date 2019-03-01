@@ -40,10 +40,10 @@ class AddToWatchlistCell: UICollectionViewCell {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.layer.cornerRadius = cornerRadius
-    view.layer.shadowColor = UIColor.black.cgColor
+    view.layer.shadowColor = UIColor.black.withAlphaComponent(0.5).cgColor
     view.layer.shadowOpacity = 1
     view.layer.shadowRadius = 10
-    view.layer.shadowOffset = CGSize(width: 0, height: 0)
+    view.layer.shadowOffset = CGSize(width: 0, height: 24)
     return view
   }()
   
