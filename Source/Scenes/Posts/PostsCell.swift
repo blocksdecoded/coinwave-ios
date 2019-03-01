@@ -167,7 +167,7 @@ class PostsCell: UICollectionViewCell {
   }
   
   func onBind(_ post: Posts.FetchPosts.ViewModel.DisplayedPost) {
-    postTitle.text = post.title.uppercased()
+    postTitle.text = post.title
     
     guard let imageUrl = post.image?.image else {
       return
