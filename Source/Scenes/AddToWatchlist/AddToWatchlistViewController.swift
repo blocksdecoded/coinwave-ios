@@ -29,6 +29,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   private let minimumInterSpacing: CGFloat = 10
   private let minimumLineSpacing: CGFloat = 20
   private let currListMargin: CGFloat = 10
+  private let navigationViewHeight: CGFloat = 100
   
   private var coins: [CRCoin]?
   
@@ -149,7 +150,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
       navigationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
       navigationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
       navigationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      navigationView.heightAnchor.constraint(equalToConstant: 100)
+      navigationView.heightAnchor.constraint(equalToConstant: navigationViewHeight)
     ]
     
     let navigationInnerC = [
