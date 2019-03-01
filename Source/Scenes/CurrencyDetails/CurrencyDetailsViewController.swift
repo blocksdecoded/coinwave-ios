@@ -51,8 +51,6 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setImage(UIImage(named: "left_arrow"), for: .normal)
-    button.contentHorizontalAlignment = .fill
-    button.contentVerticalAlignment = .fill
     button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
     return button
   }()
