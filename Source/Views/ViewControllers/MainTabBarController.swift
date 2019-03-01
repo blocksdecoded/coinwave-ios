@@ -25,17 +25,25 @@ class MainTabBarController: UITabBarController {
   }
   
   private func setup() {
+    let offset: CGFloat = 8
+    
     let postsVC = PostsViewController()
     postsVC.sideMenuDelegate = self
     postsVC.tabBarItem = UITabBarItem(title: "Posts", image: UIImage(named: "earth"), selectedImage: nil)
-
+    postsVC.tabBarItem.imageInsets = UIEdgeInsets(top: -offset, left: 0, bottom: offset, right: 0)
+    postsVC.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -(offset * 2))
+    
     let currenciesVC = CurrenciesViewController()
     currenciesVC.sideMenuDelegate = self
     currenciesVC.tabBarItem = UITabBarItem(title: "Currencies", image: UIImage(named: "list"), selectedImage: nil)
+    currenciesVC.tabBarItem.imageInsets = UIEdgeInsets(top: -offset, left: 0, bottom: offset, right: 0)
+    currenciesVC.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -(offset * 2))
 
     let watchlistVC = WatchlistViewController()
     watchlistVC.sideMenuDelegate = self
     watchlistVC.tabBarItem = UITabBarItem(title: "Watchlist", image: UIImage(named: "star"), selectedImage: nil)
+    watchlistVC.tabBarItem.imageInsets = UIEdgeInsets(top: -offset, left: 0, bottom: offset, right: 0)
+    watchlistVC.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -(offset * 2))
 
     let viewControllersList = [currenciesVC, watchlistVC, postsVC]
     viewControllers = viewControllersList
