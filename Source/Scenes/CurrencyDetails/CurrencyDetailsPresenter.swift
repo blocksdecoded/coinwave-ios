@@ -29,6 +29,8 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
     var currInfo = [CurrencyDetails.Something.ViewModel.Info]()
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Price:",
                                                              value: response.coin.priceStrLong, valueColor: nil))
+    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change:",
+                                                             value: response.coin.changeStr, valueColor: response.coin.changeColor))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Market Cap:",
                                                              value: response.coin.marketCapStrLong, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Volume 24h:",
@@ -37,8 +39,7 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
                                                              value: response.coin.circulatingSupplyStrLong, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Total supply:",
                                                              value: response.coin.totalSupplyStrLong, valueColor: nil))
-    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change:",
-                                                             value: response.coin.changeStr, valueColor: response.coin.changeColor))
+    
 
     let viewModel = CurrencyDetails.Something.ViewModel(title: "\(response.coin.name) \(response.coin.symbol)",
                                                         saveCurrency: response.coin,
