@@ -16,8 +16,8 @@ class CurrencyDetailsCell: UITableViewCell {
   private lazy var nameLbl: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont.systemFont(ofSize: 12) //TODO: Change to avenir book
-    label.textColor = UIColor(red: 170.0/255.0, green: 174.0/255.0, blue: 179.0/255.0, alpha: 1.0)
+    label.font = UIFont(name: Constants.Fonts.regular, size: 12)
+    label.textColor = UIColor(red: 0.45, green: 0.46, blue: 0.47, alpha: 1.0)
     label.textAlignment = .left
     return label
   }()
@@ -25,7 +25,7 @@ class CurrencyDetailsCell: UITableViewCell {
   private lazy var valueLbl: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont.systemFont(ofSize: 12) //TODO: Change to avenir book
+    label.font = UIFont(name: Constants.Fonts.regular, size: 12)
     label.textAlignment = .right
     return label
   }()
@@ -71,6 +71,6 @@ class CurrencyDetailsCell: UITableViewCell {
   func onBind(_ info: CurrencyDetails.Something.ViewModel.Info) {
     nameLbl.text = info.name
     valueLbl.text = info.value
-    valueLbl.textColor = info.valueColor ?? Constants.Colors.def
+    valueLbl.textColor = info.valueColor ?? UIColor(red: 0.11, green: 0.14, blue: 0.16, alpha: 1.0)
   }
 }
