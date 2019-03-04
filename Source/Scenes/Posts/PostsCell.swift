@@ -25,6 +25,12 @@ class PostsCell: UICollectionViewCell {
   private let widgets = WidgetFactory()
   private var backGradientView: UIView?
   
+  private lazy var paragraphStyle: NSMutableParagraphStyle = {
+    let paragraph = NSMutableParagraphStyle()
+    paragraph.lineSpacing = 1
+    return paragraph
+  }()
+  
   private lazy var bdLogo: UIImageView = {
     let image = UIImage(named: "post_background_icon")
     let imageView = UIImageView()
@@ -39,8 +45,9 @@ class PostsCell: UICollectionViewCell {
     let title = UILabel()
     title.translatesAutoresizingMaskIntoConstraints = false
     title.textColor = .white
-    title.font = UIFont(name: Constants.Fonts.light, size: 14)
+    title.font = UIFont(name: Constants.Fonts.bold, size: 14)
     title.numberOfLines = 0
+    title.lineBreakMode = .byWordWrapping
     title.textAlignment = .left
     return title
   }()
@@ -167,7 +174,7 @@ class PostsCell: UICollectionViewCell {
   }
   
   func onBind(_ post: Posts.FetchPosts.ViewModel.DisplayedPost) {
-    postTitle.text = post.title
+    postTitle.attributedText = NSMutableAttributedString(string: post.title, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     
     guard let imageUrl = post.image?.image else {
       return
