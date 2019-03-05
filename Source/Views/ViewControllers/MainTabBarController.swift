@@ -16,6 +16,7 @@ protocol SideMenuDelegate: class {
 class MainTabBarController: UITabBarController {
   
   weak var menuVC: VCMenu?
+  private var bgImage: UIImageView?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,25 +26,17 @@ class MainTabBarController: UITabBarController {
   }
   
   private func setup() {
-    let offset: CGFloat = 8
-    
     let postsVC = PostsViewController()
     postsVC.sideMenuDelegate = self
     postsVC.tabBarItem = UITabBarItem(title: "Posts", image: UIImage(named: "earth"), selectedImage: nil)
-    postsVC.tabBarItem.imageInsets = UIEdgeInsets(top: -offset, left: 0, bottom: offset, right: 0)
-    postsVC.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -(offset * 2))
     
     let currenciesVC = CurrenciesViewController()
     currenciesVC.sideMenuDelegate = self
     currenciesVC.tabBarItem = UITabBarItem(title: "Currencies", image: UIImage(named: "list"), selectedImage: nil)
-    currenciesVC.tabBarItem.imageInsets = UIEdgeInsets(top: -offset, left: 0, bottom: offset, right: 0)
-    currenciesVC.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -(offset * 2))
 
     let watchlistVC = WatchlistViewController()
     watchlistVC.sideMenuDelegate = self
     watchlistVC.tabBarItem = UITabBarItem(title: "Watchlist", image: UIImage(named: "star"), selectedImage: nil)
-    watchlistVC.tabBarItem.imageInsets = UIEdgeInsets(top: -offset, left: 0, bottom: offset, right: 0)
-    watchlistVC.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -(offset * 2))
 
     let viewControllersList = [currenciesVC, watchlistVC, postsVC]
     viewControllers = viewControllersList
@@ -53,7 +46,19 @@ class MainTabBarController: UITabBarController {
     tabBar.isTranslucent = false
     tabBar.tintColor = Constants.Colors.currencyUp
     tabBar.barTintColor = UIColor(red: 14.0/255.0, green: 18.0/255.0, blue: 22.0/255.0, alpha: 1.0)
-    tabBar.backgroundImage = UIImage(named: "graph_2")
+    bgImage = UIImageView(image: UIImage(named: "graph_2"))
+    let frame = CGRect(x: 0, y: 0, width: tabBar.bounds.width, height: tabBar.bounds.height)
+    bgImage?.frame = frame
+    tabBar.addSubview(bgImage!)
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    let frame = CGRect(x: 0,
+                       y: view.safeAreaInsets.bottom / 2,
+                       width: tabBar.bounds.width,
+                       height: tabBar.bounds.height)
+    bgImage?.frame = frame
   }
   
   private func setupSideMenu() {
