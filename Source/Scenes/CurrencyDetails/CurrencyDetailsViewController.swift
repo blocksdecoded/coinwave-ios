@@ -52,6 +52,8 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setImage(UIImage(named: "left_arrow"), for: .normal)
     button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
+    button.contentHorizontalAlignment = .fill
+    button.contentVerticalAlignment = .fill
     return button
   }()
   
@@ -256,10 +258,10 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     ]
     
     let backButtonC = [
-      backButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
+      backButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor, constant: 20),
       backButton.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
-      backButton.widthAnchor.constraint(equalToConstant: 25),
-      backButton.heightAnchor.constraint(equalToConstant: 25)
+      backButton.widthAnchor.constraint(equalToConstant: 9),
+      backButton.heightAnchor.constraint(equalToConstant: 15)
     ]
     
     NSLayoutConstraint.activate(infoTableC +
