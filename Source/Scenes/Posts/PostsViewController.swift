@@ -59,7 +59,7 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   private lazy var postsList: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.minimumLineSpacing = 0.5
-    layout.itemSize = CGSize(width: view.frame.width, height: 200)
+    layout.itemSize = CGSize(width: view.frame.width, height: UIScreen.main.bounds.height * 0.27)
     let postTable = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     postTable.backgroundColor = .clear
     postTable.translatesAutoresizingMaskIntoConstraints = false
