@@ -43,7 +43,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = UIImage(named: "top_circle_black")
-    imageView.contentMode = .scaleAspectFit
+    imageView.contentMode = .scaleToFill
     return imageView
   }()
   
@@ -210,7 +210,8 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     let topCircleC = [
       topCircle.topAnchor.constraint(equalTo: view.topAnchor),
       topCircle.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      view.trailingAnchor.constraint(equalTo: topCircle.trailingAnchor)
+      view.trailingAnchor.constraint(equalTo: topCircle.trailingAnchor),
+      topCircle.heightAnchor.constraint(equalToConstant: 250)
     ]
     
     let chartC = [

@@ -50,7 +50,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = UIImage(named: "top_circle_white")
-    imageView.contentMode = .scaleAspectFit
+    imageView.contentMode = .scaleToFill
     return imageView
   }()
   
@@ -200,7 +200,8 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     let topCircleC = [
       topCircle.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       topCircle.topAnchor.constraint(equalTo: view.topAnchor),
-      view.trailingAnchor.constraint(equalTo: topCircle.trailingAnchor)
+      view.trailingAnchor.constraint(equalTo: topCircle.trailingAnchor),
+      topCircle.heightAnchor.constraint(equalToConstant: 250)
     ]
     
     let navigationViewC = [
