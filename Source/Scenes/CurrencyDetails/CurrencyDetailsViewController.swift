@@ -128,6 +128,8 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.addTarget(self, action: #selector(addFavorite), for: .touchUpInside)
+    button.contentHorizontalAlignment = .fill
+    button.contentVerticalAlignment = .fill
     return button
   }()
   
@@ -253,8 +255,8 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     let favoriteC = [
       navigationView.trailingAnchor.constraint(equalTo: favoriteBtn.trailingAnchor, constant: 20),
       favoriteBtn.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
-      favoriteBtn.widthAnchor.constraint(equalToConstant: 30),
-      favoriteBtn.heightAnchor.constraint(equalToConstant: 30)
+      favoriteBtn.widthAnchor.constraint(equalToConstant: 20),
+      favoriteBtn.heightAnchor.constraint(equalToConstant: 20)
     ]
     
     let backButtonC = [
