@@ -28,7 +28,7 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
   func presentSomething(response: CurrencyDetails.Something.Response) {
     var currInfo = [CurrencyDetails.Something.ViewModel.Info]()
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Price:",
-                                                             value: response.coin.price?.long, valueColor: nil))
+                                                             value: response.coin.price?.longForce, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change:",
                                                              value: response.coin.changeStr, valueColor: response.coin.changeColor))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Market Cap:",

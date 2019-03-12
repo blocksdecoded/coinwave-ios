@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0D28CE1432761D5C34F19CA4 /* Pods_DebugCryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B2530050E251A72770FCB3 /* Pods_DebugCryptotracker.framework */; };
-		B501296521A91F3E001B6A04 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296421A91F3E001B6A04 /* CurrencyConverter.swift */; };
-		B501296621A91F3E001B6A04 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296421A91F3E001B6A04 /* CurrencyConverter.swift */; };
-		B501296721A91F3E001B6A04 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296421A91F3E001B6A04 /* CurrencyConverter.swift */; };
 		B501296F21A940DA001B6A04 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296921A940DA001B6A04 /* WatchlistPresenter.swift */; };
 		B501297021A940DA001B6A04 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296921A940DA001B6A04 /* WatchlistPresenter.swift */; };
 		B501297121A940DA001B6A04 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296921A940DA001B6A04 /* WatchlistPresenter.swift */; };
@@ -310,7 +307,6 @@
 		A0CC2CCCAA2E062ED9822C81 /* Pods-DebugCryptotracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.release.xcconfig"; sourceTree = "<group>"; };
 		A987954D56EDBE59FCFB0C3C /* Pods-Cryptotracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.release.xcconfig"; sourceTree = "<group>"; };
 		B3C7929EE344E49051F23381 /* Pods-StagingCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StagingCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StagingCryptotracker/Pods-StagingCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
-		B501296421A91F3E001B6A04 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
 		B501296921A940DA001B6A04 /* WatchlistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPresenter.swift; sourceTree = "<group>"; };
 		B501296B21A940DA001B6A04 /* WatchlistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRouter.swift; sourceTree = "<group>"; };
 		B501296C21A940DA001B6A04 /* WatchlistModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistModels.swift; sourceTree = "<group>"; };
@@ -681,7 +677,6 @@
 			isa = PBXGroup;
 			children = (
 				B5E93CEF21A6A3AE00D1705A /* Constants.swift */,
-				B501296421A91F3E001B6A04 /* CurrencyConverter.swift */,
 				B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */,
 				B5FCEA97220DB0C400E4B433 /* SEmail.swift */,
 			);
@@ -1264,7 +1259,6 @@
 				B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */,
 				B572E94F2202AFF700778DA8 /* CRCoin.swift in Sources */,
 				B5FCEA94220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */,
-				B501296521A91F3E001B6A04 /* CurrencyConverter.swift in Sources */,
 				B501297B21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
 				B5276B5F21A29DD9000A74A5 /* Post.swift in Sources */,
 				B5276AF821A0124D000A74A5 /* CurrenciesModels.swift in Sources */,
@@ -1360,7 +1354,6 @@
 				B572E9502202AFF700778DA8 /* CRCoin.swift in Sources */,
 				B5276B8621A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5FCEA95220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */,
-				B501296621A91F3E001B6A04 /* CurrencyConverter.swift in Sources */,
 				B501297C21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
 				B5E93D0721A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
 				B5E93D0421A6A73500D1705A /* PostPreviewWorker.swift in Sources */,
@@ -1456,7 +1449,6 @@
 				B572E9512202AFF700778DA8 /* CRCoin.swift in Sources */,
 				B5276B8721A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5FCEA96220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */,
-				B501296721A91F3E001B6A04 /* CurrencyConverter.swift in Sources */,
 				B501297D21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
 				B5E93D0821A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
 				B5E93D0521A6A73500D1705A /* PostPreviewWorker.swift in Sources */,

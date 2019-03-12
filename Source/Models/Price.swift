@@ -36,11 +36,15 @@ extension Price {
 extension Price {
   var short: String {
     let (short, bill) = classify()
-    return "$\(toString(short))\(bill)"
+    return "$\(Price.toString(short))\(bill)"
   }
   
   var long: String {
-    return "$\(toString(value))"
+    return "$\(Price.toString(value))"
+  }
+  
+  var longForce: String {
+    return "$\(Price.toString(value, force: true))"
   }
   
   private func classify() -> (Double, String) {
@@ -58,16 +62,21 @@ extension Price {
     return (result, Price.letters[exp - 1])
   }
   
-  private func toString(_ value: Double) -> String {
+  static func toString(_ value: Double, force: Bool = false) -> String {
     let formatter = NumberFormatter()
-    if value < 0.01 {
+    if value < 0.000001 {
       formatter.numberStyle = .scientific
       formatter.positiveFormat = "0.##E+0"
       formatter.negativeFormat = "0.##E+0"
       formatter.exponentSymbol = "e"
     } else {
-      formatter.positiveFormat = "#,###,###,###,###,##0.00"
-      formatter.negativeFormat = "#,###,###,###,###,##0.00"
+      if value < 0.1 || force {
+        formatter.positiveFormat = "#,###,###,###,###,##0.00####"
+        formatter.negativeFormat = "#,###,###,###,###,##0.00####"
+      } else {
+        formatter.positiveFormat = "#,###,###,###,###,##0.00"
+        formatter.negativeFormat = "#,###,###,###,###,##0.00"
+      }
     }
     return formatter.string(for: NSNumber(value: value)) ?? ""
   }
