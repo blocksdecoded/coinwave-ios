@@ -1,29 +1,49 @@
 //
-//  CurrencyConverter.swift
+//  Price.swift
 //  Cryptotracker
 //
-//  Created by Abai Abakirov on 11/24/18.
-//  Copyright © 2018 makeuseof. All rights reserved.
+//  Created by Abai Abakirov on 3/12/19.
+//  Copyright © 2019 makeuseof. All rights reserved.
 //
 
 import Foundation
 
-class CurrencyConverter {
-  
+struct Price {
   private static let letters = ["k", "m", "b", "t", "p", "e"]
   
-  static func convertShort(_ value: Double) -> String {
+  let value: Double
+}
+
+extension Price {
+  init?(_ double: Double?) {
+    guard let notNilDouble = double else {
+      return nil
+    }
     
-    let (short, bill) = classify(value)
+    value = notNilDouble
+  }
+  
+  init?(string: String?) {
+    guard let notNilString = string,
+          let value = Double(notNilString) else {
+      return nil
+    }
     
+    self.value = value
+  }
+}
+
+extension Price {
+  var short: String {
+    let (short, bill) = classify()
     return "$\(toString(short))\(bill)"
   }
   
-  static func convertLong(_ value: Double) -> String {
+  var long: String {
     return "$\(toString(value))"
   }
   
-  private static func classify(_ value: Double) -> (Double, String) {
+  private func classify() -> (Double, String) {
     if value < 1000 {
       return (value, "")
     }
@@ -31,14 +51,14 @@ class CurrencyConverter {
     var exp = Int(log(value) / log(1000.0))
     let result = value / pow(1000.0, Double(exp))
     
-    if exp >= letters.count {
-      exp = letters.count
+    if exp >= Price.letters.count {
+      exp = Price.letters.count
     }
     
-    return (result, letters[exp - 1])
+    return (result, Price.letters[exp - 1])
   }
   
-  private static func toString(_ value: Double) -> String {
+  private func toString(_ value: Double) -> String {
     let formatter = NumberFormatter()
     if value < 0.01 {
       formatter.numberStyle = .scientific
@@ -52,3 +72,5 @@ class CurrencyConverter {
     return formatter.string(for: NSNumber(value: value)) ?? ""
   }
 }
+
+extension Price: Decodable {}

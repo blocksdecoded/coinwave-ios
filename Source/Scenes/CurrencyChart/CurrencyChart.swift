@@ -289,7 +289,7 @@ class CurrencyChart: UIView {
   
   private func setCoinData(coin: CRCoin) {
     nameLabel.text = coin.name
-    priceLabel.text = coin.priceStrLong
+    priceLabel.text = coin.price?.long ?? "null"
     
     if let percent = coin.change {
       if percent < 0 {
@@ -304,8 +304,8 @@ class CurrencyChart: UIView {
     var dataEntries = [ChartDataEntry]()
     
     for price in prices {
-      let xChart = Double(price.timestamp ?? 0)
-      let yChart = Double(price.price ?? "0") ?? 0
+      let xChart = price.timestamp ?? 0
+      let yChart = price.price?.value ?? 0
       let dataEntry = ChartDataEntry(x: xChart, y: yChart)
       dataEntries.append(dataEntry)
     }

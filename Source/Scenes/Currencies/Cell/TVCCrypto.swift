@@ -83,9 +83,9 @@ class TVCCrypto: UITableViewCell {
   func onBind(_ crypto: CRCoin, isTop: Bool) {
     topSeparatorHeight.constant = isTop ? 1 : 0.5
     name.text = crypto.symbol
-    marketCap.text = crypto.marketCapStrShort
-    volume.text = crypto.volumeStrShort
-    price.text = crypto.priceStrLong
+    marketCap.text = crypto.marketCap?.short ?? "null"
+    volume.text = crypto.volume?.short ?? "null"
+    price.text = crypto.price?.short ?? "null"
     
     if let percent = crypto.change {
       if percent < 0 {

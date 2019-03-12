@@ -28,17 +28,17 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
   func presentSomething(response: CurrencyDetails.Something.Response) {
     var currInfo = [CurrencyDetails.Something.ViewModel.Info]()
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Price:",
-                                                             value: response.coin.priceStrLong, valueColor: nil))
+                                                             value: response.coin.price?.long, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change:",
                                                              value: response.coin.changeStr, valueColor: response.coin.changeColor))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Market Cap:",
-                                                             value: response.coin.marketCapStrLong, valueColor: nil))
+                                                             value: response.coin.marketCap?.long, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Volume 24h:",
-                                                             value: response.coin.volumeStrLong, valueColor: nil))
+                                                             value: response.coin.volume?.long, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Available supply:",
-                                                             value: response.coin.circulatingSupplyStrLong, valueColor: nil))
+                                                             value: response.coin.circulatingSupply?.long, valueColor: nil))
     currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Total supply:",
-                                                             value: response.coin.totalSupplyStrLong, valueColor: nil))
+                                                             value: response.coin.totalSupply?.long, valueColor: nil))
     
 
     let viewModel = CurrencyDetails.Something.ViewModel(title: "\(response.coin.name) \(response.coin.symbol)",

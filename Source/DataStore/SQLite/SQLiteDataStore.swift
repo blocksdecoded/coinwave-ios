@@ -28,10 +28,36 @@ class SQLiteDataStore {
     }
   }
   
+  func checkMigrations() throws {
+    if db?.userVersion == 0 {
+      try CRCoinDataHelper.dropTable()
+      db?.userVersion = 1
+    }
+  }
+  
   func createTables() throws {
     try PostDataHelper.createTable()
     try CategoryDataHelper.createTable()
     try PostCategoryDataHelper.createTable()
     try CRCoinDataHelper.createTable()
+  }
+}
+
+extension Connection {
+  public var userVersion: Int32 {
+    get {
+      do {
+        guard let version = try scalar("PRAGMA user_version") as? Int64 else {
+          return 0
+        }
+        return Int32(version)
+      } catch {
+        return 0
+      }
+    }
+    
+    set {
+      try? run("PRAGMA user_version = \(newValue)")
+    }
   }
 }

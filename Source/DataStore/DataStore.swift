@@ -19,6 +19,7 @@ class DataStore {
   
   private init() {
     do {
+      try SQLiteDataStore.sharedInstance.checkMigrations()
       try SQLiteDataStore.sharedInstance.createTables()
     } catch {
       fatalError("Cant create tables")

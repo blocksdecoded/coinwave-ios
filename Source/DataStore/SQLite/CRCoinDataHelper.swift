@@ -28,14 +28,14 @@ class CRCoinDataHelper: DataHelperProtocol {
   static let currType = Expression<String>("type")
   static let currVolume = Expression<Double?>("volume")
   static let currMarketCap = Expression<Double?>("marketCap")
-  static let currPrice = Expression<String?>("price")
+  static let currPrice = Expression<Double?>("price")
   static let currCirculatingSupply = Expression<Double?>("circulatingSupply")
   static let currTotalSupply = Expression<Double?>("totalSupply")
   static let currFirstSeen = Expression<Double?>("firstSeen")
   static let currChange = Expression<Double?>("change")
   static let currRank = Expression<Double>("rank")
   static let currHistory = Expression<String>("history")
-  static let currAllTimeHighPrice = Expression<String?>("allTimeHighPrice")
+  static let currAllTimeHighPrice = Expression<Double?>("allTimeHighPrice")
   static let currAllTimeHighTimestamp = Expression<Double?>("allTimeHighTimestamp")
   static let currPenalty = Expression<Bool>("penalty")
   static let currIsWatchlist = Expression<Bool>("isWatchlist")
@@ -77,6 +77,14 @@ class CRCoinDataHelper: DataHelperProtocol {
     } catch _ {
       // Error throw if table already exists
     }
+  }
+  
+  static func dropTable() throws {
+    guard let db = SQLiteDataStore.sharedInstance.db else {
+      throw DataAccessError.datastoreConnection
+    }
+    
+    try db.run(table.drop(ifExists: true))
   }
   
   static func insertOrUpdate(item: CRCoin) throws {
@@ -281,8 +289,8 @@ class CRCoinDataHelper: DataHelperProtocol {
   }
   
   private static func convert(row: Row) -> CRCoin {
-    let allTimeHigh = CRPrice(price: row[currAllTimeHighPrice],
-                                    timestamp: row[currAllTimeHighTimestamp])
+    let allTimeHigh = CRPrice(price: Price(row[currAllTimeHighPrice]),
+                              timestamp: row[currAllTimeHighTimestamp])
     
     let sqlHistory = row[currHistory].split(separator: ":")
     var history = [String?]()
@@ -311,11 +319,11 @@ class CRCoinDataHelper: DataHelperProtocol {
                   websiteUrl: row[currWebsiteUrl],
                   confirmedSupply: row[currConfirmedSupply],
                   type: CRCoin.CoinType(rawValue: row[currType])!,
-                  volume: row[currVolume],
-                  marketCap: row[currMarketCap],
-                  price: row[currPrice],
-                  circulatingSupply: row[currCirculatingSupply],
-                  totalSupply: row[currTotalSupply],
+                  volume: Price(row[currVolume]),
+                  marketCap: Price(row[currMarketCap]),
+                  price: Price(row[currPrice]),
+                  circulatingSupply: Price(row[currCirculatingSupply]),
+                  totalSupply: Price(row[currTotalSupply]),
                   firstSeen: row[currFirstSeen],
                   change: row[currChange],
                   rank: row[currRank],
@@ -332,7 +340,7 @@ class CRCoinDataHelper: DataHelperProtocol {
     return setters
   }
   
-  private static func updateSetters(item: CRCoin) -> [Setter] {
+  private static func updateSetters(item: CRCoin, _ setters: [Setter] = []) -> [Setter] {
     var history = ""
     
     for index in 0..<item.history.count {
@@ -343,7 +351,7 @@ class CRCoinDataHelper: DataHelperProtocol {
       }
     }
     
-    return [
+    var sets = [
       currID <- Int64(item.id),
       currSlug <- item.slug,
       currSymbol <- item.symbol,
@@ -355,58 +363,29 @@ class CRCoinDataHelper: DataHelperProtocol {
       currWebsiteUrl <- item.websiteUrl,
       currConfirmedSupply <- item.confirmedSupply,
       currType <- item.type.rawValue,
-      currVolume <- item.volume,
-      currMarketCap <- item.marketCap,
-      currPrice <- item.price,
-      currCirculatingSupply <- item.circulatingSupply,
-      currTotalSupply <- item.totalSupply,
+      currVolume <- item.volume?.value,
+      currMarketCap <- item.marketCap?.value,
+      currPrice <- item.price?.value,
+      currCirculatingSupply <- item.circulatingSupply?.value,
+      currTotalSupply <- item.totalSupply?.value,
       currFirstSeen <- item.firstSeen,
       currChange <- item.change,
       currRank <- item.rank,
       currHistory <- history,
-      currAllTimeHighPrice <- item.allTimeHigh.price,
+      currAllTimeHighPrice <- item.allTimeHigh.price?.value,
       currAllTimeHighTimestamp <- item.allTimeHigh.timestamp,
       currPenalty <- item.penalty
     ]
+    sets.append(contentsOf: setters)
+    return sets
   }
   
   private static func fullUpdateSetters(item: CRCoin) -> [Setter] {
-    var history = ""
-    
-    for index in 0..<item.history.count {
-      if index == 0 {
-        history = "\(item.history[index] ?? "")"
-      } else {
-        history = "\(history):\(item.history[index] ?? " ")"
-      }
-    }
-    
-    return [
-      currID <- Int64(item.id),
-      currSlug <- item.slug,
-      currSymbol <- item.symbol,
-      currName <- item.name,
-      currDescription <- item.description,
-      currColor <- item.color,
-      currIconType <- item.iconType?.rawValue,
-      currIconUrl <- item.iconUrl,
-      currWebsiteUrl <- item.websiteUrl,
-      currConfirmedSupply <- item.confirmedSupply,
-      currType <- item.type.rawValue,
-      currVolume <- item.volume,
-      currMarketCap <- item.marketCap,
-      currPrice <- item.price,
-      currCirculatingSupply <- item.circulatingSupply,
-      currTotalSupply <- item.totalSupply,
-      currFirstSeen <- item.firstSeen,
-      currChange <- item.change,
-      currRank <- item.rank,
-      currHistory <- history,
-      currAllTimeHighPrice <- item.allTimeHigh.price,
-      currAllTimeHighTimestamp <- item.allTimeHigh.timestamp,
-      currPenalty <- item.penalty,
+    let sets = [
       currIsWatchlist <- item.isWatchlist,
       currIsFavorite <- item.isFavorite
     ]
+    
+    return updateSetters(item: item, sets)
   }
 }

@@ -21,11 +21,11 @@ struct CRCoin {
   let websiteUrl: String?
   let confirmedSupply: Bool
   let type: CoinType
-  let volume: Double?
-  let marketCap: Double?
-  let price: String?
-  let circulatingSupply: Double?
-  let totalSupply: Double?
+  let volume: Price?
+  let marketCap: Price?
+  let price: Price?
+  let circulatingSupply: Price?
+  let totalSupply: Price?
   let firstSeen: Double?
   let change: Double?
   let rank: Double
@@ -86,11 +86,11 @@ extension CRCoin: Decodable {
     let websiteUrl = try container.decode(String?.self, forKey: .websiteUrl)
     let confirmedSupply = try container.decode(Bool.self, forKey: .confirmedSupply)
     let type = try container.decode(CRCoin.CoinType.self, forKey: .type)
-    let volume = try container.decode(Double?.self, forKey: .volume)
-    let marketCap = try container.decode(Double?.self, forKey: .marketCap)
-    let price = try container.decode(String?.self, forKey: .price)
-    let circulatingSupply = try container.decode(Double?.self, forKey: .circulatingSupply)
-    let totalSupply = try container.decode(Double?.self, forKey: .totalSupply)
+    let volume = Price(try container.decode(Double?.self, forKey: .volume))
+    let marketCap = Price(try container.decode(Double?.self, forKey: .marketCap))
+    let price = Price(string: try container.decode(String?.self, forKey: .price))
+    let circulatingSupply = Price(try container.decode(Double?.self, forKey: .circulatingSupply))
+    let totalSupply = Price(try container.decode(Double?.self, forKey: .totalSupply))
     let firstSeen = try container.decode(Double?.self, forKey: .firstSeen)
     let change = try container.decode(Double?.self, forKey: .change)
     let rank = try container.decode(Double.self, forKey: .rank)
@@ -155,77 +155,6 @@ extension CRCoin {
 }
 
 extension CRCoin {
-  var priceValue: Double? {
-    guard let price = price else {
-      return nil
-    }
-    return Double(price)
-  }
-  
-  var priceStrShort: String {
-    var str = "null"
-    if let price = priceValue {
-      str = CurrencyConverter.convertShort(price)
-    }
-    return str
-  }
-  
-  var priceStrLong: String {
-    var str = "null"
-    if let price = priceValue {
-      str = CurrencyConverter.convertLong(price)
-    }
-    return str
-  }
-  
-  var marketCapStrShort: String {
-    var str = "null"
-    if let marketCap = marketCap {
-      str = CurrencyConverter.convertShort(marketCap)
-    }
-    return str
-  }
-  
-  var marketCapStrLong: String {
-    var str = "null"
-    if let marketCap = marketCap {
-      str = CurrencyConverter.convertLong(marketCap)
-    }
-    return str
-  }
-  
-  var volumeStrShort: String {
-    var str = "null"
-    if let volume = volume {
-      str = CurrencyConverter.convertShort(volume)
-    }
-    return str
-  }
-  
-  var volumeStrLong: String {
-    var str = "null"
-    if let volume = volume {
-      str = CurrencyConverter.convertLong(volume)
-    }
-    return str
-  }
-  
-  var circulatingSupplyStrLong: String {
-    var str = "null"
-    if let value = circulatingSupply {
-      str = CurrencyConverter.convertLong(value)
-    }
-    return str
-  }
-  
-  var totalSupplyStrLong: String {
-    var str = "null"
-    if let value = totalSupply {
-      str = CurrencyConverter.convertLong(value)
-    }
-    return str
-  }
-  
   var changeStr: String {
     var str = "null"
     if let value = change {

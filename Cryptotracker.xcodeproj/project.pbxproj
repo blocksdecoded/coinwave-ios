@@ -139,6 +139,9 @@
 		B5276B8D21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
 		B5276B8E21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
 		B5276B8F21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
+		B55500FD2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
+		B55500FE2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
+		B55500FF2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
 		B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
 		B572E9402202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
 		B572E9412202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
@@ -360,6 +363,7 @@
 		B5276B8421A2A353000A74A5 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		B5276B8821A2A369000A74A5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B55500FC2237953B00FB7165 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		B572E93E2202AD4F00778DA8 /* CRRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRRoot.swift; sourceTree = "<group>"; };
 		B572E9422202AF0F00778DA8 /* CRDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataList.swift; sourceTree = "<group>"; };
 		B572E9462202AFBA00778DA8 /* CRStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRStats.swift; sourceTree = "<group>"; };
@@ -619,6 +623,7 @@
 			children = (
 				B572E93D2202AC5700778DA8 /* Coins */,
 				B5276B5E21A29DD9000A74A5 /* Post.swift */,
+				B55500FC2237953B00FB7165 /* Price.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1213,6 +1218,7 @@
 				B5276B5921A28183000A74A5 /* PostsInteractor.swift in Sources */,
 				B501299121A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
 				B572E95B2202F34900778DA8 /* DataCache.swift in Sources */,
+				B55500FD2237953B00FB7165 /* Price.swift in Sources */,
 				B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5E93D0F21A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
@@ -1308,6 +1314,7 @@
 				B5E93D7421A827D600D1705A /* CurrenciesPresenter.swift in Sources */,
 				B501299221A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
 				B572E95C2202F34900778DA8 /* DataCache.swift in Sources */,
+				B55500FE2237953B00FB7165 /* Price.swift in Sources */,
 				B5E93D5621A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5276B5721A28183000A74A5 /* PostsViewController.swift in Sources */,
 				B5E93D4C21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
@@ -1403,6 +1410,7 @@
 				B5E93D7A21A827D700D1705A /* CurrenciesPresenter.swift in Sources */,
 				B501299321A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
 				B572E95D2202F34900778DA8 /* DataCache.swift in Sources */,
+				B55500FF2237953B00FB7165 /* Price.swift in Sources */,
 				B5E93D5721A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5276B5821A28183000A74A5 /* PostsViewController.swift in Sources */,
 				B5E93D4D21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
