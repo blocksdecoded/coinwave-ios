@@ -12,6 +12,8 @@
 
 import UIKit
 import SafariServices
+import SVGKit
+import Kingfisher
 
 protocol CurrencyDetailsDisplayLogic: class {
   func displaySomething(viewModel: CurrencyDetails.Something.ViewModel)
@@ -57,6 +59,19 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     return button
   }()
   
+  private lazy var coinIcon: UIImageView = {
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    return imageView
+  }()
+  
+  private lazy var vectorCoinIcon: SVGKFastImageView = {
+    let imageView = SVGKFastImageView(svgkImage: SVGKImage())!
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.contentMode = .scaleAspectFit
+    return imageView
+  }()
+  
   private lazy var titleLbl: UILabel = {
     let titleLabel = UILabel()
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +79,9 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     titleLabel.textColor = .white
     titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
     titleLabel.textAlignment = .center
+    titleLabel.numberOfLines = 1
+    titleLabel.adjustsFontSizeToFitWidth = true
+    titleLabel.minimumScaleFactor = 0.5
     return titleLabel
   }()
   
@@ -202,6 +220,8 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     view.backgroundColor = .white
     view.addSubview(topCircle)
     navigationView.addSubview(backButton)
+    navigationView.addSubview(coinIcon)
+    navigationView.addSubview(vectorCoinIcon)
     navigationView.addSubview(titleLbl)
     navigationView.addSubview(favoriteBtn)
     view.addSubview(navigationView)
@@ -246,9 +266,24 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
       navigationView.heightAnchor.constraint(equalToConstant: 100)
     ]
     
+    let coinIconC = [
+      coinIcon.widthAnchor.constraint(equalToConstant: 20),
+      coinIcon.heightAnchor.constraint(equalToConstant: 20),
+      coinIcon.centerYAnchor.constraint(equalTo: titleLbl.centerYAnchor),
+      titleLbl.leadingAnchor.constraint(equalTo: coinIcon.trailingAnchor, constant: 8)
+    ]
+    
+    let vectorCoinIconC = [
+      vectorCoinIcon.widthAnchor.constraint(equalToConstant: 20),
+      vectorCoinIcon.heightAnchor.constraint(equalToConstant: 20),
+      vectorCoinIcon.centerYAnchor.constraint(equalTo: titleLbl.centerYAnchor),
+      titleLbl.leadingAnchor.constraint(equalTo: vectorCoinIcon.trailingAnchor, constant: 8)
+    ]
+    
     let titleLblC = [
-      titleLbl.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor, constant: 20),
-      navigationView.trailingAnchor.constraint(equalTo: titleLbl.trailingAnchor, constant: 20),
+      favoriteBtn.leadingAnchor.constraint(greaterThanOrEqualTo: titleLbl.trailingAnchor, constant: 8),
+      titleLbl.leadingAnchor.constraint(greaterThanOrEqualTo: backButton.trailingAnchor, constant: 8),
+      titleLbl.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor, constant: 14),
       titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
     ]
     
@@ -268,6 +303,8 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     
     NSLayoutConstraint.activate(infoTableC +
       periodC +
+      coinIconC +
+      vectorCoinIconC +
       titleLblC +
       navigationC +
       favoriteC +
@@ -287,6 +324,20 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   
   func displaySomething(viewModel: CurrencyDetails.Something.ViewModel) {
     refreshControl.endRefreshing()
+    if viewModel.iconType != nil && viewModel.iconUrl != nil {
+      switch viewModel.iconType! {
+      case .pixel:
+        vectorCoinIcon.isHidden = true
+        coinIcon.kf.setImage(with: URL(string: viewModel.iconUrl!))
+      case .vector:
+        coinIcon.isHidden = true
+        vectorCoinIcon.load(viewModel.iconUrl!)
+      }
+    } else {
+      coinIcon.isHidden = true
+      vectorCoinIcon.isHidden = true
+    }
+    
     titleLbl.text = viewModel.title
     saveCurrency = viewModel.saveCurrency
     let isFilledStar = saveCurrency?.isWatchlist ?? false

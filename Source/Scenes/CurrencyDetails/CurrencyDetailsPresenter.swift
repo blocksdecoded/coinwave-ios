@@ -41,7 +41,9 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
                                                              value: response.coin.totalSupply?.long, valueColor: nil))
     
 
-    let viewModel = CurrencyDetails.Something.ViewModel(title: "\(response.coin.name) \(response.coin.symbol)",
+    let viewModel = CurrencyDetails.Something.ViewModel(iconType: response.coin.iconType,
+                                                        iconUrl: response.coin.iconUrl,
+                                                        title: "\(response.coin.name) \(response.coin.symbol)",
                                                         saveCurrency: response.coin,
                                                         info: currInfo)
     viewController?.displaySomething(viewModel: viewModel)

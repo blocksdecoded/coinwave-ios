@@ -52,31 +52,7 @@ class TVCCrypto: UITableViewCell {
     case .vector:
       cryptoIcon.isHidden = true
       svgCryptoIcon.contentMode = .scaleAspectFit
-      
-      if let svgData = DataCache.shared.read(for: iconUrl) {
-        svgCryptoIcon.image = SVGKImage(data: svgData)
-      } else {
-        guard let url = URL(string: iconUrl) else {
-          fatalError()
-        }
-        let request = URLRequest(url: url,
-                                 cachePolicy: .reloadRevalidatingCacheData,
-                                 timeoutInterval: 60 * 60 * 24 * 7)
-        let session = URLSession.shared
-        task = session.dataTask(with: request, completionHandler: { data, response, _ in
-          guard let response = response as? HTTPURLResponse else {
-            return
-          }
-          
-          if response.statusCode == 200 && data != nil {
-            DataCache.shared.write(data: data!, for: iconUrl)
-            DispatchQueue.main.async {
-              self.svgCryptoIcon.image = SVGKImage(data: data!)
-            }
-          }
-        })
-        task?.resume()
-      }
+      task = svgCryptoIcon.load(iconUrl)
     }
   }
   
@@ -85,7 +61,7 @@ class TVCCrypto: UITableViewCell {
     name.text = crypto.symbol
     marketCap.text = crypto.marketCap?.short ?? "null"
     volume.text = crypto.volume?.short ?? "null"
-    price.text = crypto.price?.short ?? "null"
+    price.text = crypto.price?.long ?? "null"
     
     if let percent = crypto.change {
       if percent < 0 {

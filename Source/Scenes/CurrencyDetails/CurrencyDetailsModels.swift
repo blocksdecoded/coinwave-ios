@@ -38,6 +38,8 @@ enum CurrencyDetails {
       let coin: CRCoin
     }
     struct ViewModel {
+      let iconType: CRCoin.IconType?
+      let iconUrl: String?
       let title: String
       let saveCurrency: CRCoin?
       let info: [Info]

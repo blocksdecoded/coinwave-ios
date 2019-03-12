@@ -139,6 +139,9 @@
 		B55500FD2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
 		B55500FE2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
 		B55500FF2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
+		B55501012237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */; };
+		B55501022237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */; };
+		B55501032237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */; };
 		B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
 		B572E9402202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
 		B572E9412202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
@@ -360,6 +363,7 @@
 		B5276B8821A2A369000A74A5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B55500FC2237953B00FB7165 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVGKFastImageView+Extensions.swift"; sourceTree = "<group>"; };
 		B572E93E2202AD4F00778DA8 /* CRRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRRoot.swift; sourceTree = "<group>"; };
 		B572E9422202AF0F00778DA8 /* CRDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataList.swift; sourceTree = "<group>"; };
 		B572E9462202AFBA00778DA8 /* CRStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRStats.swift; sourceTree = "<group>"; };
@@ -669,6 +673,7 @@
 			children = (
 				B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */,
 				B5E1D6C8221FBAC7005419C8 /* CTError.swift */,
+				B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1190,6 +1195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5FCEA88220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */,
+				B55501012237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */,
 				B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */,
 				B5E93D4621A6E64200D1705A /* DataStore.swift in Sources */,
 				B501297821A940DA001B6A04 /* WatchlistModels.swift in Sources */,
@@ -1285,6 +1291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5FCEA89220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */,
+				B55501022237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */,
 				B572E9402202AD4F00778DA8 /* CRRoot.swift in Sources */,
 				B5276B7E21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
 				B501297921A940DA001B6A04 /* WatchlistModels.swift in Sources */,
@@ -1380,6 +1387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5FCEA8A220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */,
+				B55501032237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */,
 				B572E9412202AD4F00778DA8 /* CRRoot.swift in Sources */,
 				B5276B7F21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
 				B501297A21A940DA001B6A04 /* WatchlistModels.swift in Sources */,
