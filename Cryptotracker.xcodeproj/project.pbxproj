@@ -618,7 +618,6 @@
 			isa = PBXGroup;
 			children = (
 				B572E93D2202AC5700778DA8 /* Coins */,
-				B5E93D6F21A822F900D1705A /* Currency */,
 				B5276B5E21A29DD9000A74A5 /* Post.swift */,
 			);
 			path = Models;
@@ -787,13 +786,6 @@
 				B5E93D6721A8214600D1705A /* CurrenciesNetworkManager.swift */,
 			);
 			path = CurrenciesNetwork;
-			sourceTree = "<group>";
-		};
-		B5E93D6F21A822F900D1705A /* Currency */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Currency;
 			sourceTree = "<group>";
 		};
 		B5E93D8421A82C3600D1705A /* Cell */ = {

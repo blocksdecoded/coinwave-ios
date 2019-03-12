@@ -9,21 +9,21 @@
 import Foundation
 
 class CoinsWorker {
-  func fetchCoins(_ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
+  func fetchCoins(_ orderField: CRCoin.OrderField, _ orderType: CRCoin.OrderType, _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
-      fetchRemoteCoins(completion)
+      fetchRemoteCoins(orderField, orderType, completion)
     } else {
-      if let coins = fetchLocalCoins() {
+      if let coins = fetchLocalCoins(orderField, orderType) {
         completion(coins, nil)
       } else {
-        fetchRemoteCoins(completion)
+        fetchRemoteCoins(orderField, orderType, completion)
       }
     }
   }
   
   func fetchCoin(_ coinId: Int, _ completion: @escaping (CRCoin?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
-      fetchRemoteCoins { _, error in
+      fetchRemoteCoins(.rank, .asc) { _, error in
         if error != nil {
           completion(nil, error)
         } else {
@@ -39,23 +39,23 @@ class CoinsWorker {
     }
   }
   
-  func fetchWatchlist(_ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
+  func fetchWatchlist(_ orderField: CRCoin.OrderField, _ orderType: CRCoin.OrderType, _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
-      fetchRemoteCoins { _, error in
+      fetchRemoteCoins(orderField, orderType) { _, error in
         if error != nil {
           completion(nil, error)
         } else {
-          completion(DataStore.shared.loadWatchlist(), nil)
+          completion(DataStore.shared.loadWatchlist(orderField, orderType), nil)
         }
       }
     } else {
-      completion(DataStore.shared.loadWatchlist(), nil)
+      completion(DataStore.shared.loadWatchlist(orderField, orderType), nil)
     }
   }
   
   func fetchFavorite(_ completion: @escaping (CRCoin?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
-      fetchRemoteCoins { _, error in
+      fetchRemoteCoins(.rank, .asc) { _, error in
         if error != nil {
           completion(nil, error)
         } else {
@@ -76,11 +76,11 @@ class CoinsWorker {
     DataStore.shared.fullUpdate(coin)
   }
   
-  private func fetchLocalCoins() -> [CRCoin]? {
-    return DataStore.shared.loadCoins()
+  private func fetchLocalCoins(_ orderField: CRCoin.OrderField, _ orderType: CRCoin.OrderType) -> [CRCoin]? {
+    return DataStore.shared.loadCoins(orderField, orderType)
   }
   
-  private func fetchRemoteCoins(_ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
+  private func fetchRemoteCoins(_ orderField: CRCoin.OrderField, _ orderType: CRCoin.OrderType, _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
       networkManager.getCurrencies { currencies, error in
@@ -100,7 +100,7 @@ class CoinsWorker {
         DataStore.shared.insertCoins(curs.data.coins)
         
         DispatchQueue.main.async {
-          completion(curs.data.coins, nil)
+          completion(DataStore.shared.loadCoins(orderField, orderType), nil)
         }
       }
     }

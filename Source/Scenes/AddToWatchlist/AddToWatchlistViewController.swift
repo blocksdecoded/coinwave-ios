@@ -178,7 +178,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   }
   
   func doSomething() {
-    let request = AddToWatchlist.Something.Request()
+    let request = AddToWatchlist.Something.Request(field: .name, type: .asc)
     interactor?.doSomething(request: request)
   }
   
@@ -202,7 +202,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   }
   
   @objc private func refreshTable() {
-    let request = AddToWatchlist.Something.Request()
+    let request = AddToWatchlist.Something.Request(field: .name, type: .asc)
     interactor?.doSomething(request: request)
   }
 }

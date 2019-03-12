@@ -158,13 +158,88 @@ class CRCoinDataHelper: DataHelperProtocol {
     return result
   }
   
-  static func watchlist() throws -> [CRCoin]? {
+  static func findAll(field: CRCoin.OrderField = .rank, type: CRCoin.OrderType = .asc) throws -> [CRCoin]? {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
     
+    let expressible: Expressible
+    
+    switch type {
+    case .asc:
+      switch field {
+      case .name:
+        expressible = currSymbol.asc
+      case .marketCap:
+        expressible = currMarketCap.asc
+      case .price:
+        expressible = currPrice.asc
+      case .volume:
+        expressible = currVolume.asc
+      case .rank:
+        expressible = currRank.asc
+      }
+    case .desc:
+      switch field {
+      case .name:
+        expressible = currSymbol.desc
+      case .marketCap:
+        expressible = currMarketCap.desc
+      case .price:
+        expressible = currPrice.desc
+      case .volume:
+        expressible = currVolume.desc
+      case .rank:
+        expressible = currRank.desc
+      }
+    }
+    
     var result = [CRCoin]()
-    let query = table.filter(currIsWatchlist == true)
+    let items = try db.prepare(table.order(expressible))
+    for item in items {
+      result.append(convert(row: item))
+    }
+    return result
+  }
+  
+  static func watchlist(field: CRCoin.OrderField = .rank, type: CRCoin.OrderType = .asc) throws -> [CRCoin]? {
+    guard let db = SQLiteDataStore.sharedInstance.db else {
+      throw DataAccessError.datastoreConnection
+    }
+    
+    let expressible: Expressible
+    
+    switch type {
+    case .asc:
+      switch field {
+      case .name:
+        expressible = currName.asc
+      case .marketCap:
+        expressible = currMarketCap.asc
+      case .price:
+        expressible = currPrice.asc
+      case .volume:
+        expressible = currVolume.asc
+      case .rank:
+        expressible = currRank.asc
+      }
+    case .desc:
+      switch field {
+      case .name:
+        expressible = currName.desc
+      case .marketCap:
+        expressible = currMarketCap.desc
+      case .price:
+        expressible = currPrice.desc
+      case .volume:
+        expressible = currVolume.desc
+      case .rank:
+        expressible = currRank.desc
+      }
+    }
+    
+    var result = [CRCoin]()
+    let query = table.filter(currIsWatchlist == true).order(expressible)
     let favs = try db.prepare(query)
     for fav in favs {
       result.append(convert(row: fav))

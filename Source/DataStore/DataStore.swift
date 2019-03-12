@@ -33,9 +33,9 @@ class DataStore {
     return Date().timeIntervalSince(lastUpdate) >= updateTime
   }
   
-  func loadWatchlist() -> [CRCoin]? {
+  func loadWatchlist(_ orderField: CRCoin.OrderField, _ orderType: CRCoin.OrderType) -> [CRCoin]? {
     do {
-      return try CRCoinDataHelper.watchlist()
+      return try CRCoinDataHelper.watchlist(field: orderField, type: orderType)
     } catch {
       fatalError("Cannot load watchlist")
     }
@@ -76,9 +76,9 @@ class DataStore {
     }
   }
   
-  func loadCoins() -> [CRCoin]? {
+  func loadCoins(_ orderField: CRCoin.OrderField, _ orderType: CRCoin.OrderType) -> [CRCoin]? {
     do {
-      return try CRCoinDataHelper.findAll()
+      return try CRCoinDataHelper.findAll(field: orderField, type: orderType)
     } catch {
       fatalError("Cannot load currencies")
     }

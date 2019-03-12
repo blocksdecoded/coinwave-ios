@@ -18,8 +18,9 @@ protocol OnPickFavoriteDelegate: class {
 }
 
 protocol CurrenciesDisplayLogic: class {
-  func displaySomething(viewModel: Currencies.FetchCoins.ViewModel)
+  func displayCoins(viewModel: Currencies.FetchCoins.ViewModel)
   func displayError(_ string: String)
+  func setSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType)
 }
 
 class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
@@ -33,6 +34,22 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   }
   
   weak var sideMenuDelegate: SideMenuDelegate?
+  
+  private lazy var nameColumn: UIButton = {
+    return columnTitle(text: "Name")
+  }()
+  
+  private lazy var marketCapColumn: UIButton = {
+    return columnTitle(text: "Market Cap")
+  }()
+  
+  private lazy var volumeColumn: UIButton = {
+    return columnTitle(text: "Volume (24h)")
+  }()
+  
+  private lazy var priceColumn: UIButton = {
+    return columnTitle(text: "Price (24h)")
+  }()
   
   var interactor: CurrenciesBusinessLogic?
   var router: (NSObjectProtocol & CurrenciesRoutingLogic & CurrenciesDataPassing)?
@@ -93,13 +110,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   private lazy var headerForCurrenciesList: UIView = {
     let headerView = UIView()
     headerView.translatesAutoresizingMaskIntoConstraints = false
-    
-    let firstColumn = columnTitle(text: "Name")
-    let secondColumn = columnTitle(text: "Market Cap")
-    let thirdColumn = columnTitle(text: "Volume (24h)")
-    let forthColumn = columnTitle(text: "Price (24h)")
-    
-    let stackView = UIStackView(arrangedSubviews: [firstColumn, secondColumn, thirdColumn, forthColumn])
+    let stackView = UIStackView(arrangedSubviews: [nameColumn, marketCapColumn, volumeColumn, priceColumn])
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .horizontal
     stackView.alignment = .fill
@@ -208,7 +219,8 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     navigationController?.interactivePopGestureRecognizer?.delegate = self
     setupViews()
     setupConstraints()
-    doSomething()
+    interactor?.viewDidLoad()
+    fetchCoins()
   }
   
   private func setupViews() {
@@ -289,18 +301,17 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   }
 
   // MARK: Do something
-
-  func doSomething() {
+  func fetchCoins() {
     errorView.isHidden = true
     loadingView.isHidden = false
     loadingView.startAnimating()
     currenciesList.isHidden = true
     headerForCurrenciesList.isHidden = true
     let request = Currencies.FetchCoins.Request(limit: 50)
-    interactor?.doSomething(request: request)
+    interactor?.fetchCoins(request: request)
   }
 
-  func displaySomething(viewModel: Currencies.FetchCoins.ViewModel) {
+  func displayCoins(viewModel: Currencies.FetchCoins.ViewModel) {
     refreshControl.endRefreshing()
     errorView.isHidden = true
     loadingView.stopAnimating()
@@ -320,13 +331,81 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     headerForCurrenciesList.isHidden = true
   }
   
-  private func columnTitle(text: String) -> UILabel {
-    let label = UILabel()
-    label.text = text
-    label.textAlignment = .center
-    label.textColor = UIColor.white.withAlphaComponent(0.7)
-    label.font = UIFont(name: Constants.Fonts.light, size: 11)
-    return label
+  func setSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {
+    var button: UIButton?
+    switch field {
+    case .name:
+      button = nameColumn
+      nameColumn.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
+      priceColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      volumeColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      marketCapColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      
+      nameColumn.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
+      priceColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      volumeColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      marketCapColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+    case .price:
+      button = priceColumn
+      priceColumn.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
+      nameColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      volumeColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      marketCapColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      
+      nameColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      priceColumn.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
+      volumeColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      marketCapColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+    case .volume:
+      button = volumeColumn
+      priceColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      nameColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      volumeColumn.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
+      marketCapColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      
+      nameColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      priceColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      volumeColumn.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
+      marketCapColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+    case .marketCap:
+      button = marketCapColumn
+      priceColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      nameColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      volumeColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
+      marketCapColumn.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
+      
+      nameColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      priceColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      volumeColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      marketCapColumn.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
+    case .rank:
+      button = nil
+    }
+    
+    var image: UIImage?
+    switch type {
+    case .asc:
+      image = UIImage(named: "triangle_down")?.withRenderingMode(.alwaysTemplate)
+    case .desc:
+      image = UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate)
+    }
+    
+    button?.setImage(image, for: .normal)
+  }
+  
+  private func columnTitle(text: String) -> UIButton {
+    let button = UIButton()
+    button.setTitle(text, for: .normal)
+    button.titleLabel?.textAlignment = .center
+    button.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+    button.tintColor = UIColor.white.withAlphaComponent(0.7)
+    button.titleLabel?.font = UIFont(name: Constants.Fonts.light, size: 11)
+    button.addTarget(self, action: #selector(sortCoins(_:)), for: .touchUpInside)
+    button.setImage(UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    button.semanticContentAttribute = .forceRightToLeft
+    button.imageEdgeInsets = UIEdgeInsets(top: 0.5, left: 2.5, bottom: -0.5, right: -2.5)
+    button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -2.5, bottom: 0, right: 2.5)
+    return button
   }
   
   @objc private func menuClicked() {
@@ -339,7 +418,22 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   @objc private func refreshTable() {
     let request = Currencies.FetchCoins.Request(limit: 50)
-    interactor?.doSomething(request: request)
+    interactor?.fetchCoins(request: request)
+  }
+  
+  @objc private func sortCoins(_ sender: UIButton) {
+    switch sender {
+    case nameColumn:
+      interactor?.sortName()
+    case marketCapColumn:
+      interactor?.sortMarketCap()
+    case volumeColumn:
+      interactor?.sortVolume()
+    case priceColumn:
+      interactor?.sortPrice()
+    default:
+      break
+    }
   }
 }
 
@@ -374,7 +468,7 @@ extension CurrenciesViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension CurrenciesViewController: ErrorViewDelegate {
   func onRetry() {
-    doSomething()
+    fetchCoins()
   }
 }
 

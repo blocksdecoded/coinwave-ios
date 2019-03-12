@@ -26,7 +26,7 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
   var worker: CoinsWorker?
 
   func doSomething(request: AddToWatchlist.Something.Request) {
-    worker?.fetchCoins { currencies, error in
+    worker?.fetchCoins(request.field, request.type) { currencies, error in
       if error != nil {
         self.presenter?.presentError(error!)
       } else {

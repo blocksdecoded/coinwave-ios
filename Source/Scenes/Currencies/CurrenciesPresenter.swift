@@ -13,6 +13,7 @@
 import UIKit
 
 protocol CurrenciesPresentationLogic {
+  func presentSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType)
   func presentCurrencies(response: Currencies.FetchCoins.ViewModel)
   func presentError(_ error: CTError)
 }
@@ -22,10 +23,14 @@ class CurrenciesPresenter: CurrenciesPresentationLogic {
   
   func presentCurrencies(response: Currencies.FetchCoins.ViewModel) {
     let viewModel = Currencies.FetchCoins.ViewModel(currencies: response.currencies)
-    viewController?.displaySomething(viewModel: viewModel)
+    viewController?.displayCoins(viewModel: viewModel)
   }
   
   func presentError(_ error: CTError) {
     viewController?.displayError(error.rawValue)
+  }
+  
+  func presentSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {
+    viewController?.setSort(field, type)
   }
 }

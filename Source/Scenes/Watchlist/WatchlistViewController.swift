@@ -277,7 +277,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     loadingView.startAnimating()
     watchTable.isHidden = true
     headerForCurrenciesList.isHidden = true
-    let request = Watchlist.Something.Request()
+    let request = Watchlist.Something.Request(field: .name, type: .asc)
     interactor?.doSomething(request: request)
   }
   
@@ -330,7 +330,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }
   
   @objc private func refreshTable() {
-    interactor?.doSomething(request: Watchlist.Something.Request())
+    interactor?.doSomething(request: Watchlist.Something.Request(field: .name, type: .asc))
     interactor?.fetchFavorite()
   }
 }

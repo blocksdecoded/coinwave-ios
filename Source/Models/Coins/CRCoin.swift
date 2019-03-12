@@ -252,3 +252,18 @@ extension CRCoin {
     return iconUrl?.replacingOccurrences(of: " ", with: "%20")
   }
 }
+
+extension CRCoin {
+  enum OrderField: String {
+    case name
+    case marketCap
+    case volume
+    case price
+    case rank
+  }
+  
+  enum OrderType: String {
+    case desc
+    case asc
+  }
+}

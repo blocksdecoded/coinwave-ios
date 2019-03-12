@@ -26,7 +26,7 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   var worker: CoinsWorker?
   
   func doSomething(request: Watchlist.Something.Request) {
-    worker?.fetchWatchlist { coins, error in
+    worker?.fetchWatchlist(request.field, request.type) { coins, error in
       if error != nil {
         self.presenter?.presentError(error!)
       } else {

@@ -13,8 +13,13 @@
 import UIKit
 
 protocol CurrenciesBusinessLogic {
-  func doSomething(request: Currencies.FetchCoins.Request)
+  func fetchCoins(request: Currencies.FetchCoins.Request)
   func setFavorite(_ coin: CRCoin)
+  func sortName()
+  func sortPrice()
+  func sortMarketCap()
+  func sortVolume()
+  func viewDidLoad()
 }
 
 protocol CurrenciesDataStore {
@@ -22,14 +27,21 @@ protocol CurrenciesDataStore {
 }
 
 class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
+  private static let orderField = "order_field"
+  private static let orderType = "order_type"
   
   var presenter: CurrenciesPresentationLogic?
   var worker: CoinsWorker?
   
-  var data: CRRoot<CRDataList>?
+  var sortField: CRCoin.OrderField!
+  var sortType: CRCoin.OrderType!
 
-  func doSomething(request: Currencies.FetchCoins.Request) {
-    worker?.fetchCoins { coins, error in
+  func fetchCoins(request: Currencies.FetchCoins.Request) {
+    fetchCoins()
+  }
+  
+  private func fetchCoins() {
+    worker?.fetchCoins(sortField, sortType) { coins, error in
       if error != nil {
         self.presenter?.presentError(error!)
       } else {
@@ -46,5 +58,64 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
     var mutableCoin = coin
     mutableCoin.isFavorite = true
     worker?.setFavorite(mutableCoin)
+  }
+  
+  func viewDidLoad() {
+    let (field, type) = getSortConfig()
+    sortField = field ?? .rank
+    sortType = type ?? .asc
+    presenter?.presentSort(sortField, sortType)
+  }
+  
+  func sortName() {
+    sortType = sortType == .asc ? .desc : .asc
+    sortField = .name
+    setSortConfig(field: sortField, type: sortType)
+    fetchCoins()
+    presenter?.presentSort(sortField, sortType)
+  }
+  
+  func sortPrice() {
+    sortType = sortType == .asc ? .desc : .asc
+    sortField = .price
+    setSortConfig(field: sortField, type: sortType)
+    fetchCoins()
+    presenter?.presentSort(sortField, sortType)
+  }
+  
+  func sortVolume() {
+    sortType = sortType == .asc ? .desc : .asc
+    sortField = .volume
+    setSortConfig(field: sortField, type: sortType)
+    fetchCoins()
+    presenter?.presentSort(sortField, sortType)
+  }
+  
+  func sortMarketCap() {
+    sortType = sortType == .asc ? .desc : .asc
+    sortField = .marketCap
+    setSortConfig(field: sortField, type: sortType)
+    fetchCoins()
+    presenter?.presentSort(sortField, sortType)
+  }
+  
+  private func setSortConfig(field: CRCoin.OrderField, type: CRCoin.OrderType) {
+    UserDefaults.standard.set(field.rawValue, forKey: CurrenciesInteractor.orderField)
+    UserDefaults.standard.set(type.rawValue, forKey: CurrenciesInteractor.orderType)
+  }
+  
+  private func getSortConfig() -> (CRCoin.OrderField?, CRCoin.OrderType?) {
+    var field: CRCoin.OrderField?
+    var type: CRCoin.OrderType?
+    
+    if let fieldRawValue = UserDefaults.standard.value(forKey: CurrenciesInteractor.orderField) as? String {
+      field = CRCoin.OrderField(rawValue: fieldRawValue)
+    }
+    
+    if let typeRawValue = UserDefaults.standard.value(forKey: CurrenciesInteractor.orderType) as? String {
+      type = CRCoin.OrderType(rawValue: typeRawValue)
+    }
+    
+    return(field, type)
   }
 }
