@@ -2,8 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>PostsBaseUrl</key>
-	<string>$(C_POSTS_BASE_URL)</string>
+	<key>Environment</key>
+	<string>$(C_APP_ENV)</string>
 	<key>BootstrapBaseUrl</key>
 	<string>$(C_BOOTSTRAP_BASE_URL)</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -19,9 +19,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.2.5</string>
+	<string>0.3.0</string>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>6</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -43,6 +43,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>PostsBaseUrl</key>
+	<string>$(C_POSTS_BASE_URL)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFProText-Regular.otf</string>
@@ -57,6 +59,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -10,14 +10,33 @@ import UIKit
 
 struct Constants {
   
+  enum Environment: String {
+    case debug
+    case staging
+    case release
+  }
+  
+  static var environment: Environment {
+    guard let rawEnv = Bundle.main.infoDictionary?["Environment"] as? String else {
+      fatalError()
+    }
+    
+    if let env = Environment(rawValue: rawEnv) {
+      return env
+    }
+    
+    fatalError()
+  }
+  
   static var appVersion: String {
-    #if DEVELOPMENT
-    return "\(Bundle.main.appVersion ?? "")(\(Bundle.main.buildVersion ?? "")) debug"
-    #elseif STAGING
-    return "\(Bundle.main.appVersion ?? "")(\(Bundle.main.buildVersion ?? "")) staging"
-    #else
-    return Bundle.main.appVersion ?? ""
-    #endif
+    switch environment {
+    case .debug:
+      return "\(Bundle.main.appVersion ?? "")(\(Bundle.main.buildVersion ?? "")) debug"
+    case .staging:
+      return "\(Bundle.main.appVersion ?? "")(\(Bundle.main.buildVersion ?? "")) staging"
+    case .release:
+      return Bundle.main.appVersion ?? ""
+    }
   }
   
   static var bootstrapBaseURL: String {

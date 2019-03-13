@@ -11,10 +11,10 @@ import UIKit
 class WidgetFactory {
   var gradientLayer: CAGradientLayer {
     let gradient = CAGradientLayer()
-    gradient.colors = [UIColor(red: 40.0/255.0, green: 52.0/255.0, blue: 60.0/255.0, alpha: 1.0).cgColor,
-                       UIColor(red: 14.0/255.0, green: 18.0/255.0, blue: 22.0/255.0, alpha: 1.0).cgColor]
-    gradient.startPoint = CGPoint(x: 0.5, y: 0)
-    gradient.endPoint = CGPoint(x: 0.5, y: 1)
+    gradient.colors = [UIColor(red: 14.0/255.0, green: 18.0/255.0, blue: 22.0/255.0, alpha: 1.0).cgColor,
+                       UIColor(red: 40.0/255.0, green: 52.0/255.0, blue: 60.0/255.0, alpha: 1.0).cgColor]
+    gradient.endPoint = CGPoint(x: 0.75, y: 0)
+    gradient.startPoint = CGPoint(x: 0.25, y: 1)
     return gradient
   }
   

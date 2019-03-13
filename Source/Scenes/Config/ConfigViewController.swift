@@ -21,10 +21,14 @@ class ConfigViewController: UIViewController, ConfigDisplayLogic {
   var interactor: ConfigBusinessLogic?
   var router: (NSObjectProtocol & ConfigRoutingLogic & ConfigDataPassing)?
   
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
+  
   private lazy var logo: UIImageView = {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.image = UIImage(named: "AppIconDebug")
+    imageView.image = UIImage(named: "loading_logo")
     return imageView
   }()
 
@@ -67,13 +71,15 @@ class ConfigViewController: UIViewController, ConfigDisplayLogic {
   // MARK: Do something
   
   func setupViews() {
+    let factory = WidgetFactory()
+    factory.setGradientTo(view: view)
     view.addSubview(logo)
   }
   
   func setupConstraints() {
     NSLayoutConstraint.activate([
-      logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      logo.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+      logo.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+      logo.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
       ])
   }
   
