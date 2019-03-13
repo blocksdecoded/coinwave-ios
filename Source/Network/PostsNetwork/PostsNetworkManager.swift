@@ -29,6 +29,9 @@ class PostsNetworkManager: NetworkManager {
           do {
             let apiResponse = try JSONDecoder().decode(PostsList.self, from: responseData)
             completion(apiResponse.posts, nil)
+          } catch let error as DecodingError {
+            self.decodingError(error)
+            completion(nil, NetworkResponse.unableToDecode.rawValue)
           } catch {
             completion(nil, NetworkResponse.unableToDecode.rawValue)
           }
@@ -57,6 +60,9 @@ class PostsNetworkManager: NetworkManager {
           do {
             let apiResponse = try JSONDecoder().decode(PostsList.self, from: responseData)
             completion(apiResponse.posts, nil)
+          } catch let error as DecodingError {
+            self.decodingError(error)
+            completion(nil, NetworkResponse.unableToDecode.rawValue)
           } catch {
             completion(nil, NetworkResponse.unableToDecode.rawValue)
           }

@@ -10,6 +10,7 @@ import Foundation
 
 protocol NetworkManager {
   func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String>
+  func decodingError(_ error: DecodingError)
 }
 
 extension NetworkManager {
@@ -20,6 +21,31 @@ extension NetworkManager {
     case 501...599: return .failure(NetworkResponse.badRequest.rawValue)
     case 600: return .failure(NetworkResponse.outdated.rawValue)
     default: return .failure(NetworkResponse.failed.rawValue)
+    }
+  }
+  
+  func decodingError(_ error: DecodingError) {
+    //TODO: Analytics
+    switch error {
+    case .dataCorrupted(let context):
+      print("Data corrupted")
+      print(context.debugDescription)
+      print(context.codingPath)
+    case .keyNotFound(let key, let context):
+      print("Key not found")
+      print(key.debugDescription)
+      print(context.debugDescription)
+      print(context.codingPath)
+    case .typeMismatch(let type, let context):
+      print("Type mismatch")
+      print(type)
+      print(context.debugDescription)
+      print(context.codingPath)
+    case .valueNotFound(let type, let context):
+      print("Value not found")
+      print(type)
+      print(context.debugDescription)
+      print(context.codingPath)
     }
   }
 }

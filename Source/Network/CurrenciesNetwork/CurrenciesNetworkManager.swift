@@ -29,10 +29,10 @@ struct CurrenciesNetworkManager: NetworkManager {
           do {
             let apiResponse = try JSONDecoder().decode(CRRoot<CRDataList>.self, from: responseData)
             completion(apiResponse, nil)
+          } catch let error as DecodingError {
+            self.decodingError(error)
+            completion(nil, NetworkResponse.unableToDecode.rawValue)
           } catch {
-            if let error = error as? DecodingError {
-              self.decodingError(error)
-            }
             completion(nil, NetworkResponse.unableToDecode.rawValue)
           }
         case .failure(let networkFailureError):
@@ -42,7 +42,10 @@ struct CurrenciesNetworkManager: NetworkManager {
     }
   }
   
-  func getHistory(currID: String, time: CRTimeframe, _ completion: @escaping(CRRoot<CRDataHistory>?, _ error: String?) -> Void) {
+  func getHistory(currID: String,
+                  time: CRTimeframe,
+                  _ completion: @escaping(CRRoot<CRDataHistory>?,
+                  _ error: String?) -> Void) {
     router.request(.hsitory(currID, time)) { data, response, error in
       if error != nil {
         completion(nil, "Please check yur network connection")
@@ -60,42 +63,16 @@ struct CurrenciesNetworkManager: NetworkManager {
           do {
             let apiResponse = try JSONDecoder().decode(CRRoot<CRDataHistory>.self, from: responseData)
             completion(apiResponse, nil)
-          } catch {
-            if let error = error as? DecodingError {
-              self.decodingError(error)
-            }
+          } catch let error as DecodingError {
+            self.decodingError(error)
             completion(nil, NetworkResponse.unableToDecode.rawValue)
-            
+          } catch {
+            completion(nil, NetworkResponse.unableToDecode.rawValue)
           }
         case .failure(let networkFailureError):
           completion(nil, networkFailureError)
         }
       }
-    }
-  }
-  
-  private func decodingError(_ error: DecodingError) {
-    //TODO: Analytics
-    switch error {
-    case .dataCorrupted(let context):
-      print("Data corrupted")
-      print(context.debugDescription)
-      print(context.codingPath)
-    case .keyNotFound(let key, let context):
-      print("Key not found")
-      print(key.debugDescription)
-      print(context.debugDescription)
-      print(context.codingPath)
-    case .typeMismatch(let type, let context):
-      print("Type mismatch")
-      print(type)
-      print(context.debugDescription)
-      print(context.codingPath)
-    case .valueNotFound(let type, let context):
-      print("Value not found")
-      print(type)
-      print(context.debugDescription)
-      print(context.codingPath)
     }
   }
 }
