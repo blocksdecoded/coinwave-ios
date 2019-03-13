@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-          Fabric.with([Crashlytics.self])
+    Fabric.with([Crashlytics.self])
     window = UIWindow(frame: UIScreen.main.bounds)
-    let rootNavigationController = UINavigationController(rootViewController: MainTabBarController())
+    let rootNavigationController = UINavigationController(rootViewController: ConfigViewController())
     rootNavigationController.setNavigationBarHidden(true, animated: false)
     window?.rootViewController = rootNavigationController
     window?.makeKeyAndVisible()

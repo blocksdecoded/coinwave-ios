@@ -7,299 +7,112 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D28CE1432761D5C34F19CA4 /* Pods_DebugCryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B2530050E251A72770FCB3 /* Pods_DebugCryptotracker.framework */; };
 		B501296F21A940DA001B6A04 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296921A940DA001B6A04 /* WatchlistPresenter.swift */; };
-		B501297021A940DA001B6A04 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296921A940DA001B6A04 /* WatchlistPresenter.swift */; };
-		B501297121A940DA001B6A04 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296921A940DA001B6A04 /* WatchlistPresenter.swift */; };
 		B501297521A940DA001B6A04 /* WatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296B21A940DA001B6A04 /* WatchlistRouter.swift */; };
-		B501297621A940DA001B6A04 /* WatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296B21A940DA001B6A04 /* WatchlistRouter.swift */; };
-		B501297721A940DA001B6A04 /* WatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296B21A940DA001B6A04 /* WatchlistRouter.swift */; };
 		B501297821A940DA001B6A04 /* WatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296C21A940DA001B6A04 /* WatchlistModels.swift */; };
-		B501297921A940DA001B6A04 /* WatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296C21A940DA001B6A04 /* WatchlistModels.swift */; };
-		B501297A21A940DA001B6A04 /* WatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296C21A940DA001B6A04 /* WatchlistModels.swift */; };
 		B501297B21A940DA001B6A04 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296D21A940DA001B6A04 /* WatchlistViewController.swift */; };
-		B501297C21A940DA001B6A04 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296D21A940DA001B6A04 /* WatchlistViewController.swift */; };
-		B501297D21A940DA001B6A04 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296D21A940DA001B6A04 /* WatchlistViewController.swift */; };
 		B501297E21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296E21A940DA001B6A04 /* WatchlistInteractor.swift */; };
-		B501297F21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296E21A940DA001B6A04 /* WatchlistInteractor.swift */; };
-		B501298021A940DA001B6A04 /* WatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296E21A940DA001B6A04 /* WatchlistInteractor.swift */; };
 		B501298821A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298221A94BC0001B6A04 /* CurrencyDetailsPresenter.swift */; };
-		B501298921A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298221A94BC0001B6A04 /* CurrencyDetailsPresenter.swift */; };
-		B501298A21A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298221A94BC0001B6A04 /* CurrencyDetailsPresenter.swift */; };
 		B501298E21A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298421A94BC0001B6A04 /* CurrencyDetailsRouter.swift */; };
-		B501298F21A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298421A94BC0001B6A04 /* CurrencyDetailsRouter.swift */; };
-		B501299021A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298421A94BC0001B6A04 /* CurrencyDetailsRouter.swift */; };
 		B501299121A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298521A94BC0001B6A04 /* CurrencyDetailsModels.swift */; };
-		B501299221A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298521A94BC0001B6A04 /* CurrencyDetailsModels.swift */; };
-		B501299321A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298521A94BC0001B6A04 /* CurrencyDetailsModels.swift */; };
 		B501299421A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298621A94BC0001B6A04 /* CurrencyDetailsViewController.swift */; };
-		B501299521A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298621A94BC0001B6A04 /* CurrencyDetailsViewController.swift */; };
-		B501299621A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298621A94BC0001B6A04 /* CurrencyDetailsViewController.swift */; };
 		B501299721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift */; };
-		B501299821A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift */; };
-		B501299921A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift */; };
 		B501299C21A9600E001B6A04 /* CurrencyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501299B21A9600E001B6A04 /* CurrencyChart.swift */; };
-		B501299D21A9600E001B6A04 /* CurrencyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501299B21A9600E001B6A04 /* CurrencyChart.swift */; };
-		B501299E21A9600E001B6A04 /* CurrencyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501299B21A9600E001B6A04 /* CurrencyChart.swift */; };
 		B50129AD21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
-		B50129AE21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
-		B50129AF21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* CurrencyDetailsCell.swift */; };
 		B51ECC6422253F69006CE6FC /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6322253F68006CE6FC /* SFProText-Semibold.otf */; };
-		B51ECC6522253F69006CE6FC /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6322253F68006CE6FC /* SFProText-Semibold.otf */; };
-		B51ECC6622253F69006CE6FC /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6322253F68006CE6FC /* SFProText-Semibold.otf */; };
 		B51ECC6A22253FB5006CE6FC /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6722253FB4006CE6FC /* SFProText-Bold.otf */; };
-		B51ECC6B22253FB5006CE6FC /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6722253FB4006CE6FC /* SFProText-Bold.otf */; };
-		B51ECC6C22253FB5006CE6FC /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6722253FB4006CE6FC /* SFProText-Bold.otf */; };
 		B51ECC6D22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6822253FB5006CE6FC /* SFProText-Heavy.otf */; };
-		B51ECC6E22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6822253FB5006CE6FC /* SFProText-Heavy.otf */; };
-		B51ECC6F22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6822253FB5006CE6FC /* SFProText-Heavy.otf */; };
 		B51ECC7022253FB5006CE6FC /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6922253FB5006CE6FC /* SFProText-Regular.otf */; };
-		B51ECC7122253FB5006CE6FC /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6922253FB5006CE6FC /* SFProText-Regular.otf */; };
-		B51ECC7222253FB5006CE6FC /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6922253FB5006CE6FC /* SFProText-Regular.otf */; };
 		B5217EAD2205948C00FF6DD5 /* CRTimeframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */; };
-		B5217EAE2205948C00FF6DD5 /* CRTimeframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */; };
-		B5217EAF2205948C00FF6DD5 /* CRTimeframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */; };
 		B5217EB12205960100FF6DD5 /* CRDataHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EB02205960100FF6DD5 /* CRDataHistory.swift */; };
-		B5217EB22205960100FF6DD5 /* CRDataHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EB02205960100FF6DD5 /* CRDataHistory.swift */; };
-		B5217EB32205960100FF6DD5 /* CRDataHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EB02205960100FF6DD5 /* CRDataHistory.swift */; };
+		B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527120B2238CF4D00D57639 /* ConfigEndPoint.swift */; };
+		B52712102238D33800D57639 /* ConfigNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527120F2238D33800D57639 /* ConfigNetworkManager.swift */; };
+		B52712142238D38900D57639 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712132238D38900D57639 /* Bootstrap.swift */; };
+		B52712272238DA1A00D57639 /* ConfigPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712212238DA1A00D57639 /* ConfigPresenter.swift */; };
+		B527122A2238DA1A00D57639 /* ConfigWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712222238DA1A00D57639 /* ConfigWorker.swift */; };
+		B527122D2238DA1A00D57639 /* ConfigRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712232238DA1A00D57639 /* ConfigRouter.swift */; };
+		B52712302238DA1A00D57639 /* ConfigModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712242238DA1A00D57639 /* ConfigModels.swift */; };
+		B52712332238DA1A00D57639 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712252238DA1A00D57639 /* ConfigViewController.swift */; };
+		B52712362238DA1A00D57639 /* ConfigInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712262238DA1A00D57639 /* ConfigInteractor.swift */; };
 		B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAD21A00F59000A74A5 /* AppDelegate.swift */; };
 		B5276AB021A00F59000A74A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAF21A00F59000A74A5 /* ViewController.swift */; };
 		B5276AB521A00F5A000A74A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB421A00F5A000A74A5 /* Assets.xcassets */; };
 		B5276AB821A00F5A000A74A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB621A00F5A000A74A5 /* LaunchScreen.storyboard */; };
-		B5276AC221A00F9F000A74A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAF21A00F59000A74A5 /* ViewController.swift */; };
-		B5276AC321A00F9F000A74A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAD21A00F59000A74A5 /* AppDelegate.swift */; };
-		B5276AC621A00F9F000A74A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB621A00F5A000A74A5 /* LaunchScreen.storyboard */; };
-		B5276AC721A00F9F000A74A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB421A00F5A000A74A5 /* Assets.xcassets */; };
-		B5276AD021A00FAC000A74A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAF21A00F59000A74A5 /* ViewController.swift */; };
-		B5276AD121A00FAC000A74A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAD21A00F59000A74A5 /* AppDelegate.swift */; };
-		B5276AD421A00FAC000A74A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB621A00F5A000A74A5 /* LaunchScreen.storyboard */; };
-		B5276AD521A00FAC000A74A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB421A00F5A000A74A5 /* Assets.xcassets */; };
 		B5276AF521A0124D000A74A5 /* CurrenciesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AEF21A0124D000A74A5 /* CurrenciesPresenter.swift */; };
 		B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF121A0124D000A74A5 /* CurrenciesRouter.swift */; };
 		B5276AF821A0124D000A74A5 /* CurrenciesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */; };
 		B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF321A0124D000A74A5 /* CurrenciesViewController.swift */; };
 		B5276AFA21A0124D000A74A5 /* CurrenciesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF421A0124D000A74A5 /* CurrenciesInteractor.swift */; };
 		B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B3F21A27FDD000A74A5 /* PostsEndPoint.swift */; };
-		B5276B4121A27FDD000A74A5 /* PostsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B3F21A27FDD000A74A5 /* PostsEndPoint.swift */; };
-		B5276B4221A27FDD000A74A5 /* PostsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B3F21A27FDD000A74A5 /* PostsEndPoint.swift */; };
 		B5276B4A21A28183000A74A5 /* PostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4421A28183000A74A5 /* PostsPresenter.swift */; };
-		B5276B4B21A28183000A74A5 /* PostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4421A28183000A74A5 /* PostsPresenter.swift */; };
-		B5276B4C21A28183000A74A5 /* PostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4421A28183000A74A5 /* PostsPresenter.swift */; };
 		B5276B4D21A28183000A74A5 /* PostsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4521A28183000A74A5 /* PostsWorker.swift */; };
-		B5276B4E21A28183000A74A5 /* PostsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4521A28183000A74A5 /* PostsWorker.swift */; };
-		B5276B4F21A28183000A74A5 /* PostsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4521A28183000A74A5 /* PostsWorker.swift */; };
 		B5276B5021A28183000A74A5 /* PostsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4621A28183000A74A5 /* PostsRouter.swift */; };
-		B5276B5121A28183000A74A5 /* PostsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4621A28183000A74A5 /* PostsRouter.swift */; };
-		B5276B5221A28183000A74A5 /* PostsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4621A28183000A74A5 /* PostsRouter.swift */; };
 		B5276B5321A28183000A74A5 /* PostsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4721A28183000A74A5 /* PostsModels.swift */; };
-		B5276B5421A28183000A74A5 /* PostsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4721A28183000A74A5 /* PostsModels.swift */; };
-		B5276B5521A28183000A74A5 /* PostsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4721A28183000A74A5 /* PostsModels.swift */; };
 		B5276B5621A28183000A74A5 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4821A28183000A74A5 /* PostsViewController.swift */; };
-		B5276B5721A28183000A74A5 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4821A28183000A74A5 /* PostsViewController.swift */; };
-		B5276B5821A28183000A74A5 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4821A28183000A74A5 /* PostsViewController.swift */; };
 		B5276B5921A28183000A74A5 /* PostsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4921A28183000A74A5 /* PostsInteractor.swift */; };
-		B5276B5A21A28183000A74A5 /* PostsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4921A28183000A74A5 /* PostsInteractor.swift */; };
-		B5276B5B21A28183000A74A5 /* PostsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4921A28183000A74A5 /* PostsInteractor.swift */; };
 		B5276B5F21A29DD9000A74A5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B5E21A29DD9000A74A5 /* Post.swift */; };
-		B5276B6021A29DD9000A74A5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B5E21A29DD9000A74A5 /* Post.swift */; };
-		B5276B6121A29DD9000A74A5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B5E21A29DD9000A74A5 /* Post.swift */; };
 		B5276B6321A2A171000A74A5 /* PostsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6221A2A171000A74A5 /* PostsNetworkManager.swift */; };
-		B5276B6421A2A171000A74A5 /* PostsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6221A2A171000A74A5 /* PostsNetworkManager.swift */; };
-		B5276B6521A2A171000A74A5 /* PostsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6221A2A171000A74A5 /* PostsNetworkManager.swift */; };
 		B5276B6821A2A29B000A74A5 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6721A2A29B000A74A5 /* ParameterEncoding.swift */; };
-		B5276B6921A2A29B000A74A5 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6721A2A29B000A74A5 /* ParameterEncoding.swift */; };
-		B5276B6A21A2A29B000A74A5 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6721A2A29B000A74A5 /* ParameterEncoding.swift */; };
 		B5276B6C21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6B21A2A2C2000A74A5 /* URLParameterEncoder.swift */; };
-		B5276B6D21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6B21A2A2C2000A74A5 /* URLParameterEncoder.swift */; };
-		B5276B6E21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6B21A2A2C2000A74A5 /* URLParameterEncoder.swift */; };
 		B5276B7021A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6F21A2A2D7000A74A5 /* JSONParameterEncoder.swift */; };
-		B5276B7121A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6F21A2A2D7000A74A5 /* JSONParameterEncoder.swift */; };
-		B5276B7221A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B6F21A2A2D7000A74A5 /* JSONParameterEncoder.swift */; };
 		B5276B7521A2A2FD000A74A5 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B7421A2A2FD000A74A5 /* EndPointType.swift */; };
-		B5276B7621A2A2FD000A74A5 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B7421A2A2FD000A74A5 /* EndPointType.swift */; };
-		B5276B7721A2A2FD000A74A5 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B7421A2A2FD000A74A5 /* EndPointType.swift */; };
 		B5276B7921A2A313000A74A5 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B7821A2A313000A74A5 /* HTTPMethod.swift */; };
-		B5276B7A21A2A313000A74A5 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B7821A2A313000A74A5 /* HTTPMethod.swift */; };
-		B5276B7B21A2A313000A74A5 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B7821A2A313000A74A5 /* HTTPMethod.swift */; };
 		B5276B7D21A2A32A000A74A5 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B7C21A2A32A000A74A5 /* HTTPTask.swift */; };
-		B5276B7E21A2A32A000A74A5 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B7C21A2A32A000A74A5 /* HTTPTask.swift */; };
-		B5276B7F21A2A32A000A74A5 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B7C21A2A32A000A74A5 /* HTTPTask.swift */; };
 		B5276B8121A2A33F000A74A5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8021A2A33F000A74A5 /* NetworkError.swift */; };
-		B5276B8221A2A33F000A74A5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8021A2A33F000A74A5 /* NetworkError.swift */; };
-		B5276B8321A2A33F000A74A5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8021A2A33F000A74A5 /* NetworkError.swift */; };
 		B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8421A2A353000A74A5 /* NetworkRouter.swift */; };
-		B5276B8621A2A353000A74A5 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8421A2A353000A74A5 /* NetworkRouter.swift */; };
-		B5276B8721A2A353000A74A5 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8421A2A353000A74A5 /* NetworkRouter.swift */; };
 		B5276B8921A2A369000A74A5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8821A2A369000A74A5 /* Router.swift */; };
-		B5276B8A21A2A369000A74A5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8821A2A369000A74A5 /* Router.swift */; };
-		B5276B8B21A2A369000A74A5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8821A2A369000A74A5 /* Router.swift */; };
 		B5276B8D21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
-		B5276B8E21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
-		B5276B8F21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
 		B55500FD2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
-		B55500FE2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
-		B55500FF2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
 		B55501012237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */; };
-		B55501022237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */; };
-		B55501032237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */; };
 		B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
-		B572E9402202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
-		B572E9412202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
 		B572E9432202AF0F00778DA8 /* CRDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRDataList.swift */; };
-		B572E9442202AF0F00778DA8 /* CRDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRDataList.swift */; };
-		B572E9452202AF0F00778DA8 /* CRDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRDataList.swift */; };
 		B572E9472202AFBA00778DA8 /* CRStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9462202AFBA00778DA8 /* CRStats.swift */; };
-		B572E9482202AFBA00778DA8 /* CRStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9462202AFBA00778DA8 /* CRStats.swift */; };
-		B572E9492202AFBA00778DA8 /* CRStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9462202AFBA00778DA8 /* CRStats.swift */; };
 		B572E94B2202AFDF00778DA8 /* CRBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94A2202AFDF00778DA8 /* CRBase.swift */; };
-		B572E94C2202AFDF00778DA8 /* CRBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94A2202AFDF00778DA8 /* CRBase.swift */; };
-		B572E94D2202AFDF00778DA8 /* CRBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94A2202AFDF00778DA8 /* CRBase.swift */; };
 		B572E94F2202AFF700778DA8 /* CRCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94E2202AFF700778DA8 /* CRCoin.swift */; };
-		B572E9502202AFF700778DA8 /* CRCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94E2202AFF700778DA8 /* CRCoin.swift */; };
-		B572E9512202AFF700778DA8 /* CRCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E94E2202AFF700778DA8 /* CRCoin.swift */; };
 		B572E9532202B31900778DA8 /* CRPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9522202B31900778DA8 /* CRPrice.swift */; };
-		B572E9542202B31900778DA8 /* CRPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9522202B31900778DA8 /* CRPrice.swift */; };
-		B572E9552202B31900778DA8 /* CRPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9522202B31900778DA8 /* CRPrice.swift */; };
 		B572E9572202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */; };
-		B572E9582202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */; };
-		B572E9592202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */; };
 		B572E95B2202F34900778DA8 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E95A2202F34900778DA8 /* DataCache.swift */; };
-		B572E95C2202F34900778DA8 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E95A2202F34900778DA8 /* DataCache.swift */; };
-		B572E95D2202F34900778DA8 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E95A2202F34900778DA8 /* DataCache.swift */; };
 		B5CB3660221422ED00087C41 /* AddToWatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */; };
-		B5CB3661221422ED00087C41 /* AddToWatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */; };
-		B5CB3662221422ED00087C41 /* AddToWatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */; };
 		B5E1D6BF221D6CCB005419C8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */; };
-		B5E1D6C0221D6CCB005419C8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */; };
-		B5E1D6C1221D6CCB005419C8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */; };
 		B5E1D6C5221EDC2A005419C8 /* CoinsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */; };
-		B5E1D6C6221EDC2A005419C8 /* CoinsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */; };
-		B5E1D6C7221EDC2A005419C8 /* CoinsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */; };
 		B5E1D6C9221FBAC7005419C8 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C8221FBAC7005419C8 /* CTError.swift */; };
-		B5E1D6CA221FBAC7005419C8 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C8221FBAC7005419C8 /* CTError.swift */; };
-		B5E1D6CB221FBAC7005419C8 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C8221FBAC7005419C8 /* CTError.swift */; };
 		B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
-		B5E93CF121A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
-		B5E93CF221A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
 		B5E93D0021A6A73500D1705A /* PostPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */; };
-		B5E93D0121A6A73500D1705A /* PostPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */; };
-		B5E93D0221A6A73500D1705A /* PostPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */; };
 		B5E93D0321A6A73500D1705A /* PostPreviewWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */; };
-		B5E93D0421A6A73500D1705A /* PostPreviewWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */; };
-		B5E93D0521A6A73500D1705A /* PostPreviewWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */; };
 		B5E93D0621A6A73500D1705A /* PostPreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */; };
-		B5E93D0721A6A73500D1705A /* PostPreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */; };
-		B5E93D0821A6A73500D1705A /* PostPreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */; };
 		B5E93D0921A6A73500D1705A /* PostPreviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFD21A6A73500D1705A /* PostPreviewModels.swift */; };
-		B5E93D0A21A6A73500D1705A /* PostPreviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFD21A6A73500D1705A /* PostPreviewModels.swift */; };
-		B5E93D0B21A6A73500D1705A /* PostPreviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFD21A6A73500D1705A /* PostPreviewModels.swift */; };
 		B5E93D0C21A6A73500D1705A /* PostPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFE21A6A73500D1705A /* PostPreviewViewController.swift */; };
-		B5E93D0D21A6A73500D1705A /* PostPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFE21A6A73500D1705A /* PostPreviewViewController.swift */; };
-		B5E93D0E21A6A73500D1705A /* PostPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFE21A6A73500D1705A /* PostPreviewViewController.swift */; };
 		B5E93D0F21A6A73500D1705A /* PostPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFF21A6A73500D1705A /* PostPreviewInteractor.swift */; };
-		B5E93D1021A6A73500D1705A /* PostPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFF21A6A73500D1705A /* PostPreviewInteractor.swift */; };
-		B5E93D1121A6A73500D1705A /* PostPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFF21A6A73500D1705A /* PostPreviewInteractor.swift */; };
 		B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */; };
-		B5E93D2F21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */; };
-		B5E93D3021A6B90F00D1705A /* SQLiteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */; };
 		B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */; };
-		B5E93D3321A6B98E00D1705A /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */; };
-		B5E93D3421A6B98E00D1705A /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */; };
 		B5E93D3621A6B9B000D1705A /* DataAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3521A6B9B000D1705A /* DataAccessError.swift */; };
-		B5E93D3721A6B9B000D1705A /* DataAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3521A6B9B000D1705A /* DataAccessError.swift */; };
-		B5E93D3821A6B9B000D1705A /* DataAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3521A6B9B000D1705A /* DataAccessError.swift */; };
 		B5E93D3A21A6B9DD00D1705A /* PostDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3921A6B9DD00D1705A /* PostDataHelper.swift */; };
-		B5E93D3B21A6B9DD00D1705A /* PostDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3921A6B9DD00D1705A /* PostDataHelper.swift */; };
-		B5E93D3C21A6B9DD00D1705A /* PostDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3921A6B9DD00D1705A /* PostDataHelper.swift */; };
 		B5E93D3E21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3D21A6CEFC00D1705A /* CategoryDataHelper.swift */; };
-		B5E93D3F21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3D21A6CEFC00D1705A /* CategoryDataHelper.swift */; };
-		B5E93D4021A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3D21A6CEFC00D1705A /* CategoryDataHelper.swift */; };
 		B5E93D4221A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */; };
-		B5E93D4321A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */; };
-		B5E93D4421A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */; };
 		B5E93D4621A6E64200D1705A /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4521A6E64200D1705A /* DataStore.swift */; };
-		B5E93D4721A6E64200D1705A /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4521A6E64200D1705A /* DataStore.swift */; };
-		B5E93D4821A6E64200D1705A /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4521A6E64200D1705A /* DataStore.swift */; };
 		B5E93D4B21A6FCE600D1705A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */; };
-		B5E93D4C21A6FCE600D1705A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */; };
-		B5E93D4D21A6FCE600D1705A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */; };
 		B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */; };
-		B5E93D5221A7C0BC00D1705A /* FontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */; };
-		B5E93D5321A7C0BC00D1705A /* FontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */; };
 		B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5421A7E68000D1705A /* PostNavigationView.swift */; };
-		B5E93D5621A7E68000D1705A /* PostNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5421A7E68000D1705A /* PostNavigationView.swift */; };
-		B5E93D5721A7E68000D1705A /* PostNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5421A7E68000D1705A /* PostNavigationView.swift */; };
 		B5E93D6421A8213500D1705A /* CurrenciesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D6321A8213500D1705A /* CurrenciesEndPoint.swift */; };
-		B5E93D6521A8213500D1705A /* CurrenciesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D6321A8213500D1705A /* CurrenciesEndPoint.swift */; };
-		B5E93D6621A8213500D1705A /* CurrenciesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D6321A8213500D1705A /* CurrenciesEndPoint.swift */; };
 		B5E93D6821A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D6721A8214600D1705A /* CurrenciesNetworkManager.swift */; };
-		B5E93D6921A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D6721A8214600D1705A /* CurrenciesNetworkManager.swift */; };
-		B5E93D6A21A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D6721A8214600D1705A /* CurrenciesNetworkManager.swift */; };
-		B5E93D7421A827D600D1705A /* CurrenciesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AEF21A0124D000A74A5 /* CurrenciesPresenter.swift */; };
-		B5E93D7621A827D600D1705A /* CurrenciesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF121A0124D000A74A5 /* CurrenciesRouter.swift */; };
-		B5E93D7721A827D600D1705A /* CurrenciesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */; };
-		B5E93D7821A827D600D1705A /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF321A0124D000A74A5 /* CurrenciesViewController.swift */; };
-		B5E93D7921A827D600D1705A /* CurrenciesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF421A0124D000A74A5 /* CurrenciesInteractor.swift */; };
-		B5E93D7A21A827D700D1705A /* CurrenciesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AEF21A0124D000A74A5 /* CurrenciesPresenter.swift */; };
-		B5E93D7C21A827D700D1705A /* CurrenciesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF121A0124D000A74A5 /* CurrenciesRouter.swift */; };
-		B5E93D7D21A827D700D1705A /* CurrenciesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */; };
-		B5E93D7E21A827D700D1705A /* CurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF321A0124D000A74A5 /* CurrenciesViewController.swift */; };
-		B5E93D7F21A827D700D1705A /* CurrenciesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF421A0124D000A74A5 /* CurrenciesInteractor.swift */; };
 		B5E93D8121A82AF600D1705A /* CurrenciesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8021A82AF600D1705A /* CurrenciesCell.swift */; };
-		B5E93D8221A82AF600D1705A /* CurrenciesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8021A82AF600D1705A /* CurrenciesCell.swift */; };
-		B5E93D8321A82AF600D1705A /* CurrenciesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8021A82AF600D1705A /* CurrenciesCell.swift */; };
 		B5E93D8721A82C5900D1705A /* TVCCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8521A82C5900D1705A /* TVCCrypto.swift */; };
-		B5E93D8821A82C5900D1705A /* TVCCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8521A82C5900D1705A /* TVCCrypto.swift */; };
-		B5E93D8921A82C5900D1705A /* TVCCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8521A82C5900D1705A /* TVCCrypto.swift */; };
 		B5E93D8A21A82C5900D1705A /* TVCCrypto.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E93D8621A82C5900D1705A /* TVCCrypto.xib */; };
-		B5E93D8B21A82C5900D1705A /* TVCCrypto.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E93D8621A82C5900D1705A /* TVCCrypto.xib */; };
-		B5E93D8C21A82C5900D1705A /* TVCCrypto.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E93D8621A82C5900D1705A /* TVCCrypto.xib */; };
 		B5E93D8E21A90A6F00D1705A /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */; };
-		B5E93D8F21A90A6F00D1705A /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */; };
-		B5E93D9021A90A6F00D1705A /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */; };
 		B5F046EF2207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F046EE2207EFA5007B7C0D /* CurrencyChartInfoView.swift */; };
-		B5F046F02207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F046EE2207EFA5007B7C0D /* CurrencyChartInfoView.swift */; };
-		B5F046F12207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F046EE2207EFA5007B7C0D /* CurrencyChartInfoView.swift */; };
 		B5F14D2B22040B5300DE5E62 /* CRDataCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */; };
-		B5F14D2C22040B5300DE5E62 /* CRDataCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */; };
-		B5F14D2D22040B5300DE5E62 /* CRDataCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */; };
 		B5F5BFA721A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
-		B5F5BFA821A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
-		B5F5BFA921A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5FCEA88220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */; };
-		B5FCEA89220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */; };
-		B5FCEA8A220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */; };
 		B5FCEA8C220D6B4200E4B433 /* VCMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */; };
-		B5FCEA8D220D6B4200E4B433 /* VCMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */; };
-		B5FCEA8E220D6B4200E4B433 /* VCMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */; };
 		B5FCEA90220D900800E4B433 /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */; };
-		B5FCEA91220D900800E4B433 /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */; };
-		B5FCEA92220D900800E4B433 /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */; };
 		B5FCEA94220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */; };
-		B5FCEA95220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */; };
-		B5FCEA96220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */; };
 		B5FCEA98220DB0C400E4B433 /* SEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA97220DB0C400E4B433 /* SEmail.swift */; };
-		B5FCEA99220DB0C400E4B433 /* SEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA97220DB0C400E4B433 /* SEmail.swift */; };
-		B5FCEA9A220DB0C400E4B433 /* SEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA97220DB0C400E4B433 /* SEmail.swift */; };
 		B5FCEA9D220EB77100E4B433 /* BDHamburger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */; };
-		B5FCEA9E220EB77100E4B433 /* BDHamburger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */; };
-		B5FCEA9F220EB77100E4B433 /* BDHamburger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */; };
 		B5FCEAB62212D8FC00E4B433 /* AddToWatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB02212D8FC00E4B433 /* AddToWatchlistPresenter.swift */; };
-		B5FCEAB72212D8FC00E4B433 /* AddToWatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB02212D8FC00E4B433 /* AddToWatchlistPresenter.swift */; };
-		B5FCEAB82212D8FC00E4B433 /* AddToWatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB02212D8FC00E4B433 /* AddToWatchlistPresenter.swift */; };
 		B5FCEABC2212D8FC00E4B433 /* AddToWatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB22212D8FC00E4B433 /* AddToWatchlistRouter.swift */; };
-		B5FCEABD2212D8FC00E4B433 /* AddToWatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB22212D8FC00E4B433 /* AddToWatchlistRouter.swift */; };
-		B5FCEABE2212D8FC00E4B433 /* AddToWatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB22212D8FC00E4B433 /* AddToWatchlistRouter.swift */; };
 		B5FCEABF2212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB32212D8FC00E4B433 /* AddToWatchlistModels.swift */; };
-		B5FCEAC02212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB32212D8FC00E4B433 /* AddToWatchlistModels.swift */; };
-		B5FCEAC12212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB32212D8FC00E4B433 /* AddToWatchlistModels.swift */; };
 		B5FCEAC22212D8FC00E4B433 /* AddToWatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB42212D8FC00E4B433 /* AddToWatchlistViewController.swift */; };
-		B5FCEAC32212D8FC00E4B433 /* AddToWatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB42212D8FC00E4B433 /* AddToWatchlistViewController.swift */; };
-		B5FCEAC42212D8FC00E4B433 /* AddToWatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB42212D8FC00E4B433 /* AddToWatchlistViewController.swift */; };
 		B5FCEAC52212D8FC00E4B433 /* AddToWatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB52212D8FC00E4B433 /* AddToWatchlistInteractor.swift */; };
-		B5FCEAC62212D8FC00E4B433 /* AddToWatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB52212D8FC00E4B433 /* AddToWatchlistInteractor.swift */; };
-		B5FCEAC72212D8FC00E4B433 /* AddToWatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB52212D8FC00E4B433 /* AddToWatchlistInteractor.swift */; };
-		C07B6C3481306E5A4E4462D0 /* Pods_StagingCryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084EF5BB3FCB474B5135431A /* Pods_StagingCryptotracker.framework */; };
 		C0CE4935DE67B38D9BD096C9 /* Pods_Cryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D2C2A8FD287D294CF24F89F /* Pods_Cryptotracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -328,16 +141,24 @@
 		B51ECC6922253FB5006CE6FC /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
 		B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRTimeframe.swift; sourceTree = "<group>"; };
 		B5217EB02205960100FF6DD5 /* CRDataHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataHistory.swift; sourceTree = "<group>"; };
+		B527120B2238CF4D00D57639 /* ConfigEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigEndPoint.swift; sourceTree = "<group>"; };
+		B527120F2238D33800D57639 /* ConfigNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNetworkManager.swift; sourceTree = "<group>"; };
+		B52712132238D38900D57639 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
+		B52712212238DA1A00D57639 /* ConfigPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigPresenter.swift; sourceTree = "<group>"; };
+		B52712222238DA1A00D57639 /* ConfigWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigWorker.swift; sourceTree = "<group>"; };
+		B52712232238DA1A00D57639 /* ConfigRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigRouter.swift; sourceTree = "<group>"; };
+		B52712242238DA1A00D57639 /* ConfigModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigModels.swift; sourceTree = "<group>"; };
+		B52712252238DA1A00D57639 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
+		B52712262238DA1A00D57639 /* ConfigInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigInteractor.swift; sourceTree = "<group>"; };
+		B5271254223922BE00D57639 /* DebugConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugConfig.xcconfig; sourceTree = "<group>"; };
+		B5271255223922CE00D57639 /* StagingConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StagingConfig.xcconfig; sourceTree = "<group>"; };
+		B5271256223922DB00D57639 /* ReleaseConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ReleaseConfig.xcconfig; sourceTree = "<group>"; };
 		B5276AAA21A00F59000A74A5 /* Cryptotracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptotracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5276AAD21A00F59000A74A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5276AAF21A00F59000A74A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5276AB421A00F5A000A74A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5276AB721A00F5A000A74A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5276AB921A00F5A000A74A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5276ACC21A00F9F000A74A5 /* DebugCryptotracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugCryptotracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5276ACD21A00F9F000A74A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = /Users/abaikirov/WORK/MakeUseOf/Cryptotracker/Cryptotracker/CryptotrackerDebug/Info.plist; sourceTree = "<absolute>"; };
-		B5276ADA21A00FAC000A74A5 /* StagingCryptotracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StagingCryptotracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5276ADB21A00FAC000A74A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = /Users/abaikirov/WORK/MakeUseOf/Cryptotracker/Cryptotracker/CryptotrackerStaging/Info.plist; sourceTree = "<absolute>"; };
 		B5276AEF21A0124D000A74A5 /* CurrenciesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesPresenter.swift; sourceTree = "<group>"; };
 		B5276AF121A0124D000A74A5 /* CurrenciesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesRouter.swift; sourceTree = "<group>"; };
 		B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesModels.swift; sourceTree = "<group>"; };
@@ -427,22 +248,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5276AC421A00F9F000A74A5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0D28CE1432761D5C34F19CA4 /* Pods_DebugCryptotracker.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5276AD221A00FAC000A74A5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C07B6C3481306E5A4E4462D0 /* Pods_StagingCryptotracker.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -491,12 +296,42 @@
 			path = CurrencyChart;
 			sourceTree = "<group>";
 		};
+		B527120A2238CA2100D57639 /* ConfigNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				B527120B2238CF4D00D57639 /* ConfigEndPoint.swift */,
+				B527120F2238D33800D57639 /* ConfigNetworkManager.swift */,
+			);
+			path = ConfigNetwork;
+			sourceTree = "<group>";
+		};
+		B52712202238D8E100D57639 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				B52712212238DA1A00D57639 /* ConfigPresenter.swift */,
+				B52712222238DA1A00D57639 /* ConfigWorker.swift */,
+				B52712232238DA1A00D57639 /* ConfigRouter.swift */,
+				B52712242238DA1A00D57639 /* ConfigModels.swift */,
+				B52712252238DA1A00D57639 /* ConfigViewController.swift */,
+				B52712262238DA1A00D57639 /* ConfigInteractor.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		B52712532239226900D57639 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				B5271254223922BE00D57639 /* DebugConfig.xcconfig */,
+				B5271255223922CE00D57639 /* StagingConfig.xcconfig */,
+				B5271256223922DB00D57639 /* ReleaseConfig.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		B5276AA121A00F59000A74A5 = {
 			isa = PBXGroup;
 			children = (
-				B5276AE121A01094000A74A5 /* CryptotrackerRelease */,
-				B5276ADD21A00FFC000A74A5 /* CryptotrackerStaging */,
-				B5276ADC21A00FEE000A74A5 /* CryptotrackerDebug */,
+				B52712532239226900D57639 /* Configuration */,
 				B5276ABF21A00F83000A74A5 /* Source */,
 				B5276AAC21A00F59000A74A5 /* Cryptotracker */,
 				B5276AAB21A00F59000A74A5 /* Products */,
@@ -509,8 +344,6 @@
 			isa = PBXGroup;
 			children = (
 				B5276AAA21A00F59000A74A5 /* Cryptotracker.app */,
-				B5276ACC21A00F9F000A74A5 /* DebugCryptotracker.app */,
-				B5276ADA21A00FAC000A74A5 /* StagingCryptotracker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -518,6 +351,7 @@
 		B5276AAC21A00F59000A74A5 /* Cryptotracker */ = {
 			isa = PBXGroup;
 			children = (
+				B5276AB921A00F5A000A74A5 /* Info.plist */,
 				B5276AAD21A00F59000A74A5 /* AppDelegate.swift */,
 				B5276AAF21A00F59000A74A5 /* ViewController.swift */,
 				B5276AB421A00F5A000A74A5 /* Assets.xcassets */,
@@ -541,30 +375,6 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
-		B5276ADC21A00FEE000A74A5 /* CryptotrackerDebug */ = {
-			isa = PBXGroup;
-			children = (
-				B5276ACD21A00F9F000A74A5 /* Info.plist */,
-			);
-			path = CryptotrackerDebug;
-			sourceTree = "<group>";
-		};
-		B5276ADD21A00FFC000A74A5 /* CryptotrackerStaging */ = {
-			isa = PBXGroup;
-			children = (
-				B5276ADB21A00FAC000A74A5 /* Info.plist */,
-			);
-			path = CryptotrackerStaging;
-			sourceTree = "<group>";
-		};
-		B5276AE121A01094000A74A5 /* CryptotrackerRelease */ = {
-			isa = PBXGroup;
-			children = (
-				B5276AB921A00F5A000A74A5 /* Info.plist */,
-			);
-			path = CryptotrackerRelease;
-			sourceTree = "<group>";
-		};
 		B5276AEE21A011ED000A74A5 /* Currencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,6 +392,7 @@
 		B5276B3E21A27F17000A74A5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B527120A2238CA2100D57639 /* ConfigNetwork */,
 				B5E93D6221A8211500D1705A /* CurrenciesNetwork */,
 				B5E93D6121A820FB00D1705A /* PostsNetwork */,
 				B5276B7321A2A2EB000A74A5 /* Service */,
@@ -607,6 +418,7 @@
 		B5276B5C21A29DB8000A74A5 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B52712202238D8E100D57639 /* Config */,
 				B5FCEAAF2212D8CD00E4B433 /* AddToWatchlist */,
 				B501299A21A95FEB001B6A04 /* CurrencyChart */,
 				B501298121A94BA7001B6A04 /* CurrencyDetails */,
@@ -624,6 +436,7 @@
 				B572E93D2202AC5700778DA8 /* Coins */,
 				B5276B5E21A29DD9000A74A5 /* Post.swift */,
 				B55500FC2237953B00FB7165 /* Price.swift */,
+				B52712132238D38900D57639 /* Bootstrap.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -851,47 +664,6 @@
 			productReference = B5276AAA21A00F59000A74A5 /* Cryptotracker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B5276AC021A00F9F000A74A5 /* DebugCryptotracker */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B5276AC921A00F9F000A74A5 /* Build configuration list for PBXNativeTarget "DebugCryptotracker" */;
-			buildPhases = (
-				D5DE15271E9E4ADFBBFD7F37 /* [CP] Check Pods Manifest.lock */,
-				B5276AC121A00F9F000A74A5 /* Sources */,
-				B5276AC421A00F9F000A74A5 /* Frameworks */,
-				B5276AC521A00F9F000A74A5 /* Resources */,
-				B5276AFC21A01E75000A74A5 /* SwiftLint */,
-				1140D5DCFD36090EEB79F467 /* [CP] Embed Pods Frameworks */,
-				B5FCEA9B220DB76F00E4B433 /* Fabric */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DebugCryptotracker;
-			productName = Cryptotracker;
-			productReference = B5276ACC21A00F9F000A74A5 /* DebugCryptotracker.app */;
-			productType = "com.apple.product-type.application";
-		};
-		B5276ACE21A00FAC000A74A5 /* StagingCryptotracker */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B5276AD721A00FAC000A74A5 /* Build configuration list for PBXNativeTarget "StagingCryptotracker" */;
-			buildPhases = (
-				4E74F52B6754A456CDD97F3F /* [CP] Check Pods Manifest.lock */,
-				B5276ACF21A00FAC000A74A5 /* Sources */,
-				B5276AD221A00FAC000A74A5 /* Frameworks */,
-				B5276AD321A00FAC000A74A5 /* Resources */,
-				B5276AFD21A01E84000A74A5 /* SwiftLint */,
-				3CE6D051AC8F0AAF4511CCA1 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = StagingCryptotracker;
-			productName = Cryptotracker;
-			productReference = B5276ADA21A00FAC000A74A5 /* StagingCryptotracker.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -921,8 +693,6 @@
 			projectRoot = "";
 			targets = (
 				B5276AA921A00F59000A74A5 /* Cryptotracker */,
-				B5276AC021A00F9F000A74A5 /* DebugCryptotracker */,
-				B5276ACE21A00FAC000A74A5 /* StagingCryptotracker */,
 			);
 		};
 /* End PBXProject section */
@@ -943,71 +713,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5276AC521A00F9F000A74A5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B51ECC6B22253FB5006CE6FC /* SFProText-Bold.otf in Resources */,
-				B5E93D8B21A82C5900D1705A /* TVCCrypto.xib in Resources */,
-				B51ECC7122253FB5006CE6FC /* SFProText-Regular.otf in Resources */,
-				B5276AC621A00F9F000A74A5 /* LaunchScreen.storyboard in Resources */,
-				B5276AC721A00F9F000A74A5 /* Assets.xcassets in Resources */,
-				B51ECC6522253F69006CE6FC /* SFProText-Semibold.otf in Resources */,
-				B51ECC6E22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */,
-				B5FCEA91220D900800E4B433 /* SFProText-Light.otf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5276AD321A00FAC000A74A5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B51ECC6C22253FB5006CE6FC /* SFProText-Bold.otf in Resources */,
-				B5E93D8C21A82C5900D1705A /* TVCCrypto.xib in Resources */,
-				B51ECC7222253FB5006CE6FC /* SFProText-Regular.otf in Resources */,
-				B5276AD421A00FAC000A74A5 /* LaunchScreen.storyboard in Resources */,
-				B5276AD521A00FAC000A74A5 /* Assets.xcassets in Resources */,
-				B51ECC6622253F69006CE6FC /* SFProText-Semibold.otf in Resources */,
-				B51ECC6F22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */,
-				B5FCEA92220D900800E4B433 /* SFProText-Light.otf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1140D5DCFD36090EEB79F467 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
-				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1910188A9C07FC0D5A335470 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1020,6 +728,7 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
@@ -1031,6 +740,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
@@ -1038,38 +748,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3CE6D051AC8F0AAF4511CCA1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-StagingCryptotracker/Pods-StagingCryptotracker-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
-				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StagingCryptotracker/Pods-StagingCryptotracker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4120CDEE9F183875376742D0 /* [CP] Check Pods Manifest.lock */ = {
@@ -1090,24 +768,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4E74F52B6754A456CDD97F3F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StagingCryptotracker-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B5276AFB21A01E5F000A74A5 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1121,71 +781,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		B5276AFC21A01E75000A74A5 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		B5276AFD21A01E84000A74A5 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		B5FCEA9B220DB76F00E4B433 /* Fabric */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			name = Fabric;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" a1913f7ef45473ccd9922c0a7ee2ee06690f81e1 83addb1810900c2c667ad287ef803bbda5cb0fe0205aca6e63e4e652907d1868\n";
-		};
-		D5DE15271E9E4ADFBBFD7F37 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DebugCryptotracker-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1221,6 +816,7 @@
 				B572E95B2202F34900778DA8 /* DataCache.swift in Sources */,
 				B55500FD2237953B00FB7165 /* Price.swift in Sources */,
 				B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
+				B527122D2238DA1A00D57639 /* ConfigRouter.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5E93D0F21A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
 				B5E93D3621A6B9B000D1705A /* DataAccessError.swift in Sources */,
@@ -1235,6 +831,7 @@
 				B5276B6321A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276AFA21A0124D000A74A5 /* CurrenciesInteractor.swift in Sources */,
 				B5276B7D21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
+				B52712142238D38900D57639 /* Bootstrap.swift in Sources */,
 				B5217EAD2205948C00FF6DD5 /* CRTimeframe.swift in Sources */,
 				B5CB3660221422ED00087C41 /* AddToWatchlistCell.swift in Sources */,
 				B5F14D2B22040B5300DE5E62 /* CRDataCoin.swift in Sources */,
@@ -1242,20 +839,25 @@
 				B572E9432202AF0F00778DA8 /* CRDataList.swift in Sources */,
 				B5E1D6C9221FBAC7005419C8 /* CTError.swift in Sources */,
 				B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */,
+				B52712102238D33800D57639 /* ConfigNetworkManager.swift in Sources */,
 				B5E93D0C21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
 				B5276B5021A28183000A74A5 /* PostsRouter.swift in Sources */,
 				B501298821A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */,
 				B501298E21A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */,
 				B5217EB12205960100FF6DD5 /* CRDataHistory.swift in Sources */,
 				B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */,
+				B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */,
 				B5E93D6421A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B501299C21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
+				B52712302238DA1A00D57639 /* ConfigModels.swift in Sources */,
 				B5E93D3A21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
+				B527122A2238DA1A00D57639 /* ConfigWorker.swift in Sources */,
 				B5F5BFA721A426680012599B /* PostsCell.swift in Sources */,
 				B5FCEA8C220D6B4200E4B433 /* VCMenu.swift in Sources */,
 				B5E93D3E21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
 				B501297E21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
 				B5F046EF2207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */,
+				B52712272238DA1A00D57639 /* ConfigPresenter.swift in Sources */,
 				B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B572E9532202B31900778DA8 /* CRPrice.swift in Sources */,
 				B5E93D8721A82C5900D1705A /* TVCCrypto.swift in Sources */,
@@ -1265,6 +867,7 @@
 				B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */,
 				B572E94F2202AFF700778DA8 /* CRCoin.swift in Sources */,
 				B5FCEA94220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */,
+				B52712332238DA1A00D57639 /* ConfigViewController.swift in Sources */,
 				B501297B21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
 				B5276B5F21A29DD9000A74A5 /* Post.swift in Sources */,
 				B5276AF821A0124D000A74A5 /* CurrenciesModels.swift in Sources */,
@@ -1278,203 +881,12 @@
 				B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5E93D0021A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
 				B5FCEABF2212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */,
+				B52712362238DA1A00D57639 /* ConfigInteractor.swift in Sources */,
 				B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 				B572E94B2202AFDF00778DA8 /* CRBase.swift in Sources */,
 				B5FCEA98220DB0C400E4B433 /* SEmail.swift in Sources */,
 				B501299421A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
 				B5276B7521A2A2FD000A74A5 /* EndPointType.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5276AC121A00F9F000A74A5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B5FCEA89220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */,
-				B55501022237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */,
-				B572E9402202AD4F00778DA8 /* CRRoot.swift in Sources */,
-				B5276B7E21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
-				B501297921A940DA001B6A04 /* WatchlistModels.swift in Sources */,
-				B5276B5121A28183000A74A5 /* PostsRouter.swift in Sources */,
-				B50129AE21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */,
-				B5E93D8F21A90A6F00D1705A /* WidgetFactory.swift in Sources */,
-				B5E93D6921A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */,
-				B5276B4B21A28183000A74A5 /* PostsPresenter.swift in Sources */,
-				B5276B8E21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
-				B5276AC221A00F9F000A74A5 /* ViewController.swift in Sources */,
-				B5E1D6C0221D6CCB005419C8 /* ErrorView.swift in Sources */,
-				B5E93D8221A82AF600D1705A /* CurrenciesCell.swift in Sources */,
-				B5276B5421A28183000A74A5 /* PostsModels.swift in Sources */,
-				B5E93D3721A6B9B000D1705A /* DataAccessError.swift in Sources */,
-				B501299821A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */,
-				B5E93CF121A6A3AE00D1705A /* Constants.swift in Sources */,
-				B5E93D1021A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
-				B5FCEAC62212D8FC00E4B433 /* AddToWatchlistInteractor.swift in Sources */,
-				B501297621A940DA001B6A04 /* WatchlistRouter.swift in Sources */,
-				B5E93D3321A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
-				B5E93D7421A827D600D1705A /* CurrenciesPresenter.swift in Sources */,
-				B501299221A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
-				B572E95C2202F34900778DA8 /* DataCache.swift in Sources */,
-				B55500FE2237953B00FB7165 /* Price.swift in Sources */,
-				B5E93D5621A7E68000D1705A /* PostNavigationView.swift in Sources */,
-				B5276B5721A28183000A74A5 /* PostsViewController.swift in Sources */,
-				B5E93D4C21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
-				B5276AC321A00F9F000A74A5 /* AppDelegate.swift in Sources */,
-				B5E93D0D21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
-				B5E1D6C6221EDC2A005419C8 /* CoinsWorker.swift in Sources */,
-				B5E93D6521A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
-				B5276B6921A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
-				B572E9482202AFBA00778DA8 /* CRStats.swift in Sources */,
-				B501297021A940DA001B6A04 /* WatchlistPresenter.swift in Sources */,
-				B5276B5A21A28183000A74A5 /* PostsInteractor.swift in Sources */,
-				B5E93D2F21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
-				B5276B7621A2A2FD000A74A5 /* EndPointType.swift in Sources */,
-				B5217EAE2205948C00FF6DD5 /* CRTimeframe.swift in Sources */,
-				B5CB3661221422ED00087C41 /* AddToWatchlistCell.swift in Sources */,
-				B5F14D2C22040B5300DE5E62 /* CRDataCoin.swift in Sources */,
-				B5FCEABD2212D8FC00E4B433 /* AddToWatchlistRouter.swift in Sources */,
-				B572E9442202AF0F00778DA8 /* CRDataList.swift in Sources */,
-				B5276B6D21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
-				B5276B4121A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
-				B5E1D6CA221FBAC7005419C8 /* CTError.swift in Sources */,
-				B5E93D7921A827D600D1705A /* CurrenciesInteractor.swift in Sources */,
-				B501298921A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */,
-				B501298F21A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */,
-				B5217EB22205960100FF6DD5 /* CRDataHistory.swift in Sources */,
-				B5E93D7821A827D600D1705A /* CurrenciesViewController.swift in Sources */,
-				B5276B8A21A2A369000A74A5 /* Router.swift in Sources */,
-				B501299D21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
-				B5276B6421A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
-				B5276B7A21A2A313000A74A5 /* HTTPMethod.swift in Sources */,
-				B5FCEA8D220D6B4200E4B433 /* VCMenu.swift in Sources */,
-				B5276B4E21A28183000A74A5 /* PostsWorker.swift in Sources */,
-				B501297F21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
-				B5F046F02207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */,
-				B5E93D7721A827D600D1705A /* CurrenciesModels.swift in Sources */,
-				B5E93D5221A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
-				B572E9542202B31900778DA8 /* CRPrice.swift in Sources */,
-				B5E93D8821A82C5900D1705A /* TVCCrypto.swift in Sources */,
-				B5FCEA9E220EB77100E4B433 /* BDHamburger.swift in Sources */,
-				B5F5BFA821A426680012599B /* PostsCell.swift in Sources */,
-				B5FCEAB72212D8FC00E4B433 /* AddToWatchlistPresenter.swift in Sources */,
-				B5276B8221A2A33F000A74A5 /* NetworkError.swift in Sources */,
-				B572E9502202AFF700778DA8 /* CRCoin.swift in Sources */,
-				B5276B8621A2A353000A74A5 /* NetworkRouter.swift in Sources */,
-				B5FCEA95220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */,
-				B501297C21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
-				B5E93D0721A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
-				B5E93D0421A6A73500D1705A /* PostPreviewWorker.swift in Sources */,
-				B5E93D3B21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
-				B5E93D3F21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
-				B5E93D4721A6E64200D1705A /* DataStore.swift in Sources */,
-				B5E93D0A21A6A73500D1705A /* PostPreviewModels.swift in Sources */,
-				B5FCEAC32212D8FC00E4B433 /* AddToWatchlistViewController.swift in Sources */,
-				B572E9582202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */,
-				B5E93D0121A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
-				B5276B7121A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
-				B5E93D7621A827D600D1705A /* CurrenciesRouter.swift in Sources */,
-				B5FCEAC02212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */,
-				B5276B6021A29DD9000A74A5 /* Post.swift in Sources */,
-				B572E94C2202AFDF00778DA8 /* CRBase.swift in Sources */,
-				B5FCEA99220DB0C400E4B433 /* SEmail.swift in Sources */,
-				B501299521A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
-				B5E93D4321A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5276ACF21A00FAC000A74A5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B5FCEA8A220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */,
-				B55501032237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */,
-				B572E9412202AD4F00778DA8 /* CRRoot.swift in Sources */,
-				B5276B7F21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
-				B501297A21A940DA001B6A04 /* WatchlistModels.swift in Sources */,
-				B5276B5221A28183000A74A5 /* PostsRouter.swift in Sources */,
-				B50129AF21ABE1FB001B6A04 /* CurrencyDetailsCell.swift in Sources */,
-				B5E93D9021A90A6F00D1705A /* WidgetFactory.swift in Sources */,
-				B5E93D6A21A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */,
-				B5276B4C21A28183000A74A5 /* PostsPresenter.swift in Sources */,
-				B5276B8F21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
-				B5276AD021A00FAC000A74A5 /* ViewController.swift in Sources */,
-				B5E1D6C1221D6CCB005419C8 /* ErrorView.swift in Sources */,
-				B5E93D8321A82AF600D1705A /* CurrenciesCell.swift in Sources */,
-				B5276B5521A28183000A74A5 /* PostsModels.swift in Sources */,
-				B5E93D3821A6B9B000D1705A /* DataAccessError.swift in Sources */,
-				B501299921A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */,
-				B5E93CF221A6A3AE00D1705A /* Constants.swift in Sources */,
-				B5E93D1121A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
-				B5FCEAC72212D8FC00E4B433 /* AddToWatchlistInteractor.swift in Sources */,
-				B501297721A940DA001B6A04 /* WatchlistRouter.swift in Sources */,
-				B5E93D3421A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
-				B5E93D7A21A827D700D1705A /* CurrenciesPresenter.swift in Sources */,
-				B501299321A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
-				B572E95D2202F34900778DA8 /* DataCache.swift in Sources */,
-				B55500FF2237953B00FB7165 /* Price.swift in Sources */,
-				B5E93D5721A7E68000D1705A /* PostNavigationView.swift in Sources */,
-				B5276B5821A28183000A74A5 /* PostsViewController.swift in Sources */,
-				B5E93D4D21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
-				B5276AD121A00FAC000A74A5 /* AppDelegate.swift in Sources */,
-				B5E93D0E21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
-				B5E1D6C7221EDC2A005419C8 /* CoinsWorker.swift in Sources */,
-				B5E93D6621A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
-				B5276B6A21A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
-				B572E9492202AFBA00778DA8 /* CRStats.swift in Sources */,
-				B501297121A940DA001B6A04 /* WatchlistPresenter.swift in Sources */,
-				B5276B5B21A28183000A74A5 /* PostsInteractor.swift in Sources */,
-				B5E93D3021A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
-				B5276B7721A2A2FD000A74A5 /* EndPointType.swift in Sources */,
-				B5217EAF2205948C00FF6DD5 /* CRTimeframe.swift in Sources */,
-				B5CB3662221422ED00087C41 /* AddToWatchlistCell.swift in Sources */,
-				B5F14D2D22040B5300DE5E62 /* CRDataCoin.swift in Sources */,
-				B5FCEABE2212D8FC00E4B433 /* AddToWatchlistRouter.swift in Sources */,
-				B572E9452202AF0F00778DA8 /* CRDataList.swift in Sources */,
-				B5276B6E21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
-				B5276B4221A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
-				B5E1D6CB221FBAC7005419C8 /* CTError.swift in Sources */,
-				B5E93D7F21A827D700D1705A /* CurrenciesInteractor.swift in Sources */,
-				B501298A21A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */,
-				B501299021A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */,
-				B5217EB32205960100FF6DD5 /* CRDataHistory.swift in Sources */,
-				B5E93D7E21A827D700D1705A /* CurrenciesViewController.swift in Sources */,
-				B5276B8B21A2A369000A74A5 /* Router.swift in Sources */,
-				B501299E21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
-				B5276B6521A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
-				B5276B7B21A2A313000A74A5 /* HTTPMethod.swift in Sources */,
-				B5FCEA8E220D6B4200E4B433 /* VCMenu.swift in Sources */,
-				B5276B4F21A28183000A74A5 /* PostsWorker.swift in Sources */,
-				B501298021A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
-				B5F046F12207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */,
-				B5E93D7D21A827D700D1705A /* CurrenciesModels.swift in Sources */,
-				B5E93D5321A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
-				B572E9552202B31900778DA8 /* CRPrice.swift in Sources */,
-				B5E93D8921A82C5900D1705A /* TVCCrypto.swift in Sources */,
-				B5FCEA9F220EB77100E4B433 /* BDHamburger.swift in Sources */,
-				B5F5BFA921A426680012599B /* PostsCell.swift in Sources */,
-				B5FCEAB82212D8FC00E4B433 /* AddToWatchlistPresenter.swift in Sources */,
-				B5276B8321A2A33F000A74A5 /* NetworkError.swift in Sources */,
-				B572E9512202AFF700778DA8 /* CRCoin.swift in Sources */,
-				B5276B8721A2A353000A74A5 /* NetworkRouter.swift in Sources */,
-				B5FCEA96220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */,
-				B501297D21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
-				B5E93D0821A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
-				B5E93D0521A6A73500D1705A /* PostPreviewWorker.swift in Sources */,
-				B5E93D3C21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
-				B5E93D4021A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
-				B5E93D4821A6E64200D1705A /* DataStore.swift in Sources */,
-				B5E93D0B21A6A73500D1705A /* PostPreviewModels.swift in Sources */,
-				B5FCEAC42212D8FC00E4B433 /* AddToWatchlistViewController.swift in Sources */,
-				B572E9592202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */,
-				B5E93D0221A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
-				B5276B7221A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
-				B5E93D7C21A827D700D1705A /* CurrenciesRouter.swift in Sources */,
-				B5FCEAC12212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */,
-				B5276B6121A29DD9000A74A5 /* Post.swift in Sources */,
-				B572E94D2202AFDF00778DA8 /* CRBase.swift in Sources */,
-				B5FCEA9A220DB0C400E4B433 /* SEmail.swift in Sources */,
-				B501299621A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,
-				B5E93D4421A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1492,8 +904,94 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B527124F2239216B00D57639 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5271255223922CE00D57639 /* StagingConfig.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Staging;
+		};
+		B52712502239216B00D57639 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5271255223922CE00D57639 /* StagingConfig.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(C_APP_ICON)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U4R65QQKZ7;
+				INFOPLIST_FILE = "$(SRCROOT)/Cryptotracker/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.cryptotracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Staging;
+		};
 		B5276ABA21A00F5A000A74A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5271254223922BE00D57639 /* DebugConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1557,6 +1055,7 @@
 		};
 		B5276ABB21A00F5A000A74A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5271256223922DB00D57639 /* ReleaseConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1614,13 +1113,13 @@
 		};
 		B5276ABD21A00F5A000A74A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */;
+			baseConfigurationReference = B5271254223922BE00D57639 /* DebugConfig.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(C_APP_ICON)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U4R65QQKZ7;
-				INFOPLIST_FILE = CryptotrackerRelease/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Cryptotracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1635,13 +1134,13 @@
 		};
 		B5276ABE21A00F5A000A74A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A987954D56EDBE59FCFB0C3C /* Pods-Cryptotracker.release.xcconfig */;
+			baseConfigurationReference = B5271256223922DB00D57639 /* ReleaseConfig.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(C_APP_ICON)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U4R65QQKZ7;
-				INFOPLIST_FILE = CryptotrackerRelease/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Cryptotracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1654,86 +1153,6 @@
 			};
 			name = Release;
 		};
-		B5276ACA21A00F9F000A74A5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDebug;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U4R65QQKZ7;
-				INFOPLIST_FILE = CryptotrackerDebug/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEVELOPMENT";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.coinchart.debug;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B5276ACB21A00F9F000A74A5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0CC2CCCAA2E062ED9822C81 /* Pods-DebugCryptotracker.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDebug;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U4R65QQKZ7;
-				INFOPLIST_FILE = CryptotrackerDebug/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEVELOPMENT";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.coinchart.debug;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		B5276AD821A00FAC000A74A5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3C7929EE344E49051F23381 /* Pods-StagingCryptotracker.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U4R65QQKZ7;
-				INFOPLIST_FILE = CryptotrackerStaging/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTAGING";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.cryptotracker.staging;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B5276AD921A00FAC000A74A5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FCA7E08A6E532B728A4A8C5 /* Pods-StagingCryptotracker.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U4R65QQKZ7;
-				INFOPLIST_FILE = CryptotrackerStaging/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DSTAGING";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeuseof.cryptotracker.staging;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1741,6 +1160,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B5276ABA21A00F5A000A74A5 /* Debug */,
+				B527124F2239216B00D57639 /* Staging */,
 				B5276ABB21A00F5A000A74A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1750,25 +1170,8 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B5276ABD21A00F5A000A74A5 /* Debug */,
+				B52712502239216B00D57639 /* Staging */,
 				B5276ABE21A00F5A000A74A5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B5276AC921A00F9F000A74A5 /* Build configuration list for PBXNativeTarget "DebugCryptotracker" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5276ACA21A00F9F000A74A5 /* Debug */,
-				B5276ACB21A00F9F000A74A5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B5276AD721A00FAC000A74A5 /* Build configuration list for PBXNativeTarget "StagingCryptotracker" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5276AD821A00FAC000A74A5 /* Debug */,
-				B5276AD921A00FAC000A74A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

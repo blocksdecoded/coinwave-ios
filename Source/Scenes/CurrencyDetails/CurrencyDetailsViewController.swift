@@ -39,6 +39,18 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   private let yearBtnTag = 100004
   private let year5BtnTag = 100005
   
+  private let backButtonWidth: CGFloat = 30
+  private let backButtonHeight: CGFloat = 30
+  private var backButtonLeftMargin: CGFloat {
+    return 24.5 - backButtonWidth / 2
+  }
+  
+  private let favoriteButtonWidth: CGFloat = 35
+  private let favoriteButtonHeight: CGFloat = 35
+  private var favoriteButtonRightMargin: CGFloat {
+    return 30 - favoriteButtonWidth / 2
+  }
+  
   private var tmpButton: UIButton?
   
   private lazy var topCircle: UIImageView = {
@@ -54,8 +66,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setImage(UIImage(named: "left_arrow"), for: .normal)
     button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
-    button.contentHorizontalAlignment = .fill
-    button.contentVerticalAlignment = .fill
+    button.contentMode = .scaleAspectFit
     return button
   }()
   
@@ -146,8 +157,6 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.addTarget(self, action: #selector(addFavorite), for: .touchUpInside)
-    button.contentHorizontalAlignment = .fill
-    button.contentVerticalAlignment = .fill
     return button
   }()
   
@@ -288,17 +297,17 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     ]
     
     let favoriteC = [
-      navigationView.trailingAnchor.constraint(equalTo: favoriteBtn.trailingAnchor, constant: 20),
+      navigationView.trailingAnchor.constraint(equalTo: favoriteBtn.trailingAnchor, constant: favoriteButtonRightMargin),
       favoriteBtn.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
-      favoriteBtn.widthAnchor.constraint(equalToConstant: 20),
-      favoriteBtn.heightAnchor.constraint(equalToConstant: 20)
+      favoriteBtn.widthAnchor.constraint(equalToConstant: favoriteButtonWidth),
+      favoriteBtn.heightAnchor.constraint(equalToConstant: favoriteButtonHeight)
     ]
     
     let backButtonC = [
-      backButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor, constant: 20),
+      backButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor, constant: backButtonLeftMargin),
       backButton.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
-      backButton.widthAnchor.constraint(equalToConstant: 9),
-      backButton.heightAnchor.constraint(equalToConstant: 15)
+      backButton.widthAnchor.constraint(equalToConstant: backButtonWidth),
+      backButton.heightAnchor.constraint(equalToConstant: 30)
     ]
     
     NSLayoutConstraint.activate(infoTableC +

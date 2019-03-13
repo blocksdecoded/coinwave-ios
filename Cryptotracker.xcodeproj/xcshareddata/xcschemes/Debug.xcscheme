@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B5276ACE21A00FAC000A74A5"
-               BuildableName = "StagingCryptotracker.app"
-               BlueprintName = "StagingCryptotracker"
+               BlueprintIdentifier = "B5276AA921A00F59000A74A5"
+               BuildableName = "Cryptotracker.app"
+               BlueprintName = "Cryptotracker"
                ReferencedContainer = "container:Cryptotracker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B5276ACE21A00FAC000A74A5"
-            BuildableName = "StagingCryptotracker.app"
-            BlueprintName = "StagingCryptotracker"
+            BlueprintIdentifier = "B5276AA921A00F59000A74A5"
+            BuildableName = "Cryptotracker.app"
+            BlueprintName = "Cryptotracker"
             ReferencedContainer = "container:Cryptotracker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B5276ACE21A00FAC000A74A5"
-            BuildableName = "StagingCryptotracker.app"
-            BlueprintName = "StagingCryptotracker"
+            BlueprintIdentifier = "B5276AA921A00F59000A74A5"
+            BuildableName = "Cryptotracker.app"
+            BlueprintName = "Cryptotracker"
             ReferencedContainer = "container:Cryptotracker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -65,7 +65,7 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
@@ -74,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B5276ACE21A00FAC000A74A5"
-            BuildableName = "StagingCryptotracker.app"
-            BlueprintName = "StagingCryptotracker"
+            BlueprintIdentifier = "B5276AA921A00F59000A74A5"
+            BuildableName = "Cryptotracker.app"
+            BlueprintName = "Cryptotracker"
             ReferencedContainer = "container:Cryptotracker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -85,7 +85,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

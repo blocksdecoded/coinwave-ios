@@ -20,6 +20,22 @@ struct Constants {
     #endif
   }
   
+  static var bootstrapBaseURL: String {
+    if let url = Bundle.main.infoDictionary?["BootstrapBaseUrl"] as? String {
+      return url
+    }
+    return ""
+  }
+  
+  static var postsBaseURL: String {
+    if let url = Bundle.main.infoDictionary?["PostsBaseUrl"] as? String {
+      return url
+    }
+    return ""
+  }
+  
+  static var coinsBaseURL: String = ""
+  
   struct Fonts {
     static let heavy = "SFUIDisplay-Heavy"
     static let regular = "SFProText-Regular"
