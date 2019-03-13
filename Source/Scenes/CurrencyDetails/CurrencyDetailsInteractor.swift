@@ -36,7 +36,7 @@ class CurrencyDetailsInteractor: CurrencyDetailsBusinessLogic, CurrencyDetailsDa
       } else {
         if let coinCoin = coin {
           let response = CurrencyDetails.Something.Response(coin: coinCoin)
-          self.presenter?.presentSomething(response: response)
+          self.presenter?.presentCoinDetails(response: response)
         } else {
           self.presenter?.presentError(.noData)
         }

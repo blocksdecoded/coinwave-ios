@@ -13,33 +13,27 @@
 import UIKit
 
 protocol CurrencyDetailsPresentationLogic {
-  func presentSomething(response: CurrencyDetails.Something.Response)
+  func presentCoinDetails(response: CurrencyDetails.Something.Response)
   func favorites(response: CurrencyDetails.AddFavorite.Response)
   func presentWebsite()
   func presentError(_ error: CTError)
 }
 
 class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
+  typealias CurrencyInfo = CurrencyDetails.Something.ViewModel.Info
+  
   weak var viewController: CurrencyDetailsDisplayLogic?
   var coinSite: String?
   
   // MARK: Do something
   
-  func presentSomething(response: CurrencyDetails.Something.Response) {
-    var currInfo = [CurrencyDetails.Something.ViewModel.Info]()
-    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Price:",
-                                                             value: response.coin.price?.longForce, valueColor: nil))
-    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "% Change:",
-                                                             value: response.coin.changeStr, valueColor: response.coin.changeColor))
-    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Market Cap:",
-                                                             value: response.coin.marketCap?.long, valueColor: nil))
-    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Volume 24h:",
-                                                             value: response.coin.volume?.long, valueColor: nil))
-    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Available supply:",
-                                                             value: response.coin.circulatingSupply?.long, valueColor: nil))
-    currInfo.append(CurrencyDetails.Something.ViewModel.Info(name: "Total supply:",
-                                                             value: response.coin.totalSupply?.long, valueColor: nil))
-    
+  func presentCoinDetails(response: CurrencyDetails.Something.Response) {
+    let currInfo = [CurrencyInfo(name: "Price:", value: response.coin.price?.long, valueColor: nil),
+                    CurrencyInfo(name: "% Change:", value: response.coin.changeStr, valueColor: response.coin.changeColor),
+                    CurrencyInfo(name: "Market Cap:", value: response.coin.marketCap?.long, valueColor: nil),
+                    CurrencyInfo(name: "Volume 24h:", value: response.coin.volume?.long, valueColor: nil),
+                    CurrencyInfo(name: "Available supply:", value: response.coin.circulatingSupply?.long, valueColor: nil),
+                    CurrencyInfo(name: "Total supply:", value: response.coin.totalSupply?.long, valueColor: nil)]
 
     let viewModel = CurrencyDetails.Something.ViewModel(iconType: response.coin.iconType,
                                                         iconUrl: response.coin.iconUrl,
@@ -47,7 +41,6 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
                                                         saveCurrency: response.coin,
                                                         info: currInfo)
     viewController?.displaySomething(viewModel: viewModel)
-    
     coinSite = response.coin.websiteUrl
   }
   
