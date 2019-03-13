@@ -51,6 +51,10 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     return columnTitle(text: "Price (24h)")
   }()
   
+  private lazy var titles: [UIButton] = {
+    return [nameColumn, marketCapColumn, volumeColumn, priceColumn]
+  }()
+  
   var interactor: CurrenciesBusinessLogic?
   var router: (NSObjectProtocol & CurrenciesRoutingLogic & CurrenciesDataPassing)?
   
@@ -110,7 +114,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   private lazy var headerForCurrenciesList: UIView = {
     let headerView = UIView()
     headerView.translatesAutoresizingMaskIntoConstraints = false
-    let stackView = UIStackView(arrangedSubviews: [nameColumn, marketCapColumn, volumeColumn, priceColumn])
+    let stackView = UIStackView(arrangedSubviews: titles)
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .horizontal
     stackView.alignment = .fill
@@ -333,64 +337,46 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   func setSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {
     var button: UIButton?
+    var others: [UIButton]
+    
     switch field {
     case .name:
       button = nameColumn
-      nameColumn.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
-      priceColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      volumeColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      marketCapColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      
-      nameColumn.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
-      priceColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-      volumeColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-      marketCapColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      others = titles.filter { $0 != nameColumn }
     case .price:
       button = priceColumn
-      priceColumn.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
-      nameColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      volumeColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      marketCapColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      
-      nameColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-      priceColumn.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
-      volumeColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-      marketCapColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      others = titles.filter { $0 != priceColumn }
     case .volume:
       button = volumeColumn
-      priceColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      nameColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      volumeColumn.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
-      marketCapColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      
-      nameColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-      priceColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-      volumeColumn.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
-      marketCapColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+      others = titles.filter { $0 != volumeColumn }
     case .marketCap:
       button = marketCapColumn
-      priceColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      nameColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      volumeColumn.tintColor = UIColor.white.withAlphaComponent(0.7)
-      marketCapColumn.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
-      
-      nameColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-      priceColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-      volumeColumn.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-      marketCapColumn.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
+      others = titles.filter { $0 != marketCapColumn }
     case .rank:
       button = nil
+      others = titles
     }
+    
+    button?.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
+    button?.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
     
     var image: UIImage?
     switch type {
     case .asc:
-      image = UIImage(named: "triangle_down")?.withRenderingMode(.alwaysTemplate)
-    case .desc:
       image = UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate)
+    case .desc:
+      image = UIImage(named: "triangle_down")?.withRenderingMode(.alwaysTemplate)
     }
     
     button?.setImage(image, for: .normal)
+    defaultButton(others)
+  }
+  
+  private func defaultButton(_ buttons: [UIButton]) {
+    for button in buttons {
+      button.tintColor = UIColor.white.withAlphaComponent(0.7)
+      button.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+    }
   }
   
   private func columnTitle(text: String) -> UIButton {
