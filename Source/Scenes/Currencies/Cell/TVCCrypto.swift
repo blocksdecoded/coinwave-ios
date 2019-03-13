@@ -65,12 +65,10 @@ class TVCCrypto: UITableViewCell {
     
     if let percent = crypto.change {
       if percent < 0 {
-        price.textColor = Constants.Colors.currencyDown
         pricePercent.textColor = Constants.Colors.currencyDown
         pricePercent.text = crypto.changeStr
         priceUpDownIcon.image = UIImage(named: "curr_arrow_down")
       } else {
-        price.textColor = Constants.Colors.currencyUp
         pricePercent.textColor = Constants.Colors.currencyUp
         pricePercent.text = crypto.changeStr
         priceUpDownIcon.image = UIImage(named: "curr_arrow_up")
