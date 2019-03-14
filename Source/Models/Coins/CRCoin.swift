@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 struct CRCoin {
-  let id: Int
+  let identifier: Int
   let slug: String
   let symbol: String
   let name: String
@@ -49,7 +49,7 @@ struct CRCoin {
 
 extension CRCoin: Decodable {
   enum Keys: String, CodingKey {
-    case id
+    case identifier = "id"
     case slug
     case symbol
     case name
@@ -75,7 +75,7 @@ extension CRCoin: Decodable {
   
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: Keys.self)
-    let id = try container.decode(Int.self, forKey: .id)
+    let id = try container.decode(Int.self, forKey: .identifier)
     let slug = try container.decode(String.self, forKey: .slug)
     let symbol = try container.decode(String.self, forKey: .symbol)
     let name = try container.decode(String.self, forKey: .name)
@@ -98,7 +98,7 @@ extension CRCoin: Decodable {
     let allTimeHigh = try container.decode(CRPrice.self, forKey: .allTimeHigh)
     let penalty = try container.decode(Bool.self, forKey: .penalty)
     
-    self.init(id: id,
+    self.init(identifier: id,
               slug: slug,
               symbol: symbol,
               name: name,
@@ -127,7 +127,7 @@ extension CRCoin: Decodable {
 
 extension CRCoin {
   init() {
-    id = -1
+    identifier = -1
     slug = ""
     symbol = ""
     name = ""

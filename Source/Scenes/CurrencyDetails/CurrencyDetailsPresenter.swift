@@ -28,12 +28,24 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
   // MARK: Do something
   
   func presentCoinDetails(response: CurrencyDetails.Something.Response) {
-    let currInfo = [CurrencyInfo(name: "Price:", value: response.coin.price?.long, valueColor: nil),
-                    CurrencyInfo(name: "% Change:", value: response.coin.changeStr, valueColor: response.coin.changeColor),
-                    CurrencyInfo(name: "Market Cap:", value: response.coin.marketCap?.long, valueColor: nil),
-                    CurrencyInfo(name: "Volume 24h:", value: response.coin.volume?.long, valueColor: nil),
-                    CurrencyInfo(name: "Available supply:", value: response.coin.circulatingSupply?.long, valueColor: nil),
-                    CurrencyInfo(name: "Total supply:", value: response.coin.totalSupply?.long, valueColor: nil)]
+    let currInfo = [CurrencyInfo(name: "Price:",
+                                 value: response.coin.price?.long,
+                                 valueColor: nil),
+                    CurrencyInfo(name: "% Change:",
+                                 value: response.coin.changeStr,
+                                 valueColor: response.coin.changeColor),
+                    CurrencyInfo(name: "Market Cap:",
+                                 value: response.coin.marketCap?.long,
+                                 valueColor: nil),
+                    CurrencyInfo(name: "Volume 24h:",
+                                 value: response.coin.volume?.long,
+                                 valueColor: nil),
+                    CurrencyInfo(name: "Available supply:",
+                                 value: response.coin.circulatingSupply?.long,
+                                 valueColor: nil),
+                    CurrencyInfo(name: "Total supply:",
+                                 value: response.coin.totalSupply?.long,
+                                 valueColor: nil)]
 
     let viewModel = CurrencyDetails.Something.ViewModel(iconType: response.coin.iconType,
                                                         iconUrl: response.coin.iconUrl,

@@ -229,7 +229,7 @@ extension AddToWatchlistViewController: UICollectionViewDelegate, UICollectionVi
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let coin = coins![indexPath.item]
-    interactor?.addToWatchlist(id: AddToWatchlist.Add.Request(coin: coin, position: indexPath.item))
+    interactor?.addToWatchlist(request: AddToWatchlist.Add.Request(coin: coin, position: indexPath.item))
   }
 }
 

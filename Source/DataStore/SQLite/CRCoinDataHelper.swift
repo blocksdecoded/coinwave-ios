@@ -88,7 +88,7 @@ class CRCoinDataHelper: DataHelperProtocol {
   }
   
   static func insertOrUpdate(item: CRCoin) throws {
-    if try find(id: Int64(item.id)) != nil {
+    if try find(id: Int64(item.identifier)) != nil {
       try update(item: item)
     } else {
       try insert(item: item)
@@ -119,7 +119,7 @@ class CRCoinDataHelper: DataHelperProtocol {
       throw DataAccessError.datastoreConnection
     }
     
-    let curr = table.filter(currID == Int64(item.id))
+    let curr = table.filter(currID == Int64(item.identifier))
     try db.run(curr.update(updateSetters(item: item)))
   }
   
@@ -127,7 +127,7 @@ class CRCoinDataHelper: DataHelperProtocol {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    let lPostID = Int64(item.id)
+    let lPostID = Int64(item.identifier)
     let query = table.filter(currID == lPostID)
     do {
       try PostCategoryDataHelper.delete(category: lPostID)
@@ -284,7 +284,7 @@ class CRCoinDataHelper: DataHelperProtocol {
       throw DataAccessError.datastoreConnection
     }
     
-    let curr = table.filter(currID == Int64(item.id))
+    let curr = table.filter(currID == Int64(item.identifier))
     try db.run(curr.update(fullUpdateSetters(item: item)))
   }
   
@@ -308,7 +308,7 @@ class CRCoinDataHelper: DataHelperProtocol {
       iconType = CRCoin.IconType(rawValue: rawIconType)
     }
     
-    return CRCoin(id: Int(row[currID]),
+    return CRCoin(identifier: Int(row[currID]),
                   slug: row[currSlug],
                   symbol: row[currSymbol],
                   name: row[currName],
@@ -336,7 +336,7 @@ class CRCoinDataHelper: DataHelperProtocol {
   
   private static func insertSetters(item: CRCoin) -> [Setter] {
     var setters = fullUpdateSetters(item: item)
-    setters.insert(currID <- Int64(item.id), at: 0)
+    setters.insert(currID <- Int64(item.identifier), at: 0)
     return setters
   }
   
@@ -352,7 +352,7 @@ class CRCoinDataHelper: DataHelperProtocol {
     }
     
     var sets = [
-      currID <- Int64(item.id),
+      currID <- Int64(item.identifier),
       currSlug <- item.slug,
       currSymbol <- item.symbol,
       currName <- item.name,

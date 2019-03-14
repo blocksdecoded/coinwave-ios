@@ -9,7 +9,9 @@
 import Foundation
 
 class CoinsWorker {
-  func fetchCoins(_ orderField: CRCoin.OrderField, _ orderType: CRCoin.OrderType, _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
+  func fetchCoins(_ orderField: CRCoin.OrderField,
+                  _ orderType: CRCoin.OrderType,
+                  _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
       fetchRemoteCoins(orderField, orderType, completion)
     } else {
@@ -39,7 +41,9 @@ class CoinsWorker {
     }
   }
   
-  func fetchWatchlist(_ orderField: CRCoin.OrderField, _ orderType: CRCoin.OrderType, _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
+  func fetchWatchlist(_ orderField: CRCoin.OrderField,
+                      _ orderType: CRCoin.OrderType,
+                      _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
       fetchRemoteCoins(orderField, orderType) { _, error in
         if error != nil {
@@ -80,7 +84,9 @@ class CoinsWorker {
     return DataStore.shared.loadCoins(orderField, orderType)
   }
   
-  private func fetchRemoteCoins(_ orderField: CRCoin.OrderField, _ orderType: CRCoin.OrderType, _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
+  private func fetchRemoteCoins(_ orderField: CRCoin.OrderField,
+                                _ orderType: CRCoin.OrderType,
+                                _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
       networkManager.getCurrencies { currencies, error in

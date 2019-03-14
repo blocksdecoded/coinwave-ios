@@ -175,7 +175,7 @@ class PostsCell: UICollectionViewCell {
   
   func onBind(_ post: Posts.FetchPosts.ViewModel.DisplayedPost) {
     postTitle.attributedText = NSMutableAttributedString(string: post.title,
-                                                         attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+                               attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     
     guard let imageUrl = post.image?.image else {
       return

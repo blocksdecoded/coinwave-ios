@@ -20,6 +20,8 @@ protocol WatchlistPresentationLogic {
 }
 
 class WatchlistPresenter: WatchlistPresentationLogic {
+  typealias ViewModel = Watchlist.Favorite.ViewModel
+  
   weak var viewController: WatchlistDisplayLogic?
   
   // MARK: Do something
@@ -34,7 +36,8 @@ class WatchlistPresenter: WatchlistPresentationLogic {
   }
   
   func presentFavorite(response: Watchlist.Favorite.Response) {
-    viewController?.displayFavorite(viewModel: Watchlist.Favorite.ViewModel(id: response.id, symbol: response.symbol))
+    viewController?.displayFavorite(viewModel: ViewModel(identifier: response.identifier,
+                                                         symbol: response.symbol))
   }
   
   func presentError(_ error: CTError) {

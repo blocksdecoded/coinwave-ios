@@ -57,7 +57,7 @@ extension Connection {
     }
     
     set {
-      try? run("PRAGMA user_version = \(newValue)")
+      _ = try? run("PRAGMA user_version = \(newValue)")
     }
   }
 }

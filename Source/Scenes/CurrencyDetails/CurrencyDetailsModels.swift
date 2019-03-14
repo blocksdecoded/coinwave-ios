@@ -16,6 +16,7 @@ enum CurrencyDetails {
   // MARK: Use cases
   
   enum AddFavorite {
+    // swiftlint:disable nesting
     struct Request {
       let coin: CRCoin
     }

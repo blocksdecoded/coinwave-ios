@@ -11,6 +11,8 @@
 import SVGKit
 
 extension SVGKFastImageView {
+  
+  @discardableResult
   func load(_ iconUrl: String) -> URLSessionTask? {
     if let svgData = DataCache.shared.read(for: iconUrl) {
       image = SVGKImage(data: svgData)

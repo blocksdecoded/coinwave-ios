@@ -256,20 +256,24 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
       loadingView.heightAnchor.constraint(equalToConstant: 50)
     ]
     
-    NSLayoutConstraint.activate(chartC + navigationViewC + headerForCurrenciesListC + watchTableC + menuBtnC + titleLblC + topCircleC + loadingViewC + errorViewC)
+    NSLayoutConstraint.activate(
+      chartC +
+      navigationViewC +
+      headerForCurrenciesListC +
+      watchTableC +
+      menuBtnC +
+      titleLblC +
+      topCircleC +
+      loadingViewC +
+      errorViewC)
   }
-  
-  // MARK: Do something
   
   private func openDetails(_ index: Int) {
     guard let curr = currencies?[index] else {
       return
     }
-    
-    router?.openDetails(currencyID: curr.id, currencySymbol: curr.symbol)
+    router?.openDetails(currencyID: curr.identifier, currencySymbol: curr.symbol)
   }
-  
-  //@IBOutlet weak var nameTextField: UITextField!
   
   func doSomething() {
     errorView.isHidden = true
@@ -297,7 +301,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }
   
   func displayFavorite(viewModel: Watchlist.Favorite.ViewModel) {
-    chart.load(coinID: viewModel.id, coinSymbol: viewModel.symbol, time: .h24)
+    chart.load(coinID: viewModel.identifier, coinSymbol: viewModel.symbol, time: .hour24)
   }
   
   func displayNoFavorite() {

@@ -85,11 +85,11 @@ class DataStore {
     }
   }
   
-  func fetchCoin(_ id: Int) -> CRCoin? {
+  func fetchCoin(_ identifier: Int) -> CRCoin? {
     do {
-      return try CRCoinDataHelper.find(id: Int64(id))
+      return try CRCoinDataHelper.find(id: Int64(identifier))
     } catch {
-      fatalError("Cannot fetch coin \(id)")
+      fatalError("Cannot fetch coin \(identifier)")
     }
   }
   

@@ -222,7 +222,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     setupViews()
     setupConstraints()
     doSomething(currID: currencyID)
-    chart.load(coinID: currencyID, coinSymbol: currencySymbol, time: .h24)
+    chart.load(coinID: currencyID, coinSymbol: currencySymbol, time: .hour24)
   }
   
   private func setupViews() {
@@ -297,7 +297,8 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     ]
     
     let favoriteC = [
-      navigationView.trailingAnchor.constraint(equalTo: favoriteBtn.trailingAnchor, constant: favoriteButtonRightMargin),
+      navigationView.trailingAnchor.constraint(equalTo: favoriteBtn.trailingAnchor,
+                                               constant: favoriteButtonRightMargin),
       favoriteBtn.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
       favoriteBtn.widthAnchor.constraint(equalToConstant: favoriteButtonWidth),
       favoriteBtn.heightAnchor.constraint(equalToConstant: favoriteButtonHeight)
@@ -356,7 +357,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   }
   
   func displayError(_ string: String) {
-    //TODO: Display error
+    // TODO: Display error
   }
   
   func changeFavorites(viewModel: CurrencyDetails.AddFavorite.ViewModel) {
@@ -394,15 +395,15 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     var timeframe: CRTimeframe
     switch sender.tag {
     case todayBtnTag:
-      timeframe = .h24
+      timeframe = .hour24
     case weekBtnTag:
-      timeframe = .d7
+      timeframe = .day7
     case monthBtnTag:
-      timeframe = .d30
+      timeframe = .day30
     case yearBtnTag:
-      timeframe = .y1
+      timeframe = .year1
     case year5BtnTag:
-      timeframe = .y5
+      timeframe = .year5
     default:
       return
     }
@@ -416,7 +417,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   @objc private func refreshTable() {
     let request = CurrencyDetails.Something.Request(currID: currencyID)
     interactor?.doSomething(request: request)
-    chart.load(coinID: currencyID, coinSymbol: currencySymbol, time: .h24)
+    chart.load(coinID: currencyID, coinSymbol: currencySymbol, time: .hour24)
   }
 }
 
@@ -434,7 +435,8 @@ extension CurrencyDetailsViewController: UITableViewDelegate, UITableViewDataSou
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.section == 0 {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyDetailsCell.reuseID) as? CurrencyDetailsCell
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyDetailsCell.reuseID)
+                                                                          as? CurrencyDetailsCell
         else {
         fatalError("\(CurrencyDetailsCell.self) not registered")
       }
@@ -447,7 +449,8 @@ extension CurrencyDetailsViewController: UITableViewDelegate, UITableViewDataSou
       
       return cell
     } else {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyDetailsBottomCell.reuseID) as? CurrencyDetailsBottomCell
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyDetailsBottomCell.reuseID)
+                                                                          as? CurrencyDetailsBottomCell
         else {
           fatalError("\(CurrencyDetailsBottomCell.self) not registered")
       }

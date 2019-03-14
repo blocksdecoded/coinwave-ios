@@ -22,6 +22,8 @@ protocol WatchlistDataStore {
 }
 
 class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
+  typealias Response = Watchlist.Favorite.Response
+  
   var presenter: WatchlistPresentationLogic?
   var worker: CoinsWorker?
   
@@ -59,7 +61,8 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
         if coin == nil {
           self.presenter?.presentNoFavorite()
         } else {
-          self.presenter?.presentFavorite(response: Watchlist.Favorite.Response(id: Int(coin!.id), symbol: coin!.symbol))
+          self.presenter?.presentFavorite(response: Response(identifier: Int(coin!.identifier),
+                                                             symbol: coin!.symbol))
         }
       }
     }

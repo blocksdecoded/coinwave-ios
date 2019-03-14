@@ -14,7 +14,7 @@ import UIKit
 
 protocol AddToWatchlistBusinessLogic {
   func doSomething(request: AddToWatchlist.Something.Request)
-  func addToWatchlist(id: AddToWatchlist.Add.Request)
+  func addToWatchlist(request: AddToWatchlist.Add.Request)
 }
 
 protocol AddToWatchlistDataStore {
@@ -40,10 +40,10 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
     }
   }
   
-  func addToWatchlist(id: AddToWatchlist.Add.Request) {
-    var mutableCoin = id.coin
+  func addToWatchlist(request: AddToWatchlist.Add.Request) {
+    var mutableCoin = request.coin
     mutableCoin.isWatchlist = !mutableCoin.isWatchlist
     worker?.update(mutableCoin)
-    self.presenter?.addToWatchlist(response: AddToWatchlist.Add.Response(position: id.position, coin: mutableCoin))
+    self.presenter?.addToWatchlist(response: AddToWatchlist.Add.Response(position: request.position, coin: mutableCoin))
   }
 }

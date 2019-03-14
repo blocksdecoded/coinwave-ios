@@ -26,7 +26,7 @@ class ConfigInteractor: ConfigBusinessLogic, ConfigDataStore {
   
   func viewDidLoad() {
     worker = ConfigWorker()
-    worker?.getConfig ( { config in
+    worker?.getConfig ({ config in
       if config.servers.count >= 1 {
         Constants.coinsBaseURL = config.servers[0].trimmingCharacters(in: ["/"])
       }

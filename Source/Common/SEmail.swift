@@ -37,4 +37,3 @@ class SEmail {
     return matches != nil
   }
 }
-

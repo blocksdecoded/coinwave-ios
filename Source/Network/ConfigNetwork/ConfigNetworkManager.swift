@@ -11,7 +11,10 @@ import Foundation
 struct ConfigNetworkManager: NetworkManager {
   private let router = Router<ConfigApi>()
   
-  private func callCompletion(_ config: Bootstrap?, _ error: String?, _ completion: @escaping (_ config: Bootstrap?, _ error: String?) -> Void) {
+  private func callCompletion(_ config: Bootstrap?,
+                              _ error: String?,
+                              _ completion: @escaping (_ config: Bootstrap?,
+                                                       _ error: String?) -> Void) {
     DispatchQueue.main.async {
       completion(config, error)
     }

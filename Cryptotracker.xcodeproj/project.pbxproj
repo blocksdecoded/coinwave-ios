@@ -31,7 +31,6 @@
 		B52712272238DA1A00D57639 /* ConfigPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712212238DA1A00D57639 /* ConfigPresenter.swift */; };
 		B527122A2238DA1A00D57639 /* ConfigWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712222238DA1A00D57639 /* ConfigWorker.swift */; };
 		B527122D2238DA1A00D57639 /* ConfigRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712232238DA1A00D57639 /* ConfigRouter.swift */; };
-		B52712302238DA1A00D57639 /* ConfigModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712242238DA1A00D57639 /* ConfigModels.swift */; };
 		B52712332238DA1A00D57639 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712252238DA1A00D57639 /* ConfigViewController.swift */; };
 		B52712362238DA1A00D57639 /* ConfigInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712262238DA1A00D57639 /* ConfigInteractor.swift */; };
 		B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAD21A00F59000A74A5 /* AppDelegate.swift */; };
@@ -147,7 +146,6 @@
 		B52712212238DA1A00D57639 /* ConfigPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigPresenter.swift; sourceTree = "<group>"; };
 		B52712222238DA1A00D57639 /* ConfigWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigWorker.swift; sourceTree = "<group>"; };
 		B52712232238DA1A00D57639 /* ConfigRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigRouter.swift; sourceTree = "<group>"; };
-		B52712242238DA1A00D57639 /* ConfigModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigModels.swift; sourceTree = "<group>"; };
 		B52712252238DA1A00D57639 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		B52712262238DA1A00D57639 /* ConfigInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigInteractor.swift; sourceTree = "<group>"; };
 		B5271254223922BE00D57639 /* DebugConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugConfig.xcconfig; sourceTree = "<group>"; };
@@ -311,7 +309,6 @@
 				B52712212238DA1A00D57639 /* ConfigPresenter.swift */,
 				B52712222238DA1A00D57639 /* ConfigWorker.swift */,
 				B52712232238DA1A00D57639 /* ConfigRouter.swift */,
-				B52712242238DA1A00D57639 /* ConfigModels.swift */,
 				B52712252238DA1A00D57639 /* ConfigViewController.swift */,
 				B52712262238DA1A00D57639 /* ConfigInteractor.swift */,
 			);
@@ -849,7 +846,6 @@
 				B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */,
 				B5E93D6421A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B501299C21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
-				B52712302238DA1A00D57639 /* ConfigModels.swift in Sources */,
 				B5E93D3A21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
 				B527122A2238DA1A00D57639 /* ConfigWorker.swift in Sources */,
 				B5F5BFA721A426680012599B /* PostsCell.swift in Sources */,

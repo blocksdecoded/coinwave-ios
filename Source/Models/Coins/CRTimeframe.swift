@@ -9,25 +9,25 @@
 import Foundation
 
 enum CRTimeframe {
-  case h24
-  case d7
-  case d30
-  case y1
-  case y5
+  case hour24
+  case day7
+  case day30
+  case year1
+  case year5
 }
 
 extension CRTimeframe {
   var value: String {
     switch self {
-    case .h24:
+    case .hour24:
       return "24h"
-    case .d7:
+    case .day7:
       return "7d"
-    case .d30:
+    case .day30:
       return "30d"
-    case .y1:
+    case .year1:
       return "1y"
-    case .y5:
+    case .year5:
       return "5y"
     }
   }

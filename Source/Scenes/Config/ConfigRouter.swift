@@ -26,16 +26,14 @@ class ConfigRouter: NSObject, ConfigRoutingLogic, ConfigDataPassing {
   
   // MARK: Routing
   
-  func routeToMainScreen(segue: UIStoryboardSegue?)
-  {
+  func routeToMainScreen(segue: UIStoryboardSegue?) {
     let destinationVC = MainTabBarController()
     navigateToSomewhere(source: viewController!, destination: destinationVC)
   }
 
   // MARK: Navigation
   
-  func navigateToSomewhere(source: ConfigViewController, destination: UIViewController)
-  {
+  func navigateToSomewhere(source: ConfigViewController, destination: UIViewController) {
     source.navigationController?.setViewControllers([destination], animated: true)
   }
 }

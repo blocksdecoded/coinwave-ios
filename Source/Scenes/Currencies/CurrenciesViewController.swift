@@ -203,7 +203,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       return
     }
     
-    router?.openDetails(currencyID: curr.id, currencySymbol: curr.symbol)
+    router?.openDetails(currencyID: curr.identifier, currencySymbol: curr.symbol)
   }
   
   private func onPickFavorite(_ index: Int) {
@@ -246,7 +246,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   }
   
   private func setupConstraints() {
-    
     let navigationViewC = [
       navigationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
       navigationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -280,7 +279,12 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       loadingView.heightAnchor.constraint(equalToConstant: 50)
     ]
     
-    NSLayoutConstraint.activate(navigationViewC + headerForCurrenciesListC + currenciesListC + errorViewC + loadingViewC)
+    NSLayoutConstraint.activate(
+      navigationViewC +
+      headerForCurrenciesListC +
+      currenciesListC +
+      errorViewC +
+      loadingViewC)
     
     switch version {
     case .list:
@@ -304,7 +308,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     }
   }
 
-  // MARK: Do something
   func fetchCoins() {
     errorView.isHidden = true
     loadingView.isHidden = false
