@@ -188,7 +188,6 @@ extension CRCoin {
     case marketCap
     case volume
     case price
-    case rank
   }
   
   enum OrderType: String {

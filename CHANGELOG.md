@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed:
 - Release icon
 - Bigger font in side menu
+- Price color
 
 ### Fixed:
 - Back button area increased

@@ -33,6 +33,11 @@
 		B527122D2238DA1A00D57639 /* ConfigRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712232238DA1A00D57639 /* ConfigRouter.swift */; };
 		B52712332238DA1A00D57639 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712252238DA1A00D57639 /* ConfigViewController.swift */; };
 		B52712362238DA1A00D57639 /* ConfigInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712262238DA1A00D57639 /* ConfigInteractor.swift */; };
+		B5271260223A365D00D57639 /* RateUsAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B527125B223A365D00D57639 /* RateUsAssets.xcassets */; };
+		B5271261223A365D00D57639 /* RatingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527125C223A365D00D57639 /* RatingController.swift */; };
+		B5271262223A365D00D57639 /* VRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527125D223A365D00D57639 /* VRoundView.swift */; };
+		B5271263223A365D00D57639 /* VRateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527125E223A365D00D57639 /* VRateBar.swift */; };
+		B5271264223A365D00D57639 /* RatingController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B527125F223A365D00D57639 /* RatingController.storyboard */; };
 		B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAD21A00F59000A74A5 /* AppDelegate.swift */; };
 		B5276AB021A00F59000A74A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAF21A00F59000A74A5 /* ViewController.swift */; };
 		B5276AB521A00F5A000A74A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB421A00F5A000A74A5 /* Assets.xcassets */; };
@@ -151,6 +156,11 @@
 		B5271254223922BE00D57639 /* DebugConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugConfig.xcconfig; sourceTree = "<group>"; };
 		B5271255223922CE00D57639 /* StagingConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StagingConfig.xcconfig; sourceTree = "<group>"; };
 		B5271256223922DB00D57639 /* ReleaseConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ReleaseConfig.xcconfig; sourceTree = "<group>"; };
+		B527125B223A365D00D57639 /* RateUsAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RateUsAssets.xcassets; sourceTree = "<group>"; };
+		B527125C223A365D00D57639 /* RatingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingController.swift; sourceTree = "<group>"; };
+		B527125D223A365D00D57639 /* VRoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VRoundView.swift; sourceTree = "<group>"; };
+		B527125E223A365D00D57639 /* VRateBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VRateBar.swift; sourceTree = "<group>"; };
+		B527125F223A365D00D57639 /* RatingController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RatingController.storyboard; sourceTree = "<group>"; };
 		B5276AAA21A00F59000A74A5 /* Cryptotracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptotracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5276AAD21A00F59000A74A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5276AAF21A00F59000A74A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -323,6 +333,18 @@
 				B5271256223922DB00D57639 /* ReleaseConfig.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		B527125A223A35C000D57639 /* RateUs */ = {
+			isa = PBXGroup;
+			children = (
+				B527125B223A365D00D57639 /* RateUsAssets.xcassets */,
+				B527125F223A365D00D57639 /* RatingController.storyboard */,
+				B527125C223A365D00D57639 /* RatingController.swift */,
+				B527125E223A365D00D57639 /* VRateBar.swift */,
+				B527125D223A365D00D57639 /* VRoundView.swift */,
+			);
+			path = RateUs;
 			sourceTree = "<group>";
 		};
 		B5276AA121A00F59000A74A5 = {
@@ -576,6 +598,7 @@
 		B5E93D4F21A7C09500D1705A /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				B527125A223A35C000D57639 /* RateUs */,
 				B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */,
 				B5E93D5421A7E68000D1705A /* PostNavigationView.swift */,
 				B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */,
@@ -702,9 +725,11 @@
 				B51ECC6A22253FB5006CE6FC /* SFProText-Bold.otf in Resources */,
 				B5E93D8A21A82C5900D1705A /* TVCCrypto.xib in Resources */,
 				B51ECC7022253FB5006CE6FC /* SFProText-Regular.otf in Resources */,
+				B5271260223A365D00D57639 /* RateUsAssets.xcassets in Resources */,
 				B5276AB821A00F5A000A74A5 /* LaunchScreen.storyboard in Resources */,
 				B5276AB521A00F5A000A74A5 /* Assets.xcassets in Resources */,
 				B51ECC6422253F69006CE6FC /* SFProText-Semibold.otf in Resources */,
+				B5271264223A365D00D57639 /* RatingController.storyboard in Resources */,
 				B51ECC6D22253FB5006CE6FC /* SFProText-Heavy.otf in Resources */,
 				B5FCEA90220D900800E4B433 /* SFProText-Light.otf in Resources */,
 			);
@@ -812,6 +837,7 @@
 				B501299121A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
 				B572E95B2202F34900778DA8 /* DataCache.swift in Sources */,
 				B55500FD2237953B00FB7165 /* Price.swift in Sources */,
+				B5271261223A365D00D57639 /* RatingController.swift in Sources */,
 				B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B527122D2238DA1A00D57639 /* ConfigRouter.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
@@ -845,6 +871,7 @@
 				B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */,
 				B5E93D6421A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
+				B5271263223A365D00D57639 /* VRateBar.swift in Sources */,
 				B501299C21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
 				B5E93D3A21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
 				B527122A2238DA1A00D57639 /* ConfigWorker.swift in Sources */,
@@ -879,6 +906,7 @@
 				B5FCEABF2212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */,
 				B52712362238DA1A00D57639 /* ConfigInteractor.swift in Sources */,
 				B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
+				B5271262223A365D00D57639 /* VRoundView.swift in Sources */,
 				B572E94B2202AFDF00778DA8 /* CRBase.swift in Sources */,
 				B5FCEA98220DB0C400E4B433 /* SEmail.swift in Sources */,
 				B501299421A94BC0001B6A04 /* CurrencyDetailsViewController.swift in Sources */,

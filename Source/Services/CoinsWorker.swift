@@ -25,7 +25,7 @@ class CoinsWorker {
   
   func fetchCoin(_ coinId: Int, _ completion: @escaping (CRCoin?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
-      fetchRemoteCoins(.rank, .asc) { _, error in
+      fetchRemoteCoins(.marketCap, .desc) { _, error in
         if error != nil {
           completion(nil, error)
         } else {
@@ -59,7 +59,7 @@ class CoinsWorker {
   
   func fetchFavorite(_ completion: @escaping (CRCoin?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
-      fetchRemoteCoins(.rank, .asc) { _, error in
+      fetchRemoteCoins(.marketCap, .desc) { _, error in
         if error != nil {
           completion(nil, error)
         } else {

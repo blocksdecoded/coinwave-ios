@@ -103,7 +103,7 @@ extension MainTabBarController: MenuDelegate {
   
   func fourthClicked() {
     //Rate
-    
+    RatingController.show(root: self)
   }
   
   func fifthClicked() {

@@ -339,7 +339,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   }
   
   func setSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {
-    var button: UIButton?
+    var button: UIButton
     var others: [UIButton]
     
     switch field {
@@ -355,13 +355,10 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     case .marketCap:
       button = marketCapColumn
       others = titles.filter { $0 != marketCapColumn }
-    case .rank:
-      button = nil
-      others = titles
     }
     
-    button?.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
-    button?.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
+    button.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
+    button.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
     
     var image: UIImage?
     switch type {
@@ -371,7 +368,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       image = UIImage(named: "triangle_down")?.withRenderingMode(.alwaysTemplate)
     }
     
-    button?.setImage(image, for: .normal)
+    button.setImage(image, for: .normal)
     defaultButton(others)
   }
   

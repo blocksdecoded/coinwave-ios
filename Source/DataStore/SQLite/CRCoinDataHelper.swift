@@ -166,7 +166,7 @@ class CRCoinDataHelper: DataHelperProtocol {
     return result
   }
   
-  static func findAll(field: CRCoin.OrderField = .rank, type: CRCoin.OrderType = .asc) throws -> [CRCoin]? {
+  static func findAll(field: CRCoin.OrderField = .marketCap, type: CRCoin.OrderType = .desc) throws -> [CRCoin]? {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
@@ -184,8 +184,6 @@ class CRCoinDataHelper: DataHelperProtocol {
         expressible = currPrice.asc
       case .volume:
         expressible = currVolume.asc
-      case .rank:
-        expressible = currRank.asc
       }
     case .desc:
       switch field {
@@ -197,8 +195,6 @@ class CRCoinDataHelper: DataHelperProtocol {
         expressible = currPrice.desc
       case .volume:
         expressible = currVolume.desc
-      case .rank:
-        expressible = currRank.desc
       }
     }
     
@@ -210,7 +206,7 @@ class CRCoinDataHelper: DataHelperProtocol {
     return result
   }
   
-  static func watchlist(field: CRCoin.OrderField = .rank, type: CRCoin.OrderType = .asc) throws -> [CRCoin]? {
+  static func watchlist(field: CRCoin.OrderField = .marketCap, type: CRCoin.OrderType = .desc) throws -> [CRCoin]? {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
@@ -228,8 +224,6 @@ class CRCoinDataHelper: DataHelperProtocol {
         expressible = currPrice.asc
       case .volume:
         expressible = currVolume.asc
-      case .rank:
-        expressible = currRank.asc
       }
     case .desc:
       switch field {
@@ -241,8 +235,6 @@ class CRCoinDataHelper: DataHelperProtocol {
         expressible = currPrice.desc
       case .volume:
         expressible = currVolume.desc
-      case .rank:
-        expressible = currRank.desc
       }
     }
     

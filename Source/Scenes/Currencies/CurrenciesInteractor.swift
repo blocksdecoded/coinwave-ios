@@ -62,8 +62,8 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   
   func viewDidLoad() {
     let (field, type) = getSortConfig()
-    sortField = field ?? .rank
-    sortType = type ?? .asc
+    sortField = field ?? .marketCap
+    sortType = type ?? .desc
     presenter?.presentSort(sortField, sortType)
   }
   

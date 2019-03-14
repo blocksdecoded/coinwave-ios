@@ -39,6 +39,20 @@ struct Constants {
     }
   }
   
+  static var appUrl: String {
+    if let appStoreUrl = Bundle.main.infoDictionary?["AppStoreURL"] as? String {
+      return "https://\(appStoreUrl)"
+    }
+    return ""
+  }
+  
+  static var appName: String {
+    if let name = Bundle.main.infoDictionary?["CFBundleName"] as? String {
+      return name
+    }
+    return ""
+  }
+  
   static var bootstrapBaseURL: String {
     if let url = Bundle.main.infoDictionary?["BootstrapBaseUrl"] as? String {
       return url
