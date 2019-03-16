@@ -22,15 +22,6 @@ extension Price {
     
     value = notNilDouble
   }
-  
-  init?(string: String?) {
-    guard let notNilString = string,
-          let value = Double(notNilString) else {
-      return nil
-    }
-    
-    self.value = value
-  }
 }
 
 extension Price {
@@ -82,4 +73,26 @@ extension Price {
   }
 }
 
-extension Price: Decodable {}
+extension Price: Decodable {
+  init(from decoder: Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    do {
+      let double = try container.decode(Double?.self)
+      
+      guard let notNilDouble = double else {
+        throw ValueError.nilValue
+      }
+      
+      value = notNilDouble
+    } catch {
+      let string = try container.decode(String?.self)
+      
+      guard let notNilString = string,
+        let value = Double(notNilString) else {
+          throw ValueError.nilValue
+      }
+      
+      self.value = value
+    }
+  }
+}

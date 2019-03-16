@@ -14,7 +14,7 @@ enum ConfigApi {
 
 extension ConfigApi: EndPointType {
   var constructedURL: String {
-    return "http://\(Constants.bootstrapBaseURL)"
+    return Constants.bootstrapBaseURL
   }
   
   var path: String {

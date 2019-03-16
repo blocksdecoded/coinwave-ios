@@ -41,7 +41,7 @@ struct Constants {
   
   static var appUrl: String {
     if let appStoreUrl = Bundle.main.infoDictionary?["AppStoreURL"] as? String {
-      return "https://\(appStoreUrl)"
+      return "\(appStoreUrl)"
     }
     return ""
   }

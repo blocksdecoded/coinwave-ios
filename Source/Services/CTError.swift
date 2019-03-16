@@ -12,3 +12,7 @@ enum CTError: String {
   case network, noData = "You are currently offline.\nCheck your internet connection"
   case emptyWatchlist = "Your watchlist is empty"
 }
+
+enum ValueError: Error {
+  case nilValue
+}

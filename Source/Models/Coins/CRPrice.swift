@@ -28,7 +28,7 @@ extension CRPrice: Decodable {
   
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: Keys.self)
-    let price = Price(string: try container.decode(String?.self, forKey: .price))
+    let price = try container.decode(Price?.self, forKey: .price)
     let timestamp = try container.decode(Double?.self, forKey: .timestamp)
     self.init(price: price, timestamp: timestamp)
   }
