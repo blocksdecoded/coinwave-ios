@@ -28,6 +28,21 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B594F036223D3DBE005B8566"
+               BuildableName = "CryptotrackerTests.xctest"
+               BlueprintName = "CryptotrackerTests"
+               ReferencedContainer = "container:Cryptotracker.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "CRCoinTests">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -1,0 +1,70 @@
+{
+    "id": 1,
+    "slug": "bitcoin-btc",
+    "symbol": "BTC",
+    "name": "Bitcoin",
+    "description": "Bitcoin is the first decentralized digital currency that can be sent through the internet globally without using financial institutions like banks. The network is controlled by many of its users, instead of a few entities.",
+    "color": "#f7931A",
+    "iconType": "vector",
+    "iconUrl": "https://cdn.coinranking.com/Sy33Krudb/btc.svg",
+    "websiteUrl": "https://bitcoin.org",
+    "socials": [
+        {
+            "name": "bitcoin/bitcoin",
+            "url": "https://github.com/bitcoin/bitcoin",
+            "type": "github"
+        },
+        {
+            "name": "r/bitcoin",
+            "url": "https://www.reddit.com/r/bitcoin/",
+            "type": "reddit"
+        }
+    ],
+    "confirmedSupply": true,
+    "numberOfMarkets": 9237,
+    "numberOfExchanges": 198,
+    "type": "coin",
+    "volume": null,
+    "marketCap": 71398305865,
+    "price": "4058.8754342943",
+    "circulatingSupply": 17590662,
+    "totalSupply": 17590662,
+    "approvedSupply": true,
+    "firstSeen": 1330214400000,
+    "change": 2.94,
+    "rank": 1,
+    "history": [
+        "3943.0788635429",
+        "3952.8582084653",
+        "3955.8222382557",
+        "3951.0978352544",
+        "3953.9239573142",
+        "3963.0705010205",
+        "3962.0739951639",
+        "3965.5029307835",
+        "3964.2653111445",
+        "3965.5365075383",
+        "3964.0827594348",
+        "3955.1569444553",
+        "3958.3944956086",
+        "3959.5100815062",
+        "3963.8006305139",
+        "3979.2662252252",
+        "3994.680326996",
+        "3996.3197909502",
+        "4034.0686432782",
+        "4064.8592575418",
+        "4049.0135833968",
+        "4056.0068924409",
+        "4052.7916220365",
+        "4047.4087334185",
+        "4058.0391499238",
+        "4059.2968225411",
+        "4058.8754342943"
+    ],
+    "allTimeHigh": {
+        "price": "19500.47124838819",
+        "timestamp": 1513555200000
+    },
+    "penalty": false
+}

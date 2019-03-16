@@ -96,3 +96,7 @@ extension Price: Decodable {
     }
   }
 }
+
+extension Price: Equatable {
+  
+}
