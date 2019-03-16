@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct Post: Codable {
+struct Post: Decodable {
   // swiftlint:disable identifier_name
   let id: Int
   let title: String
   let date: String
   let author: String
   let html: String?
-  let url: String
+  let url: URL
   let image: FeaturedImage?
   let likes: Int
   let liked: Bool
@@ -40,7 +40,7 @@ struct Post: Codable {
        date: String,
        author: String,
        html: String?,
-       url: String,
+       url: URL,
        featured: String?,
        middle: String?,
        thumb: String?,
@@ -64,7 +64,7 @@ struct Post: Codable {
        date: String,
        author: String,
        html: String?,
-       url: String,
+       url: URL,
        image: FeaturedImage?,
        likes: Int,
        liked: Bool,
@@ -119,6 +119,6 @@ struct PostCategory {
   let categoryID: Int
 }
 
-struct PostsList: Codable {
+struct PostsList: Decodable {
   let posts: [Post]
 }

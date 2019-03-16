@@ -29,7 +29,7 @@ class PostPreviewViewController: UIViewController, PostPreviewDisplayLogic {
   var initialOffset: CGFloat = 0
   let delay: CGFloat = 60
   
-  var postUrl: String = ""
+  var postUrl: URL!
   var postFontSize: Float = 0
   
   var navigationViewTopConstraint = NSLayoutConstraint()

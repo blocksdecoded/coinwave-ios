@@ -145,11 +145,9 @@ class PostsViewController: UIViewController, PostsDisplayLogic {
   // MARK: Routing
   
   private func openPost(index: Int) {
-    if let url = URL(string: posts![index].url) {
-      let webVC = SFSafariViewController(url: url)
-      webVC.delegate = self
-      present(webVC, animated: true, completion: nil)
-    }
+    let webVC = SFSafariViewController(url: posts![index].url)
+    webVC.delegate = self
+    present(webVC, animated: true, completion: nil)
   }
   
   // MARK: View lifecycle

@@ -34,7 +34,7 @@ enum PostPreview {
     }
     struct ViewModel {
       let html: String
-      let url: String
+      let url: URL
       let fontSize: Float
     }
   }
