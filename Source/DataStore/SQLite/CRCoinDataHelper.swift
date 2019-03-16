@@ -300,6 +300,16 @@ class CRCoinDataHelper: DataHelperProtocol {
       iconType = CRCoin.IconType(rawValue: rawIconType)
     }
     
+    var websiteURL: URL? = nil
+    if let strWebsiteURL = row[currWebsiteUrl] {
+      websiteURL = URL(string: strWebsiteURL)
+    }
+    
+    var iconURL: URL? = nil
+    if let strIconURL = row[currIconUrl] {
+      iconURL = URL(string: strIconURL)
+    }
+    
     return CRCoin(identifier: Int(row[currID]),
                   slug: row[currSlug],
                   symbol: row[currSymbol],
@@ -307,8 +317,8 @@ class CRCoinDataHelper: DataHelperProtocol {
                   description: row[currDescription],
                   color: row[currColor],
                   iconType: iconType,
-                  iconUrl: row[currIconUrl],
-                  websiteUrl: row[currWebsiteUrl],
+                  iconUrl: iconURL,
+                  websiteUrl: websiteURL,
                   confirmedSupply: row[currConfirmedSupply],
                   type: CRCoin.CoinType(rawValue: row[currType])!,
                   volume: Price(row[currVolume]),
@@ -351,8 +361,8 @@ class CRCoinDataHelper: DataHelperProtocol {
       currDescription <- item.description,
       currColor <- item.color,
       currIconType <- item.iconType?.rawValue,
-      currIconUrl <- item.iconUrl,
-      currWebsiteUrl <- item.websiteUrl,
+      currIconUrl <- item.iconUrl?.absoluteString,
+      currWebsiteUrl <- item.websiteUrl?.absoluteString,
       currConfirmedSupply <- item.confirmedSupply,
       currType <- item.type.rawValue,
       currVolume <- item.volume?.value,

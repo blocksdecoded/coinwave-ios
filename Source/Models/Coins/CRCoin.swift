@@ -17,8 +17,8 @@ struct CRCoin {
   let description: String?
   let color: String?
   let iconType: IconType?
-  let iconUrl: String?
-  let websiteUrl: String?
+  let iconUrl: URL?
+  let websiteUrl: URL?
   let confirmedSupply: Bool
   let type: CoinType
   let volume: Price?
@@ -82,8 +82,8 @@ extension CRCoin: Decodable {
     let description = try container.decode(String?.self, forKey: .description)
     let color = try container.decode(String?.self, forKey: .color)
     let iconType = try container.decode(CRCoin.IconType?.self, forKey: .iconType)
-    let iconUrl = try container.decode(String?.self, forKey: .iconUrl)
-    let websiteUrl = try container.decode(String?.self, forKey: .websiteUrl)
+    let iconUrl = try container.decode(URL?.self, forKey: .iconUrl)
+    let websiteUrl = try container.decode(URL?.self, forKey: .websiteUrl)
     let confirmedSupply = try container.decode(Bool.self, forKey: .confirmedSupply)
     let type = try container.decode(CRCoin.CoinType.self, forKey: .type)
     let volume = Price(try container.decode(Double?.self, forKey: .volume))
@@ -175,10 +175,6 @@ extension CRCoin {
       return Constants.Colors.currencyUp
     }
     return Constants.Colors.def
-  }
-  
-  var iconUrlEncoded: String? {
-    return iconUrl?.replacingOccurrences(of: " ", with: "%20")
   }
 }
 

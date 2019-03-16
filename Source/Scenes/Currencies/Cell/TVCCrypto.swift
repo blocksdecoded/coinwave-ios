@@ -41,14 +41,14 @@ class TVCCrypto: UITableViewCell {
   
   private func setIcon(_ coin: CRCoin) {
     guard let iconType = coin.iconType,
-      let iconUrl = coin.iconUrlEncoded else {
+      let iconUrl = coin.iconUrl else {
         return
     }
     
     switch iconType {
     case .pixel:
       svgCryptoIcon.isHidden = true
-      cryptoIcon.kf.setImage(with: URL(string: iconUrl))
+      cryptoIcon.kf.setImage(with: iconUrl)
     case .vector:
       cryptoIcon.isHidden = true
       svgCryptoIcon.contentMode = .scaleAspectFit

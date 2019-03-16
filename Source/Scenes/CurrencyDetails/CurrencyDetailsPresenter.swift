@@ -23,7 +23,7 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
   typealias CurrencyInfo = CurrencyDetails.Something.ViewModel.Info
   
   weak var viewController: CurrencyDetailsDisplayLogic?
-  var coinSite: String?
+  var coinSite: URL?
   
   // MARK: Do something
   

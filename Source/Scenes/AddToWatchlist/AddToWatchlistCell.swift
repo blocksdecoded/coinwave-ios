@@ -193,7 +193,7 @@ class AddToWatchlistCell: UICollectionViewCell {
     switch iconType {
     case .pixel:
       svgIcon.isHidden = true
-      icon.kf.setImage(with: URL(string: iconUrl))
+      icon.kf.setImage(with: iconUrl)
     case .vector:
       icon.isHidden = true
       task = svgIcon.load(iconUrl)

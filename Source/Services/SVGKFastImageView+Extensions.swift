@@ -13,13 +13,10 @@ import SVGKit
 extension SVGKFastImageView {
   
   @discardableResult
-  func load(_ iconUrl: String) -> URLSessionTask? {
-    if let svgData = DataCache.shared.read(for: iconUrl) {
+  func load(_ url: URL) -> URLSessionTask? {
+    if let svgData = DataCache.shared.read(for: url.absoluteString) {
       image = SVGKImage(data: svgData)
     } else {
-      guard let url = URL(string: iconUrl) else {
-        fatalError()
-      }
       let request = URLRequest(url: url,
                                cachePolicy: .reloadRevalidatingCacheData,
                                timeoutInterval: 60 * 60 * 24 * 7)
@@ -30,7 +27,7 @@ extension SVGKFastImageView {
         }
         
         if response.statusCode == 200 && data != nil {
-          DataCache.shared.write(data: data!, for: iconUrl)
+          DataCache.shared.write(data: data!, for: url.absoluteString)
           DispatchQueue.main.async {
             self.image = SVGKImage(data: data!)
           }

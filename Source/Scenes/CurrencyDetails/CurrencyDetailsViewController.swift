@@ -18,7 +18,7 @@ import Kingfisher
 protocol CurrencyDetailsDisplayLogic: class {
   func displaySomething(viewModel: CurrencyDetails.Something.ViewModel)
   func changeFavorites(viewModel: CurrencyDetails.AddFavorite.ViewModel)
-  func openCoinWebsite(site: String)
+  func openCoinWebsite(site: URL)
   func openNoCoinWebsite()
   func displayError(_ string: String)
 }
@@ -338,7 +338,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
       switch viewModel.iconType! {
       case .pixel:
         vectorCoinIcon.isHidden = true
-        coinIcon.kf.setImage(with: URL(string: viewModel.iconUrl!))
+        coinIcon.kf.setImage(with: viewModel.iconUrl!)
       case .vector:
         coinIcon.isHidden = true
         vectorCoinIcon.load(viewModel.iconUrl!)
@@ -366,12 +366,10 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     favoriteBtn.setImage(UIImage(named: isFilledStar ? "filled_star" : "empty_star"), for: .normal)
   }
   
-  func openCoinWebsite(site: String) {
-    if let url = URL(string: site) {
-      let webVC = SFSafariViewController(url: url)
-      webVC.delegate = self
-      present(webVC, animated: true, completion: nil)
-    }
+  func openCoinWebsite(site: URL) {
+    let webVC = SFSafariViewController(url: site)
+    webVC.delegate = self
+    present(webVC, animated: true, completion: nil)
   }
   
   func openNoCoinWebsite() {
