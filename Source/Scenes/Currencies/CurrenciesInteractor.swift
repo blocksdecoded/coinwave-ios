@@ -66,32 +66,24 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   }
   
   func sortName(_ screen: String) {
-    sortType = sortType == .asc ? .desc : .asc
-    sortField = .name
-    sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
-    fetchCoins()
-    presenter?.presentSort(sortField, sortType)
+    sort(screen, .name)
   }
   
   func sortPrice(_ screen: String) {
-    sortType = sortType == .asc ? .desc : .asc
-    sortField = .price
-    sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
-    fetchCoins()
-    presenter?.presentSort(sortField, sortType)
+    sort(screen, .price)
   }
   
   func sortVolume(_ screen: String) {
-    sortType = sortType == .asc ? .desc : .asc
-    sortField = .volume
-    sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
-    fetchCoins()
-    presenter?.presentSort(sortField, sortType)
+    sort(screen, .volume)
   }
   
   func sortMarketCap(_ screen: String) {
+    sort(screen, .marketCap)
+  }
+  
+  private func sort(_ screen: String, _ field: CRCoin.OrderField) {
     sortType = sortType == .asc ? .desc : .asc
-    sortField = .marketCap
+    sortField = field
     sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
     fetchCoins()
     presenter?.presentSort(sortField, sortType)
