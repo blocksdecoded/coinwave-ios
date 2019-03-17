@@ -19,6 +19,7 @@ protocol WatchlistDisplayLogic: class {
   func displayNoFavorite()
   func displayNoWatchlist(_ string: String)
   func displayError(_ string: String)
+  func setSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType)
 }
 
 class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
@@ -30,8 +31,32 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   private var isEmptyWatchlist = false
   
+  private var screenName: String {
+    return "\(WatchlistViewController.self)"
+  }
+  
   var interactor: WatchlistBusinessLogic?
   var router: (NSObjectProtocol & WatchlistRoutingLogic & WatchlistDataPassing)?
+  
+  private lazy var nameColumn: UIButton = {
+    return columnTitle(text: "Name")
+  }()
+  
+  private lazy var marketCapColumn: UIButton = {
+    return columnTitle(text: "Market Cap")
+  }()
+  
+  private lazy var volumeColumn: UIButton = {
+    return columnTitle(text: "Volume (24h)")
+  }()
+  
+  private lazy var priceColumn: UIButton = {
+    return columnTitle(text: "Price (24h)")
+  }()
+  
+  private lazy var titles: [UIButton] = {
+    return [nameColumn, marketCapColumn, volumeColumn, priceColumn]
+  }()
   
   private lazy var loadingView: NVActivityIndicatorView = {
     let view = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
@@ -85,13 +110,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   private lazy var headerForCurrenciesList: UIView = {
     let headerView = UIView()
     headerView.translatesAutoresizingMaskIntoConstraints = false
-    
-    let firstColumn = columnTitle(text: "Name")
-    let secondColumn = columnTitle(text: "Market Cap")
-    let thirdColumn = columnTitle(text: "Volume (24h)")
-    let forthColumn = columnTitle(text: "Price (24h)")
-    
-    let stackView = UIStackView(arrangedSubviews: [firstColumn, secondColumn, thirdColumn, forthColumn])
+    let stackView = UIStackView(arrangedSubviews: titles)
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .horizontal
     stackView.alignment = .fill
@@ -108,13 +127,19 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     return headerView
   }()
   
-  private func columnTitle(text: String) -> UILabel {
-    let label = UILabel()
-    label.text = text
-    label.textAlignment = .center
-    label.textColor = UIColor.white.withAlphaComponent(0.7)
-    label.font = UIFont(name: Constants.Fonts.light, size: 11)
-    return label
+  private func columnTitle(text: String) -> UIButton {
+    let button = UIButton()
+    button.setTitle(text, for: .normal)
+    button.titleLabel?.textAlignment = .center
+    button.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+    button.tintColor = UIColor.white.withAlphaComponent(0.7)
+    button.titleLabel?.font = UIFont(name: Constants.Fonts.light, size: 11)
+    button.addTarget(self, action: #selector(sortCoins(_:)), for: .touchUpInside)
+    button.setImage(UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    button.semanticContentAttribute = .forceRightToLeft
+    button.imageEdgeInsets = UIEdgeInsets(top: 0.5, left: 2.5, bottom: -0.5, right: -2.5)
+    button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -2.5, bottom: 0, right: 2.5)
+    return button
   }
   
   private lazy var refreshControl: UIRefreshControl = {
@@ -158,10 +183,12 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     let presenter = WatchlistPresenter()
     let router = WatchlistRouter()
     let worker = CoinsWorker()
+    let sortWorker = SortingWorker()
     viewController.interactor = interactor
     viewController.router = router
     interactor.presenter = presenter
     interactor.worker = worker
+    interactor.sortingWorker = sortWorker
     presenter.viewController = viewController
     router.viewController = viewController
     router.dataStore = interactor
@@ -176,10 +203,12 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    print(screenName)
     setupViews()
     setupConstraints()
     doSomething()
     loadFavorite()
+    interactor?.viewDidLoad(screenName)
   }
   
   private func setupViews() {
@@ -282,7 +311,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     watchTable.isHidden = true
     headerForCurrenciesList.isHidden = true
     let request = Watchlist.Something.Request(field: .name, type: .asc)
-    interactor?.doSomething(request: request)
+    interactor?.fetchCoins(request: request)
   }
   
   func loadFavorite() {
@@ -329,12 +358,68 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     chart.showError()
   }
   
+  func setSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {
+    var button: UIButton
+    var others: [UIButton]
+    
+    switch field {
+    case .name:
+      button = nameColumn
+      others = titles.filter { $0 != nameColumn }
+    case .price:
+      button = priceColumn
+      others = titles.filter { $0 != priceColumn }
+    case .volume:
+      button = volumeColumn
+      others = titles.filter { $0 != volumeColumn }
+    case .marketCap:
+      button = marketCapColumn
+      others = titles.filter { $0 != marketCapColumn }
+    }
+    
+    button.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
+    button.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
+    
+    var image: UIImage?
+    switch type {
+    case .asc:
+      image = UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate)
+    case .desc:
+      image = UIImage(named: "triangle_down")?.withRenderingMode(.alwaysTemplate)
+    }
+    
+    button.setImage(image, for: .normal)
+    defaultButton(others)
+  }
+  
+  private func defaultButton(_ buttons: [UIButton]) {
+    for button in buttons {
+      button.tintColor = UIColor.white.withAlphaComponent(0.7)
+      button.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+    }
+  }
+  
+  @objc private func sortCoins(_ sender: UIButton) {
+    switch sender {
+    case nameColumn:
+      interactor?.sortName(screenName)
+    case marketCapColumn:
+      interactor?.sortMarketCap(screenName)
+    case volumeColumn:
+      interactor?.sortVolume(screenName)
+    case priceColumn:
+      interactor?.sortPrice(screenName)
+    default:
+      break
+    }
+  }
+  
   @objc private func menuClicked() {
     sideMenuDelegate?.openMenu()
   }
   
   @objc private func refreshTable() {
-    interactor?.doSomething(request: Watchlist.Something.Request(field: .name, type: .asc))
+    interactor?.fetchCoins(request: Watchlist.Something.Request(field: .name, type: .asc))
     interactor?.fetchFavorite()
   }
 }

@@ -17,6 +17,7 @@ protocol WatchlistPresentationLogic {
   func presentFavorite(response: Watchlist.Favorite.Response)
   func presentNoFavorite()
   func presentError(_ error: CTError)
+  func presentSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType)
 }
 
 class WatchlistPresenter: WatchlistPresentationLogic {
@@ -46,5 +47,9 @@ class WatchlistPresenter: WatchlistPresentationLogic {
     } else {
       viewController?.displayError(error.rawValue)
     }
+  }
+  
+  func presentSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {
+    viewController?.setSort(field, type)
   }
 }

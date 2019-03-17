@@ -13,8 +13,13 @@
 import UIKit
 
 protocol WatchlistBusinessLogic {
-  func doSomething(request: Watchlist.Something.Request)
+  func fetchCoins(request: Watchlist.Something.Request)
   func fetchFavorite()
+  func sortName(_ screen: String)
+  func sortPrice(_ screen: String)
+  func sortMarketCap(_ screen: String)
+  func sortVolume(_ screen: String)
+  func viewDidLoad(_ screen: String)
 }
 
 protocol WatchlistDataStore {
@@ -26,9 +31,17 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   
   var presenter: WatchlistPresentationLogic?
   var worker: CoinsWorker?
+  var sortingWorker: SortingWorker?
   
-  func doSomething(request: Watchlist.Something.Request) {
-    worker?.fetchWatchlist(request.field, request.type) { coins, error in
+  var sortField: CRCoin.OrderField!
+  var sortType: CRCoin.OrderType!
+  
+  func fetchCoins(request: Watchlist.Something.Request) {
+    fetchCoins(request.field, request.type)
+  }
+  
+  private func fetchCoins(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {
+    worker?.fetchWatchlist(field, type) { coins, error in
       if error != nil {
         self.presenter?.presentError(error!)
       } else {
@@ -45,6 +58,8 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
       }
     }
   }
+  
+  
   
   func fetchFavorite() {
     worker?.fetchFavorite { coin, error in
@@ -66,5 +81,36 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
         }
       }
     }
+  }
+  
+  func sortName(_ screen: String) {
+    sort(screen, .name)
+  }
+  
+  func sortPrice(_ screen: String) {
+    sort(screen, .price)
+  }
+  
+  func sortMarketCap(_ screen: String) {
+    sort(screen, .marketCap)
+  }
+  
+  func sortVolume(_ screen: String) {
+    sort(screen, .volume)
+  }
+  
+  func viewDidLoad(_ screen: String) {
+    let sort = sortingWorker?.getSortConfig(screen: screen)
+    sortField = sort?.0 ?? .marketCap
+    sortType = sort?.1 ?? .desc
+    presenter?.presentSort(sortField, sortType)
+  }
+  
+  private func sort(_ screen: String, _ field: CRCoin.OrderField) {
+    sortType = sortType == .asc ? .desc : .asc
+    sortField = field
+    sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
+    fetchCoins(sortField, sortType)
+    presenter?.presentSort(sortField, sortType)
   }
 }
