@@ -24,7 +24,7 @@ protocol CurrenciesDisplayLogic: class {
 }
 
 class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
-  enum Version {
+  enum Version: String {
     case list
     case favorite
   }
@@ -223,7 +223,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     navigationController?.interactivePopGestureRecognizer?.delegate = self
     setupViews()
     setupConstraints()
-    interactor?.viewDidLoad()
+    interactor?.viewDidLoad(version.rawValue)
     fetchCoins()
   }
   
@@ -410,13 +410,13 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   @objc private func sortCoins(_ sender: UIButton) {
     switch sender {
     case nameColumn:
-      interactor?.sortName()
+      interactor?.sortName(version.rawValue)
     case marketCapColumn:
-      interactor?.sortMarketCap()
+      interactor?.sortMarketCap(version.rawValue)
     case volumeColumn:
-      interactor?.sortVolume()
+      interactor?.sortVolume(version.rawValue)
     case priceColumn:
-      interactor?.sortPrice()
+      interactor?.sortPrice(version.rawValue)
     default:
       break
     }

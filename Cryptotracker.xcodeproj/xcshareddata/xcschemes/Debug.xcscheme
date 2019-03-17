@@ -37,11 +37,6 @@
                BlueprintName = "CryptotrackerTests"
                ReferencedContainer = "container:Cryptotracker.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "CRCoinTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

@@ -15,11 +15,11 @@ import UIKit
 protocol CurrenciesBusinessLogic {
   func fetchCoins(request: Currencies.FetchCoins.Request)
   func setFavorite(_ coin: CRCoin)
-  func sortName()
-  func sortPrice()
-  func sortMarketCap()
-  func sortVolume()
-  func viewDidLoad()
+  func sortName(_ screen: String)
+  func sortPrice(_ screen: String)
+  func sortMarketCap(_ screen: String)
+  func sortVolume(_ screen: String)
+  func viewDidLoad(_ screen: String)
 }
 
 protocol CurrenciesDataStore {
@@ -60,59 +60,59 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
     worker?.setFavorite(mutableCoin)
   }
   
-  func viewDidLoad() {
-    let (field, type) = getSortConfig()
+  func viewDidLoad(_ screen: String) {
+    let (field, type) = getSortConfig(screen: screen)
     sortField = field ?? .marketCap
     sortType = type ?? .desc
     presenter?.presentSort(sortField, sortType)
   }
   
-  func sortName() {
+  func sortName(_ screen: String) {
     sortType = sortType == .asc ? .desc : .asc
     sortField = .name
-    setSortConfig(field: sortField, type: sortType)
+    setSortConfig(screen: screen, field: sortField, type: sortType)
     fetchCoins()
     presenter?.presentSort(sortField, sortType)
   }
   
-  func sortPrice() {
+  func sortPrice(_ screen: String) {
     sortType = sortType == .asc ? .desc : .asc
     sortField = .price
-    setSortConfig(field: sortField, type: sortType)
+    setSortConfig(screen: screen, field: sortField, type: sortType)
     fetchCoins()
     presenter?.presentSort(sortField, sortType)
   }
   
-  func sortVolume() {
+  func sortVolume(_ screen: String) {
     sortType = sortType == .asc ? .desc : .asc
     sortField = .volume
-    setSortConfig(field: sortField, type: sortType)
+    setSortConfig(screen: screen, field: sortField, type: sortType)
     fetchCoins()
     presenter?.presentSort(sortField, sortType)
   }
   
-  func sortMarketCap() {
+  func sortMarketCap(_ screen: String) {
     sortType = sortType == .asc ? .desc : .asc
     sortField = .marketCap
-    setSortConfig(field: sortField, type: sortType)
+    setSortConfig(screen: screen, field: sortField, type: sortType)
     fetchCoins()
     presenter?.presentSort(sortField, sortType)
   }
   
-  private func setSortConfig(field: CRCoin.OrderField, type: CRCoin.OrderType) {
-    UserDefaults.standard.set(field.rawValue, forKey: CurrenciesInteractor.orderField)
-    UserDefaults.standard.set(type.rawValue, forKey: CurrenciesInteractor.orderType)
+  private func setSortConfig(screen: String, field: CRCoin.OrderField, type: CRCoin.OrderType) {
+    UserDefaults.standard.set(field.rawValue, forKey: "\(screen)_\(CurrenciesInteractor.orderField)")
+    UserDefaults.standard.set(type.rawValue, forKey: "\(screen)_\(CurrenciesInteractor.orderType)")
   }
   
-  private func getSortConfig() -> (CRCoin.OrderField?, CRCoin.OrderType?) {
+  private func getSortConfig(screen: String) -> (CRCoin.OrderField?, CRCoin.OrderType?) {
     var field: CRCoin.OrderField?
     var type: CRCoin.OrderType?
     
-    if let fieldRawValue = UserDefaults.standard.value(forKey: CurrenciesInteractor.orderField) as? String {
+    if let fieldRawValue = UserDefaults.standard.value(forKey: "\(screen)_\(CurrenciesInteractor.orderField)") as? String {
       field = CRCoin.OrderField(rawValue: fieldRawValue)
     }
     
-    if let typeRawValue = UserDefaults.standard.value(forKey: CurrenciesInteractor.orderType) as? String {
+    if let typeRawValue = UserDefaults.standard.value(forKey: "\(screen)_\(CurrenciesInteractor.orderType)") as? String {
       type = CRCoin.OrderType(rawValue: typeRawValue)
     }
     
