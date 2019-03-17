@@ -81,6 +81,7 @@
 		B594F046223D43EC005B8566 /* CRCoinPriceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */; };
 		B594F049223D46BB005B8566 /* NormalCRCoin.json in Resources */ = {isa = PBXBuildFile; fileRef = B594F048223D46BB005B8566 /* NormalCRCoin.json */; };
 		B594F04B223D55D2005B8566 /* CRCoinPrice.json in Resources */ = {isa = PBXBuildFile; fileRef = B594F04A223D55D2005B8566 /* CRCoinPrice.json */; };
+		B594F04D223E1DB6005B8566 /* SortingWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F04C223E1DB6005B8566 /* SortingWorker.swift */; };
 		B5CB3660221422ED00087C41 /* AddToWatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */; };
 		B5E1D6BF221D6CCB005419C8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */; };
 		B5E1D6C5221EDC2A005419C8 /* CoinsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */; };
@@ -223,6 +224,7 @@
 		B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinPriceTest.swift; sourceTree = "<group>"; };
 		B594F048223D46BB005B8566 /* NormalCRCoin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NormalCRCoin.json; sourceTree = "<group>"; };
 		B594F04A223D55D2005B8566 /* CRCoinPrice.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CRCoinPrice.json; sourceTree = "<group>"; };
+		B594F04C223E1DB6005B8566 /* SortingWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingWorker.swift; sourceTree = "<group>"; };
 		B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistCell.swift; sourceTree = "<group>"; };
 		B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsWorker.swift; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 				B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */,
 				B5E1D6C8221FBAC7005419C8 /* CTError.swift */,
 				B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */,
+				B594F04C223E1DB6005B8566 /* SortingWorker.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1002,6 +1005,7 @@
 				B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */,
 				B572E94F2202AFF700778DA8 /* CRCoin.swift in Sources */,
 				B5FCEA94220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */,
+				B594F04D223E1DB6005B8566 /* SortingWorker.swift in Sources */,
 				B52712332238DA1A00D57639 /* ConfigViewController.swift in Sources */,
 				B501297B21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
 				B5276B5F21A29DD9000A74A5 /* Post.swift in Sources */,

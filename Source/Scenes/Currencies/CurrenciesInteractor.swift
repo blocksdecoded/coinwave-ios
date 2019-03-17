@@ -26,12 +26,10 @@ protocol CurrenciesDataStore {
   //var name: String { get set }
 }
 
-class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
-  private static let orderField = "order_field"
-  private static let orderType = "order_type"
-  
+class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {  
   var presenter: CurrenciesPresentationLogic?
   var worker: CoinsWorker?
+  var sortingWorker: SortingWorker?
   
   var sortField: CRCoin.OrderField!
   var sortType: CRCoin.OrderType!
@@ -61,16 +59,16 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   }
   
   func viewDidLoad(_ screen: String) {
-    let (field, type) = getSortConfig(screen: screen)
-    sortField = field ?? .marketCap
-    sortType = type ?? .desc
+    let sort = sortingWorker?.getSortConfig(screen: screen)
+    sortField = sort?.0 ?? .marketCap
+    sortType = sort?.1 ?? .desc
     presenter?.presentSort(sortField, sortType)
   }
   
   func sortName(_ screen: String) {
     sortType = sortType == .asc ? .desc : .asc
     sortField = .name
-    setSortConfig(screen: screen, field: sortField, type: sortType)
+    sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
     fetchCoins()
     presenter?.presentSort(sortField, sortType)
   }
@@ -78,7 +76,7 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   func sortPrice(_ screen: String) {
     sortType = sortType == .asc ? .desc : .asc
     sortField = .price
-    setSortConfig(screen: screen, field: sortField, type: sortType)
+    sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
     fetchCoins()
     presenter?.presentSort(sortField, sortType)
   }
@@ -86,7 +84,7 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   func sortVolume(_ screen: String) {
     sortType = sortType == .asc ? .desc : .asc
     sortField = .volume
-    setSortConfig(screen: screen, field: sortField, type: sortType)
+    sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
     fetchCoins()
     presenter?.presentSort(sortField, sortType)
   }
@@ -94,28 +92,8 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   func sortMarketCap(_ screen: String) {
     sortType = sortType == .asc ? .desc : .asc
     sortField = .marketCap
-    setSortConfig(screen: screen, field: sortField, type: sortType)
+    sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
     fetchCoins()
     presenter?.presentSort(sortField, sortType)
-  }
-  
-  private func setSortConfig(screen: String, field: CRCoin.OrderField, type: CRCoin.OrderType) {
-    UserDefaults.standard.set(field.rawValue, forKey: "\(screen)_\(CurrenciesInteractor.orderField)")
-    UserDefaults.standard.set(type.rawValue, forKey: "\(screen)_\(CurrenciesInteractor.orderType)")
-  }
-  
-  private func getSortConfig(screen: String) -> (CRCoin.OrderField?, CRCoin.OrderType?) {
-    var field: CRCoin.OrderField?
-    var type: CRCoin.OrderType?
-    
-    if let fieldRawValue = UserDefaults.standard.value(forKey: "\(screen)_\(CurrenciesInteractor.orderField)") as? String {
-      field = CRCoin.OrderField(rawValue: fieldRawValue)
-    }
-    
-    if let typeRawValue = UserDefaults.standard.value(forKey: "\(screen)_\(CurrenciesInteractor.orderType)") as? String {
-      type = CRCoin.OrderType(rawValue: typeRawValue)
-    }
-    
-    return(field, type)
   }
 }
