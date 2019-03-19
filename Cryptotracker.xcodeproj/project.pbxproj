@@ -112,6 +112,7 @@
 		B5F046EF2207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F046EE2207EFA5007B7C0D /* CurrencyChartInfoView.swift */; };
 		B5F14D2B22040B5300DE5E62 /* CRDataCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */; };
 		B5F5BFA721A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
+		B5F6F13D2240D03D00E2D130 /* CRCoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F6F13C2240D03D00E2D130 /* CRCoinTests.swift */; };
 		B5FCEA88220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */; };
 		B5FCEA8C220D6B4200E4B433 /* VCMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */; };
 		B5FCEA90220D900800E4B433 /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */; };
@@ -256,6 +257,7 @@
 		B5F046EE2207EFA5007B7C0D /* CurrencyChartInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChartInfoView.swift; sourceTree = "<group>"; };
 		B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataCoin.swift; sourceTree = "<group>"; };
 		B5F5BFA621A426680012599B /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
+		B5F6F13C2240D03D00E2D130 /* CRCoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinTests.swift; sourceTree = "<group>"; };
 		B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsBottomCell.swift; sourceTree = "<group>"; };
 		B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCMenu.swift; sourceTree = "<group>"; };
 		B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Light.otf"; sourceTree = "<group>"; };
@@ -548,6 +550,7 @@
 		B594F042223D3E74005B8566 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B5F6F13C2240D03D00E2D130 /* CRCoinTests.swift */,
 				B594F043223D3E85005B8566 /* PriceTests.swift */,
 				B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */,
 			);
@@ -1039,6 +1042,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B594F03A223D3DBE005B8566 /* CryptotrackerTests.swift in Sources */,
+				B5F6F13D2240D03D00E2D130 /* CRCoinTests.swift in Sources */,
 				B594F046223D43EC005B8566 /* CRCoinPriceTest.swift in Sources */,
 				B594F044223D3E85005B8566 /* PriceTests.swift in Sources */,
 			);
