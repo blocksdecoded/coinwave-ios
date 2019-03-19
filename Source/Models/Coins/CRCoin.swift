@@ -126,35 +126,6 @@ extension CRCoin: Decodable {
 }
 
 extension CRCoin {
-  init() {
-    identifier = -1
-    slug = ""
-    symbol = ""
-    name = ""
-    description = nil
-    color = nil
-    iconType = nil
-    iconUrl = nil
-    websiteUrl = nil
-    confirmedSupply = true
-    type = .coin
-    volume = nil
-    marketCap = nil
-    price = nil
-    circulatingSupply = nil
-    totalSupply = nil
-    firstSeen = nil
-    change = nil
-    rank = 1
-    history = [String?]()
-    allTimeHigh = CRPrice()
-    penalty = false
-    isWatchlist = false
-    isFavorite = false
-  }
-}
-
-extension CRCoin {
   var changeStr: String {
     var str = "null"
     if let value = change {
