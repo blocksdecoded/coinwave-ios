@@ -258,6 +258,7 @@
 		B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataCoin.swift; sourceTree = "<group>"; };
 		B5F5BFA621A426680012599B /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		B5F6F13C2240D03D00E2D130 /* CRCoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinTests.swift; sourceTree = "<group>"; };
+		B5F6F1402240E89E00E2D130 /* BaseConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BaseConfig.xcconfig; sourceTree = "<group>"; };
 		B5FCEA87220B05FB00E4B433 /* CurrencyDetailsBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsBottomCell.swift; sourceTree = "<group>"; };
 		B5FCEA8B220D6B4200E4B433 /* VCMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCMenu.swift; sourceTree = "<group>"; };
 		B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Light.otf"; sourceTree = "<group>"; };
@@ -365,6 +366,7 @@
 				B5271254223922BE00D57639 /* DebugConfig.xcconfig */,
 				B5271255223922CE00D57639 /* StagingConfig.xcconfig */,
 				B5271256223922DB00D57639 /* ReleaseConfig.xcconfig */,
+				B5F6F1402240E89E00E2D130 /* BaseConfig.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
