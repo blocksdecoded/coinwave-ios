@@ -5,6 +5,7 @@
 ## Environment
 .env
 Configuration/
+certificates/
 
 ## Build generated
 build/
