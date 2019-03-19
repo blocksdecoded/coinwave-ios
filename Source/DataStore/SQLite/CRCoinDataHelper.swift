@@ -300,12 +300,12 @@ class CRCoinDataHelper: DataHelperProtocol {
       iconType = CRCoin.IconType(rawValue: rawIconType)
     }
     
-    var websiteURL: URL? = nil
+    var websiteURL: URL?
     if let strWebsiteURL = row[currWebsiteUrl] {
       websiteURL = URL(string: strWebsiteURL)
     }
     
-    var iconURL: URL? = nil
+    var iconURL: URL?
     if let strIconURL = row[currIconUrl] {
       iconURL = URL(string: strIconURL)
     }

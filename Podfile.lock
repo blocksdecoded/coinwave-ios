@@ -1,21 +1,19 @@
 PODS:
-  - Charts (3.2.1):
-    - Charts/Core (= 3.2.1)
-  - Charts/Core (3.2.1)
-  - CocoaLumberjack (3.4.2):
-    - CocoaLumberjack/Default (= 3.4.2)
-    - CocoaLumberjack/Extensions (= 3.4.2)
-  - CocoaLumberjack/Default (3.4.2)
-  - CocoaLumberjack/Extensions (3.4.2):
-    - CocoaLumberjack/Default
+  - Charts (3.2.2):
+    - Charts/Core (= 3.2.2)
+  - Charts/Core (3.2.2)
+  - CocoaLumberjack (3.5.2):
+    - CocoaLumberjack/Core (= 3.5.2)
+  - CocoaLumberjack/Core (3.5.2)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
   - Kingfisher (4.10.1)
-  - NVActivityIndicatorView (4.5.1):
-    - NVActivityIndicatorView/Presenter (= 4.5.1)
-  - NVActivityIndicatorView/Presenter (4.5.1)
+  - NVActivityIndicatorView (4.6.1):
+    - NVActivityIndicatorView/Presenter (= 4.6.1)
+  - NVActivityIndicatorView/Presenter (4.6.1)
   - SideMenu (5.0.3)
+  - SnapKit (4.2.0)
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
@@ -29,6 +27,7 @@ DEPENDENCIES:
   - Kingfisher (= 4.10.1)
   - NVActivityIndicatorView
   - SideMenu
+  - SnapKit (~> 4.0)
   - SQLite.swift
   - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `3.x`)
 
@@ -41,6 +40,7 @@ SPEC REPOS:
     - Kingfisher
     - NVActivityIndicatorView
     - SideMenu
+    - SnapKit
     - SQLite.swift
 
 EXTERNAL SOURCES:
@@ -50,20 +50,21 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SVGKit:
-    :commit: cc0d7edf67af2bd10a6a895f1b4982b22a8b172a
+    :commit: 51534583f7223402d1be405b1c52bf3989ddb2b5
     :git: https://github.com/SVGKit/SVGKit.git
 
 SPEC CHECKSUMS:
-  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
-  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
+  CocoaLumberjack: 118bf4a820efc641f79fa487b75ed928dccfae23
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  NVActivityIndicatorView: ec34a7b88c51fab270004a1a1f32116e711010cd
+  NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SVGKit: 8a2fc74258bdb2abb54d3b65f3dd68b0277a9c4d
 
-PODFILE CHECKSUM: 65ace1d895dbe883eacefbf109336805ee86551b
+PODFILE CHECKSUM: ec6a852b660296ba26b21aed3de13603d53d3681
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

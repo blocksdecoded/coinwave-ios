@@ -140,6 +140,7 @@
 		084EF5BB3FCB474B5135431A /* Pods_StagingCryptotracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StagingCryptotracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCA7E08A6E532B728A4A8C5 /* Pods-StagingCryptotracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StagingCryptotracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-StagingCryptotracker/Pods-StagingCryptotracker.release.xcconfig"; sourceTree = "<group>"; };
 		8D2C2A8FD287D294CF24F89F /* Pods_Cryptotracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cryptotracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		968AB835B3B98751D5272D8F /* Pods-Cryptotracker.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.staging.xcconfig"; sourceTree = "<group>"; };
 		A0CC2CCCAA2E062ED9822C81 /* Pods-DebugCryptotracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.release.xcconfig"; sourceTree = "<group>"; };
 		A987954D56EDBE59FCFB0C3C /* Pods-Cryptotracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.release.xcconfig"; sourceTree = "<group>"; };
 		B3C7929EE344E49051F23381 /* Pods-StagingCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StagingCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StagingCryptotracker/Pods-StagingCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -720,6 +721,7 @@
 				A0CC2CCCAA2E062ED9822C81 /* Pods-DebugCryptotracker.release.xcconfig */,
 				B3C7929EE344E49051F23381 /* Pods-StagingCryptotracker.debug.xcconfig */,
 				5FCA7E08A6E532B728A4A8C5 /* Pods-StagingCryptotracker.release.xcconfig */,
+				968AB835B3B98751D5272D8F /* Pods-Cryptotracker.staging.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -842,7 +844,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -850,6 +852,7 @@
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -862,10 +865,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4120CDEE9F183875376742D0 /* [CP] Check Pods Manifest.lock */ = {

@@ -15,4 +15,5 @@ target 'Cryptotracker' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'NVActivityIndicatorView'
+  pod 'SnapKit', '~> 4.0'
 end

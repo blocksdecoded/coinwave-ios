@@ -12,6 +12,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import SnapKit
 
 protocol OnPickFavoriteDelegate: class {
   func onPickedFavorite()
@@ -64,20 +65,17 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   private lazy var loadingView: NVActivityIndicatorView = {
     let view = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
-    view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
   
   private lazy var errorView: ErrorView = {
     let errorView = ErrorView(frame: CGRect.zero)
     errorView.delegate = self
-    errorView.translatesAutoresizingMaskIntoConstraints = false
     return errorView
   }()
   
   private lazy var backButton: UIButton = {
     let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
     button.setImage(UIImage(named: "left_arrow"), for: .normal)
     button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
     return button
@@ -91,7 +89,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   private lazy var titleLbl: UILabel = {
     let titleLabel = UILabel()
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
     
     switch version {
     case .list:
@@ -107,26 +104,23 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   private lazy var navigationView: UIView = {
     let view = UIView()
-    view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
   
   private lazy var headerForCurrenciesList: UIView = {
     let headerView = UIView()
-    headerView.translatesAutoresizingMaskIntoConstraints = false
     let stackView = UIStackView(arrangedSubviews: titles)
-    stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .horizontal
     stackView.alignment = .fill
     stackView.distribution = .fillEqually
     
     headerView.addSubview(stackView)
     
-    NSLayoutConstraint.activate([
-      stackView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-      stackView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-      stackView.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
-      ])
+    stackView.snp.makeConstraints { make in
+      make.leading.equalTo(headerView.snp.leading)
+      make.trailing.equalTo(headerView.snp.trailing)
+      make.centerY.equalTo(headerView.snp.centerY)
+    }
     
     return headerView
   }()
@@ -139,7 +133,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   private lazy var currenciesList: UITableView = {
     let tableView = UITableView()
-    tableView.translatesAutoresizingMaskIntoConstraints = false
     tableView.backgroundColor = .clear
     tableView.register(TVCCrypto.create(), forCellReuseIdentifier: TVCCrypto.reuseID)
     tableView.rowHeight = 60
@@ -149,7 +142,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     tableView.refreshControl = refreshControl
     return tableView
   }()
-
+  
   // MARK: Object lifecycle
   
   init(version: Version) {
@@ -157,21 +150,21 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     super.init(nibName: nil, bundle: nil)
     setup()
   }
-
+  
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     self.version = .list
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     setup()
   }
-
+  
   required init?(coder aDecoder: NSCoder) {
     self.version = .list
     super.init(coder: aDecoder)
     setup()
   }
-
+  
   // MARK: Setup
-
+  
   private func setup() {
     let viewController = self
     let interactor = CurrenciesInteractor()
@@ -188,17 +181,8 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     router.viewController = viewController
     router.dataStore = interactor
   }
-
+  
   // MARK: Routing
-
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
-    }
-  }
   
   private func openDetails(_ index: Int) {
     guard let curr = currencies?[index] else {
@@ -217,9 +201,9 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     favoritePickerDelegate?.onPickedFavorite()
     self.navigationController?.popViewController(animated: true)
   }
-
+  
   // MARK: View lifecycle
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationController?.interactivePopGestureRecognizer?.delegate = self
@@ -248,68 +232,60 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   }
   
   private func setupConstraints() {
-    let navigationViewC = [
-      navigationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      navigationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      navigationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      navigationView.heightAnchor.constraint(equalToConstant: 100)
-    ]
+    navigationView.snp.makeConstraints { make in
+      make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+      make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+      make.height.equalTo(100)
+    }
     
-    let headerForCurrenciesListC = [
-      headerForCurrenciesList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      headerForCurrenciesList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      headerForCurrenciesList.topAnchor.constraint(equalTo: navigationView.bottomAnchor),
-      headerForCurrenciesList.heightAnchor.constraint(equalToConstant: 50)
-    ]
+    headerForCurrenciesList.snp.makeConstraints { make in
+      make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+      make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+      make.top.equalTo(navigationView.snp.bottom)
+      make.height.equalTo(50)
+    }
     
-    let currenciesListC = [
-      currenciesList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      currenciesList.topAnchor.constraint(equalTo: headerForCurrenciesList.bottomAnchor),
-      currenciesList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-      currenciesList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-    ]
+    currenciesList.snp.makeConstraints { make in
+      make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+      make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+      make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+      make.top.equalTo(headerForCurrenciesList.snp.bottom)
+    }
     
-    let errorViewC = [
-      errorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-    ]
+    errorView.snp.makeConstraints { make in
+      make.center.equalTo(view.snp.center)
+    }
     
-    let loadingViewC = [
-      loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      loadingView.widthAnchor.constraint(equalToConstant: 50),
-      loadingView.heightAnchor.constraint(equalToConstant: 50)
-    ]
-    
-    NSLayoutConstraint.activate(
-      navigationViewC +
-      headerForCurrenciesListC +
-      currenciesListC +
-      errorViewC +
-      loadingViewC)
+    loadingView.snp.makeConstraints { make in
+      make.center.equalTo(view.snp.center)
+      make.size.equalTo(CGSize(width: 50, height: 50))
+    }
     
     switch version {
     case .list:
-      NSLayoutConstraint.activate([
-        menuBtn.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
-        menuBtn.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
-        menuBtn.widthAnchor.constraint(equalToConstant: 25),
-        menuBtn.heightAnchor.constraint(equalToConstant: 25),
-        titleLbl.leadingAnchor.constraint(equalTo: menuBtn.trailingAnchor, constant: 16),
-        titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
-      ])
+      menuBtn.snp.makeConstraints { make in
+        make.leading.equalTo(navigationView.snp.leading)
+        make.centerY.equalTo(navigationView.snp.centerY)
+        make.size.equalTo(CGSize(width: 25, height: 25))
+      }
+      titleLbl.snp.makeConstraints { make in
+        make.leading.equalTo(menuBtn.snp.trailing).offset(16)
+        make.centerY.equalTo(navigationView.snp.centerY)
+      }
     case .favorite:
-      NSLayoutConstraint.activate([
-        backButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
-        backButton.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
-        backButton.widthAnchor.constraint(equalToConstant: 40),
-        backButton.heightAnchor.constraint(equalToConstant: 40),
-        titleLbl.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 16),
-        titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
-      ])
+      backButton.snp.makeConstraints { make in
+        make.leading.equalTo(navigationView.snp.leading)
+        make.centerY.equalTo(navigationView.snp.centerY)
+        make.size.equalTo(CGSize(width: 40, height: 40))
+      }
+      titleLbl.snp.makeConstraints { make in
+        make.leading.equalTo(backButton.snp.trailing).offset(16)
+        make.centerY.equalTo(navigationView.snp.centerY)
+      }
     }
   }
-
+  
   func fetchCoins() {
     errorView.isHidden = true
     loadingView.isHidden = false
@@ -319,7 +295,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     let request = Currencies.FetchCoins.Request(limit: 50)
     interactor?.fetchCoins(request: request)
   }
-
+  
   func displayCoins(viewModel: Currencies.FetchCoins.ViewModel) {
     refreshControl.endRefreshing()
     errorView.isHidden = true
