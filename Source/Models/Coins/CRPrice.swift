@@ -33,3 +33,10 @@ extension CRPrice: Decodable {
     self.init(price: price, timestamp: timestamp)
   }
 }
+
+extension CRPrice: Equatable {
+  static func == (lhs: CRPrice, rhs: CRPrice) -> Bool {
+    return lhs.price == rhs.price &&
+           lhs.timestamp == rhs.timestamp
+  }
+}
