@@ -1166,7 +1166,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = U4R65QQKZ7;
-				INFOPLIST_FILE = "$(SRCROOT)/Cryptotracker/Info.plist";
+				INFOPLIST_FILE = Cryptotracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1311,7 +1311,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = U4R65QQKZ7;
-				INFOPLIST_FILE = "$(SRCROOT)/Cryptotracker/Info.plist";
+				INFOPLIST_FILE = Cryptotracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1334,7 +1334,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = U4R65QQKZ7;
-				INFOPLIST_FILE = "$(SRCROOT)/Cryptotracker/Info.plist";
+				INFOPLIST_FILE = Cryptotracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
