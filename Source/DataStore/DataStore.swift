@@ -27,6 +27,12 @@ class DataStore {
   }
   
   func isCoinsOutdated() -> Bool {
+    switch Constants.environment {
+    case .debug:
+      return true
+    default:
+      break
+    }
     guard let lastUpdate = lastUpdate else {
       return true
     }

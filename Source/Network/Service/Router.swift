@@ -16,6 +16,18 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
     do {
       let request = try self.buildRequest(from: route)
       task = session.dataTask(with: request, completionHandler: { data, response, error in
+        if let error = error {
+          let nsError = error as NSError
+          switch nsError.code {
+          case NSURLErrorTimedOut:
+            self.request(route, completion: completion)
+            return
+          default:
+            completion(nil, nil, error)
+            return
+          }
+        }
+        
         completion(data, response, error)
       })
     } catch {
