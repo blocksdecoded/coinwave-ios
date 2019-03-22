@@ -39,7 +39,11 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   }
   
   private func fetchCoins() {
-    worker?.fetchCoins(sortField, sortType) { coins, error in
+    worker?.fetchCoins(sortField, sortType, local: { coins, lastUpdated in
+      if let coins = coins, let lastUpdated = lastUpdated {
+        self.presenter?.presentLocalCoins(response: Currencies.LocalCoins.Response(coins: coins, lastUpd: "last updated:\n\(lastUpdated)"))
+      }
+    }, remote: { coins, error in
       if error != nil {
         self.presenter?.presentError(error!)
       } else {
@@ -49,7 +53,7 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
           self.presenter?.presentError(.noData)
         }
       }
-    }
+    })
   }
   
   func setFavorite(_ coin: CRCoin) {

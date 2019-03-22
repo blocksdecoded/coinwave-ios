@@ -20,6 +20,7 @@ protocol OnPickFavoriteDelegate: class {
 
 protocol CurrenciesDisplayLogic: class {
   func displayCoins(viewModel: Currencies.FetchCoins.ViewModel)
+  func displayLocalCoins(viewModel: Currencies.LocalCoins.Response)
   func displayError(_ string: String)
   func setSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType)
 }
@@ -100,6 +101,19 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     titleLabel.textColor = .white
     titleLabel.font = UIFont(name: Constants.Fonts.regular, size: 24)
     return titleLabel
+  }()
+  
+  private lazy var navigationLoading: NVActivityIndicatorView = {
+    let view = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
+    return view
+  }()
+  
+  private lazy var lastUpdated: UILabel = {
+    let label = UILabel()
+    label.font = UIFont(name: Constants.Fonts.light, size: 11)
+    label.textColor = UIColor.white
+    label.numberOfLines = 2
+    return label
   }()
   
   private lazy var navigationView: UIView = {
@@ -208,7 +222,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     super.viewDidLoad()
     navigationController?.interactivePopGestureRecognizer?.delegate = self
     setupViews()
-    setupConstraints()
     interactor?.viewDidLoad(version.rawValue)
     fetchCoins()
   }
@@ -220,6 +233,8 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     switch version {
     case .list:
       navigationView.addSubview(menuBtn)
+      navigationView.addSubview(navigationLoading)
+      navigationView.addSubview(lastUpdated)
     case .favorite:
       navigationView.addSubview(backButton)
     }
@@ -229,6 +244,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     view.addSubview(currenciesList)
     view.addSubview(loadingView)
     view.addSubview(errorView)
+    setupConstraints()
   }
   
   private func setupConstraints() {
@@ -254,34 +270,42 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     }
     
     errorView.snp.makeConstraints { make in
-      make.center.equalTo(view.snp.center)
+      make.center.equalToSuperview()
     }
     
     loadingView.snp.makeConstraints { make in
-      make.center.equalTo(view.snp.center)
-      make.size.equalTo(CGSize(width: 50, height: 50))
+      make.center.equalToSuperview()
+      make.width.height.equalTo(50)
     }
     
     switch version {
     case .list:
       menuBtn.snp.makeConstraints { make in
-        make.leading.equalTo(navigationView.snp.leading)
-        make.centerY.equalTo(navigationView.snp.centerY)
-        make.size.equalTo(CGSize(width: 25, height: 25))
+        make.leading.centerY.equalToSuperview()
+        make.width.height.equalTo(25)
       }
       titleLbl.snp.makeConstraints { make in
         make.leading.equalTo(menuBtn.snp.trailing).offset(16)
-        make.centerY.equalTo(navigationView.snp.centerY)
+        make.centerY.equalToSuperview()
+      }
+      navigationLoading.snp.makeConstraints { make in
+        make.width.height.equalTo(20)
+        make.leading.equalTo(titleLbl.snp.trailing).offset(16)
+        make.centerY.equalToSuperview()
+      }
+      lastUpdated.snp.makeConstraints { make in
+        make.trailing.equalToSuperview().offset(-16)
+        make.leading.equalTo(navigationLoading.snp.trailing).offset(16)
+        make.centerY.equalToSuperview()
       }
     case .favorite:
       backButton.snp.makeConstraints { make in
-        make.leading.equalTo(navigationView.snp.leading)
-        make.centerY.equalTo(navigationView.snp.centerY)
+        make.leading.centerY.equalToSuperview()
         make.size.equalTo(CGSize(width: 40, height: 40))
       }
       titleLbl.snp.makeConstraints { make in
         make.leading.equalTo(backButton.snp.trailing).offset(16)
-        make.centerY.equalTo(navigationView.snp.centerY)
+        make.centerY.equalToSuperview()
       }
     }
   }
@@ -303,6 +327,8 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     loadingView.isHidden = true
     currenciesList.isHidden = false
     headerForCurrenciesList.isHidden = false
+    navigationLoading.stopAnimating()
+    lastUpdated.text = ""
     currencies = viewModel.currencies
     currenciesList.reloadData()
   }
@@ -314,6 +340,21 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     loadingView.isHidden = true
     currenciesList.isHidden = true
     headerForCurrenciesList.isHidden = true
+  }
+  
+  func displayLocalCoins(viewModel: Currencies.LocalCoins.Response) {
+    refreshControl.endRefreshing()
+    errorView.isHidden = true
+    loadingView.stopAnimating()
+    loadingView.isHidden = true
+    currenciesList.isHidden = false
+    headerForCurrenciesList.isHidden = false
+    
+    navigationLoading.startAnimating()
+    lastUpdated.text = viewModel.lastUpd
+    
+    currencies = viewModel.coins
+    currenciesList.reloadData()
   }
   
   func setSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {

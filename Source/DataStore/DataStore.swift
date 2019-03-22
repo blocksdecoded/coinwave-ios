@@ -15,7 +15,37 @@ class DataStore {
   
   private let updateTime: TimeInterval = 60 * 5
   
-  private var lastUpdate: Date?
+  private let kLastUpdate = "last_update"
+  
+  private lazy var formatter: ISO8601DateFormatter = {
+    let formatter = ISO8601DateFormatter()
+    return formatter
+  }()
+  
+  private var lastUpdate: Date? {
+    get {
+      guard let str = UserDefaults.standard.string(forKey: kLastUpdate) else {
+        return nil
+      }
+      return formatter.date(from: str)
+    }
+    
+    set {
+      guard let date = newValue else {
+        return
+      }
+      let str = formatter.string(from: date)
+      UserDefaults.standard.set(str, forKey: kLastUpdate)
+    }
+  }
+  
+  var lastUpdated: String {
+    if let lastUpdate = lastUpdate {
+      return DateTimeService.interval(date: lastUpdate)
+    } else {
+      return ""
+    }
+  }
   
   private init() {
     do {

@@ -26,7 +26,9 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
   var worker: CoinsWorker?
 
   func doSomething(request: AddToWatchlist.Something.Request) {
-    worker?.fetchCoins(request.field, request.type) { currencies, error in
+    worker?.fetchCoins(request.field, request.type, local: { coins, lastUpdated in
+      
+    }, remote: { currencies, error in
       if error != nil {
         self.presenter?.presentError(error!)
       } else {
@@ -37,7 +39,7 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
           self.presenter?.presentError(.noData)
         }
       }
-    }
+    })
   }
   
   func addToWatchlist(request: AddToWatchlist.Add.Request) {

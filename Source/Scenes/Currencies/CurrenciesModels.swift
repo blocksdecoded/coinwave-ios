@@ -30,6 +30,13 @@ enum Currencies {
     }
   }
   
+  enum LocalCoins {
+    struct Response {
+      let coins: [CRCoin]
+      let lastUpd: String
+    }
+  }
+  
   enum LoadNext {
     struct Request {
       let limit: Int

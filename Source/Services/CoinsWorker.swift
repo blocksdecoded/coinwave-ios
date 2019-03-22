@@ -11,14 +11,18 @@ import Foundation
 class CoinsWorker {
   func fetchCoins(_ orderField: CRCoin.OrderField,
                   _ orderType: CRCoin.OrderType,
-                  _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
+                  local: @escaping ([CRCoin]?, String?) -> Void,
+                  remote: @escaping ([CRCoin]?, CTError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() {
-      fetchRemoteCoins(orderField, orderType, completion)
+      if let coins = fetchLocalCoins(orderField, orderType) {
+        local(coins, DataStore.shared.lastUpdated)
+      }
+      fetchRemoteCoins(orderField, orderType, remote)
     } else {
       if let coins = fetchLocalCoins(orderField, orderType) {
-        completion(coins, nil)
+        remote(coins, nil)
       } else {
-        fetchRemoteCoins(orderField, orderType, completion)
+        fetchRemoteCoins(orderField, orderType, remote)
       }
     }
   }

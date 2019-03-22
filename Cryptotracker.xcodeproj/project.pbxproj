@@ -76,6 +76,8 @@
 		B572E9532202B31900778DA8 /* CRPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9522202B31900778DA8 /* CRPrice.swift */; };
 		B572E9572202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */; };
 		B572E95B2202F34900778DA8 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E95A2202F34900778DA8 /* DataCache.swift */; };
+		B5737D4B2244E74A00C6A687 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5737D4A2244E74A00C6A687 /* DateTests.swift */; };
+		B5737D4D2244E76E00C6A687 /* DateTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5737D4C2244E76E00C6A687 /* DateTimeService.swift */; };
 		B594F03A223D3DBE005B8566 /* CryptotrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F039223D3DBE005B8566 /* CryptotrackerTests.swift */; };
 		B594F044223D3E85005B8566 /* PriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F043223D3E85005B8566 /* PriceTests.swift */; };
 		B594F046223D43EC005B8566 /* CRCoinPriceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */; };
@@ -221,6 +223,8 @@
 		B572E9522202B31900778DA8 /* CRPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRPrice.swift; sourceTree = "<group>"; };
 		B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinDataHelper.swift; sourceTree = "<group>"; };
 		B572E95A2202F34900778DA8 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
+		B5737D4A2244E74A00C6A687 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateTests.swift; path = CryptotrackerTests/Services/DateTests.swift; sourceTree = SOURCE_ROOT; };
+		B5737D4C2244E76E00C6A687 /* DateTimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeService.swift; sourceTree = "<group>"; };
 		B594F037223D3DBE005B8566 /* CryptotrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptotrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B594F039223D3DBE005B8566 /* CryptotrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptotrackerTests.swift; sourceTree = "<group>"; };
 		B594F03B223D3DBE005B8566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -548,9 +552,18 @@
 			path = Coins;
 			sourceTree = "<group>";
 		};
+		B5737D4E2244EE3200C6A687 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B5737D4A2244E74A00C6A687 /* DateTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		B594F038223D3DBE005B8566 /* CryptotrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				B5737D4E2244EE3200C6A687 /* Services */,
 				B594F047223D4690005B8566 /* Data */,
 				B594F042223D3E74005B8566 /* Models */,
 				B594F039223D3DBE005B8566 /* CryptotrackerTests.swift */,
@@ -585,6 +598,7 @@
 				B5E1D6C8221FBAC7005419C8 /* CTError.swift */,
 				B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */,
 				B594F04C223E1DB6005B8566 /* SortingWorker.swift */,
+				B5737D4C2244E76E00C6A687 /* DateTimeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1042,6 +1056,7 @@
 				B5276AF821A0124D000A74A5 /* CurrenciesModels.swift in Sources */,
 				B5276AF521A0124D000A74A5 /* CurrenciesPresenter.swift in Sources */,
 				B5E93D4221A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
+				B5737D4D2244E76E00C6A687 /* DateTimeService.swift in Sources */,
 				B5E93D6821A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */,
 				B5E93D0621A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
 				B5FCEAC22212D8FC00E4B433 /* AddToWatchlistViewController.swift in Sources */,
@@ -1068,6 +1083,7 @@
 				B5F6F13D2240D03D00E2D130 /* CRCoinTests.swift in Sources */,
 				B594F046223D43EC005B8566 /* CRCoinPriceTest.swift in Sources */,
 				B594F044223D3E85005B8566 /* PriceTests.swift in Sources */,
+				B5737D4B2244E74A00C6A687 /* DateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
