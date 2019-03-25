@@ -14,7 +14,7 @@ import UIKit
 
 enum AddToWatchlist {
   // MARK: Use cases
-  enum Something {
+  enum Coins {
     // swiftlint:disable nesting
     struct Request {
       let field: CRCoin.OrderField

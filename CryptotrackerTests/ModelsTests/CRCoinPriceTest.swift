@@ -11,7 +11,7 @@ import XCTest
 
 class CRCoinPriceTests: XCTestCase {
   
-  var data: Data!
+  var crCoin: CRCoin!
   var expStringPrice: Price!
   var expNilPrice: Price?
   var expDoublePrice: Price!
@@ -21,7 +21,8 @@ class CRCoinPriceTests: XCTestCase {
     let bundle = Bundle(for: type(of: self))
     let path = bundle.path(forResource: "CRCoinPrice", ofType: ".json")!
     // swiftlint:disable force_try
-    data = try! Data(contentsOf: URL(fileURLWithPath: path))
+    let data = try! Data(contentsOf: URL(fileURLWithPath: path))
+    crCoin = try! JSONDecoder().decode(CRCoin.self, from: data)
     expStringPrice = Price(4058.8754342943)
     expNilPrice = nil
     expDoublePrice = Price(71398305865)
@@ -29,24 +30,21 @@ class CRCoinPriceTests: XCTestCase {
   
   override func tearDown() {
     super.tearDown()
-    data = nil
+    crCoin = nil
     expStringPrice = nil
     expNilPrice = nil
     expDoublePrice = nil
   }
   
   func testStringPrice() {
-    let actCRCoin = try! JSONDecoder().decode(CRCoin.self, from: data)
-    XCTAssertEqual(actCRCoin.price, expStringPrice)
+    XCTAssertEqual(crCoin.price, expStringPrice)
   }
   
   func testNilPrice() {
-    let actCRCoin = try! JSONDecoder().decode(CRCoin.self, from: data)
-    XCTAssertNil(actCRCoin.volume)
+    XCTAssertNil(crCoin.volume)
   }
   
   func testDoublePrice() {
-    let actCRCoin = try! JSONDecoder().decode(CRCoin.self, from: data)
-    XCTAssertEqual(actCRCoin.marketCap, expDoublePrice)
+    XCTAssertEqual(crCoin.marketCap, expDoublePrice)
   }
 }

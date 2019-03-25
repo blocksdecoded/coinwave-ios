@@ -13,7 +13,7 @@
 import UIKit
 
 protocol AddToWatchlistDisplayLogic: class {
-  func displaySomething(viewModel: AddToWatchlist.Something.ViewModel)
+  func displaySomething(viewModel: AddToWatchlist.Coins.ViewModel)
   func refreshCoin(viewModel: AddToWatchlist.Add.ViewModel)
   func displayError(_ string: String)
 }
@@ -178,11 +178,11 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   }
   
   func doSomething() {
-    let request = AddToWatchlist.Something.Request(field: .name, type: .asc, force: false)
+    let request = AddToWatchlist.Coins.Request(field: .name, type: .asc, force: false)
     interactor?.doSomething(request: request)
   }
   
-  func displaySomething(viewModel: AddToWatchlist.Something.ViewModel) {
+  func displaySomething(viewModel: AddToWatchlist.Coins.ViewModel) {
     refreshControl.endRefreshing()
     coins = viewModel.coins
     currenciesList.reloadData()
@@ -202,7 +202,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   }
   
   @objc private func refreshTable() {
-    let request = AddToWatchlist.Something.Request(field: .name, type: .asc, force: true)
+    let request = AddToWatchlist.Coins.Request(field: .name, type: .asc, force: true)
     interactor?.doSomething(request: request)
   }
 }

@@ -13,7 +13,7 @@
 import UIKit
 
 protocol AddToWatchlistBusinessLogic {
-  func doSomething(request: AddToWatchlist.Something.Request)
+  func doSomething(request: AddToWatchlist.Coins.Request)
   func addToWatchlist(request: AddToWatchlist.Add.Request)
 }
 
@@ -25,7 +25,7 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
   var presenter: AddToWatchlistPresentationLogic?
   var worker: CoinsWorker?
 
-  func doSomething(request: AddToWatchlist.Something.Request) {
+  func doSomething(request: AddToWatchlist.Coins.Request) {
     worker?.fetchCoins(request.field, request.type, force: request.force, local: { coins, lastUpdated in
       
     }, remote: { currencies, error in
@@ -33,8 +33,8 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
         self.presenter?.presentError(error!)
       } else {
         if currencies != nil && !currencies!.isEmpty {
-          let response = AddToWatchlist.Something.Response(coins: currencies!)
-          self.presenter?.presentSomething(response: response)
+          let response = AddToWatchlist.Coins.Response(coins: currencies!)
+          self.presenter?.presentCoins(response: response)
         } else {
           self.presenter?.presentError(.noData)
         }

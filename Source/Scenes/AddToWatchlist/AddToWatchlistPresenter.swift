@@ -13,7 +13,7 @@
 import UIKit
 
 protocol AddToWatchlistPresentationLogic {
-  func presentSomething(response: AddToWatchlist.Something.Response)
+  func presentCoins(response: AddToWatchlist.Coins.Response)
   func addToWatchlist(response: AddToWatchlist.Add.Response)
   func presentError(_ error: CTError)
 }
@@ -21,12 +21,8 @@ protocol AddToWatchlistPresentationLogic {
 class AddToWatchlistPresenter: AddToWatchlistPresentationLogic {
   weak var viewController: AddToWatchlistDisplayLogic?
   
-  private var currencies: CRRoot<CRDataList>?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: AddToWatchlist.Something.Response) {
-    let viewModel = AddToWatchlist.Something.ViewModel(coins: response.coins)
+  func presentCoins(response: AddToWatchlist.Coins.Response) {
+    let viewModel = AddToWatchlist.Coins.ViewModel(coins: response.coins)
     viewController?.displaySomething(viewModel: viewModel)
   }
   

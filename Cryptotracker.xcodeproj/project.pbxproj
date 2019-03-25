@@ -78,7 +78,6 @@
 		B572E95B2202F34900778DA8 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E95A2202F34900778DA8 /* DataCache.swift */; };
 		B5737D4B2244E74A00C6A687 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5737D4A2244E74A00C6A687 /* DateTests.swift */; };
 		B5737D4D2244E76E00C6A687 /* DateTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5737D4C2244E76E00C6A687 /* DateTimeService.swift */; };
-		B594F03A223D3DBE005B8566 /* CryptotrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F039223D3DBE005B8566 /* CryptotrackerTests.swift */; };
 		B594F044223D3E85005B8566 /* PriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F043223D3E85005B8566 /* PriceTests.swift */; };
 		B594F046223D43EC005B8566 /* CRCoinPriceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */; };
 		B594F049223D46BB005B8566 /* NormalCRCoin.json in Resources */ = {isa = PBXBuildFile; fileRef = B594F048223D46BB005B8566 /* NormalCRCoin.json */; };
@@ -113,6 +112,10 @@
 		B5E93D8E21A90A6F00D1705A /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */; };
 		B5F046EF2207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F046EE2207EFA5007B7C0D /* CurrencyChartInfoView.swift */; };
 		B5F14D2B22040B5300DE5E62 /* CRDataCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */; };
+		B5F3D3E92248FFDF00B69295 /* CRPriceInitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3D3E82248FFDF00B69295 /* CRPriceInitTests.swift */; };
+		B5F3D3EB224900C100B69295 /* CRPriceInitFromJsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3D3EA224900C100B69295 /* CRPriceInitFromJsonTests.swift */; };
+		B5F3D3ED2249013500B69295 /* CRPrice.json in Resources */ = {isa = PBXBuildFile; fileRef = B5F3D3EC2249013500B69295 /* CRPrice.json */; };
+		B5F3D3F02249262900B69295 /* CRCoin+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3D3EF2249262900B69295 /* CRCoin+Extensions.swift */; };
 		B5F5BFA721A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F6F13D2240D03D00E2D130 /* CRCoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F6F13C2240D03D00E2D130 /* CRCoinTests.swift */; };
 		B5F6F143224111A100E2D130 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F6F142224111A100E2D130 /* StoreKit.framework */; };
@@ -223,10 +226,9 @@
 		B572E9522202B31900778DA8 /* CRPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRPrice.swift; sourceTree = "<group>"; };
 		B572E9562202B7A300778DA8 /* CRCoinDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinDataHelper.swift; sourceTree = "<group>"; };
 		B572E95A2202F34900778DA8 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
-		B5737D4A2244E74A00C6A687 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateTests.swift; path = CryptotrackerTests/Services/DateTests.swift; sourceTree = SOURCE_ROOT; };
+		B5737D4A2244E74A00C6A687 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateTests.swift; path = CryptotrackerTests/ServicesTests/DateTests.swift; sourceTree = SOURCE_ROOT; };
 		B5737D4C2244E76E00C6A687 /* DateTimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeService.swift; sourceTree = "<group>"; };
 		B594F037223D3DBE005B8566 /* CryptotrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptotrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B594F039223D3DBE005B8566 /* CryptotrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptotrackerTests.swift; sourceTree = "<group>"; };
 		B594F03B223D3DBE005B8566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B594F043223D3E85005B8566 /* PriceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTests.swift; sourceTree = "<group>"; };
 		B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinPriceTest.swift; sourceTree = "<group>"; };
@@ -262,6 +264,10 @@
 		B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFactory.swift; sourceTree = "<group>"; };
 		B5F046EE2207EFA5007B7C0D /* CurrencyChartInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChartInfoView.swift; sourceTree = "<group>"; };
 		B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataCoin.swift; sourceTree = "<group>"; };
+		B5F3D3E82248FFDF00B69295 /* CRPriceInitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRPriceInitTests.swift; sourceTree = "<group>"; };
+		B5F3D3EA224900C100B69295 /* CRPriceInitFromJsonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRPriceInitFromJsonTests.swift; sourceTree = "<group>"; };
+		B5F3D3EC2249013500B69295 /* CRPrice.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CRPrice.json; sourceTree = "<group>"; };
+		B5F3D3EF2249262900B69295 /* CRCoin+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CRCoin+Extensions.swift"; sourceTree = "<group>"; };
 		B5F5BFA621A426680012599B /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		B5F6F13C2240D03D00E2D130 /* CRCoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinTests.swift; sourceTree = "<group>"; };
 		B5F6F1402240E89E00E2D130 /* BaseConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BaseConfig.xcconfig; sourceTree = "<group>"; };
@@ -552,34 +558,36 @@
 			path = Coins;
 			sourceTree = "<group>";
 		};
-		B5737D4E2244EE3200C6A687 /* Services */ = {
+		B5737D4E2244EE3200C6A687 /* ServicesTests */ = {
 			isa = PBXGroup;
 			children = (
 				B5737D4A2244E74A00C6A687 /* DateTests.swift */,
 			);
-			path = Services;
+			path = ServicesTests;
 			sourceTree = "<group>";
 		};
 		B594F038223D3DBE005B8566 /* CryptotrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				B5737D4E2244EE3200C6A687 /* Services */,
+				B5F3D3EE224925CF00B69295 /* MockModels */,
+				B5737D4E2244EE3200C6A687 /* ServicesTests */,
 				B594F047223D4690005B8566 /* Data */,
-				B594F042223D3E74005B8566 /* Models */,
-				B594F039223D3DBE005B8566 /* CryptotrackerTests.swift */,
+				B594F042223D3E74005B8566 /* ModelsTests */,
 				B594F03B223D3DBE005B8566 /* Info.plist */,
 			);
 			path = CryptotrackerTests;
 			sourceTree = "<group>";
 		};
-		B594F042223D3E74005B8566 /* Models */ = {
+		B594F042223D3E74005B8566 /* ModelsTests */ = {
 			isa = PBXGroup;
 			children = (
+				B5F3D3E82248FFDF00B69295 /* CRPriceInitTests.swift */,
+				B5F3D3EA224900C100B69295 /* CRPriceInitFromJsonTests.swift */,
 				B5F6F13C2240D03D00E2D130 /* CRCoinTests.swift */,
 				B594F043223D3E85005B8566 /* PriceTests.swift */,
 				B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */,
 			);
-			path = Models;
+			path = ModelsTests;
 			sourceTree = "<group>";
 		};
 		B594F047223D4690005B8566 /* Data */ = {
@@ -587,6 +595,7 @@
 			children = (
 				B594F048223D46BB005B8566 /* NormalCRCoin.json */,
 				B594F04A223D55D2005B8566 /* CRCoinPrice.json */,
+				B5F3D3EC2249013500B69295 /* CRPrice.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -726,6 +735,14 @@
 				B5E93D8621A82C5900D1705A /* TVCCrypto.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		B5F3D3EE224925CF00B69295 /* MockModels */ = {
+			isa = PBXGroup;
+			children = (
+				B5F3D3EF2249262900B69295 /* CRCoin+Extensions.swift */,
+			);
+			path = MockModels;
 			sourceTree = "<group>";
 		};
 		B5FCEAAF2212D8CD00E4B433 /* AddToWatchlist */ = {
@@ -868,6 +885,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F3D3ED2249013500B69295 /* CRPrice.json in Resources */,
 				B594F049223D46BB005B8566 /* NormalCRCoin.json in Resources */,
 				B594F04B223D55D2005B8566 /* CRCoinPrice.json in Resources */,
 			);
@@ -1079,8 +1097,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B594F03A223D3DBE005B8566 /* CryptotrackerTests.swift in Sources */,
+				B5F3D3F02249262900B69295 /* CRCoin+Extensions.swift in Sources */,
+				B5F3D3EB224900C100B69295 /* CRPriceInitFromJsonTests.swift in Sources */,
 				B5F6F13D2240D03D00E2D130 /* CRCoinTests.swift in Sources */,
+				B5F3D3E92248FFDF00B69295 /* CRPriceInitTests.swift in Sources */,
 				B594F046223D43EC005B8566 /* CRCoinPriceTest.swift in Sources */,
 				B594F044223D3E85005B8566 /* PriceTests.swift in Sources */,
 				B5737D4B2244E74A00C6A687 /* DateTests.swift in Sources */,

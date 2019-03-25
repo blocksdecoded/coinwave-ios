@@ -13,13 +13,6 @@ struct CRPrice {
   let timestamp: Double?
 }
 
-extension CRPrice {
-  init() {
-    price = nil
-    timestamp = nil
-  }
-}
-
 extension CRPrice: Decodable {
   enum Keys: String, CodingKey {
     case price
