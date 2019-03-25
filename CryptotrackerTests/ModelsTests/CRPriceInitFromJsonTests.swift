@@ -33,7 +33,7 @@ class CRPriceInitFromJsonTests: XCTestCase {
   }
   
   func testPrice() {
-    XCTAssertEqual(crPrice.price, expPrice)
+    XCTAssertEqual(crPrice.price?.value, expPrice.value)
   }
   
   func testTimestamp() {

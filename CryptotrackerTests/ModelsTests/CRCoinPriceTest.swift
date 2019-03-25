@@ -37,7 +37,7 @@ class CRCoinPriceTests: XCTestCase {
   }
   
   func testStringPrice() {
-    XCTAssertEqual(crCoin.price, expStringPrice)
+    XCTAssertEqual(crCoin.price?.value, expStringPrice.value)
   }
   
   func testNilPrice() {
@@ -45,6 +45,6 @@ class CRCoinPriceTests: XCTestCase {
   }
   
   func testDoublePrice() {
-    XCTAssertEqual(crCoin.marketCap, expDoublePrice)
+    XCTAssertEqual(crCoin.marketCap?.value, expDoublePrice.value)
   }
 }

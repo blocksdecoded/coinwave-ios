@@ -27,15 +27,15 @@ extension Price {
 extension Price {
   var short: String {
     let (short, bill) = classify()
-    return "$\(Price.toString(short))\(bill)"
+    return "$\(toString(short))\(bill)"
   }
   
   var long: String {
-    return "$\(Price.toString(value))"
+    return "$\(toString(value))"
   }
   
   var longForce: String {
-    return "$\(Price.toString(value, force: true))"
+    return "$\(toString(value, force: true))"
   }
   
   private func classify() -> (Double, String) {
@@ -53,7 +53,7 @@ extension Price {
     return (result, Price.letters[exp - 1])
   }
   
-  static func toString(_ value: Double, force: Bool = false) -> String {
+  private func toString(_ value: Double, force: Bool = false) -> String {
     let formatter = NumberFormatter()
     if value < 0.000001 {
       formatter.numberStyle = .scientific
@@ -95,8 +95,4 @@ extension Price: Decodable {
       self.value = value
     }
   }
-}
-
-extension Price: Equatable {
-  
 }

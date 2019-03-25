@@ -114,23 +114,23 @@ class CRCoinTests: XCTestCase {
   }
   
   func testVolume() {
-    XCTAssertEqual(coin?.volume, cVolume)
+    XCTAssertEqual(coin?.volume?.value, cVolume?.value)
   }
   
   func testMarketCap() {
-    XCTAssertEqual(coin?.marketCap, cMarketCap)
+    XCTAssertEqual(coin?.marketCap?.value, cMarketCap?.value)
   }
   
   func testPrice() {
-    XCTAssertEqual(coin?.price, cPrice)
+    XCTAssertEqual(coin?.price?.value, cPrice?.value)
   }
   
   func testCirculatingSupply() {
-    XCTAssertEqual(coin?.circulatingSupply, cCirculatingSupply)
+    XCTAssertEqual(coin?.circulatingSupply?.value, cCirculatingSupply?.value)
   }
   
   func testTotalSupply() {
-    XCTAssertEqual(coin?.totalSupply, cTotalSupply)
+    XCTAssertEqual(coin?.totalSupply?.value, cTotalSupply?.value)
   }
   
   func testFirstSeen() {
@@ -154,6 +154,10 @@ class CRCoinTests: XCTestCase {
   func testNullChange() {
     let coin = CRCoin.mock(change: nil)
     XCTAssertEqual("null", coin.changeStr)
+  }
+  
+  func testChangeColor() {
+    XCTAssertEqual(coin?.changeColor, cChangeColor)
   }
   
   func testPositiveChangeColor() {
@@ -180,7 +184,8 @@ class CRCoinTests: XCTestCase {
   }
   
   func testAllTimeHigh() {
-    XCTAssertEqual(coin?.allTimeHigh, cAllTimeHigh)
+    XCTAssertEqual(coin?.allTimeHigh.price?.value, cAllTimeHigh.price?.value)
+    XCTAssertEqual(coin?.allTimeHigh.timestamp, cAllTimeHigh.timestamp)
   }
   
   func testPenalty() {

@@ -72,6 +72,6 @@ class CurrencyChartInfoView: UIView {
   func setInfo(price: Double, timestamp: Double) {
     let date = Date(timeIntervalSince1970: timestamp / 1000)
     dateLabel.text = dateFormatter.string(from: date)
-    priceLabel.text = "$\(Price.toString(price, force: true))"
+    priceLabel.text = Price(price)?.longForce
   }
 }
