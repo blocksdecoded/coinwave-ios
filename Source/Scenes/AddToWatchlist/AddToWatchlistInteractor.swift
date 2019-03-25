@@ -26,7 +26,7 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
   var worker: CoinsWorker?
 
   func doSomething(request: AddToWatchlist.Something.Request) {
-    worker?.fetchCoins(request.field, request.type, local: { coins, lastUpdated in
+    worker?.fetchCoins(request.field, request.type, force: request.force, local: { coins, lastUpdated in
       
     }, remote: { currencies, error in
       if error != nil {

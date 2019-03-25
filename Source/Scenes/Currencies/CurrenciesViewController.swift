@@ -316,7 +316,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     loadingView.startAnimating()
     currenciesList.isHidden = true
     headerForCurrenciesList.isHidden = true
-    let request = Currencies.FetchCoins.Request(limit: 50)
+    let request = Currencies.FetchCoins.Request(limit: 50, force: false)
     interactor?.fetchCoins(request: request)
   }
   
@@ -422,7 +422,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   }
   
   @objc private func refreshTable() {
-    let request = Currencies.FetchCoins.Request(limit: 50)
+    let request = Currencies.FetchCoins.Request(limit: 50, force: true)
     interactor?.fetchCoins(request: request)
   }
   

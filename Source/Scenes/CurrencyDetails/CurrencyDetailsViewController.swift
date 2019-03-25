@@ -328,7 +328,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   //@IBOutlet weak var nameTextField: UITextField!
   
   func doSomething(currID: Int) {
-    let request = CurrencyDetails.Something.Request(currID: currID)
+    let request = CurrencyDetails.Something.Request(currID: currID, force: false)
     interactor?.doSomething(request: request)
   }
   
@@ -413,7 +413,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
   }
   
   @objc private func refreshTable() {
-    let request = CurrencyDetails.Something.Request(currID: currencyID)
+    let request = CurrencyDetails.Something.Request(currID: currencyID, force: true)
     interactor?.doSomething(request: request)
     chart.load(coinID: currencyID, coinSymbol: currencySymbol, time: .hour24)
   }

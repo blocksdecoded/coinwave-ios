@@ -30,7 +30,7 @@ class CurrencyDetailsInteractor: CurrencyDetailsBusinessLogic, CurrencyDetailsDa
   // MARK: Do something
   
   func doSomething(request: CurrencyDetails.Something.Request) {
-    worker?.fetchCoin(request.currID) { coin, error  in
+    worker?.fetchCoin(request.currID, force: request.force) { coin, error  in
       if error != nil {
         self.presenter?.presentError(error!)
       } else {

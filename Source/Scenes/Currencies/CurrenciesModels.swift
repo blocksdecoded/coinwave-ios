@@ -19,6 +19,7 @@ enum Currencies {
     // swiftlint:disable nesting
     struct Request {
       let limit: Int
+      let force: Bool
     }
     
     struct Response {

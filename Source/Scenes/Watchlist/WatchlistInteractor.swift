@@ -14,7 +14,7 @@ import UIKit
 
 protocol WatchlistBusinessLogic {
   func fetchCoins(request: Watchlist.Something.Request)
-  func fetchFavorite()
+  func fetchFavorite(force: Bool)
   func sortName(_ screen: String)
   func sortPrice(_ screen: String)
   func sortMarketCap(_ screen: String)
@@ -37,11 +37,11 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   var sortType: CRCoin.OrderType!
   
   func fetchCoins(request: Watchlist.Something.Request) {
-    fetchCoins(request.field, request.type)
+    fetchCoins(request.field, request.type, force: request.force)
   }
   
-  private func fetchCoins(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {
-    worker?.fetchWatchlist(field, type) { coins, error in
+  private func fetchCoins(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType, force: Bool) {
+    worker?.fetchWatchlist(field, type, force: force) { coins, error in
       if error != nil {
         self.presenter?.presentError(error!)
       } else {
@@ -61,8 +61,8 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   
   
   
-  func fetchFavorite() {
-    worker?.fetchFavorite { coin, error in
+  func fetchFavorite(force: Bool) {
+    worker?.fetchFavorite(force: force) { coin, error in
       if error != nil {
         switch error! {
         case .network:
@@ -110,7 +110,7 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
     sortType = sortType == .asc ? .desc : .asc
     sortField = field
     sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
-    fetchCoins(sortField, sortType)
+    fetchCoins(sortField, sortType, force: false)
     presenter?.presentSort(sortField, sortType)
   }
 }

@@ -67,6 +67,13 @@ struct Constants {
     return ""
   }
   
+  static var shareURL: String {
+    if let url = Bundle.main.infoDictionary?["ShareURL"] as? String {
+      return url
+    }
+    return ""
+  }
+  
   static var coinsBaseURL: String = ""
   
   struct Fonts {

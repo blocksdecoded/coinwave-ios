@@ -20,6 +20,7 @@ enum Watchlist {
     struct Request {
       let field: CRCoin.OrderField
       let type: CRCoin.OrderType
+      let force: Bool
     }
     struct Response {
       let currencies: [CRCoin]

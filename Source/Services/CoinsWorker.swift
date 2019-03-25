@@ -11,11 +11,12 @@ import Foundation
 class CoinsWorker {
   func fetchCoins(_ orderField: CRCoin.OrderField,
                   _ orderType: CRCoin.OrderType,
+                  force: Bool,
                   local: @escaping ([CRCoin]?, String?) -> Void,
                   remote: @escaping ([CRCoin]?, CTError?) -> Void) {
-    if DataStore.shared.isCoinsOutdated() {
+    if DataStore.shared.isCoinsOutdated() || force {
       if let coins = fetchLocalCoins(orderField, orderType) {
-        local(coins, DataStore.shared.lastUpdated)
+        local(coins, "")
       }
       fetchRemoteCoins(orderField, orderType, remote)
     } else {
@@ -27,8 +28,8 @@ class CoinsWorker {
     }
   }
   
-  func fetchCoin(_ coinId: Int, _ completion: @escaping (CRCoin?, CTError?) -> Void) {
-    if DataStore.shared.isCoinsOutdated() {
+  func fetchCoin(_ coinId: Int, force: Bool, _ completion: @escaping (CRCoin?, CTError?) -> Void) {
+    if DataStore.shared.isCoinsOutdated() || force {
       fetchRemoteCoins(.marketCap, .desc) { _, error in
         if error != nil {
           completion(nil, error)
@@ -47,8 +48,9 @@ class CoinsWorker {
   
   func fetchWatchlist(_ orderField: CRCoin.OrderField,
                       _ orderType: CRCoin.OrderType,
+                      force: Bool,
                       _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
-    if DataStore.shared.isCoinsOutdated() {
+    if DataStore.shared.isCoinsOutdated() || force {
       fetchRemoteCoins(orderField, orderType) { _, error in
         if error != nil {
           completion(nil, error)
@@ -61,8 +63,8 @@ class CoinsWorker {
     }
   }
   
-  func fetchFavorite(_ completion: @escaping (CRCoin?, CTError?) -> Void) {
-    if DataStore.shared.isCoinsOutdated() {
+  func fetchFavorite(force: Bool, _ completion: @escaping (CRCoin?, CTError?) -> Void) {
+    if DataStore.shared.isCoinsOutdated() || force {
       fetchRemoteCoins(.marketCap, .desc) { _, error in
         if error != nil {
           completion(nil, error)

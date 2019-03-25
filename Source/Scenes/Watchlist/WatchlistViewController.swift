@@ -310,12 +310,12 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     loadingView.startAnimating()
     watchTable.isHidden = true
     headerForCurrenciesList.isHidden = true
-    let request = Watchlist.Something.Request(field: .name, type: .asc)
+    let request = Watchlist.Something.Request(field: .name, type: .asc, force: false)
     interactor?.fetchCoins(request: request)
   }
   
   func loadFavorite() {
-    interactor?.fetchFavorite()
+    interactor?.fetchFavorite(force: false)
   }
   
   func displaySomething(viewModel: Watchlist.Something.ViewModel) {
@@ -419,8 +419,8 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }
   
   @objc private func refreshTable() {
-    interactor?.fetchCoins(request: Watchlist.Something.Request(field: .name, type: .asc))
-    interactor?.fetchFavorite()
+    interactor?.fetchCoins(request: Watchlist.Something.Request(field: .name, type: .asc, force: true))
+    interactor?.fetchFavorite(force: true)
   }
 }
 
@@ -459,7 +459,7 @@ extension WatchlistViewController: CurrencyChartDelegate {
 
 extension WatchlistViewController: OnPickFavoriteDelegate {
   func onPickedFavorite() {
-    interactor?.fetchFavorite()
+    interactor?.fetchFavorite(force: false)
   }
 }
 
@@ -470,8 +470,8 @@ extension WatchlistViewController: ErrorViewDelegate {
       let addToWatchlist = AddToWatchlistViewController()
       self.navigationController?.pushViewController(addToWatchlist, animated: true)
     } else {
-      doSomething()
-      interactor?.fetchFavorite()
+      interactor?.fetchCoins(request: Watchlist.Something.Request(field: .name, type: .asc, force: true))
+      interactor?.fetchFavorite(force: true)
     }
   }
 }

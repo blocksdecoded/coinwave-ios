@@ -35,13 +35,13 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   var sortType: CRCoin.OrderType!
 
   func fetchCoins(request: Currencies.FetchCoins.Request) {
-    fetchCoins()
+    fetchCoins(force: request.force)
   }
   
-  private func fetchCoins() {
-    worker?.fetchCoins(sortField, sortType, local: { coins, lastUpdated in
-      if let coins = coins, let lastUpdated = lastUpdated {
-        self.presenter?.presentLocalCoins(response: Currencies.LocalCoins.Response(coins: coins, lastUpd: "last updated:\n\(lastUpdated)"))
+  private func fetchCoins(force: Bool) {
+    worker?.fetchCoins(sortField, sortType, force: force, local: { coins, lastUpdated in
+      if let coins = coins {
+        self.presenter?.presentLocalCoins(response: Currencies.LocalCoins.Response(coins: coins, lastUpd: ""))
       }
     }, remote: { coins, error in
       if error != nil {
@@ -89,7 +89,7 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
     sortType = sortType == .asc ? .desc : .asc
     sortField = field
     sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
-    fetchCoins()
+    fetchCoins(force: false)
     presenter?.presentSort(sortField, sortType)
   }
 }

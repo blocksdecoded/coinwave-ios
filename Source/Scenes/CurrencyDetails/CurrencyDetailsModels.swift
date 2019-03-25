@@ -34,6 +34,7 @@ enum CurrencyDetails {
     // swiftlint:disable nesting
     struct Request {
       let currID: Int
+      let force: Bool
     }
     struct Response {
       let coin: CRCoin
