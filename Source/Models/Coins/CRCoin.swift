@@ -75,7 +75,7 @@ extension CRCoin: Decodable {
   
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: Keys.self)
-    let id = try container.decode(Int.self, forKey: .identifier)
+    let identifier = try container.decode(Int.self, forKey: .identifier)
     let slug = try container.decode(String.self, forKey: .slug)
     let symbol = try container.decode(String.self, forKey: .symbol)
     let name = try container.decode(String.self, forKey: .name)
@@ -98,7 +98,7 @@ extension CRCoin: Decodable {
     let allTimeHigh = try container.decode(CRPrice.self, forKey: .allTimeHigh)
     let penalty = try container.decode(Bool.self, forKey: .penalty)
     
-    self.init(identifier: id,
+    self.init(identifier: identifier,
               slug: slug,
               symbol: symbol,
               name: name,
