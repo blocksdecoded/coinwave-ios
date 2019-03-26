@@ -31,43 +31,21 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     case favorite
   }
   
-  override var preferredStatusBarStyle: UIStatusBarStyle {
-    return .lightContent
-  }
-  
-  weak var sideMenuDelegate: SideMenuDelegate?
-  
-  private lazy var nameColumn: UIButton = {
-    return columnTitle(text: "Name")
-  }()
-  
-  private lazy var marketCapColumn: UIButton = {
-    return columnTitle(text: "Market Cap")
-  }()
-  
-  private lazy var volumeColumn: UIButton = {
-    return columnTitle(text: "Volume (24h)")
-  }()
-  
-  private lazy var priceColumn: UIButton = {
-    return columnTitle(text: "Price (24h)")
-  }()
-  
-  private lazy var titles: [UIButton] = {
-    return [nameColumn, marketCapColumn, volumeColumn, priceColumn]
-  }()
-  
+  override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
   var interactor: CurrenciesBusinessLogic?
   var router: (NSObjectProtocol & CurrenciesRoutingLogic & CurrenciesDataPassing)?
-  
+  weak var sideMenuDelegate: SideMenuDelegate?
+  private lazy var nameColumn: UIButton = { return columnTitle(text: "Name") }()
+  private lazy var marketCapColumn: UIButton = { return columnTitle(text: "Market Cap") }()
+  private lazy var volumeColumn: UIButton = { return columnTitle(text: "Volume (24h)") }()
+  private lazy var priceColumn: UIButton = { return columnTitle(text: "Price (24h)") }()
+  private lazy var titles: [UIButton] = { return [nameColumn, marketCapColumn, volumeColumn, priceColumn] }()
   weak var favoritePickerDelegate: OnPickFavoriteDelegate?
   private let version: Version
   private var currencies: [CRCoin]?
-  
-  private lazy var loadingView: NVActivityIndicatorView = {
-    let view = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
-    return view
-  }()
+  private let navigationView = UIView()
+  private let navigationLoading = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
+  private let loadingView = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
   
   private lazy var errorView: ErrorView = {
     let errorView = ErrorView(frame: CGRect.zero)
@@ -90,22 +68,15 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   private lazy var titleLbl: UILabel = {
     let titleLabel = UILabel()
-    
     switch version {
     case .list:
       titleLabel.text = "Cryptocurrencies"
     case .favorite:
       titleLabel.text = "Pick favorite"
     }
-    
     titleLabel.textColor = .white
     titleLabel.font = Theme.Fonts.sfproTextRegular(size: 24)
     return titleLabel
-  }()
-  
-  private lazy var navigationLoading: NVActivityIndicatorView = {
-    let view = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
-    return view
   }()
   
   private lazy var lastUpdated: UILabel = {
@@ -116,26 +87,16 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     return label
   }()
   
-  private lazy var navigationView: UIView = {
-    let view = UIView()
-    return view
-  }()
-  
   private lazy var headerForCurrenciesList: UIView = {
     let headerView = UIView()
     let stackView = UIStackView(arrangedSubviews: titles)
     stackView.axis = .horizontal
     stackView.alignment = .fill
     stackView.distribution = .fillEqually
-    
     headerView.addSubview(stackView)
-    
     stackView.snp.makeConstraints { make in
-      make.leading.equalTo(headerView.snp.leading)
-      make.trailing.equalTo(headerView.snp.trailing)
-      make.centerY.equalTo(headerView.snp.centerY)
+      make.leading.trailing.centerY.equalToSuperview()
     }
-    
     return headerView
   }()
   
@@ -202,7 +163,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     guard let curr = currencies?[index] else {
       return
     }
-    
     router?.openDetails(currencyID: curr.identifier, currencySymbol: curr.symbol)
   }
   
@@ -229,7 +189,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   private func setupViews() {
     let factory = WidgetFactory()
     factory.setGradientTo(view: view)
-    
     switch version {
     case .list:
       navigationView.addSubview(menuBtn)
@@ -250,34 +209,25 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   private func setupConstraints() {
     navigationView.snp.makeConstraints { make in
       make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-      make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-      make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+      make.leading.trailing.equalToSuperview()
       make.height.equalTo(100)
     }
-    
     headerForCurrenciesList.snp.makeConstraints { make in
-      make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-      make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+      make.leading.trailing.equalToSuperview()
       make.top.equalTo(navigationView.snp.bottom)
       make.height.equalTo(50)
     }
-    
     currenciesList.snp.makeConstraints { make in
-      make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-      make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-      make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+      make.leading.trailing.bottom.equalToSuperview()
       make.top.equalTo(headerForCurrenciesList.snp.bottom)
     }
-    
     errorView.snp.makeConstraints { make in
       make.center.equalToSuperview()
     }
-    
     loadingView.snp.makeConstraints { make in
       make.center.equalToSuperview()
       make.width.height.equalTo(50)
     }
-    
     switch version {
     case .list:
       menuBtn.snp.makeConstraints { make in
@@ -349,10 +299,8 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     loadingView.isHidden = true
     currenciesList.isHidden = false
     headerForCurrenciesList.isHidden = false
-    
     navigationLoading.startAnimating()
     lastUpdated.text = viewModel.lastUpd
-    
     currencies = viewModel.coins
     currenciesList.reloadData()
   }
@@ -360,7 +308,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   func setSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {
     var button: UIButton
     var others: [UIButton]
-    
     switch field {
     case .name:
       button = nameColumn
@@ -375,10 +322,8 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       button = marketCapColumn
       others = titles.filter { $0 != marketCapColumn }
     }
-    
     button.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
     button.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
-    
     var image: UIImage?
     switch type {
     case .asc:
@@ -386,7 +331,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     case .desc:
       image = UIImage(named: "triangle_down")?.withRenderingMode(.alwaysTemplate)
     }
-    
     button.setImage(image, for: .normal)
     defaultButton(others)
   }
@@ -451,11 +395,9 @@ extension CurrenciesViewController: UITableViewDataSource, UITableViewDelegate {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: TVCCrypto.reuseID) as? TVCCrypto else {
       return UITableViewCell()
     }
-    
     guard let currency = currencies?[indexPath.row] else {
       fatalError()
     }
-    
     cell.onBind(currency, isTop: indexPath.row == 0)
     return cell
   }
