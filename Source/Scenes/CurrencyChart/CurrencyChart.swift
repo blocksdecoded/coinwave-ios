@@ -35,7 +35,7 @@ class CurrencyChart: UIView {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle("Choose favorite", for: .normal)
-    button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+    button.titleLabel?.font = Theme.Fonts.sfproTextRegular(size: 12)
     button.backgroundColor = UIColor(red: 40.0/255.0, green: 52.0/255.0, blue: 59.0/255.0, alpha: 1.0)
     button.layer.cornerRadius = 10
     button.addTarget(self, action: #selector(pickFavorite), for: .touchUpInside)
@@ -68,7 +68,7 @@ class CurrencyChart: UIView {
   private lazy var nameLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont(name: Constants.Fonts.regular, size: 16)
+    label.font = Theme.Fonts.sfproTextRegular(size: 16)
     label.textColor = .white
     return label
   }()
@@ -76,7 +76,7 @@ class CurrencyChart: UIView {
   private lazy var priceLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont(name: Constants.Fonts.semibold, size: 12)
+    label.font = Theme.Fonts.sfproTextSemibold(size: 12)
     return label
   }()
   

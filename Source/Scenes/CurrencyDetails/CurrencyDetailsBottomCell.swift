@@ -45,7 +45,7 @@ class CurrencyDetailsBottomCell: UITableViewCell {
     button.setTitle("GO TO WEBSITE", for: .normal)
     button.addTarget(self, action: #selector(onTap), for: .touchUpInside)
     button.setTitleColor(UIColor(red: 29.0/255.0, green: 199.0/255.0, blue: 231.0/255.0, alpha: 1.0), for: .normal)
-    button.titleLabel?.font = UIFont.systemFont(ofSize: 8)
+    button.titleLabel?.font = Theme.Fonts.sfproTextRegular(size: 8)
     return button
   }()
   

@@ -72,7 +72,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.text = "Add to watchlist"
     titleLabel.textColor = .white
-    titleLabel.font = UIFont(name: Constants.Fonts.regular, size: 18)
+    titleLabel.font = Theme.Fonts.sfproTextRegular(size: 18)
     return titleLabel
   }()
   

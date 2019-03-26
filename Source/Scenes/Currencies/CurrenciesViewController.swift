@@ -99,7 +99,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     }
     
     titleLabel.textColor = .white
-    titleLabel.font = UIFont(name: Constants.Fonts.regular, size: 24)
+    titleLabel.font = Theme.Fonts.sfproTextRegular(size: 24)
     return titleLabel
   }()
   
@@ -110,7 +110,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   private lazy var lastUpdated: UILabel = {
     let label = UILabel()
-    label.font = UIFont(name: Constants.Fonts.light, size: 11)
+    label.font = Theme.Fonts.sfproTextLight(size: 11)
     label.textColor = UIColor.white
     label.numberOfLines = 2
     return label
@@ -404,7 +404,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     button.titleLabel?.textAlignment = .center
     button.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
     button.tintColor = UIColor.white.withAlphaComponent(0.7)
-    button.titleLabel?.font = UIFont(name: Constants.Fonts.light, size: 11)
+    button.titleLabel?.font = Theme.Fonts.sfproTextLight(size: 11)
     button.addTarget(self, action: #selector(sortCoins(_:)), for: .touchUpInside)
     button.setImage(UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate), for: .normal)
     button.semanticContentAttribute = .forceRightToLeft

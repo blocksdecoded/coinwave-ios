@@ -90,7 +90,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.text = "Watchlist"
     titleLabel.textColor = UIColor(red: 40.0/255.0, green: 51.0/255.0, blue: 59.0/255.0, alpha: 0.7)
-    titleLabel.font = UIFont(name: Constants.Fonts.regular, size: 24)
+    titleLabel.font = Theme.Fonts.sfproTextRegular(size: 24)
     return titleLabel
   }()
   
@@ -133,7 +133,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     button.titleLabel?.textAlignment = .center
     button.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
     button.tintColor = UIColor.white.withAlphaComponent(0.7)
-    button.titleLabel?.font = UIFont(name: Constants.Fonts.light, size: 11)
+    button.titleLabel?.font = Theme.Fonts.sfproTextLight(size: 11)
     button.addTarget(self, action: #selector(sortCoins(_:)), for: .touchUpInside)
     button.setImage(UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate), for: .normal)
     button.semanticContentAttribute = .forceRightToLeft

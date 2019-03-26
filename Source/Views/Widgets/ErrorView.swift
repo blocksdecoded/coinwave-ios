@@ -30,7 +30,7 @@ class ErrorView: UIView {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textColor = .white
-    label.font = UIFont(name: Constants.Fonts.regular, size: 17)
+    label.font = Theme.Fonts.sfproTextRegular(size: 17)
     label.numberOfLines = 0
     label.textAlignment = .center
     return label
@@ -41,7 +41,7 @@ class ErrorView: UIView {
     button.translatesAutoresizingMaskIntoConstraints = false
     button.addTarget(self, action: #selector(onRetry), for: .touchUpInside)
     button.setTitle("RETRY", for: .normal)
-    button.titleLabel?.font = UIFont(name: Constants.Fonts.semibold, size: 12)
+    button.titleLabel?.font = Theme.Fonts.sfproTextSemibold(size: 12)
     button.setTitleColor(UIColor(red: 0.11, green: 0.13, blue: 0.16, alpha: 1), for: .normal)
     
     button.layer.cornerRadius = 10

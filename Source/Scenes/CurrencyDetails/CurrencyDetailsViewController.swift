@@ -88,7 +88,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.text = title
     titleLabel.textColor = .white
-    titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+    titleLabel.font = Theme.Fonts.sfproTextBold(size: 24)
     titleLabel.textAlignment = .center
     titleLabel.numberOfLines = 1
     titleLabel.adjustsFontSizeToFitWidth = true
@@ -128,7 +128,7 @@ class CurrencyDetailsViewController: UIViewController, CurrencyDetailsDisplayLog
     button.tag = tag
     button.setTitleColor(UIColor(red: 29.0/255.0, green: 233.0/255.0, blue: 182.0/255.0, alpha: 1.0), for: .selected)
     button.setTitleColor(UIColor(red: 170.0/255.0, green: 174.0/255.0, blue: 179.0/255.0, alpha: 1.0), for: .normal)
-    button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+    button.titleLabel?.font = Theme.Fonts.sfproTextRegular(size: 12)
     button.isSelected = isSelected
     button.addTarget(self, action: #selector(changePeriod(sender:)), for: .touchUpInside)
     return button

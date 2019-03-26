@@ -39,7 +39,7 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   }
   
   private func fetchCoins(force: Bool) {
-    worker?.fetchCoins(sortField, sortType, force: force, local: { coins, lastUpdated in
+    worker?.fetchCoins(sortField, sortType, force: force, local: { coins, _ in
       if let coins = coins {
         self.presenter?.presentLocalCoins(response: Currencies.LocalCoins.Response(coins: coins, lastUpd: ""))
       }
