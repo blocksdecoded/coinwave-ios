@@ -1,0 +1,85 @@
+{
+  "id": 61,
+  "slug": "iost-iost",
+  "symbol": "IOST",
+  "name": "IOST",
+  "description": "IOStoken is an ERC20 token on the ethereum blockchain with their own designed proof of believability consensus mechanism. The believability of a node is determined by calculation of behaviour and activity in the network.",
+  "color": "#000000",
+  "iconType": "vector",
+  "iconUrl": "https://cdn.coinranking.com/H1tTqFuSf/iost.svg",
+  "websiteUrl": "https://iost.io/ ",
+  "socials": [
+    {
+      "name": "@iostoken",
+      "url": "https://medium.com/@iostoken",
+      "type": "medium"
+    },
+    {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/internetofservices/",
+      "type": "facebook"
+    },
+    {
+      "name": "iostoken",
+      "url": "https://twitter.com/iostoken",
+      "type": "twitter"
+    },
+    {
+      "name": "r/iostoken",
+      "url": "https://www.reddit.com/r/iostoken/",
+      "type": "reddit"
+    },
+    {
+      "name": "officialios",
+      "url": "https://t.me/officialios",
+      "type": "telegram"
+    }
+  ],
+  "confirmedSupply": true,
+  "numberOfMarkets": 66,
+  "numberOfExchanges": 34,
+  "type": "coin",
+  "volume": 70513382,
+  "marketCap": 164033272,
+  "price": "0.0128339904",
+  "circulatingSupply": 12781158976,
+  "totalSupply": 21000000000,
+  "approvedSupply": true,
+  "firstSeen": 1516147200000,
+  "change": 15.06,
+  "rank": 49,
+  "history": [
+    "0.0111537055",
+    "0.0110081223",
+    "0.0108843948",
+    "0.0110432137",
+    "0.011159143",
+    "0.0113272317",
+    "0.0113066485",
+    "0.0113999404",
+    "0.0112641183",
+    "0.0113337251",
+    "0.0113596307",
+    "0.0113860508",
+    "0.0114007721",
+    "0.0115022111",
+    "0.0115019716",
+    "0.0115716087",
+    "0.0119286933",
+    "0.012272278",
+    "0.012213904",
+    "0.0120201666",
+    "0.0122563905",
+    "0.01261933",
+    "0.0127850901",
+    "0.0127335422",
+    "0.0124926867",
+    "0.012750285",
+    "0.0128339904"
+  ],
+  "allTimeHigh": {
+    "price": "0.10820004914262053",
+    "timestamp": 1516924800000
+  },
+  "penalty": false
+  }

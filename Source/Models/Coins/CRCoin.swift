@@ -82,8 +82,19 @@ extension CRCoin: Decodable {
     let description = try container.decode(String?.self, forKey: .description)
     let color = try container.decode(String?.self, forKey: .color)
     let iconType = try container.decode(CRCoin.IconType?.self, forKey: .iconType)
-    let iconUrl = try container.decode(URL?.self, forKey: .iconUrl)
-    let websiteUrl = try container.decode(URL?.self, forKey: .websiteUrl)
+    
+    let stringIconUrl = try container.decode(String?.self, forKey: .iconUrl)
+    var iconUrl: URL?
+    if stringIconUrl != nil {
+      iconUrl = URL(string: stringIconUrl!.trimmingCharacters(in: [" "]))
+    }
+    
+    let stringWebsiteUrl = try container.decode(String?.self, forKey: .websiteUrl)
+    var websiteUrl: URL?
+    if stringWebsiteUrl != nil {
+      websiteUrl = URL(string: stringWebsiteUrl!.trimmingCharacters(in: [" "]))
+    }
+    
     let confirmedSupply = try container.decode(Bool.self, forKey: .confirmedSupply)
     let type = try container.decode(CRCoin.CoinType.self, forKey: .type)
     let volume = try container.decode(Price?.self, forKey: .volume)
