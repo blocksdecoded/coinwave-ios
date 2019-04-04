@@ -90,12 +90,6 @@
 		B5E1D6C5221EDC2A005419C8 /* CoinsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */; };
 		B5E1D6C9221FBAC7005419C8 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C8221FBAC7005419C8 /* CTError.swift */; };
 		B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
-		B5E93D0021A6A73500D1705A /* PostPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */; };
-		B5E93D0321A6A73500D1705A /* PostPreviewWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */; };
-		B5E93D0621A6A73500D1705A /* PostPreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */; };
-		B5E93D0921A6A73500D1705A /* PostPreviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFD21A6A73500D1705A /* PostPreviewModels.swift */; };
-		B5E93D0C21A6A73500D1705A /* PostPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFE21A6A73500D1705A /* PostPreviewViewController.swift */; };
-		B5E93D0F21A6A73500D1705A /* PostPreviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CFF21A6A73500D1705A /* PostPreviewInteractor.swift */; };
 		B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */; };
 		B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */; };
 		B5E93D3621A6B9B000D1705A /* DataAccessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3521A6B9B000D1705A /* DataAccessError.swift */; };
@@ -245,12 +239,6 @@
 		B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsWorker.swift; sourceTree = "<group>"; };
 		B5E1D6C8221FBAC7005419C8 /* CTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTError.swift; sourceTree = "<group>"; };
 		B5E93CEF21A6A3AE00D1705A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewPresenter.swift; sourceTree = "<group>"; };
-		B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewWorker.swift; sourceTree = "<group>"; };
-		B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewRouter.swift; sourceTree = "<group>"; };
-		B5E93CFD21A6A73500D1705A /* PostPreviewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewModels.swift; sourceTree = "<group>"; };
-		B5E93CFE21A6A73500D1705A /* PostPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewViewController.swift; sourceTree = "<group>"; };
-		B5E93CFF21A6A73500D1705A /* PostPreviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewInteractor.swift; sourceTree = "<group>"; };
 		B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDataStore.swift; sourceTree = "<group>"; };
 		B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
 		B5E93D3521A6B9B000D1705A /* DataAccessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessError.swift; sourceTree = "<group>"; };
@@ -506,7 +494,6 @@
 				B501299A21A95FEB001B6A04 /* CurrencyChart */,
 				B501298121A94BA7001B6A04 /* CurrencyDetails */,
 				B501296821A940BA001B6A04 /* Watchlist */,
-				B5E93CF921A6A71A00D1705A /* PostPreview */,
 				B5276AEE21A011ED000A74A5 /* Currencies */,
 				B5276B4321A2816F000A74A5 /* Posts */,
 			);
@@ -649,19 +636,6 @@
 				B5FCEA8F220D900700E4B433 /* SFProText-Light.otf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		B5E93CF921A6A71A00D1705A /* PostPreview */ = {
-			isa = PBXGroup;
-			children = (
-				B5E93CFA21A6A73500D1705A /* PostPreviewPresenter.swift */,
-				B5E93CFB21A6A73500D1705A /* PostPreviewWorker.swift */,
-				B5E93CFC21A6A73500D1705A /* PostPreviewRouter.swift */,
-				B5E93CFD21A6A73500D1705A /* PostPreviewModels.swift */,
-				B5E93CFE21A6A73500D1705A /* PostPreviewViewController.swift */,
-				B5E93CFF21A6A73500D1705A /* PostPreviewInteractor.swift */,
-			);
-			path = PostPreview;
 			sourceTree = "<group>";
 		};
 		B5E93D2B21A6B44B00D1705A /* DataStore */ = {
@@ -1012,11 +986,9 @@
 				B5276B5621A28183000A74A5 /* PostsViewController.swift in Sources */,
 				B5E1D6BF221D6CCB005419C8 /* ErrorView.swift in Sources */,
 				B5E93D8121A82AF600D1705A /* CurrenciesCell.swift in Sources */,
-				B5E93D0321A6A73500D1705A /* PostPreviewWorker.swift in Sources */,
 				B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */,
 				B501299721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */,
 				B5276AB021A00F59000A74A5 /* ViewController.swift in Sources */,
-				B5E93D0921A6A73500D1705A /* PostPreviewModels.swift in Sources */,
 				B5FCEAC52212D8FC00E4B433 /* AddToWatchlistInteractor.swift in Sources */,
 				B501297521A940DA001B6A04 /* WatchlistRouter.swift in Sources */,
 				B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */,
@@ -1029,7 +1001,6 @@
 				B5F3D3F22249DEEB00B69295 /* Theme.swift in Sources */,
 				B527122D2238DA1A00D57639 /* ConfigRouter.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
-				B5E93D0F21A6A73500D1705A /* PostPreviewInteractor.swift in Sources */,
 				B5E93D3621A6B9B000D1705A /* DataAccessError.swift in Sources */,
 				B5E1D6C5221EDC2A005419C8 /* CoinsWorker.swift in Sources */,
 				B5276B4D21A28183000A74A5 /* PostsWorker.swift in Sources */,
@@ -1051,7 +1022,6 @@
 				B5E1D6C9221FBAC7005419C8 /* CTError.swift in Sources */,
 				B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */,
 				B52712102238D33800D57639 /* ConfigNetworkManager.swift in Sources */,
-				B5E93D0C21A6A73500D1705A /* PostPreviewViewController.swift in Sources */,
 				B5276B5021A28183000A74A5 /* PostsRouter.swift in Sources */,
 				B501298821A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */,
 				B501298E21A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */,
@@ -1087,12 +1057,10 @@
 				B5E93D4221A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */,
 				B5737D4D2244E76E00C6A687 /* DateTimeService.swift in Sources */,
 				B5E93D6821A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */,
-				B5E93D0621A6A73500D1705A /* PostPreviewRouter.swift in Sources */,
 				B5FCEAC22212D8FC00E4B433 /* AddToWatchlistViewController.swift in Sources */,
 				B572E9572202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */,
 				B5276B4A21A28183000A74A5 /* PostsPresenter.swift in Sources */,
 				B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
-				B5E93D0021A6A73500D1705A /* PostPreviewPresenter.swift in Sources */,
 				B5FCEABF2212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */,
 				B52712362238DA1A00D57639 /* ConfigInteractor.swift in Sources */,
 				B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,

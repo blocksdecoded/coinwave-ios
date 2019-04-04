@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol PostsRoutingLogic {
-  func navigateToPostPreview(source: PostsViewController, destination: PostPreviewViewController)
+  
 }
 
 protocol PostsDataPassing {
@@ -43,10 +43,6 @@ class PostsRouter: NSObject, PostsRoutingLogic, PostsDataPassing {
   //}
 
   // MARK: Navigation
-  
-  func navigateToPostPreview(source: PostsViewController, destination: PostPreviewViewController) {
-    source.navigationController?.pushViewController(destination, animated: true)
-  }
   
   // MARK: Passing data
   
