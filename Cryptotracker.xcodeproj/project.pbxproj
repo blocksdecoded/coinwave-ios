@@ -88,7 +88,6 @@
 		B5CB3660221422ED00087C41 /* AddToWatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */; };
 		B5E1D6BF221D6CCB005419C8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */; };
 		B5E1D6C5221EDC2A005419C8 /* CoinsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */; };
-		B5E1D6C9221FBAC7005419C8 /* CTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D6C8221FBAC7005419C8 /* CTError.swift */; };
 		B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93CEF21A6A3AE00D1705A /* Constants.swift */; };
 		B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */; };
 		B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */; };
@@ -237,7 +236,6 @@
 		B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistCell.swift; sourceTree = "<group>"; };
 		B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsWorker.swift; sourceTree = "<group>"; };
-		B5E1D6C8221FBAC7005419C8 /* CTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTError.swift; sourceTree = "<group>"; };
 		B5E93CEF21A6A3AE00D1705A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B5E93D2D21A6B90F00D1705A /* SQLiteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDataStore.swift; sourceTree = "<group>"; };
 		B5E93D3121A6B98E00D1705A /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
@@ -599,7 +597,6 @@
 			isa = PBXGroup;
 			children = (
 				B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */,
-				B5E1D6C8221FBAC7005419C8 /* CTError.swift */,
 				B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */,
 				B594F04C223E1DB6005B8566 /* SortingWorker.swift */,
 				B5737D4C2244E76E00C6A687 /* DateTimeService.swift */,
@@ -1019,7 +1016,6 @@
 				B5F14D2B22040B5300DE5E62 /* CRDataCoin.swift in Sources */,
 				B5FCEABC2212D8FC00E4B433 /* AddToWatchlistRouter.swift in Sources */,
 				B572E9432202AF0F00778DA8 /* CRDataList.swift in Sources */,
-				B5E1D6C9221FBAC7005419C8 /* CTError.swift in Sources */,
 				B5276AF921A0124D000A74A5 /* CurrenciesViewController.swift in Sources */,
 				B52712102238D33800D57639 /* ConfigNetworkManager.swift in Sources */,
 				B5276B5021A28183000A74A5 /* PostsRouter.swift in Sources */,

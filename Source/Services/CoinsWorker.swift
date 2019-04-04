@@ -13,7 +13,7 @@ class CoinsWorker {
                   _ orderType: CRCoin.OrderType,
                   force: Bool,
                   local: @escaping ([CRCoin]?, String?) -> Void,
-                  remote: @escaping ([CRCoin]?, CTError?) -> Void) {
+                  remote: @escaping ([CRCoin]?, NMError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() || force {
       if let coins = fetchLocalCoins(orderField, orderType) {
         local(coins, "")
@@ -28,7 +28,7 @@ class CoinsWorker {
     }
   }
   
-  func fetchCoin(_ coinId: Int, force: Bool, _ completion: @escaping (CRCoin?, CTError?) -> Void) {
+  func fetchCoin(_ coinId: Int, force: Bool, _ completion: @escaping (CRCoin?, NMError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() || force {
       fetchRemoteCoins(.marketCap, .desc) { _, error in
         if error != nil {
@@ -49,7 +49,7 @@ class CoinsWorker {
   func fetchWatchlist(_ orderField: CRCoin.OrderField,
                       _ orderType: CRCoin.OrderType,
                       force: Bool,
-                      _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
+                      _ completion: @escaping ([CRCoin]?, NMError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() || force {
       fetchRemoteCoins(orderField, orderType) { _, error in
         if error != nil {
@@ -63,7 +63,7 @@ class CoinsWorker {
     }
   }
   
-  func fetchFavorite(force: Bool, _ completion: @escaping (CRCoin?, CTError?) -> Void) {
+  func fetchFavorite(force: Bool, _ completion: @escaping (CRCoin?, NMError?) -> Void) {
     if DataStore.shared.isCoinsOutdated() || force {
       fetchRemoteCoins(.marketCap, .desc) { _, error in
         if error != nil {
@@ -92,7 +92,7 @@ class CoinsWorker {
   
   private func fetchRemoteCoins(_ orderField: CRCoin.OrderField,
                                 _ orderType: CRCoin.OrderType,
-                                _ completion: @escaping ([CRCoin]?, CTError?) -> Void) {
+                                _ completion: @escaping ([CRCoin]?, NMError?) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
       networkManager.getCurrencies { currencies, error in

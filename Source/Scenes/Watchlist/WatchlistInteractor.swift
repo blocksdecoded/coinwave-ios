@@ -47,7 +47,7 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
       } else {
         if coins != nil {
           if coins!.isEmpty {
-            self.presenter?.presentError(.emptyWatchlist)
+            self.presenter?.presentError(.noData)
           } else {
             let response = Watchlist.Something.Response(currencies: coins!)
             self.presenter?.presentSomething(response: response)

@@ -80,7 +80,7 @@ extension Price: Decodable {
       let double = try container.decode(Double?.self)
       
       guard let notNilDouble = double else {
-        throw ValueError.nilValue
+        throw NMError.nilValue
       }
       
       value = notNilDouble
@@ -89,7 +89,7 @@ extension Price: Decodable {
       
       guard let notNilString = string,
         let value = Double(notNilString) else {
-          throw ValueError.nilValue
+          throw NMError.nilValue
       }
       
       self.value = value

@@ -54,7 +54,6 @@ extension NetworkManager {
 }
 
 enum NMError: Error {
-  case success
   case authenticationError
   case badRequest
   case outdated
@@ -62,11 +61,10 @@ enum NMError: Error {
   case noData
   case unableToDecode
   case network
+  case nilValue
   
   var localizedDescription: String {
     switch self {
-    case .success:
-      return "success"
     case .authenticationError:
       return "You need to be authenticated first."
     case .badRequest:
@@ -81,6 +79,8 @@ enum NMError: Error {
       return "We could not decode the response."
     case .network:
       return "Please check your network connection."
+    case .nilValue:
+      return "Nil value."
     }
   }
 }

@@ -16,7 +16,7 @@ protocol WatchlistPresentationLogic {
   func presentSomething(response: Watchlist.Something.Response)
   func presentFavorite(response: Watchlist.Favorite.Response)
   func presentNoFavorite()
-  func presentError(_ error: CTError)
+  func presentError(_ error: NMError)
   func presentSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType)
 }
 
@@ -41,12 +41,9 @@ class WatchlistPresenter: WatchlistPresentationLogic {
                                                          symbol: response.symbol))
   }
   
-  func presentError(_ error: CTError) {
-    if error == .emptyWatchlist {
-      viewController?.displayNoWatchlist(error.rawValue)
-    } else {
-      viewController?.displayError(error.rawValue)
-    }
+  func presentError(_ error: NMError) {
+    //TODO: Handle empty watchlist
+    viewController?.displayError("You are currently offline.\nCheck your internet connection")
   }
   
   func presentSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {

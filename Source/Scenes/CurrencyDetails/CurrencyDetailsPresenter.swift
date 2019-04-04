@@ -16,7 +16,7 @@ protocol CurrencyDetailsPresentationLogic {
   func presentCoinDetails(response: CurrencyDetails.Something.Response)
   func favorites(response: CurrencyDetails.AddFavorite.Response)
   func presentWebsite()
-  func presentError(_ error: CTError)
+  func presentError(_ error: NMError)
 }
 
 class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
@@ -69,7 +69,7 @@ class CurrencyDetailsPresenter: CurrencyDetailsPresentationLogic {
     }
   }
   
-  func presentError(_ error: CTError) {
-    viewController?.displayError(error.rawValue)
+  func presentError(_ error: NMError) {
+    viewController?.displayError("You are currently offline.\nCheck your internet connection")
   }
 }
