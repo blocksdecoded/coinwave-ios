@@ -121,11 +121,19 @@ class DataStore {
     }
   }
   
-  func loadCoins(_ sortable: Sortable) -> [CRCoin]? {
+  func loadCoins(_ sortable: Sortable, completion: (Result<[CRCoin], CWError>) -> Void) {
     do {
-      return try CRCoinDataHelper.findAll(sortable: sortable)
+      guard let coins =  try CRCoinDataHelper.findAll(sortable: sortable) else {
+        completion(.failure(.noData))
+        return
+      }
+      if coins.isEmpty {
+        completion(.failure(.noData))
+      } else {
+        completion(.success(coins))
+      }
     } catch {
-      fatalError("Cannot load currencies")
+      completion(.failure(.noData))
     }
   }
   

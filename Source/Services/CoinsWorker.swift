@@ -14,10 +14,10 @@ class CoinsWorker {
                   local: @escaping (Result<[CRCoin], CWError>) -> Void,
                   remote: @escaping (Result<[CRCoin], CWError>) -> Void) {
     if DataStore.shared.isCoinsOutdated() || force {
-      fetchLocalCoins(sortable, local)
+      DataStore.shared.loadCoins(sortable, completion: local)
       fetchRemoteCoins(sortable, remote)
     } else {
-      fetchLocalCoins(sortable) { result in
+      DataStore.shared.loadCoins(sortable) { result in
         switch result {
         case .success:
           remote(result)
@@ -95,7 +95,7 @@ class CoinsWorker {
         case .success(let coinsRoot):
           DataStore.shared.insertCoins(coinsRoot.data.coins)
           DispatchQueue.main.async {
-            self.fetchLocalCoins(sortable, completion)
+            DataStore.shared.loadCoins(sortable, completion: completion)
           }
         case .failure(let error):
           DispatchQueue.main.async {
@@ -120,14 +120,5 @@ class CoinsWorker {
       return
     }
     completion(.success(favorite))
-  }
-  
-  private func fetchLocalCoins(_ sortable: Sortable,
-                               _ completion: @escaping (Result<[CRCoin], CWError>) -> Void) {
-    guard let coins = DataStore.shared.loadCoins(sortable) else {
-      completion(.failure(.noData))
-      return
-    }
-    completion(.success(coins))
   }
 }
