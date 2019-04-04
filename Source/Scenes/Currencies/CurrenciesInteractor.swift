@@ -26,16 +26,14 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   var presenter: CurrenciesPresentationLogic?
   var worker: CoinsWorker?
   var sortingWorker: SortingWorker?
-  
-  var sortField: CRCoin.OrderField!
-  var sortType: CRCoin.OrderType!
+  var sortable: Sortable!
 
   func fetchCoins(request: Currencies.FetchCoins.Request) {
     fetchCoins(force: request.force)
   }
   
   private func fetchCoins(force: Bool) {
-    worker?.fetchCoins(sortField, sortType, force: force, local: { result in
+    worker?.fetchCoins(sortable, force: force, local: { result in
       switch result {
       case .success(let coins):
         self.presenter?.presentLocalCoins(response: Currencies.LocalCoins.Response(coins: coins, lastUpd: ""))
@@ -59,10 +57,8 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   }
   
   func viewDidLoad(_ screen: String) {
-    let sort = sortingWorker?.getSortConfig(screen: screen)
-    sortField = sort?.0 ?? .marketCap
-    sortType = sort?.1 ?? .desc
-    presenter?.presentSort(sortField, sortType)
+    sortable = sortingWorker?.getSortConfig(screen: screen) ?? Sortable(field: .marketCap, direction: .desc)
+    presenter?.presentSort(sortable)
   }
   
   func sortName(_ screen: String) {
@@ -81,11 +77,10 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
     sort(screen, .marketCap)
   }
   
-  private func sort(_ screen: String, _ field: CRCoin.OrderField) {
-    sortType = sortType == .asc ? .desc : .asc
-    sortField = field
-    sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
+  private func sort(_ screen: String, _ field: Sortable.Field) {
+    sortable = Sortable(field: field, direction: sortable.direction == .asc ? .desc : .asc)
+    sortingWorker?.setSortConfig(screen: screen, sortable: sortable)
     fetchCoins(force: false)
-    presenter?.presentSort(sortField, sortType)
+    presenter?.presentSort(sortable)
   }
 }

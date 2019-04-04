@@ -18,8 +18,7 @@ enum Watchlist {
   enum Something {
     // swiftlint:disable nesting
     struct Request {
-      let field: CRCoin.OrderField
-      let type: CRCoin.OrderType
+      let sortable: Sortable
       let force: Bool
     }
     struct Response {

@@ -159,17 +159,3 @@ extension CRCoin {
     return Constants.Colors.def
   }
 }
-
-extension CRCoin {
-  enum OrderField: String {
-    case name
-    case marketCap
-    case volume
-    case price
-  }
-  
-  enum OrderType: String {
-    case desc
-    case asc
-  }
-}

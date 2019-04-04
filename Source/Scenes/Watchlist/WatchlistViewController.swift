@@ -19,7 +19,7 @@ protocol WatchlistDisplayLogic: class {
   func displayNoFavorite()
   func displayNoWatchlist(_ string: String)
   func displayError(_ string: String)
-  func setSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType)
+  func setSort(_ sortable: Sortable)
 }
 
 class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
@@ -310,7 +310,8 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     loadingView.startAnimating()
     watchTable.isHidden = true
     headerForCurrenciesList.isHidden = true
-    let request = Watchlist.Something.Request(field: .name, type: .asc, force: false)
+    let sortable = Sortable(field: .name, direction: .asc)
+    let request = Watchlist.Something.Request(sortable: sortable, force: false)
     interactor?.fetchCoins(request: request)
   }
   
@@ -358,11 +359,11 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     chart.showError()
   }
   
-  func setSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {
+  func setSort(_ sortable: Sortable) {
     var button: UIButton
     var others: [UIButton]
     
-    switch field {
+    switch sortable.field {
     case .name:
       button = nameColumn
       others = titles.filter { $0 != nameColumn }
@@ -381,7 +382,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     button.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
     
     var image: UIImage?
-    switch type {
+    switch sortable.direction {
     case .asc:
       image = UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate)
     case .desc:
@@ -419,7 +420,8 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }
   
   @objc private func refreshTable() {
-    interactor?.fetchCoins(request: Watchlist.Something.Request(field: .name, type: .asc, force: true))
+    let sortable = Sortable(field: .name, direction: .asc)
+    interactor?.fetchCoins(request: Watchlist.Something.Request(sortable: sortable, force: true))
     interactor?.fetchFavorite(force: true)
   }
 }
@@ -470,7 +472,8 @@ extension WatchlistViewController: ErrorViewDelegate {
       let addToWatchlist = AddToWatchlistViewController()
       self.navigationController?.pushViewController(addToWatchlist, animated: true)
     } else {
-      interactor?.fetchCoins(request: Watchlist.Something.Request(field: .name, type: .asc, force: true))
+      let sortable = Sortable(field: .name, direction: .asc)
+      interactor?.fetchCoins(request: Watchlist.Something.Request(sortable: sortable, force: true))
       interactor?.fetchFavorite(force: true)
     }
   }

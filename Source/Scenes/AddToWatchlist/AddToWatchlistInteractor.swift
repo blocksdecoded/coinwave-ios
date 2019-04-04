@@ -22,7 +22,7 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
   var worker: CoinsWorker?
 
   func doSomething(request: AddToWatchlist.Coins.Request) {
-    worker?.fetchCoins(request.field, request.type, force: request.force, local: { result in
+    worker?.fetchCoins(request.sortable, force: request.force, local: { result in
       switch result {
       case .success(let coins):
         let response = AddToWatchlist.Coins.Response(coins: coins)

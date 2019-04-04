@@ -28,16 +28,14 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   var presenter: WatchlistPresentationLogic?
   var worker: CoinsWorker?
   var sortingWorker: SortingWorker?
-  
-  var sortField: CRCoin.OrderField!
-  var sortType: CRCoin.OrderType!
+  var sortable: Sortable!
   
   func fetchCoins(request: Watchlist.Something.Request) {
-    fetchCoins(request.field, request.type, force: request.force)
+    fetchCoins(request.sortable, force: request.force)
   }
   
-  private func fetchCoins(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType, force: Bool) {
-    worker?.fetchWatchlist(field, type, force: force) { result in
+  private func fetchCoins(_ sortable: Sortable, force: Bool) {
+    worker?.fetchWatchlist(sortable, force: force) { result in
       switch result {
       case .success(let coins):
         let response = Watchlist.Something.Response(currencies: coins)
@@ -82,17 +80,14 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   }
   
   func viewDidLoad(_ screen: String) {
-    let sort = sortingWorker?.getSortConfig(screen: screen)
-    sortField = sort?.0 ?? .marketCap
-    sortType = sort?.1 ?? .desc
-    presenter?.presentSort(sortField, sortType)
+    sortable = sortingWorker?.getSortConfig(screen: screen) ?? Sortable(field: .marketCap, direction: .desc)
+    presenter?.presentSort(sortable)
   }
   
-  private func sort(_ screen: String, _ field: CRCoin.OrderField) {
-    sortType = sortType == .asc ? .desc : .asc
-    sortField = field
-    sortingWorker?.setSortConfig(screen: screen, field: sortField, type: sortType)
-    fetchCoins(sortField, sortType, force: false)
-    presenter?.presentSort(sortField, sortType)
+  private func sort(_ screen: String, _ field: Sortable.Field) {
+    sortable = Sortable(field: field, direction: sortable.direction == .asc ? .desc : .asc)
+    sortingWorker?.setSortConfig(screen: screen, sortable: sortable)
+    fetchCoins(sortable, force: false)
+    presenter?.presentSort(sortable)
   }
 }

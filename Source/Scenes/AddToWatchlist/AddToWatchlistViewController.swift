@@ -178,7 +178,8 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   }
   
   func doSomething() {
-    let request = AddToWatchlist.Coins.Request(field: .name, type: .asc, force: false)
+    let sortable = Sortable(field: .name, direction: .asc)
+    let request = AddToWatchlist.Coins.Request(sortable: sortable, force: false)
     interactor?.doSomething(request: request)
   }
   
@@ -202,7 +203,8 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   }
   
   @objc private func refreshTable() {
-    let request = AddToWatchlist.Coins.Request(field: .name, type: .asc, force: true)
+    let sortable = Sortable(field: .name, direction: .asc)
+    let request = AddToWatchlist.Coins.Request(sortable: sortable, force: true)
     interactor?.doSomething(request: request)
   }
 }
