@@ -34,13 +34,13 @@ class CoinsWorker {
       fetchRemoteCoins(sortable) { result in
         switch result {
         case .success:
-          self.fetchLocalCoin(coinId, completion)
+          DataStore.shared.loadCoin(coinId, completion: completion)
         case .failure(let error):
           completion(.failure(error))
         }
       }
     } else {
-      self.fetchLocalCoin(coinId, completion)
+      DataStore.shared.loadCoin(coinId, completion: completion)
     }
   }
   
@@ -104,13 +104,5 @@ class CoinsWorker {
         }
       }
     }
-  }
-  
-  private func fetchLocalCoin(_ coinId: Int, _ completion: @escaping (Result<CRCoin, CWError>) -> Void) {
-    guard let coin = DataStore.shared.fetchCoin(coinId) else {
-      completion(.failure(.noData))
-      return
-    }
-    completion(.success(coin))
   }
 }

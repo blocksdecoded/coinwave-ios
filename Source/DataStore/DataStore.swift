@@ -141,11 +141,15 @@ class DataStore {
     }
   }
   
-  func fetchCoin(_ identifier: Int) -> CRCoin? {
+  func loadCoin(_ identifier: Int, completion: (Result<CRCoin, CWError>) -> Void) {
     do {
-      return try CRCoinDataHelper.find(id: Int64(identifier))
+      guard let coin = try CRCoinDataHelper.find(id: Int64(identifier)) else {
+        completion(.failure(.noData))
+        return
+      }
+      completion(.success(coin))
     } catch {
-      fatalError("Cannot fetch coin \(identifier)")
+      completion(.failure(.noData))
     }
   }
   

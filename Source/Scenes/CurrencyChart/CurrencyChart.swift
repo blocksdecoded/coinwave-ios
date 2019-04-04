@@ -246,8 +246,15 @@ class CurrencyChart: UIView {
     
     let key = "\(coinID)_\(time.value)"
     
-    let coin = DataStore.shared.fetchCoin(coinID)!
-    setCoinData(coin: coin)
+    DataStore.shared.loadCoin(coinID) { result in
+      switch result {
+      case .success(let coin):
+        self.setCoinData(coin: coin)
+      case .failure:
+        //TODO: Show error
+        break
+      }
+    }
     
     if let root = cache.object(forKey: key as NSString) as? CRRoot<CRDataHistory> {
       self.setChartData(prices: root.data.history)
