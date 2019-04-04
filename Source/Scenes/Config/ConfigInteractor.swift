@@ -26,13 +26,20 @@ class ConfigInteractor: ConfigBusinessLogic, ConfigDataStore {
   
   func viewDidLoad() {
     worker = ConfigWorker()
-    worker?.getConfig ({ config in
-      if config.servers.count >= 1 {
-        Constants.coinsBaseURL = config.servers[0].trimmingCharacters(in: ["/"])
+    worker?.getConfig { result in
+      switch result {
+      case .success(let bootstrap):
+        Constants.coinsBaseURL = bootstrap.servers[0].trimmingCharacters(in: ["/"])
+        self.presenter?.presentMainScreen()
+      case .failure(let error):
+        switch error {
+        case .noData:
+          // TODO: Find error message if no remote servers
+          self.presenter?.presentError(CWError.noData.localizedDescription)
+        default:
+          self.presenter?.presentError(error.localizedDescription)
+        }
       }
-      self.presenter?.presentMainScreen()
-    }, { error in
-      self.presenter?.presentError(error)
-    })
+    }
   }
 }

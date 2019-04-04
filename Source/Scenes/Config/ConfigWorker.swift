@@ -13,18 +13,7 @@
 import UIKit
 
 class ConfigWorker {
-  func getConfig(_ success: @escaping (_ config: Bootstrap) -> Void, _ failure: @escaping (_ error: String) -> Void) {
-    ConfigNetworkManager().getConfig { config, error in
-      if let error = error {
-        failure(error)
-        return
-      }
-      
-      if let config = config {
-        success(config)
-      } else {
-        failure(CWError.noData.localizedDescription)
-      }
-    }
+  func getConfig(completion: @escaping (Result<Bootstrap, CWError>) -> Void) {    
+    ConfigNetworkManager().getConfig(completion)
   }
 }

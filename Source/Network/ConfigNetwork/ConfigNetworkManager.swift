@@ -11,42 +11,42 @@ import Foundation
 struct ConfigNetworkManager: NetworkManager {
   private let router = Router<ConfigApi>()
   
-  private func callCompletion(_ config: Bootstrap?,
-                              _ error: String?,
-                              _ completion: @escaping (_ config: Bootstrap?,
-                                                       _ error: String?) -> Void) {
+  private func callCompletion(_ result: Result<Bootstrap, CWError>,
+                              _ completion: @escaping (Result<Bootstrap, CWError>) -> Void) {
     DispatchQueue.main.async {
-      completion(config, error)
+      completion(result)
     }
   }
   
-  func getConfig(_ completion: @escaping (_ config: Bootstrap?, _ error: String?) -> Void) {
+  func getConfig(_ completion: @escaping (Result<Bootstrap, CWError>) -> Void) {
     DispatchQueue.global(qos: .background).async {
       self.router.request(.config) { data, response, error in
         if error != nil {
-          self.callCompletion(nil, "Please check your network connection", completion)
+          self.callCompletion(.failure(.network), completion)
         }
-        
         if let response = response as? HTTPURLResponse {
           let result = self.handleNetworkResponse(response)
           switch result {
           case .success:
             guard let responseData = data else {
-              self.callCompletion(nil, CWError.noData.localizedDescription, completion)
+              self.callCompletion(.failure(.noData), completion)
               return
             }
-            
             do {
               let apiResponse = try JSONDecoder().decode(Bootstrap.self, from: responseData)
-              self.callCompletion(apiResponse, nil, completion)
+              if apiResponse.servers.isEmpty {
+                self.callCompletion(.failure(.noData), completion)
+              } else {
+                self.callCompletion(.success(apiResponse), completion)
+              }
             } catch let error as DecodingError {
               self.decodingError(error)
-              self.callCompletion(nil, CWError.network.localizedDescription, completion)
+              self.callCompletion(.failure(.network), completion)
             } catch {
-              self.callCompletion(nil, CWError.network.localizedDescription, completion)
+              self.callCompletion(.failure(.network), completion)
             }
           case .failure(let networkFailureError):
-            completion(nil, networkFailureError.localizedDescription)
+            self.callCompletion(.failure(networkFailureError), completion)
           }
         }
       }
