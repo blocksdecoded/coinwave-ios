@@ -23,7 +23,7 @@ class ConfigWorker {
       if let config = config {
         success(config)
       } else {
-        failure(NMError.noData.localizedDescription)
+        failure(CWError.noData.localizedDescription)
       }
     }
   }

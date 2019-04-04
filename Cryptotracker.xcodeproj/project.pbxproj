@@ -66,6 +66,7 @@
 		B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8421A2A353000A74A5 /* NetworkRouter.swift */; };
 		B5276B8921A2A369000A74A5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8821A2A369000A74A5 /* Router.swift */; };
 		B5276B8D21A2A37E000A74A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */; };
+		B54CACE7225635B400BE7127 /* CWError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CACE6225635B400BE7127 /* CWError.swift */; };
 		B55500FD2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
 		B55501012237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */; };
 		B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
@@ -212,6 +213,7 @@
 		B5276B8421A2A353000A74A5 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		B5276B8821A2A369000A74A5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B5276B8C21A2A37E000A74A5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B54CACE6225635B400BE7127 /* CWError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWError.swift; sourceTree = "<group>"; };
 		B55500FC2237953B00FB7165 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVGKFastImageView+Extensions.swift"; sourceTree = "<group>"; };
 		B572E93E2202AD4F00778DA8 /* CRRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRRoot.swift; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 				B5276B5E21A29DD9000A74A5 /* Post.swift */,
 				B55500FC2237953B00FB7165 /* Price.swift */,
 				B52712132238D38900D57639 /* Bootstrap.swift */,
+				B54CACE6225635B400BE7127 /* CWError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -995,6 +998,7 @@
 				B55500FD2237953B00FB7165 /* Price.swift in Sources */,
 				B5271261223A365D00D57639 /* RatingController.swift in Sources */,
 				B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
+				B54CACE7225635B400BE7127 /* CWError.swift in Sources */,
 				B5F3D3F22249DEEB00B69295 /* Theme.swift in Sources */,
 				B527122D2238DA1A00D57639 /* ConfigRouter.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,

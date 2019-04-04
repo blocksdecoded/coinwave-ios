@@ -11,15 +11,15 @@ import Foundation
 class PostsNetworkManager: NetworkManager {
   private let router = Router<PostsApi>()
   
-  func fetchPosts(completion: @escaping(Result<[Post], NMError>) -> Void) {
+  func fetchPosts(completion: @escaping(Result<[Post], CWError>) -> Void) {
     fetch(endPoint: .list, completion: completion)
   }
   
-  func fetchNextPosts(date: String, completion: @escaping(Result<[Post], NMError>) -> Void) {
+  func fetchNextPosts(date: String, completion: @escaping(Result<[Post], CWError>) -> Void) {
     fetch(endPoint: .next(date), completion: completion)
   }
   
-  private func fetch(endPoint: PostsApi, completion: @escaping(Result<[Post], NMError>) -> Void) {
+  private func fetch(endPoint: PostsApi, completion: @escaping(Result<[Post], CWError>) -> Void) {
     router.request(endPoint) { data, response, error in
       if error != nil {
         completion(.failure(.network))
@@ -39,9 +39,9 @@ class PostsNetworkManager: NetworkManager {
             completion(.success(apiResponse.posts))
           } catch let error as DecodingError {
             self.decodingError(error)
-            completion(.failure(.unableToDecode))
+            completion(.failure(.network))
           } catch {
-            completion(.failure(.unableToDecode))
+            completion(.failure(.network))
           }
         case .failure(let networkFailureError):
           completion(.failure(networkFailureError))

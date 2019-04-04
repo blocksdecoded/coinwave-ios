@@ -15,7 +15,7 @@ import UIKit
 protocol AddToWatchlistPresentationLogic {
   func presentCoins(response: AddToWatchlist.Coins.Response)
   func addToWatchlist(response: AddToWatchlist.Add.Response)
-  func presentError(_ error: NMError)
+  func presentError(_ error: CWError)
 }
 
 class AddToWatchlistPresenter: AddToWatchlistPresentationLogic {
@@ -32,7 +32,7 @@ class AddToWatchlistPresenter: AddToWatchlistPresentationLogic {
     viewController?.refreshCoin(viewModel: viewModel)
   }
   
-  func presentError(_ error: NMError) {
-    viewController?.displayError("You are currently offline.\nCheck your internet connection")
+  func presentError(_ error: CWError) {
+    viewController?.displayError(error.localizedDescription)
   }
 }

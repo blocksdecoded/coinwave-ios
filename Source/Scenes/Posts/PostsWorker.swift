@@ -9,7 +9,7 @@
 import UIKit
 
 class PostsWorker {
-  func fetchPosts(completion: @escaping (Result<[Post], NMError>) -> Void) {
+  func fetchPosts(completion: @escaping (Result<[Post], CWError>) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let postsNetworkManager = PostsNetworkManager()
       postsNetworkManager.fetchPosts { result in
@@ -20,7 +20,7 @@ class PostsWorker {
     }
   }
   
-  func fetchNextPosts(date: String, completion: @escaping (Result<[Post], NMError>) -> Void) {
+  func fetchNextPosts(date: String, completion: @escaping (Result<[Post], CWError>) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let postsNetworkManager = PostsNetworkManager()
       postsNetworkManager.fetchNextPosts(date: date) { result in

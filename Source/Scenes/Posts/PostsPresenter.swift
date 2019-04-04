@@ -11,7 +11,7 @@ import UIKit
 protocol PostsPresentationLogic {
   func presentPosts(response: Posts.FetchPosts.Response)
   func presentNextPosts(response: Posts.FetchPosts.Response)
-  func presentError(_ error: NMError)
+  func presentError(_ error: CWError)
 }
 
 class PostsPresenter: PostsPresentationLogic {
@@ -33,7 +33,7 @@ class PostsPresenter: PostsPresentationLogic {
     viewController?.displayNextPosts(viewModel: viewModel)
   }
   
-  func presentError(_ error: NMError) {
-    viewController?.displayError("You are currently offline.\nCheck your internet connection")
+  func presentError(_ error: CWError) {
+    viewController?.displayError(error.localizedDescription)
   }
 }

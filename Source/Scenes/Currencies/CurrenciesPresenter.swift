@@ -16,7 +16,7 @@ protocol CurrenciesPresentationLogic {
   func presentSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType)
   func presentCurrencies(response: Currencies.FetchCoins.ViewModel)
   func presentLocalCoins(response: Currencies.LocalCoins.Response)
-  func presentError(_ error: NMError)
+  func presentError(_ error: CWError)
 }
 
 class CurrenciesPresenter: CurrenciesPresentationLogic {
@@ -27,8 +27,8 @@ class CurrenciesPresenter: CurrenciesPresentationLogic {
     viewController?.displayCoins(viewModel: viewModel)
   }
   
-  func presentError(_ error: NMError) {
-    viewController?.displayError("You are currently offline.\nCheck your internet connection")
+  func presentError(_ error: CWError) {
+    viewController?.displayError(error.localizedDescription)
   }
   
   func presentSort(_ field: CRCoin.OrderField, _ type: CRCoin.OrderType) {
