@@ -86,11 +86,15 @@ class DataStore {
     }
   }
   
-  func loadFavorite() -> CRCoin? {
+  func loadFavorite(completion: (Result<CRCoin, CWError>) -> Void) {
     do {
-      return try CRCoinDataHelper.favorite()
+      guard let coin = try CRCoinDataHelper.favorite() else {
+        completion(.failure(.noData))
+        return
+      }
+      completion(.success(coin))
     } catch {
-      fatalError("Cannot load favorite")
+      completion(.failure(.noData))
     }
   }
   

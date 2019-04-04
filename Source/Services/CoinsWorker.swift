@@ -67,13 +67,13 @@ class CoinsWorker {
       fetchRemoteCoins(sortable) { result in
         switch result {
         case .success:
-          self.fetchLocalFavorite(completion)
+          DataStore.shared.loadFavorite(completion: completion)
         case .failure(let error):
           completion(.failure(error))
         }
       }
     } else {
-      fetchLocalFavorite(completion)
+      DataStore.shared.loadFavorite(completion: completion)
     }
   }
   
@@ -112,13 +112,5 @@ class CoinsWorker {
       return
     }
     completion(.success(coin))
-  }
-  
-  private func fetchLocalFavorite(_ completion: @escaping (Result<CRCoin, CWError>) -> Void) {
-    guard let favorite = DataStore.shared.loadFavorite() else {
-      completion(.failure(.noData))
-      return
-    }
-    completion(.success(favorite))
   }
 }

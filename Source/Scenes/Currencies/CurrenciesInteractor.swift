@@ -46,6 +46,7 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
         self.presenter?.presentCurrencies(response: Currencies.FetchCoins.ViewModel(currencies: coins))
       case .failure(let error):
         self.presenter?.presentError(error)
+        // TODO: if local not empty show this in navigation error
       }
     })
   }
