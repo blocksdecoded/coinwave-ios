@@ -11,10 +11,10 @@ import Foundation
 struct CurrenciesNetworkManager: NetworkManager {
   private let router = Router<CurrenciesApi>()
   
-  func getCurrencies(_ completion: @escaping (_ currencies: CRRoot<CRDataList>?, _ error: String?) -> Void) {
+  func getCurrencies(_ completion: @escaping (Result<CRRoot<CRDataList>, CWError>) -> Void) {
     router.request(.list) { data, response, error in
       if error != nil {
-        completion(nil, "Please check your network connection")
+        completion(.failure(.network))
       }
       
       if let response = response as? HTTPURLResponse {
@@ -22,21 +22,21 @@ struct CurrenciesNetworkManager: NetworkManager {
         switch result {
         case .success:
           guard let responseData = data else {
-            completion(nil, CWError.noData.localizedDescription)
+            completion(.failure(.noData))
             return
           }
           
           do {
             let apiResponse = try JSONDecoder().decode(CRRoot<CRDataList>.self, from: responseData)
-            completion(apiResponse, nil)
+            completion(.success(apiResponse))
           } catch let error as DecodingError {
             self.decodingError(error)
-            completion(nil, CWError.network.localizedDescription)
+            completion(.failure(.network))
           } catch {
-            completion(nil, CWError.network.localizedDescription)
+            completion(.failure(.network))
           }
         case .failure(let networkFailureError):
-          completion(nil, networkFailureError.localizedDescription)
+          completion(.failure(networkFailureError))
         }
       }
     }
@@ -44,11 +44,10 @@ struct CurrenciesNetworkManager: NetworkManager {
   
   func getHistory(currID: String,
                   time: CRTimeframe,
-                  _ completion: @escaping(CRRoot<CRDataHistory>?,
-                  _ error: String?) -> Void) {
+                  _ completion: @escaping(Result<CRRoot<CRDataHistory>, CWError>) -> Void) {
     router.request(.hsitory(currID, time)) { data, response, error in
       if error != nil {
-        completion(nil, "Please check yur network connection")
+        completion(.failure(.network))
       }
       
       if let response = response as? HTTPURLResponse {
@@ -56,21 +55,21 @@ struct CurrenciesNetworkManager: NetworkManager {
         switch result {
         case .success:
           guard let responseData = data else {
-            completion(nil, CWError.noData.localizedDescription)
+            completion(.failure(.noData))
             return
           }
           
           do {
             let apiResponse = try JSONDecoder().decode(CRRoot<CRDataHistory>.self, from: responseData)
-            completion(apiResponse, nil)
+            completion(.success(apiResponse))
           } catch let error as DecodingError {
             self.decodingError(error)
-            completion(nil, CWError.network.localizedDescription)
+            completion(.failure(.network))
           } catch {
-            completion(nil, CWError.network.localizedDescription)
+            completion(.failure(.network))
           }
         case .failure(let networkFailureError):
-          completion(nil, networkFailureError.localizedDescription)
+          completion(.failure(networkFailureError))
         }
       }
     }

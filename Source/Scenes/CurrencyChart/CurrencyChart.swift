@@ -253,19 +253,17 @@ class CurrencyChart: UIView {
       self.setChartData(prices: root.data.history)
     } else {      
       let networkManager = CurrenciesNetworkManager()
-      networkManager.getHistory(currID: coinSymbol, time: time) { root, error in
-        if let error = error {
+      networkManager.getHistory(currID: coinSymbol, time: time) { result in
+        switch result {
+        case .success(let coinRoot):
+          self.cache.setObject(coinRoot as AnyObject, forKey: key as NSString)
+          DispatchQueue.main.async {
+            self.setChartData(prices: coinRoot.data.history)
+          }
+        case .failure(let error):
+          //TODO: Handle error
           print(error)
-          return
-        }
-        
-        guard let root = root else {
-          return
-        }
-        self.cache.setObject(root as AnyObject, forKey: key as NSString)
-        DispatchQueue.main.async {
-          self.setChartData(prices: root.data.history)
-        }
+        }        
       }
     }
   }

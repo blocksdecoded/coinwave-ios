@@ -95,24 +95,17 @@ class CoinsWorker {
                                 _ completion: @escaping ([CRCoin]?, CWError?) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
-      networkManager.getCurrencies { currencies, error in
-        if error != nil {
+      networkManager.getCurrencies { result in
+        switch result {
+        case .success(let coinsRoot):
+          DataStore.shared.insertCoins(coinsRoot.data.coins)
           DispatchQueue.main.async {
-            completion(nil, .network)
+            completion(DataStore.shared.loadCoins(orderField, orderType), nil)
           }
-        }
-        
-        guard let curs = currencies else {
+        case .failure(let error):
           DispatchQueue.main.async {
-            completion(nil, .noData)
+            completion(nil, error)
           }
-          return
-        }
-        
-        DataStore.shared.insertCoins(curs.data.coins)
-        
-        DispatchQueue.main.async {
-          completion(DataStore.shared.loadCoins(orderField, orderType), nil)
         }
       }
     }
