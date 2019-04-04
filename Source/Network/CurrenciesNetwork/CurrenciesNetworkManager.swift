@@ -25,10 +25,13 @@ struct CurrenciesNetworkManager: NetworkManager {
             completion(.failure(.noData))
             return
           }
-          
           do {
             let apiResponse = try JSONDecoder().decode(CRRoot<CRDataList>.self, from: responseData)
-            completion(.success(apiResponse))
+            if apiResponse.data.coins.isEmpty {
+              completion(.failure(.noData))
+            } else {
+              completion(.success(apiResponse))
+            }
           } catch let error as DecodingError {
             self.decodingError(error)
             completion(.failure(.network))
