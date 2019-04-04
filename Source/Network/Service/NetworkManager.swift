@@ -46,6 +46,9 @@ extension NetworkManager {
       print(type)
       print(context.debugDescription)
       print(context.codingPath)
+    default:
+      print("Default")
+      print(error.localizedDescription)
     }
   }
 }
