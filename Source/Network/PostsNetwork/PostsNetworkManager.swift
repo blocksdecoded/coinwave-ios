@@ -11,41 +11,18 @@ import Foundation
 class PostsNetworkManager: NetworkManager {
   private let router = Router<PostsApi>()
   
-  func fetchPosts(completion: @escaping(_ posts: [Post]?, _ error: String?) -> Void) {
-    router.request(.list) { data, response, error in
-      if error != nil {
-        completion(nil, "Please check your network connection")
-      }
-      
-      if let response = response as? HTTPURLResponse {
-        let result = self.handleNetworkResponse(response)
-        switch result {
-        case .success:
-          guard let responseData = data else {
-            completion(nil, NMError.noData.localizedDescription)
-            return
-          }
-          
-          do {
-            let apiResponse = try JSONDecoder().decode(PostsList.self, from: responseData)
-            completion(apiResponse.posts, nil)
-          } catch let error as DecodingError {
-            self.decodingError(error)
-            completion(nil, NMError.unableToDecode.localizedDescription)
-          } catch {
-            completion(nil, NMError.unableToDecode.localizedDescription)
-          }
-        case .failure(let networkFailureError):
-          completion(nil, networkFailureError.localizedDescription)
-        }
-      }
-    }
+  func fetchPosts(completion: @escaping(Result<[Post], NMError>) -> Void) {
+    fetch(endPoint: .list, completion: completion)
   }
   
-  func fetchNextPosts(date: String, completion: @escaping(_ posts: [Post]?, _ error: String?) -> Void) {
-    router.request(.next(date)) { data, response, error in
+  func fetchNextPosts(date: String, completion: @escaping(Result<[Post], NMError>) -> Void) {
+    fetch(endPoint: .next(date), completion: completion)
+  }
+  
+  private func fetch(endPoint: PostsApi, completion: @escaping(Result<[Post], NMError>) -> Void) {
+    router.request(endPoint) { data, response, error in
       if error != nil {
-        completion(nil, "Please check your network connection")
+        completion(.failure(.network))
       }
       
       if let response = response as? HTTPURLResponse {
@@ -53,21 +30,21 @@ class PostsNetworkManager: NetworkManager {
         switch result {
         case .success:
           guard let responseData = data else {
-            completion(nil, NMError.noData.localizedDescription)
+            completion(.failure(.noData))
             return
           }
           
           do {
             let apiResponse = try JSONDecoder().decode(PostsList.self, from: responseData)
-            completion(apiResponse.posts, nil)
+            completion(.success(apiResponse.posts))
           } catch let error as DecodingError {
             self.decodingError(error)
-            completion(nil, NMError.unableToDecode.localizedDescription)
+            completion(.failure(.unableToDecode))
           } catch {
-            completion(nil, NMError.unableToDecode.localizedDescription)
+            completion(.failure(.unableToDecode))
           }
         case .failure(let networkFailureError):
-          completion(nil, networkFailureError.localizedDescription)
+          completion(.failure(networkFailureError))
         }
       }
     }

@@ -15,7 +15,7 @@ import UIKit
 protocol PostsPresentationLogic {
   func presentPosts(response: Posts.FetchPosts.Response)
   func presentNextPosts(response: Posts.FetchPosts.Response)
-  func presentError(_ error: CTError)
+  func presentError(_ error: NMError)
 }
 
 class PostsPresenter: PostsPresentationLogic {
@@ -37,7 +37,14 @@ class PostsPresenter: PostsPresentationLogic {
     viewController?.displayNextPosts(viewModel: viewModel)
   }
   
-  func presentError(_ error: CTError) {
-    viewController?.displayError(error.rawValue)
+  func presentError(_ error: NMError) {
+    switch error {
+    case .authenticationError, .badRequest, .failed, .noData, .outdated, .unableToDecode:
+      viewController?.displayError(CTError.network.rawValue)
+    case .network:
+      viewController?.displayError(error.localizedDescription)
+    case .success:
+      break
+    }
   }
 }

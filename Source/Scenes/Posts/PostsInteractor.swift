@@ -31,13 +31,13 @@ class PostsInteractor: PostsBusinessLogic, PostsDataStore {
   
   func fetchPosts() {
     worker = PostsWorker()
-    worker?.fetchPosts(completion: { posts, error in
-      
-      if error == nil {
-        let response = Posts.FetchPosts.Response(posts: posts!)
+    worker?.fetchPosts(completion: { result in
+      switch result {
+      case .success(let posts):
+        let response = Posts.FetchPosts.Response(posts: posts)
         self.presenter?.presentPosts(response: response)
-      } else {
-        self.presenter?.presentError(error!)
+      case .failure(let error):
+        self.presenter?.presentError(error)
       }
     })
   }
@@ -49,13 +49,14 @@ class PostsInteractor: PostsBusinessLogic, PostsDataStore {
     
     isLoadingNext = true
     worker = PostsWorker()
-    worker?.fetchNextPosts(date: request.date, completion: { posts, error in
+    worker?.fetchNextPosts(date: request.date, completion: { result in
       self.isLoadingNext = false
-      if error == nil {
-        let response = Posts.FetchPosts.Response(posts: posts!)
-        self.presenter?.presentNextPosts(response: response)
-      } else {
-        self.presenter?.presentError(error!)
+      switch result {
+      case .success(let posts):
+        let response = Posts.FetchPosts.Response(posts: posts)
+        self.presenter?.presentPosts(response: response)
+      case .failure(let error):
+        self.presenter?.presentError(error)
       }
     })
   }
