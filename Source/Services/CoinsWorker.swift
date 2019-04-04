@@ -51,13 +51,13 @@ class CoinsWorker {
       fetchRemoteCoins(sortable) { result in
         switch result {
         case .success:
-          self.fetchLocalWatchlist(sortable, completion)
+          DataStore.shared.loadWatchlist(sortable, completion: completion)
         case .failure(let error):
           completion(.failure(error))
         }
       }
     } else {
-      self.fetchLocalWatchlist(sortable, completion)
+      DataStore.shared.loadWatchlist(sortable, completion: completion)
     }
   }
   
@@ -112,15 +112,6 @@ class CoinsWorker {
       return
     }
     completion(.success(coin))
-  }
-  
-  private func fetchLocalWatchlist(_ sortable: Sortable,
-                                   _ completion: @escaping (Result<[CRCoin], CWError>) -> Void) {
-    guard let watchlist = DataStore.shared.loadWatchlist(sortable) else {
-      completion(.failure(.noData))
-      return
-    }
-    completion(.success(watchlist))
   }
   
   private func fetchLocalFavorite(_ completion: @escaping (Result<CRCoin, CWError>) -> Void) {

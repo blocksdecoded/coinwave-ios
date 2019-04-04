@@ -70,11 +70,19 @@ class DataStore {
     return Date().timeIntervalSince(lastUpdate) >= updateTime
   }
   
-  func loadWatchlist(_ sortable: Sortable) -> [CRCoin]? {
+  func loadWatchlist(_ sortable: Sortable, completion: (Result<[CRCoin], CWError>) -> Void) {
     do {
-      return try CRCoinDataHelper.watchlist(sortable: sortable)
+      guard let coins = try CRCoinDataHelper.watchlist(sortable: sortable) else {
+        completion(.failure(.noData))
+        return
+      }
+      if coins.isEmpty {
+        completion(.failure(.noData))
+      } else {
+        completion(.success(coins))
+      }
     } catch {
-      fatalError("Cannot load watchlist")
+      completion(.failure(.noData))
     }
   }
   
