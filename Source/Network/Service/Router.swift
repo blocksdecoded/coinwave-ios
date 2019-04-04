@@ -27,7 +27,6 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
             return
           }
         }
-        
         completion(data, response, error)
       })
     } catch {

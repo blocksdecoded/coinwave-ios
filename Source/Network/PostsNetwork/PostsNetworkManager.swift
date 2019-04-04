@@ -22,7 +22,7 @@ class PostsNetworkManager: NetworkManager {
         switch result {
         case .success:
           guard let responseData = data else {
-            completion(nil, NetworkResponse.noData.rawValue)
+            completion(nil, NMError.noData.localizedDescription)
             return
           }
           
@@ -31,12 +31,12 @@ class PostsNetworkManager: NetworkManager {
             completion(apiResponse.posts, nil)
           } catch let error as DecodingError {
             self.decodingError(error)
-            completion(nil, NetworkResponse.unableToDecode.rawValue)
+            completion(nil, NMError.unableToDecode.localizedDescription)
           } catch {
-            completion(nil, NetworkResponse.unableToDecode.rawValue)
+            completion(nil, NMError.unableToDecode.localizedDescription)
           }
         case .failure(let networkFailureError):
-          completion(nil, networkFailureError)
+          completion(nil, networkFailureError.localizedDescription)
         }
       }
     }
@@ -53,7 +53,7 @@ class PostsNetworkManager: NetworkManager {
         switch result {
         case .success:
           guard let responseData = data else {
-            completion(nil, NetworkResponse.noData.rawValue)
+            completion(nil, NMError.noData.localizedDescription)
             return
           }
           
@@ -62,12 +62,12 @@ class PostsNetworkManager: NetworkManager {
             completion(apiResponse.posts, nil)
           } catch let error as DecodingError {
             self.decodingError(error)
-            completion(nil, NetworkResponse.unableToDecode.rawValue)
+            completion(nil, NMError.unableToDecode.localizedDescription)
           } catch {
-            completion(nil, NetworkResponse.unableToDecode.rawValue)
+            completion(nil, NMError.unableToDecode.localizedDescription)
           }
         case .failure(let networkFailureError):
-          completion(nil, networkFailureError)
+          completion(nil, networkFailureError.localizedDescription)
         }
       }
     }

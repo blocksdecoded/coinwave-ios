@@ -9,18 +9,18 @@
 import Foundation
 
 protocol NetworkManager {
-  func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String>
+  func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<Int, NMError>
   func decodingError(_ error: DecodingError)
 }
 
 extension NetworkManager {
-  func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
+  func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<Int, NMError> {
     switch response.statusCode {
-    case 200...299: return .success
-    case 401...500: return .failure(NetworkResponse.authenticationError.rawValue)
-    case 501...599: return .failure(NetworkResponse.badRequest.rawValue)
-    case 600: return .failure(NetworkResponse.outdated.rawValue)
-    default: return .failure(NetworkResponse.failed.rawValue)
+    case 200...299: return .success(response.statusCode)
+    case 401...500: return .failure(.authenticationError)
+    case 501...599: return .failure(.badRequest)
+    case 600: return .failure(.outdated)
+    default: return .failure(.failed)
     }
   }
   
@@ -53,17 +53,34 @@ extension NetworkManager {
   }
 }
 
-enum NetworkResponse: String {
+enum NMError: Error {
   case success
-  case authenticationError = "You need to be authenticated first."
-  case badRequest = "Bad request."
-  case outdated = "The url you requested is outdated"
-  case failed = "Network request failed."
-  case noData = "Response returned with no data to decode."
-  case unableToDecode = "We could not decode the response."
-}
-
-enum Result<String> {
-  case success
-  case failure(String)
+  case authenticationError
+  case badRequest
+  case outdated
+  case failed
+  case noData
+  case unableToDecode
+  case network
+  
+  var localizedDescription: String {
+    switch self {
+    case .success:
+      return "success"
+    case .authenticationError:
+      return "You need to be authenticated first."
+    case .badRequest:
+      return "Bad request."
+    case .failed:
+      return "Network request failed."
+    case .noData:
+      return "Response returned with no data to decode."
+    case .outdated:
+      return "The url you requested is outdated."
+    case .unableToDecode:
+      return "We could not decode the response."
+    case .network:
+      return "Please check your network connection."
+    }
+  }
 }

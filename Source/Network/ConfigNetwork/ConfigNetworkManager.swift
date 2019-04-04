@@ -32,7 +32,7 @@ struct ConfigNetworkManager: NetworkManager {
           switch result {
           case .success:
             guard let responseData = data else {
-              self.callCompletion(nil, NetworkResponse.noData.rawValue, completion)
+              self.callCompletion(nil, NMError.noData.localizedDescription, completion)
               return
             }
             
@@ -41,12 +41,12 @@ struct ConfigNetworkManager: NetworkManager {
               self.callCompletion(apiResponse, nil, completion)
             } catch let error as DecodingError {
               self.decodingError(error)
-              self.callCompletion(nil, NetworkResponse.unableToDecode.rawValue, completion)
+              self.callCompletion(nil, NMError.unableToDecode.localizedDescription, completion)
             } catch {
-              self.callCompletion(nil, NetworkResponse.unableToDecode.rawValue, completion)
+              self.callCompletion(nil, NMError.unableToDecode.localizedDescription, completion)
             }
           case .failure(let networkFailureError):
-            completion(nil, networkFailureError)
+            completion(nil, networkFailureError.localizedDescription)
           }
         }
       }

@@ -22,7 +22,7 @@ struct CurrenciesNetworkManager: NetworkManager {
         switch result {
         case .success:
           guard let responseData = data else {
-            completion(nil, NetworkResponse.noData.rawValue)
+            completion(nil, NMError.noData.localizedDescription)
             return
           }
           
@@ -31,12 +31,12 @@ struct CurrenciesNetworkManager: NetworkManager {
             completion(apiResponse, nil)
           } catch let error as DecodingError {
             self.decodingError(error)
-            completion(nil, NetworkResponse.unableToDecode.rawValue)
+            completion(nil, NMError.unableToDecode.localizedDescription)
           } catch {
-            completion(nil, NetworkResponse.unableToDecode.rawValue)
+            completion(nil, NMError.unableToDecode.localizedDescription)
           }
         case .failure(let networkFailureError):
-          completion(nil, networkFailureError)
+          completion(nil, networkFailureError.localizedDescription)
         }
       }
     }
@@ -56,7 +56,7 @@ struct CurrenciesNetworkManager: NetworkManager {
         switch result {
         case .success:
           guard let responseData = data else {
-            completion(nil, NetworkResponse.noData.rawValue)
+            completion(nil, NMError.noData.localizedDescription)
             return
           }
           
@@ -65,12 +65,12 @@ struct CurrenciesNetworkManager: NetworkManager {
             completion(apiResponse, nil)
           } catch let error as DecodingError {
             self.decodingError(error)
-            completion(nil, NetworkResponse.unableToDecode.rawValue)
+            completion(nil, NMError.unableToDecode.localizedDescription)
           } catch {
-            completion(nil, NetworkResponse.unableToDecode.rawValue)
+            completion(nil, NMError.unableToDecode.localizedDescription)
           }
         case .failure(let networkFailureError):
-          completion(nil, networkFailureError)
+          completion(nil, networkFailureError.localizedDescription)
         }
       }
     }
