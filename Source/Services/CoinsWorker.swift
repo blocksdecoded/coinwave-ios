@@ -12,68 +12,68 @@ class CoinsWorker {
   func fetchCoins(_ orderField: CRCoin.OrderField,
                   _ orderType: CRCoin.OrderType,
                   force: Bool,
-                  local: @escaping ([CRCoin]?, String?) -> Void,
-                  remote: @escaping ([CRCoin]?, CWError?) -> Void) {
+                  local: @escaping (Result<[CRCoin], CWError>) -> Void,
+                  remote: @escaping (Result<[CRCoin], CWError>) -> Void) {
     if DataStore.shared.isCoinsOutdated() || force {
-      if let coins = fetchLocalCoins(orderField, orderType) {
-        local(coins, "")
-      }
+      fetchLocalCoins(orderField, orderType, local)
       fetchRemoteCoins(orderField, orderType, remote)
     } else {
-      if let coins = fetchLocalCoins(orderField, orderType) {
-        remote(coins, nil)
-      } else {
-        fetchRemoteCoins(orderField, orderType, remote)
+      fetchLocalCoins(orderField, orderType) { result in
+        switch result {
+        case .success:
+          remote(result)
+        case .failure:
+          self.fetchRemoteCoins(orderField, orderType, remote)
+        }
       }
     }
   }
   
-  func fetchCoin(_ coinId: Int, force: Bool, _ completion: @escaping (CRCoin?, CWError?) -> Void) {
+  func fetchCoin(_ coinId: Int, force: Bool, _ completion: @escaping (Result<CRCoin, CWError>) -> Void) {
     if DataStore.shared.isCoinsOutdated() || force {
-      fetchRemoteCoins(.marketCap, .desc) { _, error in
-        if error != nil {
-          completion(nil, error)
-        } else {
-          completion(self.fetchLocalCoin(coinId), nil)
+      fetchRemoteCoins(.marketCap, .desc) { result in
+        switch result {
+        case .success:
+          self.fetchLocalCoin(coinId, completion)
+        case .failure(let error):
+          completion(.failure(error))
         }
       }
     } else {
-      if let coin = fetchLocalCoin(coinId) {
-        completion(coin, nil)
-      } else {
-        completion(nil, .noData)
-      }
+      self.fetchLocalCoin(coinId, completion)
     }
   }
   
   func fetchWatchlist(_ orderField: CRCoin.OrderField,
                       _ orderType: CRCoin.OrderType,
                       force: Bool,
-                      _ completion: @escaping ([CRCoin]?, CWError?) -> Void) {
+                      _ completion: @escaping (Result<[CRCoin], CWError>) -> Void) {
     if DataStore.shared.isCoinsOutdated() || force {
-      fetchRemoteCoins(orderField, orderType) { _, error in
-        if error != nil {
-          completion(nil, error)
-        } else {
-          completion(DataStore.shared.loadWatchlist(orderField, orderType), nil)
+      fetchRemoteCoins(orderField, orderType) { result in
+        switch result {
+        case .success:
+          self.fetchLocalWatchlist(orderField, orderType, completion)
+        case .failure(let error):
+          completion(.failure(error))
         }
       }
     } else {
-      completion(DataStore.shared.loadWatchlist(orderField, orderType), nil)
+      self.fetchLocalWatchlist(orderField, orderType, completion)
     }
   }
   
-  func fetchFavorite(force: Bool, _ completion: @escaping (CRCoin?, CWError?) -> Void) {
+  func fetchFavorite(force: Bool, _ completion: @escaping (Result<CRCoin, CWError>) -> Void) {
     if DataStore.shared.isCoinsOutdated() || force {
-      fetchRemoteCoins(.marketCap, .desc) { _, error in
-        if error != nil {
-          completion(nil, error)
-        } else {
-          completion(DataStore.shared.loadFavorite(), nil)
+      fetchRemoteCoins(.marketCap, .desc) { result in
+        switch result {
+        case .success:
+          self.fetchLocalFavorite(completion)
+        case .failure(let error):
+          completion(.failure(error))
         }
       }
     } else {
-      completion(DataStore.shared.loadFavorite(), nil)
+      fetchLocalFavorite(completion)
     }
   }
   
@@ -86,13 +86,9 @@ class CoinsWorker {
     DataStore.shared.fullUpdate(coin)
   }
   
-  private func fetchLocalCoins(_ orderField: CRCoin.OrderField, _ orderType: CRCoin.OrderType) -> [CRCoin]? {
-    return DataStore.shared.loadCoins(orderField, orderType)
-  }
-  
   private func fetchRemoteCoins(_ orderField: CRCoin.OrderField,
                                 _ orderType: CRCoin.OrderType,
-                                _ completion: @escaping ([CRCoin]?, CWError?) -> Void) {
+                                _ completion: @escaping (Result<[CRCoin], CWError>) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let networkManager = CurrenciesNetworkManager()
       networkManager.getCurrencies { result in
@@ -100,18 +96,50 @@ class CoinsWorker {
         case .success(let coinsRoot):
           DataStore.shared.insertCoins(coinsRoot.data.coins)
           DispatchQueue.main.async {
-            completion(DataStore.shared.loadCoins(orderField, orderType), nil)
+            self.fetchLocalCoins(orderField, orderType, completion)
           }
         case .failure(let error):
           DispatchQueue.main.async {
-            completion(nil, error)
+            completion(.failure(error))
           }
         }
       }
     }
   }
   
-  private func fetchLocalCoin(_ coinId: Int) -> CRCoin? {
-    return DataStore.shared.fetchCoin(coinId)
+  private func fetchLocalCoin(_ coinId: Int, _ completion: @escaping (Result<CRCoin, CWError>) -> Void) {
+    guard let coin = DataStore.shared.fetchCoin(coinId) else {
+      completion(.failure(.noData))
+      return
+    }
+    completion(.success(coin))
+  }
+  
+  private func fetchLocalWatchlist(_ orderField: CRCoin.OrderField,
+                                   _ orderType: CRCoin.OrderType,
+                                   _ completion: @escaping (Result<[CRCoin], CWError>) -> Void) {
+    guard let watchlist = DataStore.shared.loadWatchlist(orderField, orderType) else {
+      completion(.failure(.noData))
+      return
+    }
+    completion(.success(watchlist))
+  }
+  
+  private func fetchLocalFavorite(_ completion: @escaping (Result<CRCoin, CWError>) -> Void) {
+    guard let favorite = DataStore.shared.loadFavorite() else {
+      completion(.failure(.noData))
+      return
+    }
+    completion(.success(favorite))
+  }
+  
+  private func fetchLocalCoins(_ orderField: CRCoin.OrderField,
+                               _ orderType: CRCoin.OrderType,
+                               _ completion: @escaping (Result<[CRCoin], CWError>) -> Void) {
+    guard let coins = DataStore.shared.loadCoins(orderField, orderType) else {
+      completion(.failure(.noData))
+      return
+    }
+    completion(.success(coins))
   }
 }
