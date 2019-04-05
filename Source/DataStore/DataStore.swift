@@ -122,14 +122,19 @@ class DataStore {
     }
   }
   
-  func insertCoins(_ coins: [CRCoin]) {
+  func insertCoins(_ coins: [CRCoin]) -> Result<Bool, DSError> {
     lastUpdate = Date()
     do {
+      //TODO: If cannot insert one coin, should loop stop?
       for curr in coins {
-        try CRCoinDataHelper.insertOrUpdate(item: curr)
+        if try !CRCoinDataHelper.insertOrUpdate(item: curr) {
+          return .failure(.operationFailure)
+        }
       }
+      return .success(true)
     } catch {
-      fatalError("Cannot insert curencies")
+      // TODO: Handle DataAccessErrors
+      return .failure(.databaseException)
     }
   }
   

@@ -11,4 +11,5 @@ import Foundation
 enum DSError: Error {
   case notFound
   case databaseException
+  case operationFailure
 }

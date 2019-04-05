@@ -10,7 +10,8 @@ import Foundation
 import SQLite
 
 // swiftlint:disable type_name identifier_name
-class CRCoinDataHelper: DataHelperProtocol {
+// TODO: implement DataHelperProtocol
+class CRCoinDataHelper {
   typealias T = CRCoin
   
   static let TABLE_NAME = "CRCoin"
@@ -87,16 +88,15 @@ class CRCoinDataHelper: DataHelperProtocol {
     try db.run(table.drop(ifExists: true))
   }
   
-  static func insertOrUpdate(item: CRCoin) throws {
+  static func insertOrUpdate(item: CRCoin) throws -> Bool {
     if try find(id: Int64(item.identifier)) != nil {
-      try update(item: item)
+      return try update(item: item)
     } else {
-      try insert(item: item)
+      return try insert(item: item)
     }
   }
   
-  @discardableResult
-  static func insert(item: CRCoin) throws -> Int64 {
+  static func insert(item: CRCoin) throws -> Bool {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
@@ -108,19 +108,27 @@ class CRCoinDataHelper: DataHelperProtocol {
       guard rowId > 0 else {
         throw DataAccessError.insert
       }
-      return rowId
+      return true
     } catch _ {
       throw DataAccessError.insert
     }
   }
   
-  static func update(item: CRCoin) throws {
+  static func update(item: CRCoin) throws -> Bool {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
     
     let curr = table.filter(currID == Int64(item.identifier))
-    try db.run(curr.update(updateSetters(item: item)))
+    do {
+      let res = try db.run(curr.update(updateSetters(item: item)))
+      guard res > 0 else {
+        throw DataAccessError.update
+      }
+      return true
+    } catch {
+      throw DataAccessError.update
+    }
   }
   
   static func delete(item: CRCoin) throws {

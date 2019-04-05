@@ -98,15 +98,27 @@ class CoinsWorker {
       networkManager.getCurrencies { result in
         switch result {
         case .success(let coinsRoot):
-          DataStore.shared.insertCoins(coinsRoot.data.coins)
-          DispatchQueue.main.async {
-            DataStore.shared.loadCoins(sortable, completion: completion)
-          }
+          self.insertCoins(coins: coinsRoot.data.coins, sortable: sortable, completion)
         case .failure(let error):
           DispatchQueue.main.async {
             completion(.failure(error))
           }
         }
+      }
+    }
+  }
+  
+  private func insertCoins(coins: [CRCoin], sortable: Sortable, _ completion: @escaping (Result<[CRCoin], CWError>) -> Void) {
+    let result = DataStore.shared.insertCoins(coins)
+    switch result {
+    case .success:
+      DispatchQueue.main.async {
+        DataStore.shared.loadCoins(sortable, completion: completion)
+      }
+    case .failure:
+      //TODO: Handle DSError
+      DispatchQueue.main.async {
+        completion(.failure(.noData))
       }
     }
   }
