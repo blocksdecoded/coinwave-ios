@@ -52,9 +52,20 @@ class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   }
   
   func setFavorite(_ coin: CRCoin) {
+    guard let worker = worker else {
+      return
+    }
+    
     var mutableCoin = coin
     mutableCoin.isFavorite = true
-    worker?.setFavorite(mutableCoin)
+    let result = worker.setFavorite(mutableCoin)
+    switch result {
+    case .success:
+      break
+    case .failure:
+      //TODO: Handle DSError
+      presenter?.presentError(.nilValue)
+    }
   }
   
   func viewDidLoad(_ screen: String) {

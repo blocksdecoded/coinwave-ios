@@ -42,9 +42,19 @@ class AddToWatchlistInteractor: AddToWatchlistBusinessLogic, AddToWatchlistDataS
   }
   
   func addToWatchlist(request: AddToWatchlist.Add.Request) {
+    guard let worker = worker else {
+      return
+    }
+    
     var mutableCoin = request.coin
     mutableCoin.isWatchlist = !mutableCoin.isWatchlist
-    worker?.update(mutableCoin)
-    self.presenter?.addToWatchlist(response: AddToWatchlist.Add.Response(position: request.position, coin: mutableCoin))
+    let result = worker.update(mutableCoin)
+    switch result {
+    case .success:
+      presenter?.addToWatchlist(response: AddToWatchlist.Add.Response(position: request.position, coin: mutableCoin))
+    case .failure:
+      //TODO: Handle DSError
+      presenter?.presentError(.noData)
+    }
   }
 }

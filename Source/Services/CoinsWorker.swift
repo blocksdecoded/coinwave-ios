@@ -77,13 +77,18 @@ class CoinsWorker {
     }
   }
   
-  func setFavorite(_ coin: CRCoin) {
-    DataStore.shared.resetFavorite()
-    update(coin)
+  func setFavorite(_ coin: CRCoin) -> Result<Bool, DSError> {
+    let result = DataStore.shared.resetFavorite()
+    switch result {
+    case .success:
+      return update(coin)
+    case .failure(let error):
+      return .failure(error)
+    }
   }
   
-  func update(_ coin: CRCoin) {
-    DataStore.shared.fullUpdate(coin)
+  func update(_ coin: CRCoin) -> Result<Bool, DSError> {
+    return DataStore.shared.fullUpdate(coin)
   }
   
   private func fetchRemoteCoins(_ sortable: Sortable,

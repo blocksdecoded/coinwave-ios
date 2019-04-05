@@ -98,19 +98,27 @@ class DataStore {
     }
   }
   
-  func resetFavorite() {
+  func resetFavorite() -> Result<Bool, DSError> {
     do {
-      try CRCoinDataHelper.resetFavorite()
+      if try CRCoinDataHelper.resetFavorite() {
+        return .success(true)
+      } else {
+        return .failure(.notFound)
+      }
     } catch {
-      fatalError("Cannot insert coin")
+      return .failure(.databaseException)
     }
   }
   
-  func fullUpdate(_ coin: CRCoin) {
+  func fullUpdate(_ coin: CRCoin) -> Result<Bool, DSError> {
     do {
-      try CRCoinDataHelper.fullUpdate(item: coin)
+      if try CRCoinDataHelper.fullUpdate(item: coin) {
+        return .success(true)
+      } else {
+        return .failure(.notFound)
+      }
     } catch {
-      fatalError("Cannot insert coin")
+      return .failure(.databaseException)
     }
   }
   

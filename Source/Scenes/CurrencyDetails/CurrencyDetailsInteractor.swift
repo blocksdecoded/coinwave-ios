@@ -39,11 +39,21 @@ class CurrencyDetailsInteractor: CurrencyDetailsBusinessLogic, CurrencyDetailsDa
   }
   
   func addToFavorites(request: CurrencyDetails.AddFavorite.Request) {
+    guard let worker = worker else {
+      return
+    }
+    
     var coin = request.coin
     coin.isWatchlist = !coin.isWatchlist
-    worker?.update(coin)
-    let response = CurrencyDetails.AddFavorite.Response(coin: coin)
-    self.presenter?.favorites(response: response)
+    let result = worker.update(coin)
+    switch result {
+    case .success:
+      let response = CurrencyDetails.AddFavorite.Response(coin: coin)
+      presenter?.favorites(response: response)
+    case .failure:
+      //TODO: Handle DSError
+      presenter?.presentError(.noData)
+    }
   }
   
   func onOpenWeb() {

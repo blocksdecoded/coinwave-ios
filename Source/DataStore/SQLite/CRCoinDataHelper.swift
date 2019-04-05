@@ -261,23 +261,23 @@ class CRCoinDataHelper: DataHelperProtocol {
     return nil
   }
   
-  static func resetFavorite() throws {
+  static func resetFavorite() throws -> Bool {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
     
     let prevFavorite = table.filter(currIsFavorite == true)
     let prevUpdate = prevFavorite.update([currIsFavorite <- false])
-    try db.run(prevUpdate)
+    return try db.run(prevUpdate) > 0
   }
   
-  static func fullUpdate(item: CRCoin) throws {
+  static func fullUpdate(item: CRCoin) throws -> Bool {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
     
     let curr = table.filter(currID == Int64(item.identifier))
-    try db.run(curr.update(fullUpdateSetters(item: item)))
+    return try db.run(curr.update(fullUpdateSetters(item: item))) > 0
   }
   
   private static func convert(row: Row) -> CRCoin {
