@@ -33,12 +33,11 @@ class CategoryDataHelper: DataHelperProtocol {
     }
   }
   
-  @discardableResult
-  static func insert(item: Category) throws -> Int64 {
+  static func insert(item: Category) throws -> Bool {
     let catID = Int64(item.id)
     
     if try find(id: catID) != nil {
-      return catID
+      return true
     }
     
     guard let db = SQLiteDataStore.sharedInstance.db else {
@@ -55,7 +54,7 @@ class CategoryDataHelper: DataHelperProtocol {
       guard rowId > 0 else {
         throw DataAccessError.insert
       }
-      return rowId
+      return true
     } catch _ {
       throw DataAccessError.insert
     }

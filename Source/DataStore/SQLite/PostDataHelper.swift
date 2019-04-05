@@ -51,12 +51,11 @@ class PostDataHelper: DataHelperProtocol {
     }
   }
   
-  @discardableResult
-  static func insert(item: Post) throws -> Int64 {
+  static func insert(item: Post) throws -> Bool {
     let lPostID = Int64(item.id)
     
     if try find(id: lPostID) != nil {
-      return lPostID
+      return true
     }
     
     guard let db = SQLiteDataStore.sharedInstance.db else {
@@ -79,8 +78,11 @@ class PostDataHelper: DataHelperProtocol {
     
     do {
       for category in item.categories {
-        try CategoryDataHelper.insert(item: category)
-        try PostCategoryDataHelper.insert(post: lPostID, category: Int64(category.id))
+        let categoryError = try !CategoryDataHelper.insert(item: category)
+        let postCategoryError = try !PostCategoryDataHelper.insert(item: PostCategoryDataHelper.PostCategory(id: nil, post: lPostID, category: Int64(category.id)))
+        if categoryError || postCategoryError {
+          return false
+        }
       }
     } catch {
       throw DataAccessError.insert
@@ -91,7 +93,7 @@ class PostDataHelper: DataHelperProtocol {
       guard rowId > 0 else {
         throw DataAccessError.insert
       }
-      return rowId
+      return true
     } catch _ {
       throw DataAccessError.insert
     }

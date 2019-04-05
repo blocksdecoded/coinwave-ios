@@ -166,13 +166,16 @@ class DataStore {
     }
   }
   
-  func insertPosts(_ posts: [Post]) {
+  func insertPosts(_ posts: [Post]) -> Result<Bool, DSError> {
     do {
       for post in posts {
-        try PostDataHelper.insert(item: post)
+        if try !PostDataHelper.insert(item: post) {
+          return .failure(.operationFailure)
+        }
       }
+      return .success(true)
     } catch {
-      fatalError("Cannot insert posts")
+      return .failure(.databaseException)
     }
   }
   

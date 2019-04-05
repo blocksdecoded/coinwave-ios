@@ -12,7 +12,7 @@ import Foundation
 protocol DataHelperProtocol {
   associatedtype T
   static func createTable() throws
-  static func insert(item: T) throws -> Int64
+  static func insert(item: T) throws -> Bool
   static func delete(item: T) throws
   static func find(id: Int64) throws -> T?
   static func findAll() throws -> [T]?

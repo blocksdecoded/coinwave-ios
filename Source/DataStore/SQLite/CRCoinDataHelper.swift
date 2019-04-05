@@ -10,8 +10,7 @@ import Foundation
 import SQLite
 
 // swiftlint:disable type_name identifier_name
-// TODO: implement DataHelperProtocol
-class CRCoinDataHelper {
+class CRCoinDataHelper: DataHelperProtocol {
   typealias T = CRCoin
   
   static let TABLE_NAME = "CRCoin"

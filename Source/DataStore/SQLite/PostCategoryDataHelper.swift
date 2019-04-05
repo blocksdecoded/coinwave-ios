@@ -10,7 +10,16 @@ import Foundation
 import SQLite
 
 // swiftlint:disable identifier_name
-class PostCategoryDataHelper {
+class PostCategoryDataHelper: DataHelperProtocol {
+  
+  struct PostCategory {
+    let id: Int64?
+    let post: Int64
+    let category: Int64
+  }
+  
+  typealias T = PostCategory
+  
   static let TABLE_NAME = "PostCategory"
   static let table = Table(TABLE_NAME)
   static let postCategoryID = Expression<Int64>("id")
@@ -33,15 +42,14 @@ class PostCategoryDataHelper {
     }
   }
   
-  @discardableResult
-  static func insert(post: Int64, category: Int64) throws -> Int64 {
+  static func insert(item: PostCategory) throws -> Bool {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
     
     let insert = table.insert(
-      postID <- post,
-      categoryID <- category
+      postID <- item.post,
+      categoryID <- item.category
     )
     
     do {
@@ -49,18 +57,18 @@ class PostCategoryDataHelper {
       guard rowId > 0 else {
         throw DataAccessError.insert
       }
-      return rowId
+      return true
     } catch _ {
       throw DataAccessError.insert
     }
   }
   
-  static func delete(post: Int64, category: Int64) throws {
+  static func delete(item: PostCategory) throws {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
     
-    let query = table.filter(categoryID == category && postID == post)
+    let query = table.filter(categoryID == item.category && postID == item.post)
     do {
       let tmp = try db.run(query.delete())
       guard tmp == 1 else {
@@ -130,4 +138,7 @@ class PostCategoryDataHelper {
     }
     return result
   }
+  
+  static func find(id: Int64) throws -> PostCategory? { return nil }
+  static func findAll() throws -> [PostCategory]? { return nil }
 }
