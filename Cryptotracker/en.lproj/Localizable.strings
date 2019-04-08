@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  Cryptotracker
+
+  Created by Abai Abakirov on 4/8/19.
+  Copyright © 2019 makeuseof. All rights reserved.
+*/
+
+/* Coins List Header View */
+
+"name" = "Name";
+"market_cap" = "Market Cap";
+"volume_24h" = "Volume (24h)";
+"price_24h" = "Price (24h)";

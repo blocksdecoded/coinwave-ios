@@ -27,21 +27,47 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     case favorite
   }
   
+  // MARK: - Properties
+  
   override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
   var interactor: CurrenciesBusinessLogic?
   var router: (NSObjectProtocol & CurrenciesRoutingLogic & CurrenciesDataPassing)?
   weak var sideMenuDelegate: SideMenuDelegate?
-  private lazy var nameColumn: UIButton = { return columnTitle(text: "Name") }()
-  private lazy var marketCapColumn: UIButton = { return columnTitle(text: "Market Cap") }()
-  private lazy var volumeColumn: UIButton = { return columnTitle(text: "Volume (24h)") }()
-  private lazy var priceColumn: UIButton = { return columnTitle(text: "Price (24h)") }()
-  private lazy var titles: [UIButton] = { return [nameColumn, marketCapColumn, volumeColumn, priceColumn] }()
   weak var favoritePickerDelegate: OnPickFavoriteDelegate?
   private let version: Version
   private var currencies: [CRCoin]?
   private let navigationView = UIView()
   private let navigationLoading = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
   private let loadingView = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
+  
+  // MARK: - Views
+  
+  private lazy var coinsListView: CoinsListView = {
+    let view = CoinsListView(onRefresh: {
+      let request = Currencies.FetchCoins.Request(limit: 50, force: true)
+      self.interactor?.fetchCoins(request: request)
+    }, numberOfCoins: { () -> Int in
+      return self.currencies?.count ?? 0
+    }, coinForRow: { (index) -> CRCoin in
+      return self.currencies![index]
+    }, selectCoinAt: { (index) in
+      switch self.version {
+      case .list:
+        self.openDetails(index)
+      case .favorite:
+        self.onPickFavorite(index)
+      }
+    }, onName: {
+      self.interactor?.sortName(self.version.rawValue)
+    }, onMarketCap: {
+      self.interactor?.sortMarketCap(self.version.rawValue)
+    }, onVolume: {
+      self.interactor?.sortVolume(self.version.rawValue)
+    }, onPrice: {
+      self.interactor?.sortPrice(self.version.rawValue)
+    })
+    return view
+  }()
   
   private lazy var errorView: ErrorView = {
     let errorView = ErrorView(frame: CGRect.zero)
@@ -81,37 +107,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     label.textColor = UIColor.white
     label.numberOfLines = 2
     return label
-  }()
-  
-  private lazy var headerForCurrenciesList: UIView = {
-    let headerView = UIView()
-    let stackView = UIStackView(arrangedSubviews: titles)
-    stackView.axis = .horizontal
-    stackView.alignment = .fill
-    stackView.distribution = .fillEqually
-    headerView.addSubview(stackView)
-    stackView.snp.makeConstraints { make in
-      make.leading.trailing.centerY.equalToSuperview()
-    }
-    return headerView
-  }()
-  
-  private lazy var refreshControl: UIRefreshControl = {
-    let refresh = UIRefreshControl()
-    refresh.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
-    return refresh
-  }()
-  
-  private lazy var currenciesList: UITableView = {
-    let tableView = UITableView()
-    tableView.backgroundColor = .clear
-    tableView.register(TVCCrypto.create(), forCellReuseIdentifier: TVCCrypto.reuseID)
-    tableView.rowHeight = 60
-    tableView.separatorStyle = .none
-    tableView.dataSource = self
-    tableView.delegate = self
-    tableView.refreshControl = refreshControl
-    return tableView
   }()
   
   // MARK: Object lifecycle
@@ -195,8 +190,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     }
     navigationView.addSubview(titleLbl)
     view.addSubview(navigationView)
-    view.addSubview(headerForCurrenciesList)
-    view.addSubview(currenciesList)
+    view.addSubview(coinsListView)
     view.addSubview(loadingView)
     view.addSubview(errorView)
     setupConstraints()
@@ -208,14 +202,9 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       make.leading.trailing.equalToSuperview()
       make.height.equalTo(100)
     }
-    headerForCurrenciesList.snp.makeConstraints { make in
-      make.leading.trailing.equalToSuperview()
+    coinsListView.snp.makeConstraints { make in
       make.top.equalTo(navigationView.snp.bottom)
-      make.height.equalTo(50)
-    }
-    currenciesList.snp.makeConstraints { make in
       make.leading.trailing.bottom.equalToSuperview()
-      make.top.equalTo(headerForCurrenciesList.snp.bottom)
     }
     errorView.snp.makeConstraints { make in
       make.center.equalToSuperview()
@@ -260,23 +249,21 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     errorView.isHidden = true
     loadingView.isHidden = false
     loadingView.startAnimating()
-    currenciesList.isHidden = true
-    headerForCurrenciesList.isHidden = true
+    coinsListView.isHidden = true
     let request = Currencies.FetchCoins.Request(limit: 50, force: false)
     interactor?.fetchCoins(request: request)
   }
   
   func displayCoins(viewModel: Currencies.FetchCoins.ViewModel) {
-    refreshControl.endRefreshing()
     errorView.isHidden = true
     loadingView.stopAnimating()
     loadingView.isHidden = true
-    currenciesList.isHidden = false
-    headerForCurrenciesList.isHidden = false
     navigationLoading.stopAnimating()
     lastUpdated.text = ""
     currencies = viewModel.currencies
-    currenciesList.reloadData()
+    coinsListView.isHidden = false
+    coinsListView.stopRefresh()
+    coinsListView.reloadData()
   }
   
   func displayError(_ string: String) {
@@ -284,73 +271,23 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     errorView.setText(string)
     loadingView.stopAnimating()
     loadingView.isHidden = true
-    currenciesList.isHidden = true
-    headerForCurrenciesList.isHidden = true
+    coinsListView.isHidden = true
   }
   
   func displayLocalCoins(viewModel: Currencies.LocalCoins.Response) {
-    refreshControl.endRefreshing()
     errorView.isHidden = true
     loadingView.stopAnimating()
     loadingView.isHidden = true
-    currenciesList.isHidden = false
-    headerForCurrenciesList.isHidden = false
     navigationLoading.startAnimating()
     lastUpdated.text = viewModel.lastUpd
     currencies = viewModel.coins
-    currenciesList.reloadData()
+    coinsListView.isHidden = false
+    coinsListView.stopRefresh()
+    coinsListView.reloadData()
   }
   
   func setSort(_ sortable: Sortable) {
-    var button: UIButton
-    var others: [UIButton]
-    switch sortable.field {
-    case .name:
-      button = nameColumn
-      others = titles.filter { $0 != nameColumn }
-    case .price:
-      button = priceColumn
-      others = titles.filter { $0 != priceColumn }
-    case .volume:
-      button = volumeColumn
-      others = titles.filter { $0 != volumeColumn }
-    case .marketCap:
-      button = marketCapColumn
-      others = titles.filter { $0 != marketCapColumn }
-    }
-    button.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
-    button.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
-    var image: UIImage?
-    switch sortable.direction {
-    case .asc:
-      image = UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate)
-    case .desc:
-      image = UIImage(named: "triangle_down")?.withRenderingMode(.alwaysTemplate)
-    }
-    button.setImage(image, for: .normal)
-    defaultButton(others)
-  }
-  
-  private func defaultButton(_ buttons: [UIButton]) {
-    for button in buttons {
-      button.tintColor = UIColor.white.withAlphaComponent(0.7)
-      button.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-    }
-  }
-  
-  private func columnTitle(text: String) -> UIButton {
-    let button = UIButton()
-    button.setTitle(text, for: .normal)
-    button.titleLabel?.textAlignment = .center
-    button.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-    button.tintColor = UIColor.white.withAlphaComponent(0.7)
-    button.titleLabel?.font = Theme.Fonts.sfproTextLight(size: 11)
-    button.addTarget(self, action: #selector(sortCoins(_:)), for: .touchUpInside)
-    button.setImage(UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate), for: .normal)
-    button.semanticContentAttribute = .forceRightToLeft
-    button.imageEdgeInsets = UIEdgeInsets(top: 0.5, left: 2.5, bottom: -0.5, right: -2.5)
-    button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -2.5, bottom: 0, right: 2.5)
-    return button
+    coinsListView.setSort(sortable: sortable)
   }
   
   @objc private func menuClicked() {
@@ -359,53 +296,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   @objc private func backClicked() {
     navigationController?.popViewController(animated: true)
-  }
-  
-  @objc private func refreshTable() {
-    let request = Currencies.FetchCoins.Request(limit: 50, force: true)
-    interactor?.fetchCoins(request: request)
-  }
-  
-  @objc private func sortCoins(_ sender: UIButton) {
-    switch sender {
-    case nameColumn:
-      interactor?.sortName(version.rawValue)
-    case marketCapColumn:
-      interactor?.sortMarketCap(version.rawValue)
-    case volumeColumn:
-      interactor?.sortVolume(version.rawValue)
-    case priceColumn:
-      interactor?.sortPrice(version.rawValue)
-    default:
-      break
-    }
-  }
-}
-
-extension CurrenciesViewController: UITableViewDataSource, UITableViewDelegate {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return currencies?.count ?? 0
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: TVCCrypto.reuseID) as? TVCCrypto else {
-      return UITableViewCell()
-    }
-    guard let currency = currencies?[indexPath.row] else {
-      fatalError()
-    }
-    cell.onBind(currency, isTop: indexPath.row == 0)
-    return cell
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
-    switch version {
-    case .list:
-      openDetails(indexPath.row)
-    case .favorite:
-      onPickFavorite(indexPath.row)
-    }
   }
 }
 

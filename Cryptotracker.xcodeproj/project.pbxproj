@@ -70,6 +70,9 @@
 		B54CACE92256587200BE7127 /* Sortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CACE82256587200BE7127 /* Sortable.swift */; };
 		B54CACEB2257068E00BE7127 /* DSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CACEA2257068E00BE7127 /* DSError.swift */; };
 		B54CACEE225B411700BE7127 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CACED225B411700BE7127 /* R.generated.swift */; };
+		B54CACF0225B44D400BE7127 /* CoinsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CACEF225B44D400BE7127 /* CoinsListView.swift */; };
+		B54CACF2225B463800BE7127 /* CoinsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CACF1225B463800BE7127 /* CoinsListHeaderView.swift */; };
+		B54CACF7225B473700BE7127 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B54CACF9225B473700BE7127 /* Localizable.strings */; };
 		B55500FD2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
 		B55501012237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */; };
 		B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
@@ -220,6 +223,9 @@
 		B54CACE82256587200BE7127 /* Sortable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sortable.swift; sourceTree = "<group>"; };
 		B54CACEA2257068E00BE7127 /* DSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSError.swift; sourceTree = "<group>"; };
 		B54CACED225B411700BE7127 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		B54CACEF225B44D400BE7127 /* CoinsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListView.swift; sourceTree = "<group>"; };
+		B54CACF1225B463800BE7127 /* CoinsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListHeaderView.swift; sourceTree = "<group>"; };
+		B54CACF8225B473700BE7127 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B55500FC2237953B00FB7165 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVGKFastImageView+Extensions.swift"; sourceTree = "<group>"; };
 		B572E93E2202AD4F00778DA8 /* CRRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRRoot.swift; sourceTree = "<group>"; };
@@ -434,6 +440,7 @@
 				B5276AAF21A00F59000A74A5 /* ViewController.swift */,
 				B5276AB421A00F5A000A74A5 /* Assets.xcassets */,
 				B5276AB621A00F5A000A74A5 /* LaunchScreen.storyboard */,
+				B54CACF9225B473700BE7127 /* Localizable.strings */,
 			);
 			path = Cryptotracker;
 			sourceTree = "<group>";
@@ -456,7 +463,6 @@
 		B5276AEE21A011ED000A74A5 /* Currencies */ = {
 			isa = PBXGroup;
 			children = (
-				B5E93D8421A82C3600D1705A /* Cell */,
 				B5276AEF21A0124D000A74A5 /* CurrenciesPresenter.swift */,
 				B5276AF121A0124D000A74A5 /* CurrenciesRouter.swift */,
 				B5276AF221A0124D000A74A5 /* CurrenciesModels.swift */,
@@ -604,6 +610,16 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		B5A1FE00225B502500341CCC /* CoinsList */ = {
+			isa = PBXGroup;
+			children = (
+				B5E93D8421A82C3600D1705A /* Cell */,
+				B54CACF1225B463800BE7127 /* CoinsListHeaderView.swift */,
+				B54CACEF225B44D400BE7127 /* CoinsListView.swift */,
+			);
+			path = CoinsList;
+			sourceTree = "<group>";
+		};
 		B5E1D6C3221EDC14005419C8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +708,7 @@
 		B5E93D4F21A7C09500D1705A /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				B5A1FE00225B502500341CCC /* CoinsList */,
 				B527125A223A35C000D57639 /* RateUs */,
 				B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */,
 				B5E93D5421A7E68000D1705A /* PostNavigationView.swift */,
@@ -863,6 +880,7 @@
 			files = (
 				B51ECC6A22253FB5006CE6FC /* SFProText-Bold.otf in Resources */,
 				B5E93D8A21A82C5900D1705A /* TVCCrypto.xib in Resources */,
+				B54CACF7225B473700BE7127 /* Localizable.strings in Resources */,
 				B51ECC7022253FB5006CE6FC /* SFProText-Regular.otf in Resources */,
 				B5271260223A365D00D57639 /* RateUsAssets.xcassets in Resources */,
 				B5276AB821A00F5A000A74A5 /* LaunchScreen.storyboard in Resources */,
@@ -1040,6 +1058,7 @@
 				B5276B4D21A28183000A74A5 /* PostsWorker.swift in Sources */,
 				B5276B8121A2A33F000A74A5 /* NetworkError.swift in Sources */,
 				B5E93D4B21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
+				B54CACF0225B44D400BE7127 /* CoinsListView.swift in Sources */,
 				B5276B5321A28183000A74A5 /* PostsModels.swift in Sources */,
 				B5276B8921A2A369000A74A5 /* Router.swift in Sources */,
 				B572E9472202AFBA00778DA8 /* CRStats.swift in Sources */,
@@ -1059,6 +1078,7 @@
 				B501298821A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */,
 				B501298E21A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */,
 				B5217EB12205960100FF6DD5 /* CRDataHistory.swift in Sources */,
+				B54CACF2225B463800BE7127 /* CoinsListHeaderView.swift in Sources */,
 				B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */,
 				B5E93D6421A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
@@ -1139,6 +1159,14 @@
 				B5276AB721A00F5A000A74A5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B54CACF9225B473700BE7127 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B54CACF8225B473700BE7127 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
