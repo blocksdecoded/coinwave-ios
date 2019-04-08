@@ -69,6 +69,7 @@
 		B54CACE7225635B400BE7127 /* CWError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CACE6225635B400BE7127 /* CWError.swift */; };
 		B54CACE92256587200BE7127 /* Sortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CACE82256587200BE7127 /* Sortable.swift */; };
 		B54CACEB2257068E00BE7127 /* DSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CACEA2257068E00BE7127 /* DSError.swift */; };
+		B54CACEE225B411700BE7127 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CACED225B411700BE7127 /* R.generated.swift */; };
 		B55500FD2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
 		B55501012237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */; };
 		B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
@@ -218,6 +219,7 @@
 		B54CACE6225635B400BE7127 /* CWError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWError.swift; sourceTree = "<group>"; };
 		B54CACE82256587200BE7127 /* Sortable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sortable.swift; sourceTree = "<group>"; };
 		B54CACEA2257068E00BE7127 /* DSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSError.swift; sourceTree = "<group>"; };
+		B54CACED225B411700BE7127 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		B55500FC2237953B00FB7165 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVGKFastImageView+Extensions.swift"; sourceTree = "<group>"; };
 		B572E93E2202AD4F00778DA8 /* CRRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRRoot.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 		B5276AAC21A00F59000A74A5 /* Cryptotracker */ = {
 			isa = PBXGroup;
 			children = (
+				B54CACED225B411700BE7127 /* R.generated.swift */,
 				B5F6F141224110BD00E2D130 /* Cryptotracker.entitlements */,
 				B5276AB921A00F5A000A74A5 /* Info.plist */,
 				B5276AAD21A00F59000A74A5 /* AppDelegate.swift */,
@@ -769,6 +772,7 @@
 			buildConfigurationList = B5276ABC21A00F5A000A74A5 /* Build configuration list for PBXNativeTarget "Cryptotracker" */;
 			buildPhases = (
 				4120CDEE9F183875376742D0 /* [CP] Check Pods Manifest.lock */,
+				B54CACEC225B3F5900BE7127 /* R.swift */,
 				B5276AA621A00F59000A74A5 /* Sources */,
 				B5276AA721A00F59000A74A5 /* Frameworks */,
 				B5276AA821A00F59000A74A5 /* Resources */,
@@ -897,6 +901,7 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
@@ -910,6 +915,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
@@ -951,6 +957,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		B54CACEC225B3F5900BE7127 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 		B5A23B1A223D05F600BA2B25 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1005,6 +1031,7 @@
 				B5271261223A365D00D57639 /* RatingController.swift in Sources */,
 				B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B54CACE7225635B400BE7127 /* CWError.swift in Sources */,
+				B54CACEE225B411700BE7127 /* R.generated.swift in Sources */,
 				B5F3D3F22249DEEB00B69295 /* Theme.swift in Sources */,
 				B527122D2238DA1A00D57639 /* ConfigRouter.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,

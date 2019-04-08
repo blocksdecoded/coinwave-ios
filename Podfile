@@ -16,4 +16,5 @@ target 'Cryptotracker' do
   pod 'Crashlytics'
   pod 'NVActivityIndicatorView'
   pod 'SnapKit', '~> 4.0'
+  pod 'R.swift'
 end

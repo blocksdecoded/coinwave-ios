@@ -11,7 +11,7 @@ certificates/
 build/
 DerivedData/
 
-
+*.generated.swift
 *.cer
 *.mobileprovision
 

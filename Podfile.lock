@@ -12,6 +12,9 @@ PODS:
   - NVActivityIndicatorView (4.6.1):
     - NVActivityIndicatorView/Presenter (= 4.6.1)
   - NVActivityIndicatorView/Presenter (4.6.1)
+  - R.swift (5.0.3):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.1)
   - SideMenu (5.0.3)
   - SnapKit (4.2.0)
   - SQLite.swift (0.11.5):
@@ -26,6 +29,7 @@ DEPENDENCIES:
   - Fabric
   - Kingfisher (= 4.10.1)
   - NVActivityIndicatorView
+  - R.swift
   - SideMenu
   - SnapKit (~> 4.0)
   - SQLite.swift
@@ -39,6 +43,8 @@ SPEC REPOS:
     - Fabric
     - Kingfisher
     - NVActivityIndicatorView
+    - R.swift
+    - R.swift.Library
     - SideMenu
     - SnapKit
     - SQLite.swift
@@ -60,11 +66,13 @@ SPEC CHECKSUMS:
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
+  R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
+  R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SVGKit: 8a2fc74258bdb2abb54d3b65f3dd68b0277a9c4d
 
-PODFILE CHECKSUM: ec6a852b660296ba26b21aed3de13603d53d3681
+PODFILE CHECKSUM: 53933f2281653345cad1c4cb4f4e19cc5ace9e71
 
 COCOAPODS: 1.6.1

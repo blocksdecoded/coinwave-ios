@@ -3,3 +3,4 @@ disabled_rules:
 
 excluded:
   - Pods
+  - R.generated.swift
