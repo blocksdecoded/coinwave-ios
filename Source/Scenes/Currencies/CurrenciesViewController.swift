@@ -43,7 +43,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   // MARK: - Views
   
   private lazy var coinsListView: CoinsListView = {
-    let view = CoinsListView(onRefresh: {
+    return CoinsListView(onRefresh: {
       let request = Currencies.FetchCoins.Request(limit: 50, force: true)
       self.interactor?.fetchCoins(request: request)
     }, numberOfCoins: { () -> Int in
@@ -66,7 +66,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     }, onPrice: {
       self.interactor?.sortPrice(self.version.rawValue)
     })
-    return view
   }()
   
   private lazy var errorView: ErrorView = {
@@ -204,7 +203,8 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     }
     coinsListView.snp.makeConstraints { make in
       make.top.equalTo(navigationView.snp.bottom)
-      make.leading.trailing.bottom.equalToSuperview()
+      make.leading.trailing.equalToSuperview()
+      make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
     }
     errorView.snp.makeConstraints { make in
       make.center.equalToSuperview()

@@ -12,6 +12,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import SnapKit
 
 protocol WatchlistDisplayLogic: class {
   func displaySomething(viewModel: Watchlist.Something.ViewModel)
@@ -23,6 +24,9 @@ protocol WatchlistDisplayLogic: class {
 }
 
 class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
+  
+  // MARK: - Properties
+  
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .default
   }
@@ -38,25 +42,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   var interactor: WatchlistBusinessLogic?
   var router: (NSObjectProtocol & WatchlistRoutingLogic & WatchlistDataPassing)?
   
-  private lazy var nameColumn: UIButton = {
-    return columnTitle(text: "Name")
-  }()
-  
-  private lazy var marketCapColumn: UIButton = {
-    return columnTitle(text: "Market Cap")
-  }()
-  
-  private lazy var volumeColumn: UIButton = {
-    return columnTitle(text: "Volume (24h)")
-  }()
-  
-  private lazy var priceColumn: UIButton = {
-    return columnTitle(text: "Price (24h)")
-  }()
-  
-  private lazy var titles: [UIButton] = {
-    return [nameColumn, marketCapColumn, volumeColumn, priceColumn]
-  }()
+  // MARK: - Views
   
   private lazy var loadingView: NVActivityIndicatorView = {
     let view = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
@@ -107,58 +93,26 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     return chart
   }()
   
-  private lazy var headerForCurrenciesList: UIView = {
-    let headerView = UIView()
-    headerView.translatesAutoresizingMaskIntoConstraints = false
-    let stackView = UIStackView(arrangedSubviews: titles)
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    stackView.axis = .horizontal
-    stackView.alignment = .fill
-    stackView.distribution = .fillEqually
-    
-    headerView.addSubview(stackView)
-    
-    NSLayoutConstraint.activate([
-      stackView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-      stackView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-      stackView.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
-      ])
-    
-    return headerView
-  }()
-  
-  private func columnTitle(text: String) -> UIButton {
-    let button = UIButton()
-    button.setTitle(text, for: .normal)
-    button.titleLabel?.textAlignment = .center
-    button.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-    button.tintColor = UIColor.white.withAlphaComponent(0.7)
-    button.titleLabel?.font = Theme.Fonts.sfproTextLight(size: 11)
-    button.addTarget(self, action: #selector(sortCoins(_:)), for: .touchUpInside)
-    button.setImage(UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate), for: .normal)
-    button.semanticContentAttribute = .forceRightToLeft
-    button.imageEdgeInsets = UIEdgeInsets(top: 0.5, left: 2.5, bottom: -0.5, right: -2.5)
-    button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -2.5, bottom: 0, right: 2.5)
-    return button
-  }
-  
-  private lazy var refreshControl: UIRefreshControl = {
-    let refresh = UIRefreshControl()
-    refresh.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
-    return refresh
-  }()
-  
-  private lazy var watchTable: UITableView = {
-    let table = UITableView()
-    table.translatesAutoresizingMaskIntoConstraints = false
-    table.backgroundColor = .clear
-    table.rowHeight = 60
-    table.delegate = self
-    table.dataSource = self
-    table.refreshControl = refreshControl
-    table.register(TVCCrypto.create(), forCellReuseIdentifier: TVCCrypto.reuseID)
-    table.separatorStyle = .none
-    return table
+  private lazy var coinsListView: CoinsListView = {
+    return CoinsListView(onRefresh: {
+      let sortable = Sortable(field: .name, direction: .asc)
+      self.interactor?.fetchCoins(request: Watchlist.Something.Request(sortable: sortable, force: true))
+      self.interactor?.fetchFavorite(force: true)
+    }, numberOfCoins: { () -> Int in
+      return self.currencies?.count ?? 0
+    }, coinForRow: { (index) -> CRCoin in
+      return self.currencies![index]
+    }, selectCoinAt: { (index) in
+      self.openDetails(index)
+    }, onName: {
+      self.interactor?.sortName(self.screenName)
+    }, onMarketCap: {
+      self.interactor?.sortMarketCap(self.screenName)
+    }, onVolume: {
+      self.interactor?.sortVolume(self.screenName)
+    }, onPrice: {
+      self.interactor?.sortPrice(self.screenName)
+    })
   }()
   
   private var currencies: [CRCoin]?
@@ -219,8 +173,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     navigationView.addSubview(menuBtn)
     view.addSubview(navigationView)
     view.addSubview(chart)
-    view.addSubview(headerForCurrenciesList)
-    view.addSubview(watchTable)
+    view.addSubview(coinsListView)
     view.addSubview(loadingView)
     view.addSubview(errorView)
   }
@@ -247,19 +200,11 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
       chart.heightAnchor.constraint(equalToConstant: 200)
     ]
     
-    let headerForCurrenciesListC = [
-      headerForCurrenciesList.topAnchor.constraint(equalTo: chart.bottomAnchor),
-      headerForCurrenciesList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: headerForCurrenciesList.trailingAnchor),
-      headerForCurrenciesList.heightAnchor.constraint(equalToConstant: 50)
-    ]
-    
-    let watchTableC = [
-      watchTable.topAnchor.constraint(equalTo: headerForCurrenciesList.bottomAnchor),
-      watchTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: watchTable.trailingAnchor),
-      view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: watchTable.bottomAnchor)
-    ]
+    coinsListView.snp.makeConstraints { make in
+      make.top.equalTo(chart.snp.bottom)
+      make.leading.trailing.equalToSuperview()
+      make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+    }
     
     let menuBtnC = [
       menuBtn.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
@@ -274,13 +219,13 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     ]
     
     let errorViewC = [
-      errorView.centerXAnchor.constraint(equalTo: watchTable.centerXAnchor),
-      errorView.centerYAnchor.constraint(equalTo: watchTable.centerYAnchor, constant: -104)
+      errorView.centerXAnchor.constraint(equalTo: coinsListView.centerXAnchor),
+      errorView.centerYAnchor.constraint(equalTo: coinsListView.centerYAnchor, constant: -104)
     ]
-    
+
     let loadingViewC = [
-      loadingView.centerXAnchor.constraint(equalTo: watchTable.centerXAnchor),
-      loadingView.centerYAnchor.constraint(equalTo: watchTable.centerYAnchor),
+      loadingView.centerXAnchor.constraint(equalTo: coinsListView.centerXAnchor),
+      loadingView.centerYAnchor.constraint(equalTo: coinsListView.centerYAnchor),
       loadingView.widthAnchor.constraint(equalToConstant: 50),
       loadingView.heightAnchor.constraint(equalToConstant: 50)
     ]
@@ -288,13 +233,12 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     NSLayoutConstraint.activate(
       chartC +
       navigationViewC +
-      headerForCurrenciesListC +
-      watchTableC +
       menuBtnC +
       titleLblC +
       topCircleC +
-      loadingViewC +
-      errorViewC)
+      errorViewC +
+      loadingViewC
+    )
   }
   
   private func openDetails(_ index: Int) {
@@ -308,8 +252,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     errorView.isHidden = true
     loadingView.isHidden = false
     loadingView.startAnimating()
-    watchTable.isHidden = true
-    headerForCurrenciesList.isHidden = true
+    coinsListView.isHidden = true
     let sortable = Sortable(field: .name, direction: .asc)
     let request = Watchlist.Something.Request(sortable: sortable, force: false)
     interactor?.fetchCoins(request: request)
@@ -320,14 +263,13 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }
   
   func displaySomething(viewModel: Watchlist.Something.ViewModel) {
-    refreshControl.endRefreshing()
     errorView.isHidden = true
     loadingView.stopAnimating()
     loadingView.isHidden = true
-    watchTable.isHidden = false
-    headerForCurrenciesList.isHidden = false
     currencies = viewModel.currencies
-    watchTable.reloadData()
+    coinsListView.stopRefresh()
+    coinsListView.isHidden = false
+    coinsListView.reloadData()
   }
   
   func displayFavorite(viewModel: Watchlist.Favorite.ViewModel) {
@@ -340,13 +282,12 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   func displayNoWatchlist(_ string: String) {
     isEmptyWatchlist = true
-    refreshControl.endRefreshing()
+    coinsListView.stopRefresh()
     errorView.isHidden = false
     errorView.setText(string, hideWarning: true, buttonText: "ADD COIN")
     loadingView.stopAnimating()
     loadingView.isHidden = true
-    watchTable.isHidden = true
-    headerForCurrenciesList.isHidden = true
+    coinsListView.isHidden = true
   }
   
   func displayError(_ string: String) {
@@ -354,100 +295,16 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     errorView.setText(string, hideWarning: true)
     loadingView.stopAnimating()
     loadingView.isHidden = true
-    watchTable.isHidden = true
-    headerForCurrenciesList.isHidden = true
+    coinsListView.isHidden = true
     chart.showError()
   }
   
   func setSort(_ sortable: Sortable) {
-    var button: UIButton
-    var others: [UIButton]
-    
-    switch sortable.field {
-    case .name:
-      button = nameColumn
-      others = titles.filter { $0 != nameColumn }
-    case .price:
-      button = priceColumn
-      others = titles.filter { $0 != priceColumn }
-    case .volume:
-      button = volumeColumn
-      others = titles.filter { $0 != volumeColumn }
-    case .marketCap:
-      button = marketCapColumn
-      others = titles.filter { $0 != marketCapColumn }
-    }
-    
-    button.tintColor = UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1)
-    button.setTitleColor(UIColor(red: 0.23, green: 0.58, blue: 1, alpha: 1), for: .normal)
-    
-    var image: UIImage?
-    switch sortable.direction {
-    case .asc:
-      image = UIImage(named: "triangle_up")?.withRenderingMode(.alwaysTemplate)
-    case .desc:
-      image = UIImage(named: "triangle_down")?.withRenderingMode(.alwaysTemplate)
-    }
-    
-    button.setImage(image, for: .normal)
-    defaultButton(others)
-  }
-  
-  private func defaultButton(_ buttons: [UIButton]) {
-    for button in buttons {
-      button.tintColor = UIColor.white.withAlphaComponent(0.7)
-      button.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
-    }
-  }
-  
-  @objc private func sortCoins(_ sender: UIButton) {
-    switch sender {
-    case nameColumn:
-      interactor?.sortName(screenName)
-    case marketCapColumn:
-      interactor?.sortMarketCap(screenName)
-    case volumeColumn:
-      interactor?.sortVolume(screenName)
-    case priceColumn:
-      interactor?.sortPrice(screenName)
-    default:
-      break
-    }
+    coinsListView.setSort(sortable: sortable)
   }
   
   @objc private func menuClicked() {
     sideMenuDelegate?.openMenu()
-  }
-  
-  @objc private func refreshTable() {
-    let sortable = Sortable(field: .name, direction: .asc)
-    interactor?.fetchCoins(request: Watchlist.Something.Request(sortable: sortable, force: true))
-    interactor?.fetchFavorite(force: true)
-  }
-}
-
-extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return currencies?.count ?? 0
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: TVCCrypto.reuseID) as? TVCCrypto else {
-      fatalError("\(TVCCrypto.self) not registered")
-    }
-    
-    guard let currency = currencies?[indexPath.row] else {
-      fatalError("No currency for \(indexPath.row)")
-    }
-    
-    cell.onBind(currency, isTop: indexPath.row == 0)
-    
-    return cell
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
-    openDetails(indexPath.row)
   }
 }
 
