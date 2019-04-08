@@ -12,3 +12,8 @@
 "market_cap" = "Market Cap";
 "volume_24h" = "Volume (24h)";
 "price_24h" = "Price (24h)";
+
+/* Watchlist */
+
+"watchlist" = "Watchlist";
+"add_coin" = "ADD COIN";
