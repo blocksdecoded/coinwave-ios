@@ -39,7 +39,6 @@
 		B5271263223A365D00D57639 /* VRateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527125E223A365D00D57639 /* VRateBar.swift */; };
 		B5271264223A365D00D57639 /* RatingController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B527125F223A365D00D57639 /* RatingController.storyboard */; };
 		B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAD21A00F59000A74A5 /* AppDelegate.swift */; };
-		B5276AB021A00F59000A74A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AAF21A00F59000A74A5 /* ViewController.swift */; };
 		B5276AB521A00F5A000A74A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB421A00F5A000A74A5 /* Assets.xcassets */; };
 		B5276AB821A00F5A000A74A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB621A00F5A000A74A5 /* LaunchScreen.storyboard */; };
 		B5276AF521A0124D000A74A5 /* CurrenciesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AEF21A0124D000A74A5 /* CurrenciesPresenter.swift */; };
@@ -191,7 +190,6 @@
 		B527125F223A365D00D57639 /* RatingController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RatingController.storyboard; sourceTree = "<group>"; };
 		B5276AAA21A00F59000A74A5 /* Cryptotracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptotracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5276AAD21A00F59000A74A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B5276AAF21A00F59000A74A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5276AB421A00F5A000A74A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5276AB721A00F5A000A74A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5276AB921A00F5A000A74A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -437,7 +435,6 @@
 				B5F6F141224110BD00E2D130 /* Cryptotracker.entitlements */,
 				B5276AB921A00F5A000A74A5 /* Info.plist */,
 				B5276AAD21A00F59000A74A5 /* AppDelegate.swift */,
-				B5276AAF21A00F59000A74A5 /* ViewController.swift */,
 				B5276AB421A00F5A000A74A5 /* Assets.xcassets */,
 				B5276AB621A00F5A000A74A5 /* LaunchScreen.storyboard */,
 				B54CACF9225B473700BE7127 /* Localizable.strings */,
@@ -1038,7 +1035,6 @@
 				B5E93D8121A82AF600D1705A /* CurrenciesCell.swift in Sources */,
 				B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */,
 				B501299721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */,
-				B5276AB021A00F59000A74A5 /* ViewController.swift in Sources */,
 				B5FCEAC52212D8FC00E4B433 /* AddToWatchlistInteractor.swift in Sources */,
 				B501297521A940DA001B6A04 /* WatchlistRouter.swift in Sources */,
 				B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */,
