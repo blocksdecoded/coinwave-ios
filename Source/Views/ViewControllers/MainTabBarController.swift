@@ -26,9 +26,8 @@ class MainTabBarController: UITabBarController {
   }
   
   private func setup() {
-    let postsVC = PostsViewController()
+    let postsVC = PostsViewController.instance()
     postsVC.sideMenuDelegate = self
-    postsVC.tabBarItem = UITabBarItem(title: "Posts", image: UIImage(named: "earth"), selectedImage: nil)
     
     let currenciesVC = CoinsViewController.instance(version: .list)
     currenciesVC.sideMenuDelegate = self

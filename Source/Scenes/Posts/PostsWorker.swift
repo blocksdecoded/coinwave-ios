@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostsWorker {
+class PostsWorker: PostsWorkerLogic {
   func fetchPosts(completion: @escaping (Result<[Post], CWError>) -> Void) {
     DispatchQueue.global(qos: .background).async {
       let postsNetworkManager = PostsNetworkManager()

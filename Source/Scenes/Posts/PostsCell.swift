@@ -173,7 +173,7 @@ class PostsCell: UICollectionViewCell {
     NSLayoutConstraint.activate(titleC + imageC + imageMaskC + bdLogoC + readBtnC)
   }
   
-  func onBind(_ post: Posts.FetchPosts.ViewModel.DisplayedPost) {
+  func onBind(_ post: DisplayedPost) {
     postTitle.attributedText = NSMutableAttributedString(string: post.title,
                                attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     
