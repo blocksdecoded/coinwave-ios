@@ -17,6 +17,7 @@
 
 "watchlist_title" = "Watchlist";
 "add_coin" = "ADD COIN";
+"empty_watchlist" = "Your watchlist is empty";
 
 /* Coins */
 "coins_title_list" = "Cryptocurrencies";

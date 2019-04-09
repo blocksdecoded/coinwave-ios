@@ -10,16 +10,14 @@ import UIKit
 import NVActivityIndicatorView
 import SnapKit
 
-protocol WatchlistDisplayLogic: class {
-  func displaySomething(viewModel: Watchlist.Something.ViewModel)
-  func displayFavorite(viewModel: Watchlist.Favorite.ViewModel)
-  func displayNoFavorite()
-  func displayNoWatchlist(_ string: String)
-  func displayError(_ string: String)
-  func setSort(_ sortable: Sortable)
-}
-
 class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
+  static func instance() -> WatchlistViewController {
+    let worker = CoinsWorker()
+    let viewModel = WatchlistViewModel(worker: worker)
+    let view = WatchlistViewController(viewModel: viewModel)
+    viewModel.view = view
+    return view
+  }
   
   // MARK: - Properties
   
@@ -27,16 +25,10 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     return .default
   }
   
+  var viewModel: WatchlistBusinessLogic
   weak var sideMenuDelegate: SideMenuDelegate?
   
   private var isEmptyWatchlist = false
-  
-  private var screenName: String {
-    return "\(WatchlistViewController.self)"
-  }
-  
-  var interactor: WatchlistBusinessLogic?
-  var router: (NSObjectProtocol & WatchlistRoutingLogic & WatchlistDataPassing)?
   
   // MARK: - Views
   
@@ -90,30 +82,28 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }()
   
   private lazy var coinsListView: CoinsListView = {
-    return CoinsListView.instance(screenName: screenName, onRefresh: { sortable, force in
-      self.interactor?.fetchCoins(request: Watchlist.Something.Request(sortable: sortable, force: force))
-      self.interactor?.fetchFavorite(force: force)
+    return CoinsListView.instance(screenName: "\(WatchlistViewController.self)", onRefresh: { sortable, force in
+      self.viewModel.fetchCoins(sortable: sortable, force: force)
+      self.viewModel.fetchFavorite(force: force)
     }, numberOfCoins: { () -> Int in
-      return self.currencies?.count ?? 0
+      return self.viewModel.coins.count
     }, coinForRow: { (index) -> CRCoin in
-      return self.currencies![index]
+      return self.viewModel.coins[index]
     }, selectCoinAt: { (index) in
       self.openDetails(index)
     })
   }()
-  
-  private var currencies: [CRCoin]?
 
   // MARK: - Init
   
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
+  init(viewModel: WatchlistBusinessLogic) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+    setupTabBar()
   }
   
   required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
+    fatalError()
   }
   
   // MARK: - Lifecycle
@@ -125,31 +115,17 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    print(screenName)
     setupViews()
     setupConstraints()
+    coinsListView.viewDidLoad()
     doSomething()
     loadFavorite()
-    interactor?.viewDidLoad(screenName)
   }
   
   // MARK: - Setup
   
-  private func setup() {
-    let viewController = self
-    let interactor = WatchlistInteractor()
-    let presenter = WatchlistPresenter()
-    let router = WatchlistRouter()
-    let worker = CoinsWorker()
-    let sortWorker = SortableWorker()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    interactor.worker = worker
-    interactor.sortingWorker = sortWorker
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
+  private func setupTabBar() {
+    tabBarItem = UITabBarItem(title: R.string.localizable.watchlist_title(), image: R.image.star(), selectedImage: nil)
   }
   
   private func setupViews() {
@@ -214,19 +190,17 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   // MARK: - Routing
   
   private func openDetails(_ index: Int) {
-    guard let curr = currencies?[index] else {
-      return
-    }
-    router?.openDetails(currencyID: curr.identifier, currencySymbol: curr.symbol)
+    let curr = viewModel.coins[index]
+    let detailsVC = CurrencyDetailsViewController(currencyID: curr.identifier, currencySymbol: curr.symbol)
+    navigationController?.pushViewController(detailsVC, animated: true)
   }
   
   // MARK: - Display Logic
   
-  func displaySomething(viewModel: Watchlist.Something.ViewModel) {
+  func displayCoins() {
     errorView.isHidden = true
     loadingView.stopAnimating()
     loadingView.isHidden = true
-    currencies = viewModel.currencies
     coinsListView.stopRefresh()
     coinsListView.isHidden = false
     coinsListView.reloadData()
@@ -270,13 +244,11 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     loadingView.isHidden = false
     loadingView.startAnimating()
     coinsListView.isHidden = true
-    let sortable = Sortable(field: .name, direction: .asc)
-    let request = Watchlist.Something.Request(sortable: sortable, force: false)
-    interactor?.fetchCoins(request: request)
+    viewModel.fetchCoins(sortable: coinsListView.viewModel.sortable, force: false)
   }
   
   func loadFavorite() {
-    interactor?.fetchFavorite(force: false)
+    viewModel.fetchFavorite(force: false)
   }
   
   @objc private func menuClicked() {
@@ -294,7 +266,7 @@ extension WatchlistViewController: CurrencyChartDelegate {
 
 extension WatchlistViewController: OnPickFavoriteDelegate {
   func onPickedFavorite() {
-    interactor?.fetchFavorite(force: false)
+    viewModel.fetchFavorite(force: false)
   }
 }
 
@@ -305,9 +277,8 @@ extension WatchlistViewController: ErrorViewDelegate {
       let addToWatchlist = AddToWatchlistViewController()
       self.navigationController?.pushViewController(addToWatchlist, animated: true)
     } else {
-      let sortable = Sortable(field: .name, direction: .asc)
-      interactor?.fetchCoins(request: Watchlist.Something.Request(sortable: sortable, force: true))
-      interactor?.fetchFavorite(force: true)
+      viewModel.fetchCoins(sortable: coinsListView.viewModel.sortable, force: true)
+      viewModel.fetchFavorite(force: true)
     }
   }
 }

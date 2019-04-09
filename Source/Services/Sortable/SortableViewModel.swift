@@ -14,7 +14,7 @@ class SortableViewModel: SortableBusinessLogic {
     return SortableViewModel(worker: worker)
   }
   
-  var view: SortableDisplayLogic?
+  weak var view: SortableDisplayLogic?
   var sortable: Sortable
   var sortableWorker: SortableWorkerLogic
   

@@ -33,9 +33,8 @@ class MainTabBarController: UITabBarController {
     let currenciesVC = CoinsViewController.instance(version: .list)
     currenciesVC.sideMenuDelegate = self
 
-    let watchlistVC = WatchlistViewController()
+    let watchlistVC = WatchlistViewController.instance()
     watchlistVC.sideMenuDelegate = self
-    watchlistVC.tabBarItem = UITabBarItem(title: "Watchlist", image: UIImage(named: "star"), selectedImage: nil)
 
     let viewControllersList = [currenciesVC, watchlistVC, postsVC]
     viewControllers = viewControllersList

@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B501296F21A940DA001B6A04 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296921A940DA001B6A04 /* WatchlistPresenter.swift */; };
-		B501297521A940DA001B6A04 /* WatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296B21A940DA001B6A04 /* WatchlistRouter.swift */; };
 		B501297821A940DA001B6A04 /* WatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296C21A940DA001B6A04 /* WatchlistModels.swift */; };
 		B501297B21A940DA001B6A04 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296D21A940DA001B6A04 /* WatchlistViewController.swift */; };
-		B501297E21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296E21A940DA001B6A04 /* WatchlistInteractor.swift */; };
+		B501297E21A940DA001B6A04 /* WatchlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501296E21A940DA001B6A04 /* WatchlistViewModel.swift */; };
 		B501298821A94BC0001B6A04 /* CurrencyDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298221A94BC0001B6A04 /* CurrencyDetailsPresenter.swift */; };
 		B501298E21A94BC0001B6A04 /* CurrencyDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298421A94BC0001B6A04 /* CurrencyDetailsRouter.swift */; };
 		B501299121A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298521A94BC0001B6A04 /* CurrencyDetailsModels.swift */; };
@@ -90,6 +88,7 @@
 		B5A1FE09225C637600341CCC /* CoinsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1FE08225C637600341CCC /* CoinsProtocols.swift */; };
 		B5A1FE0C225C666E00341CCC /* CoinsWorkerLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1FE0B225C666E00341CCC /* CoinsWorkerLogic.swift */; };
 		B5A1FE0E225C899900341CCC /* SortableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1FE0D225C899900341CCC /* SortableViewModel.swift */; };
+		B5A1FE10225C9C0300341CCC /* WatchlistProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1FE0F225C9C0300341CCC /* WatchlistProtocols.swift */; };
 		B5BFC89922537350000DD490 /* InvalidUrlCRCoin.json in Resources */ = {isa = PBXBuildFile; fileRef = B5BFC89822537350000DD490 /* InvalidUrlCRCoin.json */; };
 		B5BFC89B225373F5000DD490 /* CRCoinWebsiteURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BFC89A225373F5000DD490 /* CRCoinWebsiteURLTests.swift */; };
 		B5CB3660221422ED00087C41 /* AddToWatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */; };
@@ -154,11 +153,9 @@
 		A0CC2CCCAA2E062ED9822C81 /* Pods-DebugCryptotracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.release.xcconfig"; sourceTree = "<group>"; };
 		A987954D56EDBE59FCFB0C3C /* Pods-Cryptotracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.release.xcconfig"; sourceTree = "<group>"; };
 		B3C7929EE344E49051F23381 /* Pods-StagingCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StagingCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StagingCryptotracker/Pods-StagingCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
-		B501296921A940DA001B6A04 /* WatchlistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPresenter.swift; sourceTree = "<group>"; };
-		B501296B21A940DA001B6A04 /* WatchlistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRouter.swift; sourceTree = "<group>"; };
 		B501296C21A940DA001B6A04 /* WatchlistModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistModels.swift; sourceTree = "<group>"; };
 		B501296D21A940DA001B6A04 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
-		B501296E21A940DA001B6A04 /* WatchlistInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistInteractor.swift; sourceTree = "<group>"; };
+		B501296E21A940DA001B6A04 /* WatchlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewModel.swift; sourceTree = "<group>"; };
 		B501298221A94BC0001B6A04 /* CurrencyDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsPresenter.swift; sourceTree = "<group>"; };
 		B501298421A94BC0001B6A04 /* CurrencyDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsRouter.swift; sourceTree = "<group>"; };
 		B501298521A94BC0001B6A04 /* CurrencyDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsModels.swift; sourceTree = "<group>"; };
@@ -244,6 +241,7 @@
 		B5A1FE08225C637600341CCC /* CoinsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsProtocols.swift; sourceTree = "<group>"; };
 		B5A1FE0B225C666E00341CCC /* CoinsWorkerLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsWorkerLogic.swift; sourceTree = "<group>"; };
 		B5A1FE0D225C899900341CCC /* SortableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortableViewModel.swift; sourceTree = "<group>"; };
+		B5A1FE0F225C9C0300341CCC /* WatchlistProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistProtocols.swift; sourceTree = "<group>"; };
 		B5BFC89822537350000DD490 /* InvalidUrlCRCoin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InvalidUrlCRCoin.json; sourceTree = "<group>"; };
 		B5BFC89A225373F5000DD490 /* CRCoinWebsiteURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinWebsiteURLTests.swift; sourceTree = "<group>"; };
 		B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistCell.swift; sourceTree = "<group>"; };
@@ -330,11 +328,10 @@
 		B501296821A940BA001B6A04 /* Watchlist */ = {
 			isa = PBXGroup;
 			children = (
-				B501296921A940DA001B6A04 /* WatchlistPresenter.swift */,
-				B501296B21A940DA001B6A04 /* WatchlistRouter.swift */,
 				B501296C21A940DA001B6A04 /* WatchlistModels.swift */,
 				B501296D21A940DA001B6A04 /* WatchlistViewController.swift */,
-				B501296E21A940DA001B6A04 /* WatchlistInteractor.swift */,
+				B501296E21A940DA001B6A04 /* WatchlistViewModel.swift */,
+				B5A1FE0F225C9C0300341CCC /* WatchlistProtocols.swift */,
 			);
 			path = Watchlist;
 			sourceTree = "<group>";
@@ -1051,7 +1048,6 @@
 				B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */,
 				B501299721A94BC0001B6A04 /* CurrencyDetailsInteractor.swift in Sources */,
 				B5FCEAC52212D8FC00E4B433 /* AddToWatchlistInteractor.swift in Sources */,
-				B501297521A940DA001B6A04 /* WatchlistRouter.swift in Sources */,
 				B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */,
 				B5276B5921A28183000A74A5 /* PostsInteractor.swift in Sources */,
 				B501299121A94BC0001B6A04 /* CurrencyDetailsModels.swift in Sources */,
@@ -1073,7 +1069,6 @@
 				B5276B5321A28183000A74A5 /* PostsModels.swift in Sources */,
 				B5276B8921A2A369000A74A5 /* Router.swift in Sources */,
 				B572E9472202AFBA00778DA8 /* CRStats.swift in Sources */,
-				B501296F21A940DA001B6A04 /* WatchlistPresenter.swift in Sources */,
 				B5A1FE0E225C899900341CCC /* SortableViewModel.swift in Sources */,
 				B5276B6321A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
 				B5276B7D21A2A32A000A74A5 /* HTTPTask.swift in Sources */,
@@ -1101,13 +1096,14 @@
 				B5F5BFA721A426680012599B /* PostsCell.swift in Sources */,
 				B5FCEA8C220D6B4200E4B433 /* VCMenu.swift in Sources */,
 				B5E93D3E21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
-				B501297E21A940DA001B6A04 /* WatchlistInteractor.swift in Sources */,
+				B501297E21A940DA001B6A04 /* WatchlistViewModel.swift in Sources */,
 				B5F046EF2207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */,
 				B52712272238DA1A00D57639 /* ConfigPresenter.swift in Sources */,
 				B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B572E9532202B31900778DA8 /* CRPrice.swift in Sources */,
 				B5A1FE09225C637600341CCC /* CoinsProtocols.swift in Sources */,
 				B5E93D8721A82C5900D1705A /* TVCCrypto.swift in Sources */,
+				B5A1FE10225C9C0300341CCC /* WatchlistProtocols.swift in Sources */,
 				B5FCEA9D220EB77100E4B433 /* BDHamburger.swift in Sources */,
 				B5276B7921A2A313000A74A5 /* HTTPMethod.swift in Sources */,
 				B5FCEAB62212D8FC00E4B433 /* AddToWatchlistPresenter.swift in Sources */,
