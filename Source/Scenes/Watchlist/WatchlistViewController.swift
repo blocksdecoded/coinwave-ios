@@ -70,7 +70,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   private lazy var titleLbl: UILabel = {
     let titleLabel = UILabel()
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    titleLabel.text = R.string.localizable.watchlist()
+    titleLabel.text = R.string.localizable.watchlist_title()
     titleLabel.textColor = R.color.watchlist_title()
     titleLabel.font = R.font.sfProTextRegular(size: 24)
     return titleLabel

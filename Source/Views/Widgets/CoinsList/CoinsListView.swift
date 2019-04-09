@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class CoinsListView: UIView, SortableDisplayLogic {
+final class CoinsListView: UIView, SortableDisplayLogic {
   static func instance(screenName: String,
                        onRefresh: @escaping (Sortable, Bool) -> Void,
                        numberOfCoins: @escaping () -> Int,

@@ -37,11 +37,17 @@ final class CoinsViewController: UIViewController, CoinsDisplayLogic {
   weak var sideMenuDelegate: SideMenuDelegate?
   weak var favoritePickerDelegate: OnPickFavoriteDelegate?
   
-  private let navigationView = UIView()
-  private let navigationLoading = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
-  private let loadingView = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
-  
   // MARK: - Views
+  
+  private let navigationView = UIView()
+  
+  private lazy var navigationLoading: NVActivityIndicatorView = {
+    return NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
+  }()
+  
+  private let loadingView: NVActivityIndicatorView = {
+    return NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
+  }()
   
   private lazy var coinsListView: CoinsListView = {
     return CoinsListView.instance(screenName: version.rawValue, onRefresh: { sortable, force in
@@ -68,7 +74,7 @@ final class CoinsViewController: UIViewController, CoinsDisplayLogic {
   
   private lazy var backButton: UIButton = {
     let button = UIButton()
-    button.setImage(UIImage(named: "left_arrow"), for: .normal)
+    button.setImage(R.image.left_arrow(), for: .normal)
     button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
     return button
   }()
@@ -83,18 +89,18 @@ final class CoinsViewController: UIViewController, CoinsDisplayLogic {
     let titleLabel = UILabel()
     switch version {
     case .list:
-      titleLabel.text = "Cryptocurrencies"
+      titleLabel.text = R.string.localizable.coins_title_list()
     case .favorite:
-      titleLabel.text = "Pick favorite"
+      titleLabel.text = R.string.localizable.coins_title_favorite()
     }
     titleLabel.textColor = .white
-    titleLabel.font = Theme.Fonts.sfproTextRegular(size: 24)
+    titleLabel.font = R.font.sfProTextRegular(size: 24)
     return titleLabel
   }()
   
   private lazy var lastUpdated: UILabel = {
     let label = UILabel()
-    label.font = Theme.Fonts.sfproTextLight(size: 11)
+    label.font = R.font.sfProTextLight(size: 11)
     label.textColor = UIColor.white
     label.numberOfLines = 2
     return label
@@ -126,7 +132,7 @@ final class CoinsViewController: UIViewController, CoinsDisplayLogic {
   // MARK: - Setup
   
   private func setupTabBar() {
-    tabBarItem = UITabBarItem(title: "Currencies", image: UIImage(named: "list"), selectedImage: nil)
+    tabBarItem = UITabBarItem(title: R.string.localizable.coins_title_list(), image: R.image.list(), selectedImage: nil)
   }
   
   private func setupViews() {

@@ -15,5 +15,9 @@
 
 /* Watchlist */
 
-"watchlist" = "Watchlist";
+"watchlist_title" = "Watchlist";
 "add_coin" = "ADD COIN";
+
+/* Coins */
+"coins_title_list" = "Cryptocurrencies";
+"coins_title_favorite" = "Pick favorite";
