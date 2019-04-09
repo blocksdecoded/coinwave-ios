@@ -6,9 +6,7 @@
 //  Copyright © 2019 makeuseof. All rights reserved.
 //
 
-import Foundation
-
-protocol SortablePresentLogic {
+protocol SortableDisplayLogic {
   var screenName: String { get }
   
   func setSort(sortable: Sortable)
@@ -22,6 +20,6 @@ protocol SortableBusinessLogic {
 }
 
 protocol SortableWorkerLogic {
-  func getSortConfig(screen: String) -> Sortable?
+  func getSortConfig(screen: String) -> Sortable
   func setSortConfig(screen: String, sortable: Sortable)
 }

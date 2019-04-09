@@ -14,7 +14,7 @@ protocol OnPickFavoriteDelegate: class {
   func onPickedFavorite()
 }
 
-protocol CurrenciesDisplayLogic: SortablePresentLogic {
+protocol CurrenciesDisplayLogic: SortableDisplayLogic {
   func displayCoins(viewModel: Currencies.FetchCoins.ViewModel)
   func displayLocalCoins(viewModel: Currencies.LocalCoins.Response)
   func displayError(_ string: String)
@@ -248,7 +248,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     fetchCoins()
   }
   
-  // MARK: - Present logic
+  // MARK: - Display logic
   
   func displayCoins(viewModel: Currencies.FetchCoins.ViewModel) {
     errorView.isHidden = true

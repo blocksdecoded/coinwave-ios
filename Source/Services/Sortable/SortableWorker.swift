@@ -17,7 +17,7 @@ class SortableWorker: SortableWorkerLogic {
     UserDefaults.standard.set(sortable.direction.rawValue, forKey: "\(screen)_\(SortableWorker.orderDirection)")
   }
   
-  func getSortConfig(screen: String) -> Sortable? {
+  func getSortConfig(screen: String) -> Sortable {
     var field: Sortable.Field?
     var direction: Sortable.Direction?
     
@@ -29,6 +29,6 @@ class SortableWorker: SortableWorkerLogic {
       direction = Sortable.Direction(rawValue: directionRawValue)
     }
     
-    return Sortable(field: field, direction: direction)
+    return Sortable(field: field, direction: direction) ?? Sortable(field: .marketCap, direction: .desc)
   }
 }
