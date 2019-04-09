@@ -46,8 +46,8 @@ class CoinsViewModel: CoinsBusinessLogic {
     })
   }
   
-  func setFavorite(coin: CRCoin) {
-    var mutableCoin = coin
+  func setFavorite(index: Int) {
+    var mutableCoin = coins[index]
     mutableCoin.isFavorite = true
     let result = coinsWorker.setFavorite(mutableCoin)
     switch result {

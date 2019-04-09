@@ -213,8 +213,7 @@ final class CoinsViewController: UIViewController, CoinsDisplayLogic {
   }
   
   private func onPickFavorite(_ index: Int) {
-    let coin = viewModel.coins[index]
-    viewModel.setFavorite(coin: coin) // TODO: Change to index
+    viewModel.setFavorite(index: index)
     favoritePickerDelegate?.onPickedFavorite()
     self.navigationController?.popViewController(animated: true)
   }

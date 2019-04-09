@@ -19,5 +19,5 @@ protocol CoinsBusinessLogic {
   var coinsWorker: CoinsWorkerLogic { get set }
   
   func fetchCoins(sortable: Sortable, limit: Int, force: Bool)
-  func setFavorite(coin: CRCoin)
+  func setFavorite(index: Int)
 }
