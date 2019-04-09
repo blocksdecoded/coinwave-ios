@@ -457,14 +457,14 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
-		B5276AEE21A011ED000A74A5 /* Currencies */ = {
+		B5276AEE21A011ED000A74A5 /* Coins */ = {
 			isa = PBXGroup;
 			children = (
 				B5276AF321A0124D000A74A5 /* CoinsViewController.swift */,
 				B5A1FE01225BC43300341CCC /* CoinsViewModel.swift */,
 				B5A1FE08225C637600341CCC /* CoinsProtocols.swift */,
 			);
-			path = Currencies;
+			path = Coins;
 			sourceTree = "<group>";
 		};
 		B5276B3E21A27F17000A74A5 /* Network */ = {
@@ -501,7 +501,7 @@
 				B501299A21A95FEB001B6A04 /* CurrencyChart */,
 				B501298121A94BA7001B6A04 /* CurrencyDetails */,
 				B501296821A940BA001B6A04 /* Watchlist */,
-				B5276AEE21A011ED000A74A5 /* Currencies */,
+				B5276AEE21A011ED000A74A5 /* Coins */,
 				B5276B4321A2816F000A74A5 /* Posts */,
 			);
 			path = Scenes;
