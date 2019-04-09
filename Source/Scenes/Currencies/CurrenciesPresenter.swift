@@ -20,7 +20,7 @@ protocol CurrenciesPresentationLogic {
 }
 
 class CurrenciesPresenter: CurrenciesPresentationLogic {
-  weak var viewController: CurrenciesDisplayLogic?
+  var viewController: CurrenciesDisplayLogic?
   
   func presentCurrencies(response: Currencies.FetchCoins.ViewModel) {
     let viewModel = Currencies.FetchCoins.ViewModel(currencies: response.currencies)
@@ -32,7 +32,7 @@ class CurrenciesPresenter: CurrenciesPresentationLogic {
   }
   
   func presentSort(_ sortable: Sortable) {
-    viewController?.setSort(sortable)
+    viewController?.setSort(sortable: sortable)
   }
   
   func presentLocalCoins(response: Currencies.LocalCoins.Response) {

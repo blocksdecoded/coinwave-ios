@@ -22,10 +22,10 @@ protocol CurrenciesDataStore {
   //var name: String { get set }
 }
 
-class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {  
+class CurrenciesInteractor: CurrenciesBusinessLogic, CurrenciesDataStore {
   var presenter: CurrenciesPresentationLogic?
   var worker: CoinsWorker?
-  var sortingWorker: SortingWorker?
+  var sortingWorker: SortableWorker?
   var sortable: Sortable!
 
   func fetchCoins(request: Currencies.FetchCoins.Request) {

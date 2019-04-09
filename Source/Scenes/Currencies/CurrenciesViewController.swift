@@ -14,11 +14,10 @@ protocol OnPickFavoriteDelegate: class {
   func onPickedFavorite()
 }
 
-protocol CurrenciesDisplayLogic: class {
+protocol CurrenciesDisplayLogic: SortablePresentLogic {
   func displayCoins(viewModel: Currencies.FetchCoins.ViewModel)
   func displayLocalCoins(viewModel: Currencies.LocalCoins.Response)
   func displayError(_ string: String)
-  func setSort(_ sortable: Sortable)
 }
 
 class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
@@ -28,6 +27,10 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   }
   
   // MARK: - Properties
+  
+  var screenName: String {
+    return version.rawValue
+  }
   
   override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
   var interactor: CurrenciesBusinessLogic?
@@ -58,13 +61,13 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
         self.onPickFavorite(index)
       }
     }, onName: {
-      self.interactor?.sortName(self.version.rawValue)
+      self.interactor?.sortName(self.screenName)
     }, onMarketCap: {
-      self.interactor?.sortMarketCap(self.version.rawValue)
+      self.interactor?.sortMarketCap(self.screenName)
     }, onVolume: {
-      self.interactor?.sortVolume(self.version.rawValue)
+      self.interactor?.sortVolume(self.screenName)
     }, onPrice: {
-      self.interactor?.sortPrice(self.version.rawValue)
+      self.interactor?.sortPrice(self.screenName)
     })
   }()
   
@@ -108,7 +111,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     return label
   }()
   
-  // MARK: Object lifecycle
+  // MARK: - Init
   
   init(version: Version) {
     self.version = version
@@ -128,7 +131,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     setup()
   }
   
-  // MARK: Setup
+  // MARK: - Setup
   
   private func setup() {
     let viewController = self
@@ -136,7 +139,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     let presenter = CurrenciesPresenter()
     let router = CurrenciesRouter()
     let worker = CoinsWorker()
-    let sortWorker = SortingWorker()
+    let sortWorker = SortableWorker()
     viewController.interactor = interactor
     viewController.router = router
     interactor.presenter = presenter
@@ -145,35 +148,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     presenter.viewController = viewController
     router.viewController = viewController
     router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  private func openDetails(_ index: Int) {
-    guard let curr = currencies?[index] else {
-      return
-    }
-    router?.openDetails(currencyID: curr.identifier, currencySymbol: curr.symbol)
-  }
-  
-  private func onPickFavorite(_ index: Int) {
-    guard let coin = currencies?[index] else {
-      return
-    }
-    
-    interactor?.setFavorite(coin)
-    favoritePickerDelegate?.onPickedFavorite()
-    self.navigationController?.popViewController(animated: true)
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    navigationController?.interactivePopGestureRecognizer?.delegate = self
-    setupViews()
-    interactor?.viewDidLoad(version.rawValue)
-    fetchCoins()
   }
   
   private func setupViews() {
@@ -245,14 +219,36 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     }
   }
   
-  func fetchCoins() {
-    errorView.isHidden = true
-    loadingView.isHidden = false
-    loadingView.startAnimating()
-    coinsListView.isHidden = true
-    let request = Currencies.FetchCoins.Request(limit: 50, force: false)
-    interactor?.fetchCoins(request: request)
+  // MARK: Routing
+  
+  private func openDetails(_ index: Int) {
+    guard let curr = currencies?[index] else {
+      return
+    }
+    router?.openDetails(currencyID: curr.identifier, currencySymbol: curr.symbol)
   }
+  
+  private func onPickFavorite(_ index: Int) {
+    guard let coin = currencies?[index] else {
+      return
+    }
+    
+    interactor?.setFavorite(coin)
+    favoritePickerDelegate?.onPickedFavorite()
+    self.navigationController?.popViewController(animated: true)
+  }
+  
+  // MARK: - View lifecycle
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    navigationController?.interactivePopGestureRecognizer?.delegate = self
+    setupViews()
+    interactor?.viewDidLoad(screenName)
+    fetchCoins()
+  }
+  
+  // MARK: - Present logic
   
   func displayCoins(viewModel: Currencies.FetchCoins.ViewModel) {
     errorView.isHidden = true
@@ -286,8 +282,21 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     coinsListView.reloadData()
   }
   
-  func setSort(_ sortable: Sortable) {
+  // MARK: - Sortable logic
+  
+  func setSort(sortable: Sortable) {
     coinsListView.setSort(sortable: sortable)
+  }
+  
+  // MARK: - Handlers
+  
+  func fetchCoins() {
+    errorView.isHidden = true
+    loadingView.isHidden = false
+    loadingView.startAnimating()
+    coinsListView.isHidden = true
+    let request = Currencies.FetchCoins.Request(limit: 50, force: false)
+    interactor?.fetchCoins(request: request)
   }
   
   @objc private func menuClicked() {

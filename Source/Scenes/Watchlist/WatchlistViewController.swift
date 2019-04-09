@@ -150,7 +150,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     let presenter = WatchlistPresenter()
     let router = WatchlistRouter()
     let worker = CoinsWorker()
-    let sortWorker = SortingWorker()
+    let sortWorker = SortableWorker()
     viewController.interactor = interactor
     viewController.router = router
     interactor.presenter = presenter

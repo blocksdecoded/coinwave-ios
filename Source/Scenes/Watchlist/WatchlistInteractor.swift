@@ -27,7 +27,7 @@ class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
   
   var presenter: WatchlistPresentationLogic?
   var worker: CoinsWorker?
-  var sortingWorker: SortingWorker?
+  var sortingWorker: SortableWorker?
   var sortable: Sortable!
   
   func fetchCoins(request: Watchlist.Something.Request) {

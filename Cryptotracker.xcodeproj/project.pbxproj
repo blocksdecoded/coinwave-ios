@@ -88,7 +88,9 @@
 		B594F046223D43EC005B8566 /* CRCoinPriceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */; };
 		B594F049223D46BB005B8566 /* NormalCRCoin.json in Resources */ = {isa = PBXBuildFile; fileRef = B594F048223D46BB005B8566 /* NormalCRCoin.json */; };
 		B594F04B223D55D2005B8566 /* CRCoinPrice.json in Resources */ = {isa = PBXBuildFile; fileRef = B594F04A223D55D2005B8566 /* CRCoinPrice.json */; };
-		B594F04D223E1DB6005B8566 /* SortingWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F04C223E1DB6005B8566 /* SortingWorker.swift */; };
+		B594F04D223E1DB6005B8566 /* SortableWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F04C223E1DB6005B8566 /* SortableWorker.swift */; };
+		B5A1FE02225BC43300341CCC /* CoinsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1FE01225BC43300341CCC /* CoinsViewModel.swift */; };
+		B5A1FE07225C5E4400341CCC /* SortableProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1FE06225C5E4400341CCC /* SortableProtocols.swift */; };
 		B5BFC89922537350000DD490 /* InvalidUrlCRCoin.json in Resources */ = {isa = PBXBuildFile; fileRef = B5BFC89822537350000DD490 /* InvalidUrlCRCoin.json */; };
 		B5BFC89B225373F5000DD490 /* CRCoinWebsiteURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BFC89A225373F5000DD490 /* CRCoinWebsiteURLTests.swift */; };
 		B5CB3660221422ED00087C41 /* AddToWatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */; };
@@ -242,7 +244,9 @@
 		B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinPriceTest.swift; sourceTree = "<group>"; };
 		B594F048223D46BB005B8566 /* NormalCRCoin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NormalCRCoin.json; sourceTree = "<group>"; };
 		B594F04A223D55D2005B8566 /* CRCoinPrice.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CRCoinPrice.json; sourceTree = "<group>"; };
-		B594F04C223E1DB6005B8566 /* SortingWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingWorker.swift; sourceTree = "<group>"; };
+		B594F04C223E1DB6005B8566 /* SortableWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortableWorker.swift; sourceTree = "<group>"; };
+		B5A1FE01225BC43300341CCC /* CoinsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewModel.swift; sourceTree = "<group>"; };
+		B5A1FE06225C5E4400341CCC /* SortableProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortableProtocols.swift; sourceTree = "<group>"; };
 		B5BFC89822537350000DD490 /* InvalidUrlCRCoin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InvalidUrlCRCoin.json; sourceTree = "<group>"; };
 		B5BFC89A225373F5000DD490 /* CRCoinWebsiteURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinWebsiteURLTests.swift; sourceTree = "<group>"; };
 		B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistCell.swift; sourceTree = "<group>"; };
@@ -466,6 +470,7 @@
 				B5276AF321A0124D000A74A5 /* CurrenciesViewController.swift */,
 				B5276AF421A0124D000A74A5 /* CurrenciesInteractor.swift */,
 				B5E93D8021A82AF600D1705A /* CurrenciesCell.swift */,
+				B5A1FE01225BC43300341CCC /* CoinsViewModel.swift */,
 			);
 			path = Currencies;
 			sourceTree = "<group>";
@@ -617,12 +622,21 @@
 			path = CoinsList;
 			sourceTree = "<group>";
 		};
+		B5A1FE05225C5E2E00341CCC /* Sortable */ = {
+			isa = PBXGroup;
+			children = (
+				B5A1FE06225C5E4400341CCC /* SortableProtocols.swift */,
+				B594F04C223E1DB6005B8566 /* SortableWorker.swift */,
+			);
+			path = Sortable;
+			sourceTree = "<group>";
+		};
 		B5E1D6C3221EDC14005419C8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B5A1FE05225C5E2E00341CCC /* Sortable */,
 				B5E1D6C4221EDC2A005419C8 /* CoinsWorker.swift */,
 				B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */,
-				B594F04C223E1DB6005B8566 /* SortingWorker.swift */,
 				B5737D4C2244E76E00C6A687 /* DateTimeService.swift */,
 			);
 			path = Services;
@@ -1076,6 +1090,7 @@
 				B5217EB12205960100FF6DD5 /* CRDataHistory.swift in Sources */,
 				B54CACF2225B463800BE7127 /* CoinsListHeaderView.swift in Sources */,
 				B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */,
+				B5A1FE07225C5E4400341CCC /* SortableProtocols.swift in Sources */,
 				B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */,
 				B5E93D6421A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B5271263223A365D00D57639 /* VRateBar.swift in Sources */,
@@ -1097,7 +1112,7 @@
 				B5276AF721A0124D000A74A5 /* CurrenciesRouter.swift in Sources */,
 				B572E94F2202AFF700778DA8 /* CRCoin.swift in Sources */,
 				B5FCEA94220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */,
-				B594F04D223E1DB6005B8566 /* SortingWorker.swift in Sources */,
+				B594F04D223E1DB6005B8566 /* SortableWorker.swift in Sources */,
 				B52712332238DA1A00D57639 /* ConfigViewController.swift in Sources */,
 				B501297B21A940DA001B6A04 /* WatchlistViewController.swift in Sources */,
 				B5276B5F21A29DD9000A74A5 /* Post.swift in Sources */,
@@ -1110,6 +1125,7 @@
 				B572E9572202B7A300778DA8 /* CRCoinDataHelper.swift in Sources */,
 				B54CACEB2257068E00BE7127 /* DSError.swift in Sources */,
 				B54CACE92256587200BE7127 /* Sortable.swift in Sources */,
+				B5A1FE02225BC43300341CCC /* CoinsViewModel.swift in Sources */,
 				B5276B4A21A28183000A74A5 /* PostsPresenter.swift in Sources */,
 				B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5FCEABF2212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */,
