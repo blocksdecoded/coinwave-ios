@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CoinsWorker {
+class CoinsWorker: CoinsWorkerLogic {
   func fetchCoins(_ sortable: Sortable,
                   force: Bool,
                   local: @escaping (Result<[CRCoin], CWError>) -> Void,

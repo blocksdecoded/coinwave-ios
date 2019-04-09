@@ -90,24 +90,15 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }()
   
   private lazy var coinsListView: CoinsListView = {
-    return CoinsListView(onRefresh: {
-      let sortable = Sortable(field: .name, direction: .asc)
-      self.interactor?.fetchCoins(request: Watchlist.Something.Request(sortable: sortable, force: true))
-      self.interactor?.fetchFavorite(force: true)
+    return CoinsListView.instance(screenName: screenName, onRefresh: { sortable, force in
+      self.interactor?.fetchCoins(request: Watchlist.Something.Request(sortable: sortable, force: force))
+      self.interactor?.fetchFavorite(force: force)
     }, numberOfCoins: { () -> Int in
       return self.currencies?.count ?? 0
     }, coinForRow: { (index) -> CRCoin in
       return self.currencies![index]
     }, selectCoinAt: { (index) in
       self.openDetails(index)
-    }, onName: {
-      self.interactor?.sortName(self.screenName)
-    }, onMarketCap: {
-      self.interactor?.sortMarketCap(self.screenName)
-    }, onVolume: {
-      self.interactor?.sortVolume(self.screenName)
-    }, onPrice: {
-      self.interactor?.sortPrice(self.screenName)
     })
   }()
   
@@ -295,7 +286,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
 
 extension WatchlistViewController: CurrencyChartDelegate {
   func onChooseFavorite() {
-    let favorites = CurrenciesViewController(version: .favorite)
+    let favorites = CoinsViewController.instance(version: .favorite)
     favorites.favoritePickerDelegate = self
     self.navigationController?.pushViewController(favorites, animated: true)
   }

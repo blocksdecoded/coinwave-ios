@@ -30,9 +30,8 @@ class MainTabBarController: UITabBarController {
     postsVC.sideMenuDelegate = self
     postsVC.tabBarItem = UITabBarItem(title: "Posts", image: UIImage(named: "earth"), selectedImage: nil)
     
-    let currenciesVC = CurrenciesViewController()
+    let currenciesVC = CoinsViewController.instance(version: .list)
     currenciesVC.sideMenuDelegate = self
-    currenciesVC.tabBarItem = UITabBarItem(title: "Currencies", image: UIImage(named: "list"), selectedImage: nil)
 
     let watchlistVC = WatchlistViewController()
     watchlistVC.sideMenuDelegate = self
@@ -84,7 +83,7 @@ class MainTabBarController: UITabBarController {
 
 extension MainTabBarController: MenuDelegate {
   func firstClicked() {
-    let favorites = CurrenciesViewController(version: .favorite)
+    let favorites = CoinsViewController.instance(version: .favorite)
     favorites.favoritePickerDelegate = self
     menuVC?.dismiss(animated: true, completion: nil)
     self.navigationController?.pushViewController(favorites, animated: true)

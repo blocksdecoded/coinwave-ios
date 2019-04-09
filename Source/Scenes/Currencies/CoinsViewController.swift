@@ -1,5 +1,5 @@
 //
-//  CurrenciesViewController.swift
+//  CoinsViewController.swift
 //  Cryptotracker
 //
 //  Created by Abai Abakirov on 11/17/18.
@@ -14,13 +14,15 @@ protocol OnPickFavoriteDelegate: class {
   func onPickedFavorite()
 }
 
-protocol CurrenciesDisplayLogic: SortableDisplayLogic {
-  func displayCoins(viewModel: Currencies.FetchCoins.ViewModel)
-  func displayLocalCoins(viewModel: Currencies.LocalCoins.Response)
-  func displayError(_ string: String)
-}
-
-class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
+final class CoinsViewController: UIViewController, CoinsDisplayLogic {
+  static func instance(version: CoinsViewController.Version) -> CoinsViewController {
+    let coinsWorker = CoinsWorker()
+    let viewModel = CoinsViewModel(coinsWorker: coinsWorker)
+    let view = CoinsViewController(version: version, viewModel: viewModel)
+    viewModel.view = view
+    return view
+  }
+  
   enum Version: String {
     case list
     case favorite
@@ -28,17 +30,13 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   // MARK: - Properties
   
-  var screenName: String {
-    return version.rawValue
-  }
+  private let version: Version
+  var viewModel: CoinsBusinessLogic
   
   override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-  var interactor: CurrenciesBusinessLogic?
-  var router: (NSObjectProtocol & CurrenciesRoutingLogic & CurrenciesDataPassing)?
   weak var sideMenuDelegate: SideMenuDelegate?
   weak var favoritePickerDelegate: OnPickFavoriteDelegate?
-  private let version: Version
-  private var currencies: [CRCoin]?
+  
   private let navigationView = UIView()
   private let navigationLoading = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
   private let loadingView = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
@@ -46,13 +44,12 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   // MARK: - Views
   
   private lazy var coinsListView: CoinsListView = {
-    return CoinsListView(onRefresh: {
-      let request = Currencies.FetchCoins.Request(limit: 50, force: true)
-      self.interactor?.fetchCoins(request: request)
+    return CoinsListView.instance(screenName: version.rawValue, onRefresh: { sortable, force in
+      self.viewModel.fetchCoins(sortable: sortable, limit: 50, force: force)
     }, numberOfCoins: { () -> Int in
-      return self.currencies?.count ?? 0
+      return self.viewModel.coins.count
     }, coinForRow: { (index) -> CRCoin in
-      return self.currencies![index]
+      return self.viewModel.coins[index]
     }, selectCoinAt: { (index) in
       switch self.version {
       case .list:
@@ -60,14 +57,6 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
       case .favorite:
         self.onPickFavorite(index)
       }
-    }, onName: {
-      self.interactor?.sortName(self.screenName)
-    }, onMarketCap: {
-      self.interactor?.sortMarketCap(self.screenName)
-    }, onVolume: {
-      self.interactor?.sortVolume(self.screenName)
-    }, onPrice: {
-      self.interactor?.sortPrice(self.screenName)
     })
   }()
   
@@ -113,41 +102,31 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   
   // MARK: - Init
   
-  init(version: Version) {
+  init(version: Version, viewModel: CoinsBusinessLogic) {
     self.version = version
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
-    setup()
-  }
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    self.version = .list
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
+    setupTabBar()
   }
   
   required init?(coder aDecoder: NSCoder) {
-    self.version = .list
-    super.init(coder: aDecoder)
-    setup()
+    fatalError()
+  }
+  
+  // MARK: - View lifecycle
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    navigationController?.interactivePopGestureRecognizer?.delegate = self
+    setupViews()
+    coinsListView.viewDidLoad()
+    fetchCoins()
   }
   
   // MARK: - Setup
   
-  private func setup() {
-    let viewController = self
-    let interactor = CurrenciesInteractor()
-    let presenter = CurrenciesPresenter()
-    let router = CurrenciesRouter()
-    let worker = CoinsWorker()
-    let sortWorker = SortableWorker()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    interactor.worker = worker
-    interactor.sortingWorker = sortWorker
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
+  private func setupTabBar() {
+    tabBarItem = UITabBarItem(title: "Currencies", image: UIImage(named: "list"), selectedImage: nil)
   }
   
   private func setupViews() {
@@ -222,70 +201,41 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   // MARK: Routing
   
   private func openDetails(_ index: Int) {
-    guard let curr = currencies?[index] else {
-      return
-    }
-    router?.openDetails(currencyID: curr.identifier, currencySymbol: curr.symbol)
+    let curr = viewModel.coins[index]
+    let detailsVC = CurrencyDetailsViewController(currencyID: curr.identifier, currencySymbol: curr.symbol)
+    navigationController?.pushViewController(detailsVC, animated: true)
   }
   
   private func onPickFavorite(_ index: Int) {
-    guard let coin = currencies?[index] else {
-      return
-    }
-    
-    interactor?.setFavorite(coin)
+    let coin = viewModel.coins[index]
+    viewModel.setFavorite(coin: coin) // TODO: Change to index
     favoritePickerDelegate?.onPickedFavorite()
     self.navigationController?.popViewController(animated: true)
   }
   
-  // MARK: - View lifecycle
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    navigationController?.interactivePopGestureRecognizer?.delegate = self
-    setupViews()
-    interactor?.viewDidLoad(screenName)
-    fetchCoins()
-  }
-  
   // MARK: - Display logic
   
-  func displayCoins(viewModel: Currencies.FetchCoins.ViewModel) {
+  func displayCoins(isLocal: Bool) {
     errorView.isHidden = true
     loadingView.stopAnimating()
     loadingView.isHidden = true
-    navigationLoading.stopAnimating()
+    if isLocal {
+      navigationLoading.startAnimating()
+    } else {
+      navigationLoading.stopAnimating()
+    }
     lastUpdated.text = ""
-    currencies = viewModel.currencies
     coinsListView.isHidden = false
     coinsListView.stopRefresh()
     coinsListView.reloadData()
   }
   
-  func displayError(_ string: String) {
+  func displayError(string: String) {
     errorView.isHidden = false
     errorView.setText(string)
     loadingView.stopAnimating()
     loadingView.isHidden = true
     coinsListView.isHidden = true
-  }
-  
-  func displayLocalCoins(viewModel: Currencies.LocalCoins.Response) {
-    errorView.isHidden = true
-    loadingView.stopAnimating()
-    loadingView.isHidden = true
-    navigationLoading.startAnimating()
-    lastUpdated.text = viewModel.lastUpd
-    currencies = viewModel.coins
-    coinsListView.isHidden = false
-    coinsListView.stopRefresh()
-    coinsListView.reloadData()
-  }
-  
-  // MARK: - Sortable logic
-  
-  func setSort(sortable: Sortable) {
-    coinsListView.setSort(sortable: sortable)
   }
   
   // MARK: - Handlers
@@ -295,8 +245,7 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
     loadingView.isHidden = false
     loadingView.startAnimating()
     coinsListView.isHidden = true
-    let request = Currencies.FetchCoins.Request(limit: 50, force: false)
-    interactor?.fetchCoins(request: request)
+    viewModel.fetchCoins(sortable: coinsListView.viewModel.sortable, limit: 50, force: false)
   }
   
   @objc private func menuClicked() {
@@ -308,10 +257,10 @@ class CurrenciesViewController: UIViewController, CurrenciesDisplayLogic {
   }
 }
 
-extension CurrenciesViewController: ErrorViewDelegate {
+extension CoinsViewController: ErrorViewDelegate {
   func onRetry() {
     fetchCoins()
   }
 }
 
-extension CurrenciesViewController: UIGestureRecognizerDelegate {}
+extension CoinsViewController: UIGestureRecognizerDelegate {}

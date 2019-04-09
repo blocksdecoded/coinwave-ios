@@ -9,27 +9,47 @@
 import UIKit
 import SnapKit
 
-class CoinsListView: UIView {
+class CoinsListView: UIView, SortableDisplayLogic {
+  static func instance(screenName: String,
+                       onRefresh: @escaping (Sortable, Bool) -> Void,
+                       numberOfCoins: @escaping () -> Int,
+                       coinForRow: @escaping (Int) -> CRCoin,
+                       selectCoinAt: @escaping (Int) -> Void) -> CoinsListView {
+    let worker = SortableWorker()
+    let viewModel = SortableViewModel(worker: worker)
+    let view = CoinsListView(name: screenName,
+                             viewModel: viewModel,
+                             onRefresh: onRefresh,
+                             numberOfCoins: numberOfCoins,
+                             coinForRow: coinForRow,
+                             selectCoinAt: selectCoinAt)
+    viewModel.view = view
+    return view
+    
+  }
   
   // MARK: - Properties
   
-  private var onRefresh: () -> Void
+  var screenName: String
+  var viewModel: SortableBusinessLogic
+  
+  private var onRefresh: (_ sortable: Sortable, _ force: Bool) -> Void
   private var numberOfCoins: () -> Int
   private var coinForRow: (Int) -> CRCoin
   private var selectCoinAt: (Int) -> Void
   
-  private var nameHandler: CoinsListHeaderView.Handler
-  private var marketCapHandler: CoinsListHeaderView.Handler
-  private var volumeHandler: CoinsListHeaderView.Handler
-  private var priceHandler: CoinsListHeaderView.Handler
-  
   // MARK: - Views
   
   private lazy var headerView: CoinsListHeaderView = {
-    return CoinsListHeaderView(onName: nameHandler,
-                               onMarketCap: marketCapHandler,
-                               onVolume: volumeHandler,
-                               onPrice: priceHandler)
+    return CoinsListHeaderView(onName: {
+      self.viewModel.sortName(screen: self.screenName)
+    }, onMarketCap: {
+      self.viewModel.sortMarketCap(screen: self.screenName)
+    }, onVolume: {
+      self.viewModel.sortVolume(screen: self.screenName)
+    }, onPrice: {
+      self.viewModel.sortPrice(screen: self.screenName)
+    })
   }()
   
   private lazy var refreshView: UIRefreshControl = {
@@ -52,22 +72,18 @@ class CoinsListView: UIView {
   
   // MARK: - Init
   
-  init(onRefresh: @escaping () -> Void,
+  init(name: String,
+       viewModel: SortableBusinessLogic,
+       onRefresh: @escaping (Sortable, Bool) -> Void,
        numberOfCoins: @escaping () -> Int,
        coinForRow: @escaping (Int) -> CRCoin,
-       selectCoinAt: @escaping (Int) -> Void,
-       onName: @escaping CoinsListHeaderView.Handler,
-       onMarketCap: @escaping CoinsListHeaderView.Handler,
-       onVolume: @escaping CoinsListHeaderView.Handler,
-       onPrice: @escaping CoinsListHeaderView.Handler) {
+       selectCoinAt: @escaping (Int) -> Void) {
+    self.screenName = name
+    self.viewModel = viewModel
     self.onRefresh = onRefresh
     self.numberOfCoins = numberOfCoins
     self.coinForRow = coinForRow
     self.selectCoinAt = selectCoinAt
-    self.nameHandler = onName
-    self.marketCapHandler = onMarketCap
-    self.volumeHandler = onVolume
-    self.priceHandler = onPrice
     super.init(frame: CGRect.zero)
     setup()
   }
@@ -96,7 +112,7 @@ class CoinsListView: UIView {
   // MARK: - Handlers
   
   @objc private func refreshTable() {
-    onRefresh()
+    onRefresh(viewModel.sortable, true)
   }
   
   func stopRefresh() {
@@ -109,6 +125,11 @@ class CoinsListView: UIView {
   
   func setSort(sortable: Sortable) {
     headerView.setSort(sortable: sortable)
+    onRefresh(sortable, false)
+  }
+  
+  func viewDidLoad() {
+    viewModel.getInitialSort(screen: screenName)
   }
 }
 

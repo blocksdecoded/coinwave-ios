@@ -12,6 +12,10 @@ class SortableWorker: SortableWorkerLogic {
   private static let orderField = "order_field"
   private static let orderDirection = "order_type"
   
+  var defaultSort: Sortable {
+    return Sortable(field: .marketCap, direction: .desc)
+  }
+  
   func setSortConfig(screen: String, sortable: Sortable) {
     UserDefaults.standard.set(sortable.field.rawValue, forKey: "\(screen)_\(SortableWorker.orderField)")
     UserDefaults.standard.set(sortable.direction.rawValue, forKey: "\(screen)_\(SortableWorker.orderDirection)")
@@ -29,6 +33,6 @@ class SortableWorker: SortableWorkerLogic {
       direction = Sortable.Direction(rawValue: directionRawValue)
     }
     
-    return Sortable(field: field, direction: direction) ?? Sortable(field: .marketCap, direction: .desc)
+    return Sortable(field: field, direction: direction) ?? defaultSort
   }
 }
