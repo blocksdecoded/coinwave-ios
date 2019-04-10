@@ -19,4 +19,8 @@ struct DetailsModel {
     let value: String?
     let valueColor: UIColor?
   }
+  
+  static func empty() -> DetailsModel {
+    return DetailsModel(iconType: nil, iconUrl: nil, title: "", saveCurrency: nil, info: [Info]())
+  }
 }

@@ -9,7 +9,9 @@
 import Foundation.NSURL
 
 protocol DetailsDisplayLogic: class {
-  func displayDetails(details: DetailsModel)
+  var viewModel: DetailsBusinessLogic { get set }
+  
+  func displayDetails()
   func changeFavorites(coin: CRCoin)
   func openCoinWebsite(site: URL)
   func openNoCoinWebsite()
@@ -17,10 +19,11 @@ protocol DetailsDisplayLogic: class {
 }
 
 protocol DetailsBusinessLogic {
+  var info: DetailsModel { get set }
   var view: DetailsDisplayLogic? { get set }
   var worker: CoinsWorkerLogic { get set }
   
-  func fetchDetails(coinID: Int, force: Bool)
-  func addToFavorites(coin: CRCoin)
+  func fetchDetails(force: Bool)
+  func addToFavorites()
   func onOpenWeb()
 }

@@ -12,31 +12,42 @@ class DetailsViewModel: DetailsBusinessLogic {
   
   // MARK: - Properties
   
+  var info: DetailsModel
   var view: DetailsDisplayLogic?
   var worker: CoinsWorkerLogic
   var coinSite: URL?
   
+  private var coinID: Int
+  
+  private var coin: CRCoin?
+  
   // MARK: - Init
   
-  init(worker: CoinsWorkerLogic) {
+  init(coinID: Int, worker: CoinsWorkerLogic) {
     self.worker = worker
+    self.coinID = coinID
+    self.info = DetailsModel.empty()
   }
   
   // MARK: - Business Logic
   
-  func fetchDetails(coinID: Int, force: Bool) {
+  func fetchDetails(force: Bool) {
     worker.fetchCoin(coinID, force: force) { result  in
       switch result {
       case .success(let coin):
         self.coinSite = coin.websiteUrl
-        self.view?.displayDetails(details: self.presentCoinDetails(coin: coin))
+        self.info = self.presentCoinDetails(coin: coin)
+        self.view?.displayDetails()
       case .failure(let error):
         self.view?.displayError(error.localizedDescription)
       }
     }
   }
   
-  func addToFavorites(coin: CRCoin) {
+  func addToFavorites() {
+    guard let coin = coin else {
+      return
+    }
     var mutCoin = coin
     mutCoin.isWatchlist = !coin.isWatchlist
     let result = worker.update(mutCoin)

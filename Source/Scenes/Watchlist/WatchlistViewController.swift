@@ -191,7 +191,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   private func openDetails(_ index: Int) {
     let curr = viewModel.coins[index]
-    let detailsVC = CurrencyDetailsViewController(currencyID: curr.identifier, currencySymbol: curr.symbol)
+    let detailsVC = CurrencyDetailsViewController.instance(coinID: curr.identifier, symbol: curr.symbol)
     navigationController?.pushViewController(detailsVC, animated: true)
   }
   

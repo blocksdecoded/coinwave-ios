@@ -12,9 +12,19 @@ import SVGKit
 import Kingfisher
 
 class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
-  private let currencyID: Int
-  private let currencySymbol: String
-  var interactor: DetailsBusinessLogic?
+  static func instance(coinID: Int, symbol: String) -> CurrencyDetailsViewController {
+    let worker = CoinsWorker()
+    let viewModel = DetailsViewModel(coinID: coinID, worker: worker)
+    let view = CurrencyDetailsViewController(coinID: coinID, symbol: symbol, viewModel: viewModel)
+    viewModel.view = view
+    return view
+  }
+  
+  // MARK: - Properties
+  
+  private let coinID: Int
+  private let symbol: String
+  var viewModel: DetailsBusinessLogic
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
@@ -37,6 +47,8 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   private var favoriteButtonRightMargin: CGFloat {
     return 30 - favoriteButtonWidth / 2
   }
+  
+  // MARK: - Views
   
   private var tmpButton: UIButton?
   
@@ -146,41 +158,24 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
     button.addTarget(self, action: #selector(addFavorite), for: .touchUpInside)
     return button
   }()
-  
-  private var info: [DetailsModel.Info]?
-  private var saveCurrency: CRCoin?
 
   // MARK: Object lifecycle
   
-  init(currencyID: Int, currencySymbol: String) {
-    self.currencyID = currencyID
-    self.currencySymbol = currencySymbol
+  init(coinID: Int, symbol: String, viewModel: DetailsBusinessLogic) {
+    self.coinID = coinID
+    self.symbol = symbol
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
-    setup()
-  }
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    currencyID = -1
-    currencySymbol = ""
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
   }
   
   required init?(coder aDecoder: NSCoder) {
-    currencyID = -1
-    currencySymbol = ""
-    super.init(coder: aDecoder)
-    setup()
+    fatalError()
   }
   
   // MARK: Setup
   
   private func setup() {
-    let viewController = self
-    let worker = CoinsWorker()
-    let interactor = DetailsViewModel(worker: worker)
-    viewController.interactor = interactor
-    interactor.view = viewController
+    
   }
   
   // MARK: View lifecycle
@@ -190,8 +185,8 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
     navigationController?.interactivePopGestureRecognizer?.delegate = self
     setupViews()
     setupConstraints()
-    doSomething(currID: currencyID)
-    chart.load(coinID: currencyID, coinSymbol: currencySymbol, time: .hour24)
+    viewModel.fetchDetails(force: false)
+    chart.load(coinID: coinID, coinSymbol: symbol, time: .hour24)
   }
   
   private func setupViews() {
@@ -292,35 +287,27 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
       topCircleC)
   }
   
-  // MARK: Do something
+  // MARK: - Handlers
   
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething(currID: Int) {
-    interactor?.fetchDetails(coinID: currID, force: false)
-  }
-  
-  func displayDetails(details: DetailsModel) {
+  func displayDetails() {
     refreshControl.endRefreshing()
-    if details.iconType != nil && details.iconUrl != nil {
-      switch details.iconType! {
+    if viewModel.info.iconType != nil && viewModel.info.iconUrl != nil {
+      switch viewModel.info.iconType! {
       case .pixel:
         vectorCoinIcon.isHidden = true
-        coinIcon.kf.setImage(with: details.iconUrl!)
+        coinIcon.kf.setImage(with: viewModel.info.iconUrl!)
       case .vector:
         coinIcon.isHidden = true
-        vectorCoinIcon.load(details.iconUrl!)
+        vectorCoinIcon.load(viewModel.info.iconUrl!)
       }
     } else {
       coinIcon.isHidden = true
       vectorCoinIcon.isHidden = true
     }
     
-    titleLbl.text = details.title
-    saveCurrency = details.saveCurrency
-    let isFilledStar = saveCurrency?.isWatchlist ?? false
-    favoriteBtn.setImage(UIImage(named: isFilledStar ? "filled_star" : "empty_star"), for: .normal)
-    info = details.info
+    titleLbl.text = viewModel.info.title
+    let isFilledStar = viewModel.info.saveCurrency?.isWatchlist ?? false
+    favoriteBtn.setImage(UIImage(named: isFilledStar ? "filled_star" : "empty_star"), for: .normal) // TODO: Get image from viewmodel
     infoTable.reloadData()
   }
   
@@ -329,8 +316,7 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   }
   
   func changeFavorites(coin: CRCoin) {
-    saveCurrency = coin
-    let isFilledStar = saveCurrency?.isWatchlist ?? false
+    let isFilledStar = viewModel.info.saveCurrency?.isWatchlist ?? false
     favoriteBtn.setImage(UIImage(named: isFilledStar ? "filled_star" : "empty_star"), for: .normal)
   }
   
@@ -350,7 +336,7 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   }
   
   @objc private func addFavorite() {
-    interactor?.addToFavorites(coin: saveCurrency!)
+    viewModel.addToFavorites()
   }
   
   @objc private func changePeriod(sender: UIButton) {
@@ -372,7 +358,7 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
     default:
       return
     }
-    chart.load(coinID: currencyID, coinSymbol: currencySymbol, time: timeframe)
+    chart.load(coinID: coinID, coinSymbol: symbol, time: timeframe)
   }
   
   @objc private func backClicked() {
@@ -380,8 +366,8 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   }
   
   @objc private func refreshTable() {
-    interactor?.fetchDetails(coinID: currencyID, force: true)
-    chart.load(coinID: currencyID, coinSymbol: currencySymbol, time: .hour24)
+    viewModel.fetchDetails(force: true)
+    chart.load(coinID: coinID, coinSymbol: symbol, time: .hour24)
   }
 }
 
@@ -392,7 +378,7 @@ extension CurrencyDetailsViewController: UITableViewDelegate, UITableViewDataSou
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == 0 {
-      return info?.count ?? 0
+      return viewModel.info.info.count
     }
     return 1
   }
@@ -405,12 +391,8 @@ extension CurrencyDetailsViewController: UITableViewDelegate, UITableViewDataSou
         fatalError("\(CurrencyDetailsCell.self) not registered")
       }
       
-      guard let info = info?[indexPath.row] else {
-        fatalError("No info for \(indexPath.row)")
-      }
-      
+      let info = viewModel.info.info[indexPath.row]
       cell.onBind(info)
-      
       return cell
     } else {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyDetailsBottomCell.reuseID)
@@ -426,7 +408,7 @@ extension CurrencyDetailsViewController: UITableViewDelegate, UITableViewDataSou
 
 extension CurrencyDetailsViewController: CurrencyDetailsBottomCellDelegate {
   func onOpenWebSite() {
-    interactor?.onOpenWeb()
+    viewModel.onOpenWeb()
   }
 }
 
