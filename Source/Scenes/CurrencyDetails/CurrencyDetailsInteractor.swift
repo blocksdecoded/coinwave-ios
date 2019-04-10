@@ -8,48 +8,39 @@
 
 import UIKit
 
-protocol CurrencyDetailsBusinessLogic {
-  func doSomething(request: CurrencyDetails.Something.Request)
-  func addToFavorites(request: CurrencyDetails.AddFavorite.Request)
-  func onOpenWeb()
-}
-
 protocol CurrencyDetailsDataStore {
   //var name: String { get set }
 }
 
-class CurrencyDetailsInteractor: CurrencyDetailsBusinessLogic, CurrencyDetailsDataStore {
+class CurrencyDetailsInteractor: DetailsBusinessLogic, CurrencyDetailsDataStore {
   var presenter: CurrencyDetailsPresentationLogic?
   var worker: CoinsWorker?
   //var name: String = ""
   
   // MARK: Do something
   
-  func doSomething(request: CurrencyDetails.Something.Request) {
-    worker?.fetchCoin(request.currID, force: request.force) { result  in
+  func fetchDetails(coinID: Int, force: Bool) {
+    worker?.fetchCoin(coinID, force: force) { result  in
       switch result {
       case .success(let coin):
-        let response = CurrencyDetails.Something.Response(coin: coin)
-        self.presenter?.presentCoinDetails(response: response)
-        break
+        self.presenter?.presentCoinDetails(coin: coin)
       case .failure(let error):
         self.presenter?.presentError(error)
       }
     }
   }
   
-  func addToFavorites(request: CurrencyDetails.AddFavorite.Request) {
+  func addToFavorites(coin: CRCoin) {
     guard let worker = worker else {
       return
     }
     
-    var coin = request.coin
-    coin.isWatchlist = !coin.isWatchlist
-    let result = worker.update(coin)
+    var mutCoin = coin
+    mutCoin.isWatchlist = !coin.isWatchlist
+    let result = worker.update(mutCoin)
     switch result {
     case .success:
-      let response = CurrencyDetails.AddFavorite.Response(coin: coin)
-      presenter?.favorites(response: response)
+      presenter?.favorites(coin: mutCoin)
     case .failure:
       //TODO: Handle DSError
       presenter?.presentError(.noData)

@@ -68,7 +68,7 @@ class CurrencyDetailsCell: UITableViewCell {
     NSLayoutConstraint.activate(nameC + valueC)
   }
   
-  func onBind(_ info: CurrencyDetails.Something.ViewModel.Info) {
+  func onBind(_ info: DetailsModel.Info) {
     nameLbl.text = info.name
     valueLbl.text = info.value
     valueLbl.textColor = info.valueColor ?? UIColor(red: 0.11, green: 0.14, blue: 0.16, alpha: 1.0)
