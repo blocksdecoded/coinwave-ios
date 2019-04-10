@@ -1,5 +1,5 @@
 //
-//  CurrencyDetailsViewController.swift
+//  DetailsViewController.swift
 //  Cryptotracker
 //
 //  Created by Abai Abakirov on 11/24/18.
@@ -12,11 +12,11 @@ import SVGKit
 import Kingfisher
 import SnapKit
 
-class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
-  static func instance(coinID: Int, symbol: String) -> CurrencyDetailsViewController {
+class DetailsViewController: UIViewController, DetailsDisplayLogic {
+  static func instance(coinID: Int, symbol: String) -> DetailsViewController {
     let worker = CoinsWorker()
     let viewModel = DetailsViewModel(coinID: coinID, worker: worker)
-    let view = CurrencyDetailsViewController(coinID: coinID, symbol: symbol, viewModel: viewModel)
+    let view = DetailsViewController(coinID: coinID, symbol: symbol, viewModel: viewModel)
     viewModel.view = view
     return view
   }
@@ -330,7 +330,7 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   }
 }
 
-extension CurrencyDetailsViewController: UITableViewDelegate, UITableViewDataSource {
+extension DetailsViewController: UITableViewDelegate, UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
     return 2
   }
@@ -365,16 +365,16 @@ extension CurrencyDetailsViewController: UITableViewDelegate, UITableViewDataSou
   }
 }
 
-extension CurrencyDetailsViewController: CurrencyDetailsBottomCellDelegate {
+extension DetailsViewController: CurrencyDetailsBottomCellDelegate {
   func onOpenWebSite() {
     viewModel.onOpenWeb()
   }
 }
 
-extension CurrencyDetailsViewController: SFSafariViewControllerDelegate {
+extension DetailsViewController: SFSafariViewControllerDelegate {
   func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
     dismiss(animated: true, completion: nil)
   }
 }
 
-extension CurrencyDetailsViewController: UIGestureRecognizerDelegate {}
+extension DetailsViewController: UIGestureRecognizerDelegate {}

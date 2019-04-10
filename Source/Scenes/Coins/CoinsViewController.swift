@@ -208,7 +208,7 @@ final class CoinsViewController: UIViewController, CoinsDisplayLogic {
   
   private func openDetails(_ index: Int) {
     let curr = viewModel.coins[index]
-    let detailsVC = CurrencyDetailsViewController.instance(coinID: curr.identifier, symbol: curr.symbol)
+    let detailsVC = DetailsViewController.instance(coinID: curr.identifier, symbol: curr.symbol)
     navigationController?.pushViewController(detailsVC, animated: true)
   }
   
