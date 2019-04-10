@@ -12,7 +12,6 @@ struct DetailsModel {
   let iconType: CRCoin.IconType?
   let iconUrl: URL?
   let title: String
-  let saveCurrency: CRCoin?
   let info: [Info]
   struct Info {
     let name: String
@@ -21,6 +20,6 @@ struct DetailsModel {
   }
   
   static func empty() -> DetailsModel {
-    return DetailsModel(iconType: nil, iconUrl: nil, title: "", saveCurrency: nil, info: [Info]())
+    return DetailsModel(iconType: nil, iconUrl: nil, title: "", info: [Info]())
   }
 }

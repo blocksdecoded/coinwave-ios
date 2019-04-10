@@ -103,7 +103,6 @@ class DetailsViewModel: DetailsBusinessLogic {
     return DetailsModel(iconType: coin.iconType,
                         iconUrl: coin.iconUrl,
                         title: "\(coin.name) \(coin.symbol)",
-                        saveCurrency: coin,
                         info: currInfo)
     
   }
