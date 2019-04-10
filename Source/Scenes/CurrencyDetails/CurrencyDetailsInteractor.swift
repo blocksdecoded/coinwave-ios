@@ -15,12 +15,17 @@ class CurrencyDetailsInteractor: DetailsBusinessLogic {
   var view: DetailsDisplayLogic?
   var worker: CoinsWorkerLogic
   var coinSite: URL?
-  //var name: String = ""
   
-  // MARK: Do something
+  // MARK: - Init
+  
+  init(worker: CoinsWorkerLogic) {
+    self.worker = worker
+  }
+  
+  // MARK: - Business Logic
   
   func fetchDetails(coinID: Int, force: Bool) {
-    worker?.fetchCoin(coinID, force: force) { result  in
+    worker.fetchCoin(coinID, force: force) { result  in
       switch result {
       case .success(let coin):
         self.coinSite = coin.websiteUrl
@@ -32,10 +37,6 @@ class CurrencyDetailsInteractor: DetailsBusinessLogic {
   }
   
   func addToFavorites(coin: CRCoin) {
-    guard let worker = worker else {
-      return
-    }
-    
     var mutCoin = coin
     mutCoin.isWatchlist = !coin.isWatchlist
     let result = worker.update(mutCoin)

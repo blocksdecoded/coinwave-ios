@@ -18,6 +18,7 @@ protocol DetailsDisplayLogic: class {
 
 protocol DetailsBusinessLogic {
   var view: DetailsDisplayLogic? { get set }
+  var worker: CoinsWorkerLogic { get set }
   
   func fetchDetails(coinID: Int, force: Bool)
   func addToFavorites(coin: CRCoin)
