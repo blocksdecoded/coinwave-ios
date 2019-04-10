@@ -135,7 +135,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     return button
   }()
 
-  // MARK: Object lifecycle
+  // MARK: - Init
   
   init(coinID: Int, symbol: String, viewModel: DetailsBusinessLogic) {
     self.coinID = coinID
@@ -148,13 +148,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     fatalError()
   }
   
-  // MARK: Setup
-  
-  private func setup() {
-    
-  }
-  
-  // MARK: View lifecycle
+  // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -164,6 +158,8 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     viewModel.fetchDetails(force: false)
     chart.load(coinID: coinID, coinSymbol: symbol, time: .hour24)
   }
+  
+  // MARK: - Setup
   
   private func setupViews() {
     view.backgroundColor = .white
@@ -238,6 +234,20 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
   
   // MARK: - Handlers
   
+  private func getButton(title: String, tag: Int, isSelected: Bool) -> UIButton {
+    let button = UIButton()
+    button.setTitle(title, for: .normal)
+    button.tag = tag
+    button.setTitleColor(R.color.history_button_selected(), for: .selected)
+    button.setTitleColor(R.color.history_button_normal(), for: .normal)
+    button.titleLabel?.font = R.font.sfProTextRegular(size: 12)
+    button.isSelected = isSelected
+    button.addTarget(self, action: #selector(changePeriod(sender:)), for: .touchUpInside)
+    return button
+  }
+  
+  // MARK: - Business Logic
+  
   func displayDetails() {
     refreshControl.endRefreshing()
     if viewModel.info.iconType != nil && viewModel.info.iconUrl != nil {
@@ -282,17 +292,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     present(alert, animated: true, completion: nil)
   }
   
-  private func getButton(title: String, tag: Int, isSelected: Bool) -> UIButton {
-    let button = UIButton()
-    button.setTitle(title, for: .normal)
-    button.tag = tag
-    button.setTitleColor(R.color.history_button_selected(), for: .selected)
-    button.setTitleColor(R.color.history_button_normal(), for: .normal)
-    button.titleLabel?.font = R.font.sfProTextRegular(size: 12)
-    button.isSelected = isSelected
-    button.addTarget(self, action: #selector(changePeriod(sender:)), for: .touchUpInside)
-    return button
-  }
+  // MARK: - Handlers
   
   @objc private func addFavorite() {
     viewModel.addToFavorites()
