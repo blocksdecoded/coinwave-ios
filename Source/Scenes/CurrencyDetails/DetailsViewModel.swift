@@ -31,6 +31,18 @@ class DetailsViewModel: DetailsBusinessLogic {
   
   // MARK: - Business Logic
   
+  func getFavoriteIcon() -> UIImage? {
+    guard let coin = coin else {
+      return R.image.empty_star()
+    }
+    
+    if coin.isWatchlist {
+      return R.image.filled_star()
+    } else {
+      return R.image.empty_star()
+    }
+  }
+  
   func fetchDetails(force: Bool) {
     worker.fetchCoin(coinID, force: force) { result  in
       switch result {

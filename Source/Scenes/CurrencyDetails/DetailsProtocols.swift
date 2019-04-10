@@ -6,6 +6,7 @@
 //  Copyright © 2019 makeuseof. All rights reserved.
 //
 
+import UIKit.UIImage
 import Foundation.NSURL
 
 protocol DetailsDisplayLogic: class {
@@ -23,6 +24,7 @@ protocol DetailsBusinessLogic {
   var view: DetailsDisplayLogic? { get set }
   var worker: CoinsWorkerLogic { get set }
   
+  func getFavoriteIcon() -> UIImage?
   func fetchDetails(force: Bool)
   func addToFavorites()
   func onOpenWeb()

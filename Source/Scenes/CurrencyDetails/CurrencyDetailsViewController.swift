@@ -306,8 +306,7 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
     }
     
     titleLbl.text = viewModel.info.title
-    let isFilledStar = viewModel.info.saveCurrency?.isWatchlist ?? false
-    favoriteBtn.setImage(UIImage(named: isFilledStar ? "filled_star" : "empty_star"), for: .normal) // TODO: Get image from viewmodel
+    favoriteBtn.setImage(viewModel.getFavoriteIcon(), for: .normal)
     infoTable.reloadData()
   }
   
@@ -316,8 +315,7 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   }
   
   func changeFavorites(coin: CRCoin) {
-    let isFilledStar = viewModel.info.saveCurrency?.isWatchlist ?? false
-    favoriteBtn.setImage(UIImage(named: isFilledStar ? "filled_star" : "empty_star"), for: .normal)
+    favoriteBtn.setImage(viewModel.getFavoriteIcon(), for: .normal)
   }
   
   func openCoinWebsite(site: URL) {
