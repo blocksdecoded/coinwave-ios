@@ -81,22 +81,22 @@ class DetailsViewModel: DetailsBusinessLogic {
   }
   
   private func presentCoinDetails(coin: CRCoin) -> DetailsModel {
-    let currInfo = [DetailsModel.Info(name: "Price:",
+    let currInfo = [DetailsModel.Info(name: R.string.localizable.details_price(),
                                  value: coin.price?.long,
                                  valueColor: nil),
-                    DetailsModel.Info(name: "% Change:",
+                    DetailsModel.Info(name: R.string.localizable.details_change(),
                                  value: coin.changeStr,
                                  valueColor: coin.changeColor),
-                    DetailsModel.Info(name: "Market Cap:",
+                    DetailsModel.Info(name: R.string.localizable.details_market_cap(),
                                  value: coin.marketCap?.long,
                                  valueColor: nil),
-                    DetailsModel.Info(name: "Volume 24h:",
+                    DetailsModel.Info(name: R.string.localizable.details_volume(),
                                  value: coin.volume?.long,
                                  valueColor: nil),
-                    DetailsModel.Info(name: "Available supply:",
+                    DetailsModel.Info(name: R.string.localizable.details_available_supply(),
                                  value: coin.circulatingSupply?.long,
                                  valueColor: nil),
-                    DetailsModel.Info(name: "Total supply:",
+                    DetailsModel.Info(name: R.string.localizable.details_total_supply(),
                                  value: coin.totalSupply?.long,
                                  valueColor: nil)]
     

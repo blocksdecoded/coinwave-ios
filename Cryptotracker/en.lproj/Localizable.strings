@@ -8,10 +8,10 @@
 
 /* Coins List Header View */
 
-"name" = "Name";
-"market_cap" = "Market Cap";
-"volume_24h" = "Volume (24h)";
-"price_24h" = "Price (24h)";
+"list_name" = "Name";
+"list_market_cap" = "Market Cap";
+"list_volume_24h" = "Volume (24h)";
+"list_price_24h" = "Price (24h)";
 
 /* Watchlist */
 
@@ -33,3 +33,10 @@
 
 "no_website" = "No website";
 "ok" = "OK";
+
+"details_price" = "Price:";
+"details_change" = "% Change:";
+"details_market_cap" = "Market Cap:";
+"details_volume" = "Volume 24h:";
+"details_available_supply" = "Available supply:";
+"details_total_supply" = "Total supply:";

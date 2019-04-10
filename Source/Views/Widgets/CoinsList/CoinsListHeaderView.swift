@@ -30,19 +30,19 @@ class CoinsListHeaderView: UIView {
   }()
   
   private lazy var nameColumn: UIButton = {
-    return columnTitle(text: R.string.localizable.name())
+    return columnTitle(text: R.string.localizable.list_name())
   }()
   
   private lazy var marketCapColumn: UIButton = {
-    return columnTitle(text: R.string.localizable.market_cap())
+    return columnTitle(text: R.string.localizable.list_market_cap())
   }()
   
   private lazy var volumeColumn: UIButton = {
-    return columnTitle(text: R.string.localizable.volume_24h())
+    return columnTitle(text: R.string.localizable.list_volume_24h())
   }()
   
   private lazy var priceColumn: UIButton = {
-    return columnTitle(text: R.string.localizable.price_24h())
+    return columnTitle(text: R.string.localizable.list_price_24h())
   }()
   
   private lazy var titles: [UIButton] = {
