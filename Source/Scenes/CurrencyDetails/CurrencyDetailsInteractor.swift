@@ -8,11 +8,8 @@
 
 import UIKit
 
-protocol CurrencyDetailsDataStore {
-  //var name: String { get set }
-}
-
-class CurrencyDetailsInteractor: DetailsBusinessLogic, CurrencyDetailsDataStore {
+class CurrencyDetailsInteractor: DetailsBusinessLogic {
+  var view: DetailsDisplayLogic?
   var presenter: CurrencyDetailsPresentationLogic?
   var worker: CoinsWorker?
   //var name: String = ""
