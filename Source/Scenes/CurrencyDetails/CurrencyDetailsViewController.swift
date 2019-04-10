@@ -10,6 +10,7 @@ import UIKit
 import SafariServices
 import SVGKit
 import Kingfisher
+import SnapKit
 
 class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   static func instance(coinID: Int, symbol: String) -> CurrencyDetailsViewController {
@@ -54,7 +55,6 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   
   private lazy var topCircle: UIImageView = {
     let imageView = UIImageView()
-    imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = UIImage(named: "top_circle_black")
     imageView.contentMode = .scaleToFill
     return imageView
@@ -62,7 +62,6 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   
   private lazy var backButton: UIButton = {
     let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
     button.setImage(UIImage(named: "left_arrow"), for: .normal)
     button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
     button.contentMode = .scaleAspectFit
@@ -70,21 +69,17 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   }()
   
   private lazy var coinIcon: UIImageView = {
-    let imageView = UIImageView()
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
+    return UIImageView()
   }()
   
   private lazy var vectorCoinIcon: SVGKFastImageView = {
     let imageView = SVGKFastImageView(svgkImage: SVGKImage())!
-    imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.contentMode = .scaleAspectFit
     return imageView
   }()
   
   private lazy var titleLbl: UILabel = {
     let titleLabel = UILabel()
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.text = title
     titleLabel.textColor = .white
     titleLabel.font = Theme.Fonts.sfproTextBold(size: 24)
@@ -96,15 +91,11 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   }()
   
   private lazy var navigationView: UIView = {
-    let navView = UIView()
-    navView.translatesAutoresizingMaskIntoConstraints = false
-    return navView
+    return UIView()
   }()
   
   private lazy var chart: CurrencyChart = {
-    let chart = CurrencyChart(version: .details)
-    chart.translatesAutoresizingMaskIntoConstraints = false
-    return chart
+    return CurrencyChart(version: .details)
   }()
   
   private lazy var periodStack: UIStackView = {
@@ -115,7 +106,6 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
                                    getButton(title: "Month", tag: monthBtnTag, isSelected: false),
                                    getButton(title: "Year", tag: yearBtnTag, isSelected: false),
                                    getButton(title: "All", tag: year5BtnTag, isSelected: false)])
-    stack.translatesAutoresizingMaskIntoConstraints = false
     stack.axis = .horizontal
     stack.distribution = .equalSpacing
     return stack
@@ -141,7 +131,6 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   
   private lazy var infoTable: UITableView = {
     let table = UITableView()
-    table.translatesAutoresizingMaskIntoConstraints = false
     table.backgroundColor = .clear
     table.dataSource = self
     table.delegate = self
@@ -154,7 +143,6 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   
   private lazy var favoriteBtn: UIButton = {
     let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
     button.addTarget(self, action: #selector(addFavorite), for: .touchUpInside)
     return button
   }()
@@ -204,87 +192,60 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   }
   
   private func setupConstraints() {
-    let topCircleC = [
-      topCircle.topAnchor.constraint(equalTo: view.topAnchor),
-      topCircle.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      view.trailingAnchor.constraint(equalTo: topCircle.trailingAnchor),
-      topCircle.heightAnchor.constraint(equalToConstant: 250)
-    ]
-    
-    let chartC = [
-      chart.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-      view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: chart.trailingAnchor, constant: 20),
-      chart.topAnchor.constraint(equalTo: navigationView.bottomAnchor),
-      chart.heightAnchor.constraint(equalToConstant: 200)
-    ]
-    
-    let periodC = [
-      periodStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-      view.trailingAnchor.constraint(equalTo: periodStack.trailingAnchor, constant: 20),
-      periodStack.topAnchor.constraint(equalTo: chart.bottomAnchor),
-      periodStack.heightAnchor.constraint(equalToConstant: 50)
-    ]
-    
-    let infoTableC = [
-      infoTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      infoTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      infoTable.topAnchor.constraint(equalTo: periodStack.bottomAnchor),
-      infoTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-    ]
-    
-    let navigationC = [
-      navigationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      navigationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      navigationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      navigationView.heightAnchor.constraint(equalToConstant: 100)
-    ]
-    
-    let coinIconC = [
-      coinIcon.widthAnchor.constraint(equalToConstant: 20),
-      coinIcon.heightAnchor.constraint(equalToConstant: 20),
-      coinIcon.centerYAnchor.constraint(equalTo: titleLbl.centerYAnchor),
-      titleLbl.leadingAnchor.constraint(equalTo: coinIcon.trailingAnchor, constant: 8)
-    ]
-    
-    let vectorCoinIconC = [
-      vectorCoinIcon.widthAnchor.constraint(equalToConstant: 20),
-      vectorCoinIcon.heightAnchor.constraint(equalToConstant: 20),
-      vectorCoinIcon.centerYAnchor.constraint(equalTo: titleLbl.centerYAnchor),
-      titleLbl.leadingAnchor.constraint(equalTo: vectorCoinIcon.trailingAnchor, constant: 8)
-    ]
-    
-    let titleLblC = [
-      favoriteBtn.leadingAnchor.constraint(greaterThanOrEqualTo: titleLbl.trailingAnchor, constant: 8),
-      titleLbl.leadingAnchor.constraint(greaterThanOrEqualTo: backButton.trailingAnchor, constant: 8),
-      titleLbl.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor, constant: 14),
-      titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
-    ]
-    
-    let favoriteC = [
-      navigationView.trailingAnchor.constraint(equalTo: favoriteBtn.trailingAnchor,
-                                               constant: favoriteButtonRightMargin),
-      favoriteBtn.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
-      favoriteBtn.widthAnchor.constraint(equalToConstant: favoriteButtonWidth),
-      favoriteBtn.heightAnchor.constraint(equalToConstant: favoriteButtonHeight)
-    ]
-    
-    let backButtonC = [
-      backButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor, constant: backButtonLeftMargin),
-      backButton.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
-      backButton.widthAnchor.constraint(equalToConstant: backButtonWidth),
-      backButton.heightAnchor.constraint(equalToConstant: 30)
-    ]
-    
-    NSLayoutConstraint.activate(infoTableC +
-      periodC +
-      coinIconC +
-      vectorCoinIconC +
-      titleLblC +
-      navigationC +
-      favoriteC +
-      chartC +
-      backButtonC +
-      topCircleC)
+    topCircle.snp.makeConstraints { make in
+      make.top.leading.trailing.equalToSuperview()
+      make.height.equalTo(250)
+    }
+    navigationView.snp.makeConstraints { make in
+      make.leading.trailing.equalToSuperview()
+      make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      make.height.equalTo(100)
+    }
+    chart.snp.makeConstraints { make in
+      make.leading.equalToSuperview().offset(20)
+      make.trailing.equalToSuperview().offset(-20)
+      make.top.equalTo(navigationView.snp.bottom)
+      make.height.equalTo(200)
+    }
+    periodStack.snp.makeConstraints { make in
+      make.leading.equalToSuperview().offset(20)
+      make.trailing.equalToSuperview().offset(-20)
+      make.top.equalTo(chart.snp.bottom)
+      make.height.equalTo(50)
+    }
+    infoTable.snp.makeConstraints { make in
+      make.leading.trailing.equalToSuperview()
+      make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+      make.top.equalTo(periodStack.snp.bottom)
+    }
+    coinIcon.snp.makeConstraints { make in
+      make.width.height.equalTo(20)
+      make.centerY.equalTo(titleLbl.snp.centerY)
+      make.trailing.equalTo(titleLbl.snp.leading).offset(-8)
+    }
+    vectorCoinIcon.snp.makeConstraints { make in
+      make.width.height.equalTo(20)
+      make.centerY.equalTo(titleLbl.snp.centerY)
+      make.trailing.equalTo(titleLbl.snp.leading).offset(-8)
+    }
+    titleLbl.snp.makeConstraints { make in
+      make.trailing.lessThanOrEqualTo(favoriteBtn.snp.leading).offset(-8)
+      make.leading.greaterThanOrEqualTo(backButton.snp.trailing).offset(8)
+      make.centerX.equalToSuperview().offset(14)
+      make.centerY.equalToSuperview()
+    }
+    favoriteBtn.snp.makeConstraints { make in
+      make.trailing.equalToSuperview().offset(-favoriteButtonRightMargin)
+      make.centerY.equalToSuperview()
+      make.width.equalTo(favoriteButtonWidth)
+      make.height.equalTo(favoriteButtonHeight)
+    }
+    backButton.snp.makeConstraints { make in
+      make.leading.equalToSuperview().offset(backButtonLeftMargin)
+      make.centerY.equalToSuperview()
+      make.width.equalTo(backButtonWidth)
+      make.height.equalTo(30)
+    }
   }
   
   // MARK: - Handlers
