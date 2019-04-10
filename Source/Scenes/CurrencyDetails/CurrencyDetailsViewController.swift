@@ -178,7 +178,7 @@ class CurrencyDetailsViewController: UIViewController, DetailsDisplayLogic {
   private func setup() {
     let viewController = self
     let worker = CoinsWorker()
-    let interactor = CurrencyDetailsInteractor(worker: worker)
+    let interactor = DetailsViewModel(worker: worker)
     viewController.interactor = interactor
     interactor.view = viewController
   }

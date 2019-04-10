@@ -1,5 +1,5 @@
 //
-//  CurrencyDetailsInteractor.swift
+//  DetailsViewModel.swift
 //  Cryptotracker
 //
 //  Created by Abai Abakirov on 11/24/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrencyDetailsInteractor: DetailsBusinessLogic {
+class DetailsViewModel: DetailsBusinessLogic {
   
   // MARK: - Properties
   
