@@ -55,14 +55,14 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
   
   private lazy var topCircle: UIImageView = {
     let imageView = UIImageView()
-    imageView.image = UIImage(named: "top_circle_black")
+    imageView.image = R.image.top_circle_black()
     imageView.contentMode = .scaleToFill
     return imageView
   }()
   
   private lazy var backButton: UIButton = {
     let button = UIButton()
-    button.setImage(UIImage(named: "left_arrow"), for: .normal)
+    button.setImage(R.image.left_arrow(), for: .normal)
     button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
     button.contentMode = .scaleAspectFit
     return button
@@ -82,7 +82,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     let titleLabel = UILabel()
     titleLabel.text = title
     titleLabel.textColor = .white
-    titleLabel.font = Theme.Fonts.sfproTextBold(size: 24)
+    titleLabel.font = R.font.sfProTextBold(size: 24)
     titleLabel.textAlignment = .center
     titleLabel.numberOfLines = 1
     titleLabel.adjustsFontSizeToFitWidth = true
@@ -99,29 +99,17 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
   }()
   
   private lazy var periodStack: UIStackView = {
-    let todayBtn = getButton(title: "Today", tag: todayBtnTag, isSelected: true)
+    let todayBtn = getButton(title: R.string.localizable.today(), tag: todayBtnTag, isSelected: true)
     tmpButton = todayBtn
     let stack = UIStackView(arrangedSubviews: [todayBtn,
-                                   getButton(title: "Week", tag: weekBtnTag, isSelected: false),
-                                   getButton(title: "Month", tag: monthBtnTag, isSelected: false),
-                                   getButton(title: "Year", tag: yearBtnTag, isSelected: false),
-                                   getButton(title: "All", tag: year5BtnTag, isSelected: false)])
+                                   getButton(title: R.string.localizable.week(), tag: weekBtnTag, isSelected: false),
+                                   getButton(title: R.string.localizable.month(), tag: monthBtnTag, isSelected: false),
+                                   getButton(title: R.string.localizable.year(), tag: yearBtnTag, isSelected: false),
+                                   getButton(title: R.string.localizable.all(), tag: year5BtnTag, isSelected: false)])
     stack.axis = .horizontal
     stack.distribution = .equalSpacing
     return stack
   }()
-  
-  func getButton(title: String, tag: Int, isSelected: Bool) -> UIButton {
-    let button = UIButton()
-    button.setTitle(title, for: .normal)
-    button.tag = tag
-    button.setTitleColor(UIColor(red: 29.0/255.0, green: 233.0/255.0, blue: 182.0/255.0, alpha: 1.0), for: .selected)
-    button.setTitleColor(UIColor(red: 170.0/255.0, green: 174.0/255.0, blue: 179.0/255.0, alpha: 1.0), for: .normal)
-    button.titleLabel?.font = Theme.Fonts.sfproTextRegular(size: 12)
-    button.isSelected = isSelected
-    button.addTarget(self, action: #selector(changePeriod(sender:)), for: .touchUpInside)
-    return button
-  }
   
   private lazy var refreshControl: UIRefreshControl = {
     let refresh = UIRefreshControl()
@@ -286,12 +274,24 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
   }
   
   func openNoCoinWebsite() {
-    let alert = UIAlertController(title: "No website", message: nil, preferredStyle: .alert)
-    let okAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+    let alert = UIAlertController(title: R.string.localizable.no_website(), message: nil, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: R.string.localizable.ok(), style: .default, handler: { _ in
       alert.dismiss(animated: true, completion: nil)
     })
     alert.addAction(okAction)
     present(alert, animated: true, completion: nil)
+  }
+  
+  private func getButton(title: String, tag: Int, isSelected: Bool) -> UIButton {
+    let button = UIButton()
+    button.setTitle(title, for: .normal)
+    button.tag = tag
+    button.setTitleColor(R.color.history_button_selected(), for: .selected)
+    button.setTitleColor(R.color.history_button_normal(), for: .normal)
+    button.titleLabel?.font = R.font.sfProTextRegular(size: 12)
+    button.isSelected = isSelected
+    button.addTarget(self, action: #selector(changePeriod(sender:)), for: .touchUpInside)
+    return button
   }
   
   @objc private func addFavorite() {

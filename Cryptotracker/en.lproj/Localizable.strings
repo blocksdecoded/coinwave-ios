@@ -22,3 +22,14 @@
 /* Coins */
 "coins_title_list" = "Cryptocurrencies";
 "coins_title_favorite" = "Pick favorite";
+
+/* Coin Details */
+
+"today" = "Today";
+"week" = "Week";
+"month" = "Month";
+"year" = "Year";
+"all" = "All";
+
+"no_website" = "No website";
+"ok" = "OK";
