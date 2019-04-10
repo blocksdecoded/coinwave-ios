@@ -124,8 +124,8 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     table.delegate = self
     table.separatorStyle = .none
     table.refreshControl = refreshControl
-    table.register(CurrencyDetailsCell.self, forCellReuseIdentifier: CurrencyDetailsCell.reuseID)
-    table.register(CurrencyDetailsBottomCell.self, forCellReuseIdentifier: CurrencyDetailsBottomCell.reuseID)
+    table.register(DetailsCell.self, forCellReuseIdentifier: DetailsCell.reuseID)
+    table.register(DetailsBottomCell.self, forCellReuseIdentifier: DetailsBottomCell.reuseID)
     return table
   }()
   
@@ -344,20 +344,20 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.section == 0 {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyDetailsCell.reuseID)
-                                                                          as? CurrencyDetailsCell
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailsCell.reuseID)
+                                                                          as? DetailsCell
         else {
-        fatalError("\(CurrencyDetailsCell.self) not registered")
+        fatalError("\(DetailsCell.self) not registered")
       }
       
       let info = viewModel.info.info[indexPath.row]
       cell.onBind(info)
       return cell
     } else {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyDetailsBottomCell.reuseID)
-                                                                          as? CurrencyDetailsBottomCell
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailsBottomCell.reuseID)
+                                                                          as? DetailsBottomCell
         else {
-          fatalError("\(CurrencyDetailsBottomCell.self) not registered")
+          fatalError("\(DetailsBottomCell.self) not registered")
       }
       cell.delegate = self
       return cell
@@ -365,7 +365,7 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource {
   }
 }
 
-extension DetailsViewController: CurrencyDetailsBottomCellDelegate {
+extension DetailsViewController: DetailsBottomCellDelegate {
   func onOpenWebSite() {
     viewModel.onOpenWeb()
   }

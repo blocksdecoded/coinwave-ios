@@ -1,5 +1,5 @@
 //
-//  CurrencyDetailsCell.swift
+//  DetailsCell.swift
 //  Cryptotracker
 //
 //  Created by Abai Abakirov on 11/26/18.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CurrencyDetailsCell: UITableViewCell {
+class DetailsCell: UITableViewCell {
   static var reuseID: String {
-    return "\(CurrencyDetailsCell.self)"
+    return "\(DetailsCell.self)"
   }
   
   private lazy var nameLbl: UILabel = {

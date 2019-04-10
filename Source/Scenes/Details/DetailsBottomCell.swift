@@ -1,5 +1,5 @@
 //
-//  CurrencyDetailsBottomCell.swift
+//  DetailsBottomCell.swift
 //  Cryptotracker
 //
 //  Created by Abai Abakirov on 2/6/19.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-protocol CurrencyDetailsBottomCellDelegate: class {
+protocol DetailsBottomCellDelegate: class {
   func onOpenWebSite()
 }
 
-class CurrencyDetailsBottomCell: UITableViewCell {
+class DetailsBottomCell: UITableViewCell {
   static var reuseID: String {
-    return "\(CurrencyDetailsBottomCell.self)"
+    return "\(DetailsBottomCell.self)"
   }
   
-  weak var delegate: CurrencyDetailsBottomCellDelegate?
+  weak var delegate: DetailsBottomCellDelegate?
   
   private lazy var backImage: UIImageView = {
     let image = UIImageView()
