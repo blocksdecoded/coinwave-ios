@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrencyChartInfoView: UIView {
+class ChartInfoView: UIView {
   
   private lazy var dateFormatter: DateFormatter = {
     let formatter = DateFormatter()

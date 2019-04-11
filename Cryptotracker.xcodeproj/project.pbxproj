@@ -13,7 +13,7 @@
 		B501299121A94BC0001B6A04 /* DetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298521A94BC0001B6A04 /* DetailsModels.swift */; };
 		B501299421A94BC0001B6A04 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298621A94BC0001B6A04 /* DetailsViewController.swift */; };
 		B501299721A94BC0001B6A04 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501298721A94BC0001B6A04 /* DetailsViewModel.swift */; };
-		B501299C21A9600E001B6A04 /* CurrencyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501299B21A9600E001B6A04 /* CurrencyChart.swift */; };
+		B501299C21A9600E001B6A04 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501299B21A9600E001B6A04 /* Chart.swift */; };
 		B50129AD21ABE1FB001B6A04 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50129AC21ABE1FB001B6A04 /* DetailsCell.swift */; };
 		B51ECC6422253F69006CE6FC /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6322253F68006CE6FC /* SFProText-Semibold.otf */; };
 		B51ECC6A22253FB5006CE6FC /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B51ECC6722253FB4006CE6FC /* SFProText-Bold.otf */; };
@@ -107,7 +107,7 @@
 		B5E93D8721A82C5900D1705A /* TVCCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8521A82C5900D1705A /* TVCCrypto.swift */; };
 		B5E93D8A21A82C5900D1705A /* TVCCrypto.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E93D8621A82C5900D1705A /* TVCCrypto.xib */; };
 		B5E93D8E21A90A6F00D1705A /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */; };
-		B5F046EF2207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F046EE2207EFA5007B7C0D /* CurrencyChartInfoView.swift */; };
+		B5F046EF2207EFA5007B7C0D /* ChartInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F046EE2207EFA5007B7C0D /* ChartInfoView.swift */; };
 		B5F14D2B22040B5300DE5E62 /* CRDataCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */; };
 		B5F3D3E92248FFDF00B69295 /* CRPriceInitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3D3E82248FFDF00B69295 /* CRPriceInitTests.swift */; };
 		B5F3D3EB224900C100B69295 /* CRPriceInitFromJsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3D3EA224900C100B69295 /* CRPriceInitFromJsonTests.swift */; };
@@ -156,7 +156,7 @@
 		B501298521A94BC0001B6A04 /* DetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModels.swift; sourceTree = "<group>"; };
 		B501298621A94BC0001B6A04 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		B501298721A94BC0001B6A04 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
-		B501299B21A9600E001B6A04 /* CurrencyChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChart.swift; sourceTree = "<group>"; };
+		B501299B21A9600E001B6A04 /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		B50129AC21ABE1FB001B6A04 /* DetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
 		B51ECC6322253F68006CE6FC /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.otf"; sourceTree = "<group>"; };
 		B51ECC6722253FB4006CE6FC /* SFProText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Bold.otf"; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 		B5E93D8521A82C5900D1705A /* TVCCrypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVCCrypto.swift; sourceTree = "<group>"; };
 		B5E93D8621A82C5900D1705A /* TVCCrypto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TVCCrypto.xib; sourceTree = "<group>"; };
 		B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFactory.swift; sourceTree = "<group>"; };
-		B5F046EE2207EFA5007B7C0D /* CurrencyChartInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChartInfoView.swift; sourceTree = "<group>"; };
+		B5F046EE2207EFA5007B7C0D /* ChartInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartInfoView.swift; sourceTree = "<group>"; };
 		B5F14D2A22040B5300DE5E62 /* CRDataCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataCoin.swift; sourceTree = "<group>"; };
 		B5F3D3E82248FFDF00B69295 /* CRPriceInitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRPriceInitTests.swift; sourceTree = "<group>"; };
 		B5F3D3EA224900C100B69295 /* CRPriceInitFromJsonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRPriceInitFromJsonTests.swift; sourceTree = "<group>"; };
@@ -343,13 +343,13 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
-		B501299A21A95FEB001B6A04 /* CurrencyChart */ = {
+		B501299A21A95FEB001B6A04 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				B501299B21A9600E001B6A04 /* CurrencyChart.swift */,
-				B5F046EE2207EFA5007B7C0D /* CurrencyChartInfoView.swift */,
+				B501299B21A9600E001B6A04 /* Chart.swift */,
+				B5F046EE2207EFA5007B7C0D /* ChartInfoView.swift */,
 			);
-			path = CurrencyChart;
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		B527120A2238CA2100D57639 /* ConfigNetwork */ = {
@@ -486,7 +486,7 @@
 			children = (
 				B52712202238D8E100D57639 /* Config */,
 				B5FCEAAF2212D8CD00E4B433 /* AddToWatchlist */,
-				B501299A21A95FEB001B6A04 /* CurrencyChart */,
+				B501299A21A95FEB001B6A04 /* Chart */,
 				B501298121A94BA7001B6A04 /* Details */,
 				B501296821A940BA001B6A04 /* Watchlist */,
 				B5276AEE21A011ED000A74A5 /* Coins */,
@@ -1078,14 +1078,14 @@
 				B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */,
 				B5E93D6421A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B5271263223A365D00D57639 /* VRateBar.swift in Sources */,
-				B501299C21A9600E001B6A04 /* CurrencyChart.swift in Sources */,
+				B501299C21A9600E001B6A04 /* Chart.swift in Sources */,
 				B5E93D3A21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
 				B527122A2238DA1A00D57639 /* ConfigWorker.swift in Sources */,
 				B5F5BFA721A426680012599B /* PostsCell.swift in Sources */,
 				B5FCEA8C220D6B4200E4B433 /* VCMenu.swift in Sources */,
 				B5E93D3E21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
 				B501297E21A940DA001B6A04 /* WatchlistViewModel.swift in Sources */,
-				B5F046EF2207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */,
+				B5F046EF2207EFA5007B7C0D /* ChartInfoView.swift in Sources */,
 				B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B572E9532202B31900778DA8 /* CRPrice.swift in Sources */,
 				B5A1FE14225DA4FA00341CCC /* DetailsProtocols.swift in Sources */,

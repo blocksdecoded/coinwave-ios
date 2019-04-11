@@ -94,8 +94,8 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     return UIView()
   }()
   
-  private lazy var chart: CurrencyChart = {
-    return CurrencyChart(version: .details)
+  private lazy var chart: Chart = {
+    return Chart(version: .details)
   }()
   
   private lazy var periodStack: UIStackView = {

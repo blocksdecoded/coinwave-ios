@@ -74,8 +74,8 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     return button
   }()
   
-  private lazy var chart: CurrencyChart = {
-    let chart = CurrencyChart(version: .favorite)
+  private lazy var chart: Chart = {
+    let chart = Chart(version: .favorite)
     chart.translatesAutoresizingMaskIntoConstraints = false
     chart.delegate = self
     return chart
@@ -256,7 +256,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }
 }
 
-extension WatchlistViewController: CurrencyChartDelegate {
+extension WatchlistViewController: ChartDelegate {
   func onChooseFavorite() {
     let favorites = CoinsViewController.instance(version: .favorite)
     favorites.favoritePickerDelegate = self

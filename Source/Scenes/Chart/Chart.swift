@@ -1,5 +1,5 @@
 //
-//  CurrencyChart.swift
+//  Chart.swift
 //  Cryptotracker
 //
 //  Created by Abai Abakirov on 11/24/18.
@@ -9,17 +9,17 @@
 import UIKit
 import Charts
 
-protocol CurrencyChartDelegate: class {
+protocol ChartDelegate: class {
   func onChooseFavorite()
 }
 
-class CurrencyChart: UIView {
+class Chart: UIView {
   enum Version {
     case favorite
     case details
   }
   
-  weak var delegate: CurrencyChartDelegate?
+  weak var delegate: ChartDelegate?
   
   private let version: Version
   private var gradientLayer: CAGradientLayer?
@@ -42,8 +42,8 @@ class CurrencyChart: UIView {
     return button
   }()
   
-  private lazy var infoView: CurrencyChartInfoView = {
-    let view = CurrencyChartInfoView()
+  private lazy var infoView: ChartInfoView = {
+    let view = ChartInfoView()
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
@@ -358,7 +358,7 @@ class CurrencyChart: UIView {
   }
 }
 
-extension CurrencyChart: ChartViewDelegate {
+extension Chart: ChartViewDelegate {
   func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
     infoView.setInfo(price: entry.y, timestamp: entry.x)
     if isShowDone {
