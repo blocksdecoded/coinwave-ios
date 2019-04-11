@@ -33,35 +33,28 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   // MARK: - Views
   
   private lazy var loadingView: NVActivityIndicatorView = {
-    let view = NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
-    view.translatesAutoresizingMaskIntoConstraints = false
-    return view
+    return NVActivityIndicatorView(frame: CGRect.zero, type: .circleStrokeSpin, color: .white, padding: nil)
   }()
   
   private lazy var errorView: ErrorView = {
     let errorView = ErrorView(frame: CGRect.zero)
     errorView.delegate = self
-    errorView.translatesAutoresizingMaskIntoConstraints = false
     return errorView
   }()
   
   private lazy var topCircle: UIImageView = {
     let imageView = UIImageView()
-    imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = R.image.top_circle_white()
     imageView.contentMode = .scaleToFill
     return imageView
   }()
   
   private lazy var navigationView: UIView = {
-    let view = UIView()
-    view.translatesAutoresizingMaskIntoConstraints = false
-    return view
+    return UIView()
   }()
   
   private lazy var titleLbl: UILabel = {
     let titleLabel = UILabel()
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.text = R.string.localizable.watchlist_title()
     titleLabel.textColor = R.color.watchlist_title()
     titleLabel.font = R.font.sfProTextRegular(size: 24)
@@ -76,7 +69,6 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   
   private lazy var chart: Chart = {
     let chart = Chart(version: .favorite)
-    chart.translatesAutoresizingMaskIntoConstraints = false
     chart.delegate = self
     return chart
   }()
