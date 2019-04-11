@@ -40,3 +40,7 @@
 "details_volume" = "Volume 24h:";
 "details_available_supply" = "Available supply:";
 "details_total_supply" = "Total supply:";
+
+/* Chart */
+"choose_favorite" = "Choose favorite";
+"no_history_data" = "No history data";

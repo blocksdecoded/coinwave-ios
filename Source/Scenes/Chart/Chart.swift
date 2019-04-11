@@ -34,9 +34,9 @@ class Chart: UIView {
   private lazy var chooseFavButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("Choose favorite", for: .normal)
-    button.titleLabel?.font = Theme.Fonts.sfproTextRegular(size: 12)
-    button.backgroundColor = UIColor(red: 40.0/255.0, green: 52.0/255.0, blue: 59.0/255.0, alpha: 1.0)
+    button.setTitle(R.string.localizable.choose_favorite(), for: .normal)
+    button.titleLabel?.font = R.font.sfProTextRegular(size: 12)
+    button.backgroundColor = R.color.chart_choose_fav_btn_back()
     button.layer.cornerRadius = 10
     button.addTarget(self, action: #selector(pickFavorite), for: .touchUpInside)
     return button
@@ -51,14 +51,14 @@ class Chart: UIView {
   private lazy var warningView: UIImageView = {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.image = UIImage(named: "warning")
+    imageView.image = R.image.warning()
     return imageView
   }()
   
   private lazy var detailsGradientLayer: CAGradientLayer = {
     let gradient = CAGradientLayer()
-    gradient.colors = [UIColor(red: 29.0/255.0, green: 196.0/255.0, blue: 233.0/255.0, alpha: 1.0).cgColor,
-                       UIColor(red: 29.0/255.0, green: 233.0/255.0, blue: 182.0/255.0, alpha: 1.0).cgColor]
+    gradient.colors = [R.color.chart_details_back_gradient_1()!.cgColor,
+                       R.color.chart_details_back_gradient_2()!.cgColor]
     gradient.startPoint = CGPoint(x: 0, y: 0.5)
     gradient.endPoint = CGPoint(x: 1, y: 0.5)
     gradient.cornerRadius = 10
@@ -68,7 +68,7 @@ class Chart: UIView {
   private lazy var nameLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = Theme.Fonts.sfproTextRegular(size: 16)
+    label.font = R.font.sfProTextRegular(size: 16)
     label.textColor = .white
     return label
   }()
@@ -76,7 +76,7 @@ class Chart: UIView {
   private lazy var priceLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = Theme.Fonts.sfproTextSemibold(size: 12)
+    label.font = R.font.sfProTextSemibold(size: 12)
     return label
   }()
   
@@ -98,7 +98,7 @@ class Chart: UIView {
     chart.borderColor = .clear
     chart.backgroundColor = .clear
     chart.translatesAutoresizingMaskIntoConstraints = false
-    chart.noDataText = "No history data"
+    chart.noDataText = R.string.localizable.no_history_data()
     
     switch version {
     case .details:
@@ -326,14 +326,14 @@ class Chart: UIView {
     var gradientColors = [CGColor]() as CFArray
     switch version {
     case .details:
-      color = NSUIColor(red: 40.0/255.0, green: 52.0/255.0, blue: 60.0/255.0, alpha: 1.0)
-      gradientColors = [UIColor(red: 40.0/255.0, green: 52.0/255.0, blue: 60.0/255.0, alpha: 1.0).cgColor,
-                            UIColor.clear.cgColor] as CFArray
+      color = R.color.chart_details_line()!
+      gradientColors = [R.color.chart_details_fore_gradient_1()!.cgColor,
+                        R.color.chart_details_fore_gradient_2()!.cgColor] as CFArray
       
     case .favorite:
-      color = NSUIColor(red: 29.0/255.0, green: 200.0/255.0, blue: 229.0/255.0, alpha: 1.0)
-      gradientColors = [UIColor(red: 29.0/255.0, green: 231.0/255.0, blue: 185.0/255.0, alpha: 1.0).cgColor,
-                        UIColor.clear.cgColor] as CFArray
+      color = R.color.chart_fav_line()!
+      gradientColors = [R.color.chart_fav_fore_gradient_1()!.cgColor,
+                        R.color.chart_fav_fore_gradient_2()!.cgColor] as CFArray
     }
     
     chartDataSet.colors = [color]
@@ -343,7 +343,6 @@ class Chart: UIView {
     guard let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(),
                                          colors: gradientColors,
                                          locations: colorLocations) else {
-                                          print("gradient error")
                                           return
     }
     chartDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
