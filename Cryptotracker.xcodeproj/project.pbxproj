@@ -24,11 +24,9 @@
 		B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527120B2238CF4D00D57639 /* ConfigEndPoint.swift */; };
 		B52712102238D33800D57639 /* ConfigNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527120F2238D33800D57639 /* ConfigNetworkManager.swift */; };
 		B52712142238D38900D57639 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712132238D38900D57639 /* Bootstrap.swift */; };
-		B52712272238DA1A00D57639 /* ConfigPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712212238DA1A00D57639 /* ConfigPresenter.swift */; };
 		B527122A2238DA1A00D57639 /* ConfigWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712222238DA1A00D57639 /* ConfigWorker.swift */; };
-		B527122D2238DA1A00D57639 /* ConfigRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712232238DA1A00D57639 /* ConfigRouter.swift */; };
 		B52712332238DA1A00D57639 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712252238DA1A00D57639 /* ConfigViewController.swift */; };
-		B52712362238DA1A00D57639 /* ConfigInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712262238DA1A00D57639 /* ConfigInteractor.swift */; };
+		B52712362238DA1A00D57639 /* ConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52712262238DA1A00D57639 /* ConfigViewModel.swift */; };
 		B5271260223A365D00D57639 /* RateUsAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B527125B223A365D00D57639 /* RateUsAssets.xcassets */; };
 		B5271261223A365D00D57639 /* RatingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527125C223A365D00D57639 /* RatingController.swift */; };
 		B5271262223A365D00D57639 /* VRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527125D223A365D00D57639 /* VRoundView.swift */; };
@@ -74,6 +72,7 @@
 		B572E95B2202F34900778DA8 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E95A2202F34900778DA8 /* DataCache.swift */; };
 		B5737D4B2244E74A00C6A687 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5737D4A2244E74A00C6A687 /* DateTests.swift */; };
 		B5737D4D2244E76E00C6A687 /* DateTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5737D4C2244E76E00C6A687 /* DateTimeService.swift */; };
+		B57F7925225EFA3D00A30B8F /* ConfigProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57F7924225EFA3D00A30B8F /* ConfigProtocols.swift */; };
 		B594F044223D3E85005B8566 /* PriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F043223D3E85005B8566 /* PriceTests.swift */; };
 		B594F046223D43EC005B8566 /* CRCoinPriceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */; };
 		B594F049223D46BB005B8566 /* NormalCRCoin.json in Resources */ = {isa = PBXBuildFile; fileRef = B594F048223D46BB005B8566 /* NormalCRCoin.json */; };
@@ -168,11 +167,9 @@
 		B527120B2238CF4D00D57639 /* ConfigEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigEndPoint.swift; sourceTree = "<group>"; };
 		B527120F2238D33800D57639 /* ConfigNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNetworkManager.swift; sourceTree = "<group>"; };
 		B52712132238D38900D57639 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
-		B52712212238DA1A00D57639 /* ConfigPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigPresenter.swift; sourceTree = "<group>"; };
 		B52712222238DA1A00D57639 /* ConfigWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigWorker.swift; sourceTree = "<group>"; };
-		B52712232238DA1A00D57639 /* ConfigRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigRouter.swift; sourceTree = "<group>"; };
 		B52712252238DA1A00D57639 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
-		B52712262238DA1A00D57639 /* ConfigInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigInteractor.swift; sourceTree = "<group>"; };
+		B52712262238DA1A00D57639 /* ConfigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewModel.swift; sourceTree = "<group>"; };
 		B5271254223922BE00D57639 /* DebugConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugConfig.xcconfig; sourceTree = "<group>"; };
 		B5271255223922CE00D57639 /* StagingConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StagingConfig.xcconfig; sourceTree = "<group>"; };
 		B5271256223922DB00D57639 /* ReleaseConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ReleaseConfig.xcconfig; sourceTree = "<group>"; };
@@ -223,6 +220,7 @@
 		B572E95A2202F34900778DA8 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 		B5737D4A2244E74A00C6A687 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateTests.swift; path = CryptotrackerTests/ServicesTests/DateTests.swift; sourceTree = SOURCE_ROOT; };
 		B5737D4C2244E76E00C6A687 /* DateTimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeService.swift; sourceTree = "<group>"; };
+		B57F7924225EFA3D00A30B8F /* ConfigProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigProtocols.swift; sourceTree = "<group>"; };
 		B594F037223D3DBE005B8566 /* CryptotrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptotrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B594F03B223D3DBE005B8566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B594F043223D3E85005B8566 /* PriceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTests.swift; sourceTree = "<group>"; };
@@ -366,11 +364,10 @@
 		B52712202238D8E100D57639 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				B52712212238DA1A00D57639 /* ConfigPresenter.swift */,
 				B52712222238DA1A00D57639 /* ConfigWorker.swift */,
-				B52712232238DA1A00D57639 /* ConfigRouter.swift */,
 				B52712252238DA1A00D57639 /* ConfigViewController.swift */,
-				B52712262238DA1A00D57639 /* ConfigInteractor.swift */,
+				B52712262238DA1A00D57639 /* ConfigViewModel.swift */,
+				B57F7924225EFA3D00A30B8F /* ConfigProtocols.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1052,7 +1049,6 @@
 				B54CACE7225635B400BE7127 /* CWError.swift in Sources */,
 				B54CACEE225B411700BE7127 /* R.generated.swift in Sources */,
 				B5F3D3F22249DEEB00B69295 /* Theme.swift in Sources */,
-				B527122D2238DA1A00D57639 /* ConfigRouter.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5E93D3621A6B9B000D1705A /* DataAccessError.swift in Sources */,
 				B5E1D6C5221EDC2A005419C8 /* CoinsWorker.swift in Sources */,
@@ -1062,6 +1058,7 @@
 				B54CACF0225B44D400BE7127 /* CoinsListView.swift in Sources */,
 				B5276B5321A28183000A74A5 /* PostsModels.swift in Sources */,
 				B5276B8921A2A369000A74A5 /* Router.swift in Sources */,
+				B57F7925225EFA3D00A30B8F /* ConfigProtocols.swift in Sources */,
 				B572E9472202AFBA00778DA8 /* CRStats.swift in Sources */,
 				B5A1FE0E225C899900341CCC /* SortableViewModel.swift in Sources */,
 				B5276B6321A2A171000A74A5 /* PostsNetworkManager.swift in Sources */,
@@ -1089,7 +1086,6 @@
 				B5E93D3E21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,
 				B501297E21A940DA001B6A04 /* WatchlistViewModel.swift in Sources */,
 				B5F046EF2207EFA5007B7C0D /* CurrencyChartInfoView.swift in Sources */,
-				B52712272238DA1A00D57639 /* ConfigPresenter.swift in Sources */,
 				B5E93D2E21A6B90F00D1705A /* SQLiteDataStore.swift in Sources */,
 				B572E9532202B31900778DA8 /* CRPrice.swift in Sources */,
 				B5A1FE14225DA4FA00341CCC /* DetailsProtocols.swift in Sources */,
@@ -1116,7 +1112,7 @@
 				B5A1FE02225BC43300341CCC /* CoinsViewModel.swift in Sources */,
 				B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5FCEABF2212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */,
-				B52712362238DA1A00D57639 /* ConfigInteractor.swift in Sources */,
+				B52712362238DA1A00D57639 /* ConfigViewModel.swift in Sources */,
 				B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 				B5271262223A365D00D57639 /* VRoundView.swift in Sources */,
 				B572E94B2202AFDF00778DA8 /* CRBase.swift in Sources */,
