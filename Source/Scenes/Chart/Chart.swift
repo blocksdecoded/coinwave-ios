@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import SnapKit
 
 protocol ChartDelegate: class {
   func onChooseFavorite()
@@ -19,21 +20,21 @@ class Chart: UIView {
     case details
   }
   
-  weak var delegate: ChartDelegate?
+  // MARK: - Properties
   
+  weak var delegate: ChartDelegate?
   private let version: Version
   private var gradientLayer: CAGradientLayer?
-  
   private var isShowStart = false
   private var isShowDone = false
   private var hideTimer: Timer?
-  
   private let cache = NSCache<NSString, AnyObject>()
-  
   private var isButtonShowed = false
+  
+  // MARK: - Views
+  
   private lazy var chooseFavButton: UIButton = {
     let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle(R.string.localizable.choose_favorite(), for: .normal)
     button.titleLabel?.font = R.font.sfProTextRegular(size: 12)
     button.backgroundColor = R.color.chart_choose_fav_btn_back()
@@ -43,14 +44,11 @@ class Chart: UIView {
   }()
   
   private lazy var infoView: ChartInfoView = {
-    let view = ChartInfoView()
-    view.translatesAutoresizingMaskIntoConstraints = false
-    return view
+    return ChartInfoView()
   }()
   
   private lazy var warningView: UIImageView = {
     let imageView = UIImageView()
-    imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = R.image.warning()
     return imageView
   }()
@@ -67,7 +65,6 @@ class Chart: UIView {
   
   private lazy var nameLabel: UILabel = {
     let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
     label.font = R.font.sfProTextRegular(size: 16)
     label.textColor = .white
     return label
@@ -75,7 +72,6 @@ class Chart: UIView {
   
   private lazy var priceLabel: UILabel = {
     let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
     label.font = R.font.sfProTextSemibold(size: 12)
     return label
   }()
@@ -94,10 +90,8 @@ class Chart: UIView {
     chart.drawGridBackgroundEnabled = false
     chart.legend.enabled = false
     chart.minOffset = 0
-    
     chart.borderColor = .clear
     chart.backgroundColor = .clear
-    chart.translatesAutoresizingMaskIntoConstraints = false
     chart.noDataText = R.string.localizable.no_history_data()
     
     switch version {
@@ -106,11 +100,11 @@ class Chart: UIView {
     case .favorite:
       chart.noDataTextColor = .white
     }
-    
     chart.delegate = self
-    
     return chart
   }()
+  
+  // MARK: - Lifecycle
   
   override func layoutSubviews() {
     super.layoutSubviews()
@@ -122,23 +116,19 @@ class Chart: UIView {
     }
   }
   
-  private override init(frame: CGRect) {
-    self.version = .details
-    super.init(frame: frame)
-    setup()
-  }
-  
-  internal required init?(coder aDecoder: NSCoder) {
-    self.version = .details
-    super.init(coder: aDecoder)
-    setup()
-  }
+  // MARK: - Init
   
   init(version: Version) {
     self.version = version
     super.init(frame: CGRect.zero)
     setup()
   }
+  
+  internal required init?(coder aDecoder: NSCoder) {
+    fatalError()
+  }
+  
+  // MARK: - Setup
   
   private func setup() {
     setupViews()
@@ -170,52 +160,36 @@ class Chart: UIView {
   }
   
   private func setupConstraints() {
-    let chartC = [
-      chartView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-      trailingAnchor.constraint(equalTo: chartView.trailingAnchor, constant: 0),
-      chartView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-      chartView.bottomAnchor.constraint(equalTo: bottomAnchor)
-    ]
-    
-    let infoViewC = [
-      infoView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-      infoView.centerXAnchor.constraint(equalTo: centerXAnchor)
-    ]
-    
-    NSLayoutConstraint.activate(chartC + infoViewC)
+    chartView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
+    infoView.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(10)
+      make.centerX.equalToSuperview()
+    }
   }
   
   private func setupConstraintsForFavorite() {
-    let nameLabelC = [
-      nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-      nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
-    ]
-    
-    let priceLabelC = [
-      priceLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
-      trailingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 8)
-    ]
-    
-    let chartC = [
-      chartView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-      trailingAnchor.constraint(equalTo: chartView.trailingAnchor, constant: 0),
-      chartView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 0),
-      chartView.bottomAnchor.constraint(equalTo: bottomAnchor)
-    ]
-    
-    let infoViewC = [
-      infoView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-      infoView.centerXAnchor.constraint(equalTo: centerXAnchor)
-    ]
-    
-    let warningC = [
-      warningView.centerYAnchor.constraint(equalTo: centerYAnchor),
-      warningView.centerXAnchor.constraint(equalTo: centerXAnchor),
-      warningView.widthAnchor.constraint(equalToConstant: 118),
-      warningView.heightAnchor.constraint(equalToConstant: 104)
-    ]
-    
-    NSLayoutConstraint.activate(chartC + infoViewC + nameLabelC + priceLabelC + warningC)
+    nameLabel.snp.makeConstraints { make in
+      make.top.leading.equalToSuperview().offset(8)
+    }
+    priceLabel.snp.makeConstraints { make in
+      make.centerY.equalTo(nameLabel.snp.centerY)
+      make.trailing.equalToSuperview().offset(-8)
+    }
+    chartView.snp.makeConstraints { make in
+      make.leading.trailing.bottom.equalToSuperview()
+      make.top.equalTo(nameLabel.snp.bottom)
+    }
+    infoView.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(10)
+      make.centerX.equalToSuperview()
+    }
+    warningView.snp.makeConstraints { make in
+      make.center.equalToSuperview()
+      make.width.equalTo(118)
+      make.height.equalTo(104)
+    }
   }
   
   private func setupLayer() {
@@ -235,6 +209,8 @@ class Chart: UIView {
     layer.shadowOpacity = 0.2
     layer.masksToBounds = false
   }
+  
+  // MARK: - Handlers
   
   func load(coinID: Int, coinSymbol: String, time: CRTimeframe) {
     warningView.isHidden = true
