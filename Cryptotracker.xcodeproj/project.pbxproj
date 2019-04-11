@@ -73,6 +73,9 @@
 		B5737D4B2244E74A00C6A687 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5737D4A2244E74A00C6A687 /* DateTests.swift */; };
 		B5737D4D2244E76E00C6A687 /* DateTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5737D4C2244E76E00C6A687 /* DateTimeService.swift */; };
 		B57F7925225EFA3D00A30B8F /* ConfigProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57F7924225EFA3D00A30B8F /* ConfigProtocols.swift */; };
+		B57F7927225F249600A30B8F /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57F7926225F249600A30B8F /* ChartViewModel.swift */; };
+		B57F7929225F24BB00A30B8F /* ChartProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57F7928225F24BB00A30B8F /* ChartProtocols.swift */; };
+		B57F792B225F38A600A30B8F /* ChartWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57F792A225F38A600A30B8F /* ChartWorker.swift */; };
 		B594F044223D3E85005B8566 /* PriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F043223D3E85005B8566 /* PriceTests.swift */; };
 		B594F046223D43EC005B8566 /* CRCoinPriceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */; };
 		B594F049223D46BB005B8566 /* NormalCRCoin.json in Resources */ = {isa = PBXBuildFile; fileRef = B594F048223D46BB005B8566 /* NormalCRCoin.json */; };
@@ -221,6 +224,9 @@
 		B5737D4A2244E74A00C6A687 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateTests.swift; path = CryptotrackerTests/ServicesTests/DateTests.swift; sourceTree = SOURCE_ROOT; };
 		B5737D4C2244E76E00C6A687 /* DateTimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeService.swift; sourceTree = "<group>"; };
 		B57F7924225EFA3D00A30B8F /* ConfigProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigProtocols.swift; sourceTree = "<group>"; };
+		B57F7926225F249600A30B8F /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
+		B57F7928225F24BB00A30B8F /* ChartProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartProtocols.swift; sourceTree = "<group>"; };
+		B57F792A225F38A600A30B8F /* ChartWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartWorker.swift; sourceTree = "<group>"; };
 		B594F037223D3DBE005B8566 /* CryptotrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptotrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B594F03B223D3DBE005B8566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B594F043223D3E85005B8566 /* PriceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTests.swift; sourceTree = "<group>"; };
@@ -348,6 +354,9 @@
 			children = (
 				B501299B21A9600E001B6A04 /* Chart.swift */,
 				B5F046EE2207EFA5007B7C0D /* ChartInfoView.swift */,
+				B57F7926225F249600A30B8F /* ChartViewModel.swift */,
+				B57F7928225F24BB00A30B8F /* ChartProtocols.swift */,
+				B57F792A225F38A600A30B8F /* ChartWorker.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -1031,6 +1040,7 @@
 				B5276B8D21A2A37E000A74A5 /* NetworkManager.swift in Sources */,
 				B50129AD21ABE1FB001B6A04 /* DetailsCell.swift in Sources */,
 				B5E93D8E21A90A6F00D1705A /* WidgetFactory.swift in Sources */,
+				B57F792B225F38A600A30B8F /* ChartWorker.swift in Sources */,
 				B5276B7021A2A2D7000A74A5 /* JSONParameterEncoder.swift in Sources */,
 				B5276B6C21A2A2C2000A74A5 /* URLParameterEncoder.swift in Sources */,
 				B5276B6821A2A29B000A74A5 /* ParameterEncoding.swift in Sources */,
@@ -1078,9 +1088,11 @@
 				B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */,
 				B5E93D6421A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B5271263223A365D00D57639 /* VRateBar.swift in Sources */,
+				B57F7927225F249600A30B8F /* ChartViewModel.swift in Sources */,
 				B501299C21A9600E001B6A04 /* Chart.swift in Sources */,
 				B5E93D3A21A6B9DD00D1705A /* PostDataHelper.swift in Sources */,
 				B527122A2238DA1A00D57639 /* ConfigWorker.swift in Sources */,
+				B57F7929225F24BB00A30B8F /* ChartProtocols.swift in Sources */,
 				B5F5BFA721A426680012599B /* PostsCell.swift in Sources */,
 				B5FCEA8C220D6B4200E4B433 /* VCMenu.swift in Sources */,
 				B5E93D3E21A6CEFC00D1705A /* CategoryDataHelper.swift in Sources */,

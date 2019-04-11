@@ -14,21 +14,30 @@ protocol ChartDelegate: class {
   func onChooseFavorite()
 }
 
-class Chart: UIView {
+class Chart: UIView, ChartDisplayLogic {
   enum Version {
     case favorite
     case details
   }
   
+  static func instance(version: Version, coinID: Int?, symbol: String?) -> Chart {
+    let coinsWorker = CoinsWorker()
+    let chartWorker = ChartWorker()
+    let viewModel = ChartViewModel(coinID: coinID, symbol: symbol, coinsWorker: coinsWorker, chartWorker: chartWorker)
+    let view = Chart(version: version, viewModel: viewModel)
+    viewModel.view = view
+    return view
+  }
+  
   // MARK: - Properties
   
+  var viewModel: ChartBusinessLogic
   weak var delegate: ChartDelegate?
   private let version: Version
   private var gradientLayer: CAGradientLayer?
   private var isShowStart = false
   private var isShowDone = false
   private var hideTimer: Timer?
-  private let cache = NSCache<NSString, AnyObject>()
   private var isButtonShowed = false
   
   // MARK: - Views
@@ -118,8 +127,9 @@ class Chart: UIView {
   
   // MARK: - Init
   
-  init(version: Version) {
+  init(version: Version, viewModel: ChartBusinessLogic) {
     self.version = version
+    self.viewModel = viewModel
     super.init(frame: CGRect.zero)
     setup()
   }
@@ -202,7 +212,6 @@ class Chart: UIView {
       gradientLayer?.cornerRadius = 10
       layer.insertSublayer(gradientLayer!, at: 0)
     }
-    
     layer.cornerRadius = 10
     layer.shadowColor = UIColor.black.withAlphaComponent(0.8).cgColor
     layer.shadowRadius = 5
@@ -210,88 +219,16 @@ class Chart: UIView {
     layer.masksToBounds = false
   }
   
-  // MARK: - Handlers
+  // MARK: - Display Logic
   
-  func load(coinID: Int, coinSymbol: String, time: CRTimeframe) {
-    warningView.isHidden = true
-    chartView.isHidden = false
-    chooseFavButton.isHidden = false
-    if isButtonShowed {
-      chooseFavButton.removeFromSuperview()
-    }
-    
-    let key = "\(coinID)_\(time.value)"
-    
-    DataStore.shared.loadCoin(coinID) { result in
-      switch result {
-      case .success(let coin):
-        self.setCoinData(coin: coin)
-      case .failure:
-        //TODO: Show error
-        break
-      }
-    }
-    
-    if let root = cache.object(forKey: key as NSString) as? CRRoot<CRDataHistory> {
-      self.setChartData(prices: root.data.history)
-    } else {      
-      let networkManager = CurrenciesNetworkManager()
-      networkManager.getHistory(currID: coinSymbol, time: time) { result in
-        switch result {
-        case .success(let coinRoot):
-          self.cache.setObject(coinRoot as AnyObject, forKey: key as NSString)
-          DispatchQueue.main.async {
-            self.setChartData(prices: coinRoot.data.history)
-          }
-        case .failure(let error):
-          //TODO: Handle error
-          print(error)
-        }        
-      }
-    }
+  func displayData(name: String, price: String, color: UIColor) {
+    nameLabel.text = name
+    priceLabel.text = price
+    priceLabel.textColor = color
   }
   
-  func noCoin() {
-    isButtonShowed = true
-    addSubview(chooseFavButton)
-    NSLayoutConstraint.activate([
-      chooseFavButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-      chooseFavButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-      chooseFavButton.widthAnchor.constraint(equalToConstant: 120),
-      chooseFavButton.heightAnchor.constraint(equalToConstant: 30)
-    ])
-  }
-  
-  func showError() {
-    warningView.isHidden = false
-    chartView.isHidden = true
-    chooseFavButton.isHidden = true
-  }
-  
-  private func setCoinData(coin: CRCoin) {
-    nameLabel.text = coin.name
-    priceLabel.text = coin.price?.long ?? "null"
-    
-    if let percent = coin.change {
-      if percent < 0 {
-        priceLabel.textColor = Constants.Colors.currencyDown
-      } else {
-        priceLabel.textColor = Constants.Colors.currencyUp
-      }
-    }
-  }
-  
-  private func setChartData(prices: [CRPrice]) {
-    var dataEntries = [ChartDataEntry]()
-    
-    for price in prices {
-      let xChart = price.timestamp ?? 0
-      let yChart = price.price?.value ?? 0
-      let dataEntry = ChartDataEntry(x: xChart, y: yChart)
-      dataEntries.append(dataEntry)
-    }
-    
-    let chartDataSet = LineChartDataSet(values: dataEntries, label: "")
+  func displayHistory(history: [ChartDataEntry]) {    
+    let chartDataSet = LineChartDataSet(values: history, label: "")
     chartDataSet.drawCirclesEnabled = false
     chartDataSet.mode = LineChartDataSet.Mode.cubicBezier
     chartDataSet.cubicIntensity = 0.3
@@ -326,6 +263,40 @@ class Chart: UIView {
     let chartData = LineChartData(dataSet: chartDataSet)
     chartView.data = chartData
     chartView.animate(xAxisDuration: 2)
+  }
+  
+  func displayError() {
+    // TODO: Display error
+  }
+  
+  // MARK: - Handlers
+  
+  func load(coinID: Int, coinSymbol: String, time: CRTimeframe) {
+    warningView.isHidden = true
+    chartView.isHidden = false
+    chooseFavButton.isHidden = false
+    if isButtonShowed {
+      chooseFavButton.removeFromSuperview()
+    }
+    viewModel.set(coinID: coinID, symbol: coinSymbol)
+    viewModel.load(time: time)
+  }
+  
+  func noCoin() {
+    isButtonShowed = true
+    addSubview(chooseFavButton)
+    NSLayoutConstraint.activate([
+      chooseFavButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+      chooseFavButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+      chooseFavButton.widthAnchor.constraint(equalToConstant: 120),
+      chooseFavButton.heightAnchor.constraint(equalToConstant: 30)
+    ])
+  }
+  
+  func showError() {
+    warningView.isHidden = false
+    chartView.isHidden = true
+    chooseFavButton.isHidden = true
   }
   
   @objc private func pickFavorite() {

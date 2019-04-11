@@ -68,7 +68,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
   }()
   
   private lazy var chart: Chart = {
-    let chart = Chart(version: .favorite)
+    let chart = Chart.instance(version: .favorite, coinID: nil, symbol: nil)
     chart.delegate = self
     return chart
   }()
