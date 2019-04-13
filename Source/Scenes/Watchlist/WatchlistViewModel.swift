@@ -34,7 +34,7 @@ class WatchlistViewModel: WatchlistBusinessLogic {
       case .failure(let error):
         switch error {
         case .noData:
-          self.view?.displayError(R.string.localizable.empty_watchlist())
+          self.view?.displayNoWatchlist(R.string.localizable.empty_watchlist())
         default:
           self.view?.displayError(error.localizedDescription)
         }

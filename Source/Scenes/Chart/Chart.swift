@@ -285,12 +285,11 @@ class Chart: UIView, ChartDisplayLogic {
   func noCoin() {
     isButtonShowed = true
     addSubview(chooseFavButton)
-    NSLayoutConstraint.activate([
-      chooseFavButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-      chooseFavButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-      chooseFavButton.widthAnchor.constraint(equalToConstant: 120),
-      chooseFavButton.heightAnchor.constraint(equalToConstant: 30)
-    ])
+    chooseFavButton.snp.makeConstraints { make in
+      make.center.equalToSuperview()
+      make.width.equalTo(120)
+      make.height.equalTo(30)
+    }
   }
   
   func showError() {

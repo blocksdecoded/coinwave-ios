@@ -170,7 +170,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     
     errorView.snp.makeConstraints { make in
       make.centerX.equalToSuperview()
-      make.centerY.equalToSuperview().offset(-104)
+      make.centerY.equalToSuperview().offset(104)
     }
     
     loadingView.snp.makeConstraints { make in
