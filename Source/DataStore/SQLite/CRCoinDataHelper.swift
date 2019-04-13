@@ -275,7 +275,8 @@ class CRCoinDataHelper: DataHelperProtocol {
     
     let prevFavorite = table.filter(currIsFavorite == true)
     let prevUpdate = prevFavorite.update([currIsFavorite <- false])
-    return try db.run(prevUpdate) > 0
+    try db.run(prevUpdate)
+    return true
   }
   
   static func fullUpdate(item: CRCoin) throws -> Bool {
