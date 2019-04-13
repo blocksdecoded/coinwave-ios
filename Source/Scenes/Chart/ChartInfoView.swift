@@ -23,7 +23,7 @@ class ChartInfoView: UIView {
     label.text = "February, 2, 2019"
     label.textColor = .white
     label.textAlignment = .center
-    label.font = Theme.Fonts.sfproTextRegular(size: 12)
+    label.font = R.font.sfProTextRegular(size: 12)
     return label
   }()
   
@@ -33,7 +33,7 @@ class ChartInfoView: UIView {
     label.text = "$3000"
     label.textColor = .white
     label.textAlignment = .center
-    label.font = Theme.Fonts.sfproTextRegular(size: 12)
+    label.font = R.font.sfProTextRegular(size: 12)
     return label
   }()
   

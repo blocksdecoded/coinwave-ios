@@ -45,7 +45,7 @@ class PostsCell: UICollectionViewCell {
     let title = UILabel()
     title.translatesAutoresizingMaskIntoConstraints = false
     title.textColor = .white
-    title.font = Theme.Fonts.sfproTextBold(size: 14)
+    title.font = R.font.sfProTextBold(size: 14)
     title.numberOfLines = 0
     title.lineBreakMode = .byWordWrapping
     title.textAlignment = .left
@@ -71,7 +71,7 @@ class PostsCell: UICollectionViewCell {
     button.setImage(UIImage(named: "arrow_right")?.withRenderingMode(.alwaysTemplate), for: .normal)
     button.imageView?.tintColor = UIColor(red: 18.0/255.0, green: 23.0/255.0, blue: 28.0/255.0, alpha: 1.0)
     button.setTitle("Read more", for: .normal)
-    button.titleLabel?.font = Theme.Fonts.sfproTextRegular(size: 10)
+    button.titleLabel?.font = R.font.sfProTextRegular(size: 10)
     button.setTitleColor(UIColor(red: 18.0/255.0, green: 23.0/255.0, blue: 28.0/255.0, alpha: 1.0), for: .normal)
     
     button.layer.cornerRadius = readBtnHeight / 2

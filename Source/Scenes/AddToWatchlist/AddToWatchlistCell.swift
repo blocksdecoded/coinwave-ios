@@ -75,7 +75,7 @@ class AddToWatchlistCell: UICollectionViewCell {
   private lazy var name: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = Theme.Fonts.sfproTextRegular(size: 14)
+    label.font = R.font.sfProTextRegular(size: 14)
     label.textColor = UIColor.white.withAlphaComponent(0.3)
     return label
   }()
@@ -84,7 +84,7 @@ class AddToWatchlistCell: UICollectionViewCell {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textColor = UIColor.white
-    label.font = Theme.Fonts.sfproTextBold(size: 20)
+    label.font = R.font.sfProTextBold(size: 20)
     return label
   }()
   

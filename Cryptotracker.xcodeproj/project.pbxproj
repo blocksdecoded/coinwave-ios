@@ -116,7 +116,6 @@
 		B5F3D3EB224900C100B69295 /* CRPriceInitFromJsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3D3EA224900C100B69295 /* CRPriceInitFromJsonTests.swift */; };
 		B5F3D3ED2249013500B69295 /* CRPrice.json in Resources */ = {isa = PBXBuildFile; fileRef = B5F3D3EC2249013500B69295 /* CRPrice.json */; };
 		B5F3D3F02249262900B69295 /* CRCoin+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3D3EF2249262900B69295 /* CRCoin+Extensions.swift */; };
-		B5F3D3F22249DEEB00B69295 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3D3F12249DEEB00B69295 /* Theme.swift */; };
 		B5F5BFA721A426680012599B /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5BFA621A426680012599B /* PostsCell.swift */; };
 		B5F6F13D2240D03D00E2D130 /* CRCoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F6F13C2240D03D00E2D130 /* CRCoinTests.swift */; };
 		B5F6F143224111A100E2D130 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F6F142224111A100E2D130 /* StoreKit.framework */; };
@@ -269,7 +268,6 @@
 		B5F3D3EA224900C100B69295 /* CRPriceInitFromJsonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRPriceInitFromJsonTests.swift; sourceTree = "<group>"; };
 		B5F3D3EC2249013500B69295 /* CRPrice.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CRPrice.json; sourceTree = "<group>"; };
 		B5F3D3EF2249262900B69295 /* CRCoin+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CRCoin+Extensions.swift"; sourceTree = "<group>"; };
-		B5F3D3F12249DEEB00B69295 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		B5F5BFA621A426680012599B /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		B5F6F13C2240D03D00E2D130 /* CRCoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRCoinTests.swift; sourceTree = "<group>"; };
 		B5F6F1402240E89E00E2D130 /* BaseConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BaseConfig.xcconfig; sourceTree = "<group>"; };
@@ -647,7 +645,6 @@
 				B5E93CEF21A6A3AE00D1705A /* Constants.swift */,
 				B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */,
 				B5FCEA97220DB0C400E4B433 /* SEmail.swift */,
-				B5F3D3F12249DEEB00B69295 /* Theme.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1058,7 +1055,6 @@
 				B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B54CACE7225635B400BE7127 /* CWError.swift in Sources */,
 				B54CACEE225B411700BE7127 /* R.generated.swift in Sources */,
-				B5F3D3F22249DEEB00B69295 /* Theme.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
 				B5E93D3621A6B9B000D1705A /* DataAccessError.swift in Sources */,
 				B5E1D6C5221EDC2A005419C8 /* CoinsWorker.swift in Sources */,

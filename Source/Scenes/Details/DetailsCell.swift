@@ -16,7 +16,7 @@ class DetailsCell: UITableViewCell {
   private lazy var nameLbl: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = Theme.Fonts.sfproTextRegular(size: 12)
+    label.font = R.font.sfProTextRegular(size: 12)
     label.textColor = UIColor(red: 0.45, green: 0.46, blue: 0.47, alpha: 1.0)
     label.textAlignment = .left
     return label
@@ -25,7 +25,7 @@ class DetailsCell: UITableViewCell {
   private lazy var valueLbl: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = Theme.Fonts.sfproTextRegular(size: 12)
+    label.font = R.font.sfProTextRegular(size: 12)
     label.textAlignment = .right
     return label
   }()
