@@ -129,7 +129,7 @@
 		B5FCEA9D220EB77100E4B433 /* BDHamburger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */; };
 		B5FCEABF2212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB32212D8FC00E4B433 /* AddToWatchlistModels.swift */; };
 		B5FCEAC22212D8FC00E4B433 /* AddToWatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB42212D8FC00E4B433 /* AddToWatchlistViewController.swift */; };
-		B5FCEAC52212D8FC00E4B433 /* AddToWatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB52212D8FC00E4B433 /* AddToWatchlistInteractor.swift */; };
+		B5FCEAC52212D8FC00E4B433 /* AddToWatchlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB52212D8FC00E4B433 /* AddToWatchlistViewModel.swift */; };
 		C0CE4935DE67B38D9BD096C9 /* Pods_Cryptotracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D2C2A8FD287D294CF24F89F /* Pods_Cryptotracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -282,7 +282,7 @@
 		B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDHamburger.swift; sourceTree = "<group>"; };
 		B5FCEAB32212D8FC00E4B433 /* AddToWatchlistModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistModels.swift; sourceTree = "<group>"; };
 		B5FCEAB42212D8FC00E4B433 /* AddToWatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistViewController.swift; sourceTree = "<group>"; };
-		B5FCEAB52212D8FC00E4B433 /* AddToWatchlistInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistInteractor.swift; sourceTree = "<group>"; };
+		B5FCEAB52212D8FC00E4B433 /* AddToWatchlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistViewModel.swift; sourceTree = "<group>"; };
 		BE5699FBAB6541F8D8B098DF /* Pods-DebugCryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugCryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugCryptotracker/Pods-DebugCryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C89D204088B1CE9DA386B707 /* Pods-Cryptotracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cryptotracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B2530050E251A72770FCB3 /* Pods_DebugCryptotracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugCryptotracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -764,7 +764,7 @@
 			children = (
 				B5FCEAB32212D8FC00E4B433 /* AddToWatchlistModels.swift */,
 				B5FCEAB42212D8FC00E4B433 /* AddToWatchlistViewController.swift */,
-				B5FCEAB52212D8FC00E4B433 /* AddToWatchlistInteractor.swift */,
+				B5FCEAB52212D8FC00E4B433 /* AddToWatchlistViewModel.swift */,
 				B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */,
 				B57F792C2261EC2300A30B8F /* AddToWatchlistProtocols.swift */,
 			);
@@ -1042,7 +1042,7 @@
 				B5E1D6BF221D6CCB005419C8 /* ErrorView.swift in Sources */,
 				B5E93CF021A6A3AE00D1705A /* Constants.swift in Sources */,
 				B501299721A94BC0001B6A04 /* DetailsViewModel.swift in Sources */,
-				B5FCEAC52212D8FC00E4B433 /* AddToWatchlistInteractor.swift in Sources */,
+				B5FCEAC52212D8FC00E4B433 /* AddToWatchlistViewModel.swift in Sources */,
 				B5276AAE21A00F59000A74A5 /* AppDelegate.swift in Sources */,
 				B5276B5921A28183000A74A5 /* PostsViewModel.swift in Sources */,
 				B501299121A94BC0001B6A04 /* DetailsModels.swift in Sources */,

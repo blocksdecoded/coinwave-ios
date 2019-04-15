@@ -12,7 +12,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   
   static func instance() -> AddToWatchlistViewController {
     let worker = CoinsWorker()
-    let viewModel = AddToWatchlistInteractor(worker: worker)
+    let viewModel = AddToWatchlistViewModel(worker: worker)
     let view = AddToWatchlistViewController(viewModel: viewModel)
     viewModel.view = view
     return view
@@ -30,8 +30,6 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   private let minimumLineSpacing: CGFloat = 20
   private let currListMargin: CGFloat = 10
   private let navigationViewHeight: CGFloat = 100
-  
-  private var coins: [CRCoin]?
   
   private lazy var cellWidth: CGFloat = {
     return (self.view.frame.width - minimumInterSpacing - (2 * currListMargin)) / 2
@@ -103,7 +101,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
     setupBackground()
     setupViews()
     setupConstraints()
-    doSomething()
+    viewModel.viewDidLoad()
   }
   
   // MARK: - Setup
@@ -150,9 +148,8 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   
   // MARK: - Display Logic
   
-  func displayCoins(coins: [CRCoin]) {
+  func displayCoins() {
     refreshControl.endRefreshing()
-    self.coins = coins
     currenciesList.reloadData()
   }
   
@@ -160,17 +157,11 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
     //TODO: Display error
   }
   
-  func refreshCoin(viewModel: AddToWatchlistModel) {
-    coins?[viewModel.position] = viewModel.coin
-    currenciesList.reloadItems(at: [IndexPath(item: viewModel.position, section: 0)])
+  func refreshCoin(indexPaths: [IndexPath]) {
+    currenciesList.reloadItems(at: indexPaths)
   }
   
   // MARK: - Handlers
-  
-  func doSomething() {
-    let sortable = Sortable(field: .name, direction: .asc)
-    viewModel.fetchCoins(sortable: sortable, force: false)
-  }
   
   @objc private func backClicked() {
     navigationController?.popViewController(animated: true)
@@ -184,7 +175,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
 
 extension AddToWatchlistViewController: UICollectionViewDelegate, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return coins?.count ?? 0
+    return viewModel.coins.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -192,19 +183,12 @@ extension AddToWatchlistViewController: UICollectionViewDelegate, UICollectionVi
                                                         for: indexPath) as? AddToWatchlistCell else {
       fatalError()
     }
-    
-    guard let coins = coins else {
-      fatalError()
-    }
-    
-    cell.onBind(coins[indexPath.item])
-    
+    cell.onBind(viewModel.coins[indexPath.item])
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let coin = coins![indexPath.item]
-    viewModel.addToWatchlist(request: AddToWatchlistModel(position: indexPath.item, coin: coin))
+    viewModel.addToWatchlist(indexPath: indexPath)
   }
 }
 

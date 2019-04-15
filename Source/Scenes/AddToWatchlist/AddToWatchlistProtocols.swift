@@ -11,15 +11,17 @@ import Foundation
 protocol AddToWatchlistDisplayLogic: class {
   var viewModel: AddToWatchlistBusinessLogic { get set }
   
-  func displayCoins(coins: [CRCoin])
-  func refreshCoin(viewModel: AddToWatchlistModel)
+  func displayCoins()
+  func refreshCoin(indexPaths: [IndexPath])
   func displayError(_ string: String)
 }
 
 protocol AddToWatchlistBusinessLogic {
+  var coins: [CRCoin] { get set }
   var view: AddToWatchlistDisplayLogic? { get set }
   var worker: CoinsWorkerLogic { get set }
   
+  func viewDidLoad()
   func fetchCoins(sortable: Sortable, force: Bool)
-  func addToWatchlist(request: AddToWatchlistModel)
+  func addToWatchlist(indexPath: IndexPath)
 }
