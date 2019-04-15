@@ -48,3 +48,13 @@
 
 /* Add to watchlist */
 "add_to_watchlist" = "Add to watchlist";
+
+/* Menu */
+"menu_title" = "Menu";
+"menu_pick_favorite" = "Pick favorite";
+"menu_add_to_watchlist" = "Add to watchlist";
+"menu_contact_us" = "Contact us";
+"menu_rate_us" = "Rate us";
+"menu_share_this_app" = "Share this app";
+"menu_share_text" = "I think you'll love this app: %@";
+"menu_email_error" = "Fail to open email app";

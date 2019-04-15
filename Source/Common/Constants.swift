@@ -28,6 +28,8 @@ struct Constants {
     fatalError()
   }
   
+  static let companyName = "Blocks Decoded"
+  
   static var appVersion: String {
     switch environment {
     case .debug:
@@ -70,6 +72,20 @@ struct Constants {
   static var shareURL: String {
     if let url = Bundle.main.infoDictionary?["ShareURL"] as? String {
       return url
+    }
+    return ""
+  }
+  
+  static var contactEmail: String {
+    if let email = Bundle.main.infoDictionary?["ContactEmail"] as? String {
+      return email
+    }
+    return ""
+  }
+  
+  static var contactSubject: String {
+    if let subject = "\(appName) iOS Feedback".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+      return subject
     }
     return ""
   }

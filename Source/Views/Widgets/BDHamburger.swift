@@ -9,7 +9,7 @@
 import UIKit
 
 class BDHamburger: UIButton {  
-  static func instance(_ image: UIImage) -> BDHamburger {
+  static func instance(_ image: UIImage?) -> BDHamburger {
     let button = getButton()
     button.setImage(image, for: .normal)
     return button

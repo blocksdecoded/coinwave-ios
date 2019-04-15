@@ -15,7 +15,7 @@ protocol SideMenuDelegate: class {
 
 class MainTabBarController: UITabBarController {
   
-  weak var menuVC: VCMenu?
+  weak var menuVC: MenuViewController?
   private var bgImage: UIImageView?
 
   override func viewDidLoad() {
@@ -59,10 +59,8 @@ class MainTabBarController: UITabBarController {
   }
   
   private func setupSideMenu() {
-    let rootVC = VCMenu()
+    let rootVC = MenuViewController.instance(navigation: navigationController, delegate: self)
     self.menuVC = rootVC
-    rootVC.delegate = self
-    rootVC.rootNavigationController = navigationController
     
     SideMenuManager.default.menuFadeStatusBar = false
     SideMenuManager.default.menuPresentMode = .menuSlideIn
@@ -80,31 +78,21 @@ class MainTabBarController: UITabBarController {
 }
 
 extension MainTabBarController: MenuDelegate {
-  func firstClicked() {
+  func pickFavoriteClicked() {
     let favorites = CoinsViewController.instance(version: .favorite)
     favorites.favoritePickerDelegate = self
     menuVC?.dismiss(animated: true, completion: nil)
     self.navigationController?.pushViewController(favorites, animated: true)
   }
   
-  func secondClicked() {
+  func addToWatchlistClicked() {
     let addToWatchlist = AddToWatchlistViewController.instance()
     menuVC?.dismiss(animated: true, completion: nil)
     self.navigationController?.pushViewController(addToWatchlist, animated: true)
   }
   
-  func thirdClicked() {
-    //Share
-
-  }
-  
-  func fourthClicked() {
-    //Rate
+  func rateUsClicked() {
     RatingController.show(root: self)
-  }
-  
-  func fifthClicked() {
-    //Contact
   }
 }
 
