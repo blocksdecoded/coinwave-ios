@@ -110,8 +110,6 @@
 		B5E93D4221A6D83200D1705A /* PostCategoryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */; };
 		B5E93D4621A6E64200D1705A /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4521A6E64200D1705A /* DataStore.swift */; };
 		B5E93D4B21A6FCE600D1705A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */; };
-		B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */; };
-		B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5421A7E68000D1705A /* PostNavigationView.swift */; };
 		B5E93D6821A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D6721A8214600D1705A /* CurrenciesNetworkManager.swift */; };
 		B5E93D8721A82C5900D1705A /* TVCCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8521A82C5900D1705A /* TVCCrypto.swift */; };
 		B5E93D8A21A82C5900D1705A /* TVCCrypto.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E93D8621A82C5900D1705A /* TVCCrypto.xib */; };
@@ -265,8 +263,6 @@
 		B5E93D4121A6D83200D1705A /* PostCategoryDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCategoryDataHelper.swift; sourceTree = "<group>"; };
 		B5E93D4521A6E64200D1705A /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectorView.swift; sourceTree = "<group>"; };
-		B5E93D5421A7E68000D1705A /* PostNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigationView.swift; sourceTree = "<group>"; };
 		B5E93D6721A8214600D1705A /* CurrenciesNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesNetworkManager.swift; sourceTree = "<group>"; };
 		B5E93D8521A82C5900D1705A /* TVCCrypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVCCrypto.swift; sourceTree = "<group>"; };
 		B5E93D8621A82C5900D1705A /* TVCCrypto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TVCCrypto.xib; sourceTree = "<group>"; };
@@ -735,8 +731,6 @@
 			children = (
 				B5A1FE00225B502500341CCC /* CoinsList */,
 				B527125A223A35C000D57639 /* RateUs */,
-				B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */,
-				B5E93D5421A7E68000D1705A /* PostNavigationView.swift */,
 				B5E93D8D21A90A6F00D1705A /* WidgetFactory.swift */,
 				B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */,
 				B5E1D6BE221D6CCB005419C8 /* ErrorView.swift */,
@@ -1073,7 +1067,6 @@
 				B572E95B2202F34900778DA8 /* DataCache.swift in Sources */,
 				B55500FD2237953B00FB7165 /* Price.swift in Sources */,
 				B5271261223A365D00D57639 /* RatingController.swift in Sources */,
-				B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */,
 				B54CACE7225635B400BE7127 /* CWError.swift in Sources */,
 				B54CACEE225B411700BE7127 /* R.generated.swift in Sources */,
 				B5276B8521A2A353000A74A5 /* NetworkRouter.swift in Sources */,
@@ -1102,7 +1095,6 @@
 				B57F792D2261EC2300A30B8F /* AddToWatchlistProtocols.swift in Sources */,
 				B5217EB12205960100FF6DD5 /* CRDataHistory.swift in Sources */,
 				B54CACF2225B463800BE7127 /* CoinsListHeaderView.swift in Sources */,
-				B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5A1FE07225C5E4400341CCC /* SortableProtocols.swift in Sources */,
 				B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */,
 				B5271263223A365D00D57639 /* VRateBar.swift in Sources */,
