@@ -266,7 +266,7 @@ extension WatchlistViewController: ErrorViewDelegate {
   func onRetry() {
     if isEmptyWatchlist {
       isEmptyWatchlist = false
-      let addToWatchlist = AddToWatchlistViewController()
+      let addToWatchlist = AddToWatchlistViewController.instance()
       self.navigationController?.pushViewController(addToWatchlist, animated: true)
     } else {
       viewModel.fetchCoins(sortable: coinsListView.viewModel.sortable, force: true)

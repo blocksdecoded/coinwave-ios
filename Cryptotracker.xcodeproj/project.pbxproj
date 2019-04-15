@@ -76,6 +76,7 @@
 		B57F7927225F249600A30B8F /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57F7926225F249600A30B8F /* ChartViewModel.swift */; };
 		B57F7929225F24BB00A30B8F /* ChartProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57F7928225F24BB00A30B8F /* ChartProtocols.swift */; };
 		B57F792B225F38A600A30B8F /* ChartWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57F792A225F38A600A30B8F /* ChartWorker.swift */; };
+		B57F792D2261EC2300A30B8F /* AddToWatchlistProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57F792C2261EC2300A30B8F /* AddToWatchlistProtocols.swift */; };
 		B594F044223D3E85005B8566 /* PriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F043223D3E85005B8566 /* PriceTests.swift */; };
 		B594F046223D43EC005B8566 /* CRCoinPriceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594F045223D43EC005B8566 /* CRCoinPriceTest.swift */; };
 		B594F049223D46BB005B8566 /* NormalCRCoin.json in Resources */ = {isa = PBXBuildFile; fileRef = B594F048223D46BB005B8566 /* NormalCRCoin.json */; };
@@ -126,8 +127,6 @@
 		B5FCEA94220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */; };
 		B5FCEA98220DB0C400E4B433 /* SEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA97220DB0C400E4B433 /* SEmail.swift */; };
 		B5FCEA9D220EB77100E4B433 /* BDHamburger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */; };
-		B5FCEAB62212D8FC00E4B433 /* AddToWatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB02212D8FC00E4B433 /* AddToWatchlistPresenter.swift */; };
-		B5FCEABC2212D8FC00E4B433 /* AddToWatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB22212D8FC00E4B433 /* AddToWatchlistRouter.swift */; };
 		B5FCEABF2212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB32212D8FC00E4B433 /* AddToWatchlistModels.swift */; };
 		B5FCEAC22212D8FC00E4B433 /* AddToWatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB42212D8FC00E4B433 /* AddToWatchlistViewController.swift */; };
 		B5FCEAC52212D8FC00E4B433 /* AddToWatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCEAB52212D8FC00E4B433 /* AddToWatchlistInteractor.swift */; };
@@ -226,6 +225,7 @@
 		B57F7926225F249600A30B8F /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
 		B57F7928225F24BB00A30B8F /* ChartProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartProtocols.swift; sourceTree = "<group>"; };
 		B57F792A225F38A600A30B8F /* ChartWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartWorker.swift; sourceTree = "<group>"; };
+		B57F792C2261EC2300A30B8F /* AddToWatchlistProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistProtocols.swift; sourceTree = "<group>"; };
 		B594F037223D3DBE005B8566 /* CryptotrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptotrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B594F03B223D3DBE005B8566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B594F043223D3E85005B8566 /* PriceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTests.swift; sourceTree = "<group>"; };
@@ -280,8 +280,6 @@
 		B5FCEA93220DA2D700E4B433 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B5FCEA97220DB0C400E4B433 /* SEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEmail.swift; sourceTree = "<group>"; };
 		B5FCEA9C220EB77100E4B433 /* BDHamburger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDHamburger.swift; sourceTree = "<group>"; };
-		B5FCEAB02212D8FC00E4B433 /* AddToWatchlistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistPresenter.swift; sourceTree = "<group>"; };
-		B5FCEAB22212D8FC00E4B433 /* AddToWatchlistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistRouter.swift; sourceTree = "<group>"; };
 		B5FCEAB32212D8FC00E4B433 /* AddToWatchlistModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistModels.swift; sourceTree = "<group>"; };
 		B5FCEAB42212D8FC00E4B433 /* AddToWatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistViewController.swift; sourceTree = "<group>"; };
 		B5FCEAB52212D8FC00E4B433 /* AddToWatchlistInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWatchlistInteractor.swift; sourceTree = "<group>"; };
@@ -764,12 +762,11 @@
 		B5FCEAAF2212D8CD00E4B433 /* AddToWatchlist */ = {
 			isa = PBXGroup;
 			children = (
-				B5FCEAB02212D8FC00E4B433 /* AddToWatchlistPresenter.swift */,
-				B5FCEAB22212D8FC00E4B433 /* AddToWatchlistRouter.swift */,
 				B5FCEAB32212D8FC00E4B433 /* AddToWatchlistModels.swift */,
 				B5FCEAB42212D8FC00E4B433 /* AddToWatchlistViewController.swift */,
 				B5FCEAB52212D8FC00E4B433 /* AddToWatchlistInteractor.swift */,
 				B5CB365F221422ED00087C41 /* AddToWatchlistCell.swift */,
+				B57F792C2261EC2300A30B8F /* AddToWatchlistProtocols.swift */,
 			);
 			path = AddToWatchlist;
 			sourceTree = "<group>";
@@ -1073,10 +1070,10 @@
 				B5217EAD2205948C00FF6DD5 /* CRTimeframe.swift in Sources */,
 				B5CB3660221422ED00087C41 /* AddToWatchlistCell.swift in Sources */,
 				B5F14D2B22040B5300DE5E62 /* CRDataCoin.swift in Sources */,
-				B5FCEABC2212D8FC00E4B433 /* AddToWatchlistRouter.swift in Sources */,
 				B572E9432202AF0F00778DA8 /* CRDataList.swift in Sources */,
 				B5276AF921A0124D000A74A5 /* CoinsViewController.swift in Sources */,
 				B52712102238D33800D57639 /* ConfigNetworkManager.swift in Sources */,
+				B57F792D2261EC2300A30B8F /* AddToWatchlistProtocols.swift in Sources */,
 				B5217EB12205960100FF6DD5 /* CRDataHistory.swift in Sources */,
 				B54CACF2225B463800BE7127 /* CoinsListHeaderView.swift in Sources */,
 				B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */,
@@ -1102,7 +1099,6 @@
 				B5A1FE10225C9C0300341CCC /* WatchlistProtocols.swift in Sources */,
 				B5FCEA9D220EB77100E4B433 /* BDHamburger.swift in Sources */,
 				B5276B7921A2A313000A74A5 /* HTTPMethod.swift in Sources */,
-				B5FCEAB62212D8FC00E4B433 /* AddToWatchlistPresenter.swift in Sources */,
 				B572E94F2202AFF700778DA8 /* CRCoin.swift in Sources */,
 				B5FCEA94220DA2D700E4B433 /* UIColor+Extensions.swift in Sources */,
 				B594F04D223E1DB6005B8566 /* SortableWorker.swift in Sources */,
