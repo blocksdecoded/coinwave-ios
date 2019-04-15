@@ -22,6 +22,7 @@
 		B520CEF22264591A008A0CCE /* MenuModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B520CEF12264591A008A0CCE /* MenuModels.swift */; };
 		B520CEF422645A17008A0CCE /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B520CEF322645A17008A0CCE /* MenuViewModel.swift */; };
 		B520CEF622646D64008A0CCE /* MenuProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B520CEF522646D64008A0CCE /* MenuProtocols.swift */; };
+		B520CEF822648BFA008A0CCE /* CurrenciesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B520CEF722648BFA008A0CCE /* CurrenciesEndPoint.swift */; };
 		B5217EAD2205948C00FF6DD5 /* CRTimeframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */; };
 		B5217EB12205960100FF6DD5 /* CRDataHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EB02205960100FF6DD5 /* CRDataHistory.swift */; };
 		B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527120B2238CF4D00D57639 /* ConfigEndPoint.swift */; };
@@ -111,7 +112,6 @@
 		B5E93D4B21A6FCE600D1705A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */; };
 		B5E93D5121A7C0BC00D1705A /* FontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */; };
 		B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D5421A7E68000D1705A /* PostNavigationView.swift */; };
-		B5E93D6421A8213500D1705A /* CurrenciesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D6321A8213500D1705A /* CurrenciesEndPoint.swift */; };
 		B5E93D6821A8214600D1705A /* CurrenciesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D6721A8214600D1705A /* CurrenciesNetworkManager.swift */; };
 		B5E93D8721A82C5900D1705A /* TVCCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E93D8521A82C5900D1705A /* TVCCrypto.swift */; };
 		B5E93D8A21A82C5900D1705A /* TVCCrypto.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E93D8621A82C5900D1705A /* TVCCrypto.xib */; };
@@ -170,6 +170,7 @@
 		B520CEF12264591A008A0CCE /* MenuModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModels.swift; sourceTree = "<group>"; };
 		B520CEF322645A17008A0CCE /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		B520CEF522646D64008A0CCE /* MenuProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuProtocols.swift; sourceTree = "<group>"; };
+		B520CEF722648BFA008A0CCE /* CurrenciesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesEndPoint.swift; sourceTree = "<group>"; };
 		B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRTimeframe.swift; sourceTree = "<group>"; };
 		B5217EB02205960100FF6DD5 /* CRDataHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataHistory.swift; sourceTree = "<group>"; };
 		B527120B2238CF4D00D57639 /* ConfigEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigEndPoint.swift; sourceTree = "<group>"; };
@@ -266,7 +267,6 @@
 		B5E93D4A21A6FCE600D1705A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		B5E93D5021A7C0BC00D1705A /* FontSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectorView.swift; sourceTree = "<group>"; };
 		B5E93D5421A7E68000D1705A /* PostNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigationView.swift; sourceTree = "<group>"; };
-		B5E93D6321A8213500D1705A /* CurrenciesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesEndPoint.swift; sourceTree = "<group>"; };
 		B5E93D6721A8214600D1705A /* CurrenciesNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesNetworkManager.swift; sourceTree = "<group>"; };
 		B5E93D8521A82C5900D1705A /* TVCCrypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVCCrypto.swift; sourceTree = "<group>"; };
 		B5E93D8621A82C5900D1705A /* TVCCrypto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TVCCrypto.xib; sourceTree = "<group>"; };
@@ -756,8 +756,8 @@
 		B5E93D6221A8211500D1705A /* CurrenciesNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				B5E93D6321A8213500D1705A /* CurrenciesEndPoint.swift */,
 				B5E93D6721A8214600D1705A /* CurrenciesNetworkManager.swift */,
+				B520CEF722648BFA008A0CCE /* CurrenciesEndPoint.swift */,
 			);
 			path = CurrenciesNetwork;
 			sourceTree = "<group>";
@@ -1049,6 +1049,7 @@
 				B5FCEA88220B05FB00E4B433 /* DetailsBottomCell.swift in Sources */,
 				B55501012237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */,
 				B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */,
+				B520CEF822648BFA008A0CCE /* CurrenciesEndPoint.swift in Sources */,
 				B5B063A922644DE6008A0024 /* MenuViewController.swift in Sources */,
 				B5E93D4621A6E64200D1705A /* DataStore.swift in Sources */,
 				B501297821A940DA001B6A04 /* WatchlistModels.swift in Sources */,
@@ -1103,7 +1104,6 @@
 				B5E93D5521A7E68000D1705A /* PostNavigationView.swift in Sources */,
 				B5A1FE07225C5E4400341CCC /* SortableProtocols.swift in Sources */,
 				B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */,
-				B5E93D6421A8213500D1705A /* CurrenciesEndPoint.swift in Sources */,
 				B5271263223A365D00D57639 /* VRateBar.swift in Sources */,
 				B57F7927225F249600A30B8F /* ChartViewModel.swift in Sources */,
 				B501299C21A9600E001B6A04 /* Chart.swift in Sources */,
