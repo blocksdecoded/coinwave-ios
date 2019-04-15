@@ -22,6 +22,6 @@ protocol AddToWatchlistBusinessLogic {
   var worker: CoinsWorkerLogic { get set }
   
   func viewDidLoad()
-  func fetchCoins(sortable: Sortable, force: Bool)
+  func refreshTable()
   func addToWatchlist(indexPath: IndexPath)
 }

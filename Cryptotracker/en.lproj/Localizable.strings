@@ -45,3 +45,6 @@
 "choose_favorite" = "Choose favorite";
 "no_history_data" = "No history data";
 "null" = "null";
+
+/* Add to watchlist */
+"add_to_watchlist" = "Add to watchlist";

@@ -29,8 +29,13 @@ class AddToWatchlistViewModel: AddToWatchlistBusinessLogic {
     let sortable = Sortable(field: .name, direction: .asc)
     fetchCoins(sortable: sortable, force: false)
   }
+  
+  func refreshTable() {
+    let sortable = Sortable(field: .name, direction: .asc)
+    fetchCoins(sortable: sortable, force: true)
+  }
 
-  func fetchCoins(sortable: Sortable, force: Bool) {
+  private func fetchCoins(sortable: Sortable, force: Bool) {
     worker.fetchCoins(sortable, force: force, local: { result in
       switch result {
       case .success(let coins):

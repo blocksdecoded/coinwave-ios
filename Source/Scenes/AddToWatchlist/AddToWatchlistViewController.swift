@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic {
   
@@ -49,7 +50,6 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
     layout.minimumLineSpacing = minimumLineSpacing
     layout.minimumInteritemSpacing = minimumInterSpacing
     let collView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-    collView.translatesAutoresizingMaskIntoConstraints = false
     collView.register(AddToWatchlistCell.self, forCellWithReuseIdentifier: AddToWatchlistCell.reuseID)
     collView.backgroundColor = .clear
     collView.delegate = self
@@ -61,25 +61,21 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   
   private lazy var backButton: UIButton = {
     let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.setImage(UIImage(named: "left_arrow"), for: .normal)
+    button.setImage(R.image.left_arrow(), for: .normal)
     button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
     return button
   }()
   
   private lazy var titleLbl: UILabel = {
     let titleLabel = UILabel()
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    titleLabel.text = "Add to watchlist"
+    titleLabel.text = R.string.localizable.add_to_watchlist()
     titleLabel.textColor = .white
     titleLabel.font = R.font.sfProTextRegular(size: 18)
     return titleLabel
   }()
   
   private lazy var navigationView: UIView = {
-    let view = UIView()
-    view.translatesAutoresizingMaskIntoConstraints = false
-    return view
+    return UIView()
   }()
 
   // MARK: - Init
@@ -115,30 +111,23 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   }
   
   private func setupConstraints() {
-    let navigationViewC = [
-      navigationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      navigationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      navigationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      navigationView.heightAnchor.constraint(equalToConstant: navigationViewHeight)
-    ]
-    
-    let navigationInnerC = [
-      backButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
-      backButton.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
-      backButton.widthAnchor.constraint(equalToConstant: 40),
-      backButton.heightAnchor.constraint(equalToConstant: 40),
-      titleLbl.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor),
-      titleLbl.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
-    ]
-    
-    let currsListC = [
-      currenciesList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      currenciesList.topAnchor.constraint(equalTo: navigationView.bottomAnchor),
-      currenciesList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-      view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: currenciesList.trailingAnchor)
-    ]
-    
-    NSLayoutConstraint.activate(currsListC + navigationViewC + navigationInnerC)
+    navigationView.snp.makeConstraints { make in
+      make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      make.leading.trailing.equalToSuperview()
+      make.height.equalTo(navigationViewHeight)
+    }
+    backButton.snp.makeConstraints { make in
+      make.leading.centerY.equalToSuperview()
+      make.width.height.equalTo(40)
+    }
+    titleLbl.snp.makeConstraints { make in
+      make.center.equalToSuperview()
+    }
+    currenciesList.snp.makeConstraints { make in
+      make.leading.trailing.equalToSuperview()
+      make.top.equalTo(navigationView.snp.bottom)
+      make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+    }
   }
   
   private func setupBackground() {
@@ -168,8 +157,7 @@ class AddToWatchlistViewController: UIViewController, AddToWatchlistDisplayLogic
   }
   
   @objc private func refreshTable() {
-    let sortable = Sortable(field: .name, direction: .asc)
-    viewModel.fetchCoins(sortable: sortable, force: true)
+    viewModel.refreshTable()
   }
 }
 
