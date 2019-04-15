@@ -10,7 +10,7 @@ protocol WatchlistDisplayLogic: class {
   var viewModel: WatchlistBusinessLogic { get set }
   
   func displayCoins()
-  func displayFavorite(viewModel: Watchlist.Favorite.ViewModel)
+  func displayFavorite(viewModel: WatchlistModel)
   func displayNoFavorite()
   func displayNoWatchlist(_ string: String)
   func displayError(_ string: String)

@@ -79,7 +79,8 @@ class PostDataHelper: DataHelperProtocol {
     do {
       for category in item.categories {
         let categoryError = try !CategoryDataHelper.insert(item: category)
-        let postCategoryError = try !PostCategoryDataHelper.insert(item: PostCategoryDataHelper.PostCategory(id: nil, post: lPostID, category: Int64(category.id)))
+        let item = PostCategoryDataHelper.PostCategory(id: nil, post: lPostID, category: Int64(category.id))
+        let postCategoryError = try !PostCategoryDataHelper.insert(item: item)
         if categoryError || postCategoryError {
           return false
         }

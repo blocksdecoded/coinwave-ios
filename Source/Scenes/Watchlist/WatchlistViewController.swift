@@ -198,7 +198,7 @@ class WatchlistViewController: UIViewController, WatchlistDisplayLogic {
     coinsListView.reloadData()
   }
   
-  func displayFavorite(viewModel: Watchlist.Favorite.ViewModel) {
+  func displayFavorite(viewModel: WatchlistModel) {
     chart.load(coinID: viewModel.identifier, coinSymbol: viewModel.symbol, time: .hour24)
   }
   

@@ -9,10 +9,9 @@
 import Foundation
 import SQLite
 
-// swiftlint:disable type_name identifier_name
+// swiftlint:disable type_name identifier_name type_body_length
 class CRCoinDataHelper: DataHelperProtocol {
   typealias T = CRCoin
-  
   static let TABLE_NAME = "CRCoin"
   static let table = Table(TABLE_NAME)
   static let currID = Expression<Int64>("id")
@@ -45,7 +44,6 @@ class CRCoinDataHelper: DataHelperProtocol {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    
     do {
       _ = try db.run(table.create(ifNotExists: true) { t in
         t.column(currID, primaryKey: true)
@@ -83,7 +81,6 @@ class CRCoinDataHelper: DataHelperProtocol {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    
     try db.run(table.drop(ifExists: true))
   }
   
@@ -99,9 +96,7 @@ class CRCoinDataHelper: DataHelperProtocol {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    
     let insert = table.insert(insertSetters(item: item))
-    
     do {
       let rowId = try db.run(insert)
       guard rowId > 0 else {
@@ -117,7 +112,6 @@ class CRCoinDataHelper: DataHelperProtocol {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    
     let curr = table.filter(currID == Int64(item.identifier))
     do {
       let res = try db.run(curr.update(updateSetters(item: item)))
@@ -151,7 +145,6 @@ class CRCoinDataHelper: DataHelperProtocol {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    
     let query = table.filter(currID == id)
     let items = try db.prepare(query)
     for item in items {
@@ -164,7 +157,6 @@ class CRCoinDataHelper: DataHelperProtocol {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    
     var result = [CRCoin]()
     let items = try db.prepare(table)
     for item in items {
@@ -173,13 +165,12 @@ class CRCoinDataHelper: DataHelperProtocol {
     return result
   }
   
+  // swiftlint:disable cyclomatic_complexity
   static func findAll(sortable: Sortable) throws -> [CRCoin]? {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    
     let expressible: Expressible
-    
     switch sortable.direction {
     case .asc:
       switch sortable.field {
@@ -204,7 +195,6 @@ class CRCoinDataHelper: DataHelperProtocol {
         expressible = currVolume.desc
       }
     }
-    
     var result = [CRCoin]()
     let items = try db.prepare(table.order(expressible))
     for item in items {
@@ -213,13 +203,12 @@ class CRCoinDataHelper: DataHelperProtocol {
     return result
   }
   
+  // swiftlint:disable cyclomatic_complexity
   static func watchlist(sortable: Sortable) throws -> [CRCoin]? {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    
     let expressible: Expressible
-    
     switch sortable.direction {
     case .asc:
       switch sortable.field {
@@ -244,7 +233,6 @@ class CRCoinDataHelper: DataHelperProtocol {
         expressible = currVolume.desc
       }
     }
-    
     var result = [CRCoin]()
     let query = table.filter(currIsWatchlist == true).order(expressible)
     let favs = try db.prepare(query)
@@ -258,13 +246,11 @@ class CRCoinDataHelper: DataHelperProtocol {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    
     let query = table.filter(currIsFavorite == true)
     let favs = try db.prepare(query)
     for fav in favs {
       return convert(row: fav)
     }
-    
     return nil
   }
   
@@ -272,7 +258,6 @@ class CRCoinDataHelper: DataHelperProtocol {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    
     let prevFavorite = table.filter(currIsFavorite == true)
     let prevUpdate = prevFavorite.update([currIsFavorite <- false])
     try db.run(prevUpdate)
@@ -283,7 +268,6 @@ class CRCoinDataHelper: DataHelperProtocol {
     guard let db = SQLiteDataStore.sharedInstance.db else {
       throw DataAccessError.datastoreConnection
     }
-    
     let curr = table.filter(currID == Int64(item.identifier))
     return try db.run(curr.update(fullUpdateSetters(item: item))) > 0
   }
@@ -291,10 +275,8 @@ class CRCoinDataHelper: DataHelperProtocol {
   private static func convert(row: Row) -> CRCoin {
     let allTimeHigh = CRPrice(price: Price(row[currAllTimeHighPrice]),
                               timestamp: row[currAllTimeHighTimestamp])
-    
     let sqlHistory = row[currHistory].split(separator: ":")
     var history = [String?]()
-    
     for sub in sqlHistory {
       if sub == " " {
         history.append(nil)
@@ -302,46 +284,30 @@ class CRCoinDataHelper: DataHelperProtocol {
         history.append(String(sub))
       }
     }
-    
     var iconType: CRCoin.IconType?
     if let rawIconType = row[currIconType] {
       iconType = CRCoin.IconType(rawValue: rawIconType)
     }
-    
     var websiteURL: URL?
     if let strWebsiteURL = row[currWebsiteUrl] {
       websiteURL = URL(string: strWebsiteURL)
     }
-    
     var iconURL: URL?
     if let strIconURL = row[currIconUrl] {
       iconURL = URL(string: strIconURL)
     }
-    
-    return CRCoin(identifier: Int(row[currID]),
-                  slug: row[currSlug],
-                  symbol: row[currSymbol],
-                  name: row[currName],
-                  description: row[currDescription],
-                  color: row[currColor],
-                  iconType: iconType,
-                  iconUrl: iconURL,
-                  websiteUrl: websiteURL,
+    return CRCoin(identifier: Int(row[currID]), slug: row[currSlug],
+                  symbol: row[currSymbol], name: row[currName],
+                  description: row[currDescription], color: row[currColor],
+                  iconType: iconType, iconUrl: iconURL, websiteUrl: websiteURL,
                   confirmedSupply: row[currConfirmedSupply],
                   type: CRCoin.CoinType(rawValue: row[currType])!,
-                  volume: Price(row[currVolume]),
-                  marketCap: Price(row[currMarketCap]),
-                  price: Price(row[currPrice]),
-                  circulatingSupply: Price(row[currCirculatingSupply]),
-                  totalSupply: Price(row[currTotalSupply]),
-                  firstSeen: row[currFirstSeen],
-                  change: row[currChange],
-                  rank: row[currRank],
-                  history: history,
-                  allTimeHigh: allTimeHigh,
-                  penalty: row[currPenalty],
-                  isWatchlist: row[currIsWatchlist],
-                  isFavorite: row[currIsFavorite])
+                  volume: Price(row[currVolume]), marketCap: Price(row[currMarketCap]),
+                  price: Price(row[currPrice]), circulatingSupply: Price(row[currCirculatingSupply]),
+                  totalSupply: Price(row[currTotalSupply]), firstSeen: row[currFirstSeen],
+                  change: row[currChange], rank: row[currRank], history: history,
+                  allTimeHigh: allTimeHigh, penalty: row[currPenalty],
+                  isWatchlist: row[currIsWatchlist], isFavorite: row[currIsFavorite])
   }
   
   private static func insertSetters(item: CRCoin) -> [Setter] {
@@ -352,7 +318,6 @@ class CRCoinDataHelper: DataHelperProtocol {
   
   private static func updateSetters(item: CRCoin, _ setters: [Setter] = []) -> [Setter] {
     var history = ""
-    
     for index in 0..<item.history.count {
       if index == 0 {
         history = "\(item.history[index] ?? "")"
@@ -360,7 +325,6 @@ class CRCoinDataHelper: DataHelperProtocol {
         history = "\(history):\(item.history[index] ?? " ")"
       }
     }
-    
     var sets = [
       currID <- Int64(item.identifier),
       currSlug <- item.slug,
@@ -395,7 +359,6 @@ class CRCoinDataHelper: DataHelperProtocol {
       currIsWatchlist <- item.isWatchlist,
       currIsFavorite <- item.isFavorite
     ]
-    
     return updateSetters(item: item, sets)
   }
 }

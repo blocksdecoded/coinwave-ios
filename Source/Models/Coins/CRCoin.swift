@@ -73,6 +73,7 @@ extension CRCoin: Decodable {
     case penalty
   }
   
+  // swiftlint:disable function_body_length
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: Keys.self)
     let identifier = try container.decode(Int.self, forKey: .identifier)

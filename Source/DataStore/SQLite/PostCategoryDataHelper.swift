@@ -18,6 +18,7 @@ class PostCategoryDataHelper: DataHelperProtocol {
     let category: Int64
   }
   
+  // swiftlint:disable type_name
   typealias T = PostCategory
   
   static let TABLE_NAME = "PostCategory"

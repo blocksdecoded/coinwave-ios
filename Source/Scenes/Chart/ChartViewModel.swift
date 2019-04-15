@@ -44,7 +44,9 @@ class ChartViewModel: ChartBusinessLogic {
     coinsWorker.fetchCoin(coinID, force: false) { result in
       switch result {
       case .success(let coin):
-        self.view?.displayData(name: coin.name, price: self.priceToString(coin.price), color: self.priceColor(coin.change))
+        self.view?.displayData(name: coin.name,
+                               price: self.priceToString(coin.price),
+                               color: self.priceColor(coin.change))
       case .failure:
         self.view?.displayError()
       }

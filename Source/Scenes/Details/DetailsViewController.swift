@@ -12,6 +12,7 @@ import SVGKit
 import Kingfisher
 import SnapKit
 
+// swiftlint:disable type_body_length
 class DetailsViewController: UIViewController, DetailsDisplayLogic {
   static func instance(coinID: Int, symbol: String) -> DetailsViewController {
     let worker = CoinsWorker()
@@ -175,6 +176,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     view.addSubview(chart)
   }
   
+  // swiftlint:disable function_body_length
   private func setupConstraints() {
     topCircle.snp.makeConstraints { make in
       make.top.leading.trailing.equalToSuperview()

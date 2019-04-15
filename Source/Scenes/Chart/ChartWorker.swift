@@ -16,7 +16,10 @@ class ChartWorker: ChartWorkerLogic {
   
   // MARK: - Worker Logic
   
-  func getHistory(coinID: Int, symbol: String, time: CRTimeframe, completion: @escaping (Result<[CRPrice], CWError>) -> Void) {
+  func getHistory(coinID: Int,
+                  symbol: String,
+                  time: CRTimeframe,
+                  completion: @escaping (Result<[CRPrice], CWError>) -> Void) {
     let key = "\(coinID)_\(time.value)"
     if let root = cache.object(forKey: key as NSString) as? CRRoot<CRDataHistory> {
       completion(.success(root.data.history))

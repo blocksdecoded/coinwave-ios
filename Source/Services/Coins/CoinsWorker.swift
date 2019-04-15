@@ -108,7 +108,8 @@ class CoinsWorker: CoinsWorkerLogic {
     }
   }
   
-  private func insertCoins(coins: [CRCoin], sortable: Sortable, _ completion: @escaping (Result<[CRCoin], CWError>) -> Void) {
+  private func insertCoins(coins: [CRCoin], sortable: Sortable,
+                           _ completion: @escaping (Result<[CRCoin], CWError>) -> Void) {
     let result = DataStore.shared.insertCoins(coins)
     switch result {
     case .success:

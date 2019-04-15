@@ -46,7 +46,7 @@ class WatchlistViewModel: WatchlistBusinessLogic {
     worker.fetchFavorite(force: force) { result in
       switch result {
       case .success(let coin):
-        let viewModel = Watchlist.Favorite.ViewModel(identifier: coin.identifier, symbol: coin.symbol)
+        let viewModel = WatchlistModel(identifier: coin.identifier, symbol: coin.symbol)
         self.view?.displayFavorite(viewModel: viewModel)
       case .failure(let error):
         switch error {

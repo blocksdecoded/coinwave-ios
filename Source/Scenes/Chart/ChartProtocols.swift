@@ -26,5 +26,8 @@ protocol ChartBusinessLogic {
 }
 
 protocol ChartWorkerLogic {
-  func getHistory(coinID: Int, symbol: String, time: CRTimeframe, completion: @escaping (Result<[CRPrice], CWError>) -> Void)
+  func getHistory(coinID: Int,
+                  symbol: String,
+                  time: CRTimeframe,
+                  completion: @escaping (Result<[CRPrice], CWError>) -> Void)
 }

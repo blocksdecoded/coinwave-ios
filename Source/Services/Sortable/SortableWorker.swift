@@ -29,6 +29,7 @@ class SortableWorker: SortableWorkerLogic {
       field = Sortable.Field(rawValue: fieldRawValue)
     }
     
+    // swiftlint:disable line_length
     if let directionRawValue = UserDefaults.standard.value(forKey: "\(screen)_\(SortableWorker.orderDirection)") as? String {
       direction = Sortable.Direction(rawValue: directionRawValue)
     }
