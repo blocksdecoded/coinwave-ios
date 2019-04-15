@@ -23,6 +23,7 @@
 		B520CEF422645A17008A0CCE /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B520CEF322645A17008A0CCE /* MenuViewModel.swift */; };
 		B520CEF622646D64008A0CCE /* MenuProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B520CEF522646D64008A0CCE /* MenuProtocols.swift */; };
 		B520CEF822648BFA008A0CCE /* CurrenciesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B520CEF722648BFA008A0CCE /* CurrenciesEndPoint.swift */; };
+		B520CEFA22648DFA008A0CCE /* PostsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B520CEF922648DFA008A0CCE /* PostsEndPoint.swift */; };
 		B5217EAD2205948C00FF6DD5 /* CRTimeframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */; };
 		B5217EB12205960100FF6DD5 /* CRDataHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5217EB02205960100FF6DD5 /* CRDataHistory.swift */; };
 		B527120C2238CF4D00D57639 /* ConfigEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527120B2238CF4D00D57639 /* ConfigEndPoint.swift */; };
@@ -40,7 +41,6 @@
 		B5276AB521A00F5A000A74A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB421A00F5A000A74A5 /* Assets.xcassets */; };
 		B5276AB821A00F5A000A74A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5276AB621A00F5A000A74A5 /* LaunchScreen.storyboard */; };
 		B5276AF921A0124D000A74A5 /* CoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276AF321A0124D000A74A5 /* CoinsViewController.swift */; };
-		B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B3F21A27FDD000A74A5 /* PostsEndPoint.swift */; };
 		B5276B4D21A28183000A74A5 /* PostsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4521A28183000A74A5 /* PostsWorker.swift */; };
 		B5276B5321A28183000A74A5 /* PostsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4721A28183000A74A5 /* PostsModels.swift */; };
 		B5276B5621A28183000A74A5 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5276B4821A28183000A74A5 /* PostsViewController.swift */; };
@@ -171,6 +171,7 @@
 		B520CEF322645A17008A0CCE /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		B520CEF522646D64008A0CCE /* MenuProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuProtocols.swift; sourceTree = "<group>"; };
 		B520CEF722648BFA008A0CCE /* CurrenciesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesEndPoint.swift; sourceTree = "<group>"; };
+		B520CEF922648DFA008A0CCE /* PostsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEndPoint.swift; sourceTree = "<group>"; };
 		B5217EAC2205948C00FF6DD5 /* CRTimeframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRTimeframe.swift; sourceTree = "<group>"; };
 		B5217EB02205960100FF6DD5 /* CRDataHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataHistory.swift; sourceTree = "<group>"; };
 		B527120B2238CF4D00D57639 /* ConfigEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigEndPoint.swift; sourceTree = "<group>"; };
@@ -193,7 +194,6 @@
 		B5276AB721A00F5A000A74A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5276AB921A00F5A000A74A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5276AF321A0124D000A74A5 /* CoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewController.swift; sourceTree = "<group>"; };
-		B5276B3F21A27FDD000A74A5 /* PostsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEndPoint.swift; sourceTree = "<group>"; };
 		B5276B4521A28183000A74A5 /* PostsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsWorker.swift; sourceTree = "<group>"; };
 		B5276B4721A28183000A74A5 /* PostsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModels.swift; sourceTree = "<group>"; };
 		B5276B4821A28183000A74A5 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
@@ -747,8 +747,8 @@
 		B5E93D6121A820FB00D1705A /* PostsNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				B5276B3F21A27FDD000A74A5 /* PostsEndPoint.swift */,
 				B5276B6221A2A171000A74A5 /* PostsNetworkManager.swift */,
+				B520CEF922648DFA008A0CCE /* PostsEndPoint.swift */,
 			);
 			path = PostsNetwork;
 			sourceTree = "<group>";
@@ -1084,6 +1084,7 @@
 				B5E93D4B21A6FCE600D1705A /* MainTabBarController.swift in Sources */,
 				B54CACF0225B44D400BE7127 /* CoinsListView.swift in Sources */,
 				B5276B5321A28183000A74A5 /* PostsModels.swift in Sources */,
+				B520CEFA22648DFA008A0CCE /* PostsEndPoint.swift in Sources */,
 				B5276B8921A2A369000A74A5 /* Router.swift in Sources */,
 				B57F7925225EFA3D00A30B8F /* ConfigProtocols.swift in Sources */,
 				B572E9472202AFBA00778DA8 /* CRStats.swift in Sources */,
@@ -1141,7 +1142,6 @@
 				B5E93D3221A6B98E00D1705A /* DataHelperProtocol.swift in Sources */,
 				B5FCEABF2212D8FC00E4B433 /* AddToWatchlistModels.swift in Sources */,
 				B52712362238DA1A00D57639 /* ConfigViewModel.swift in Sources */,
-				B5276B4021A27FDD000A74A5 /* PostsEndPoint.swift in Sources */,
 				B5271262223A365D00D57639 /* VRoundView.swift in Sources */,
 				B572E94B2202AFDF00778DA8 /* CRBase.swift in Sources */,
 				B5A1FE0C225C666E00341CCC /* CoinsWorkerLogic.swift in Sources */,
