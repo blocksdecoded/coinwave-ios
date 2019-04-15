@@ -17,7 +17,7 @@ protocol ConfigBusinessLogic {
   var view: ConfigDisplayLogic? { get set }
   var worker: ConfigWorkerLogic { get set }
   
-  func viewDidLoad()
+  func fetchConfig()
 }
 
 protocol ConfigWorkerLogic {

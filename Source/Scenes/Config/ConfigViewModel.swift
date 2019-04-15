@@ -23,7 +23,7 @@ class ConfigViewModel: ConfigBusinessLogic {
   
   // MARK: - Business Logic
   
-  func viewDidLoad() {
+  func fetchConfig() {
     worker.getConfig { result in
       switch result {
       case .success(let bootstrap):

@@ -34,6 +34,12 @@ class ConfigViewController: UIViewController, ConfigDisplayLogic {
     imageView.image = R.image.loading_logo()
     return imageView
   }()
+  
+  private lazy var errorView: ErrorView = {
+    let errorView = ErrorView(frame: CGRect.zero)
+    errorView.delegate = self
+    return errorView
+  }()
 
   // MARK: Init
   
@@ -52,7 +58,7 @@ class ConfigViewController: UIViewController, ConfigDisplayLogic {
     super.viewDidLoad()
     setupViews()
     setupConstraints()
-    viewModel.viewDidLoad()
+    viewModel.fetchConfig()
   }
   
   // MARK: Setup
@@ -61,12 +67,17 @@ class ConfigViewController: UIViewController, ConfigDisplayLogic {
     let factory = WidgetFactory()
     factory.setGradientTo(view: view)
     view.addSubview(logo)
+    view.addSubview(errorView)
+    errorView.isHidden = true
   }
   
   func setupConstraints() {
     logo.snp.makeConstraints { make in
       make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
       make.centerY.equalTo(view.safeAreaLayoutGuide.snp.centerY)
+    }
+    errorView.snp.makeConstraints { make in
+      make.center.equalToSuperview()
     }
   }
   
@@ -78,6 +89,16 @@ class ConfigViewController: UIViewController, ConfigDisplayLogic {
   }
   
   func displayError(_ error: String) {
-    //TODO: Display error
+    logo.isHidden = true
+    errorView.isHidden = false
+    errorView.setText(error)
+  }
+}
+
+extension ConfigViewController: ErrorViewDelegate {
+  func onRetry() {
+    logo.isHidden = false
+    errorView.isHidden = true
+    viewModel.fetchConfig()
   }
 }
