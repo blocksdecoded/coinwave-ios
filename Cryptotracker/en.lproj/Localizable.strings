@@ -58,3 +58,6 @@
 "menu_share_this_app" = "Share this app";
 "menu_share_text" = "I think you'll love this app: %@";
 "menu_email_error" = "Fail to open email app";
+
+/* Rating */
+"how_would_you_rate" = "How would you rate %@?";
