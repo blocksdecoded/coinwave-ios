@@ -64,7 +64,6 @@ class AddToWatchlistViewModel: AddToWatchlistBusinessLogic {
       self.coins[indexPath.item] = mutableCoin
       view?.refreshCoin(indexPaths: [indexPath])
     case .failure:
-      //TODO: Handle DSError
       self.view?.displayError(CWError.noData.localizedDescription)
     }
   }

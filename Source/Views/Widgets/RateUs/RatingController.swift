@@ -47,8 +47,6 @@ class RatingController: UIViewController {
   @IBOutlet weak var thankView: UIView!
   
   @IBAction func rateClicked(_ sender: Any) {
-    //    TODO: Analytics
-    //    SAnalytics.Screens.Rating.action(.rate("\(rateBar.rating)"))
     UserDefaults.standard.set(rateBar.rating, forKey: RatingController.kRating)
     appStoreView.isHidden = false
     roundContainerHeight.constant = 250

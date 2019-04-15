@@ -32,7 +32,6 @@ class ConfigViewModel: ConfigBusinessLogic {
       case .failure(let error):
         switch error {
         case .noData:
-          // TODO: Find error message if no remote servers
           self.view?.displayError(CWError.noData.localizedDescription)
         default:
           self.view?.displayError(error.localizedDescription)
