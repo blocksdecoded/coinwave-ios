@@ -179,7 +179,7 @@ class CRCoinDataHelper: DataHelperProtocol {
       case .marketCap:
         expressible = currMarketCap.asc
       case .price:
-        expressible = currPrice.asc
+        expressible = currChange.asc
       case .volume:
         expressible = currVolume.asc
       }
@@ -190,7 +190,7 @@ class CRCoinDataHelper: DataHelperProtocol {
       case .marketCap:
         expressible = currMarketCap.desc
       case .price:
-        expressible = currPrice.desc
+        expressible = currChange.desc
       case .volume:
         expressible = currVolume.desc
       }
