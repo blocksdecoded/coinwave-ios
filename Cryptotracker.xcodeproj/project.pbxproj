@@ -65,7 +65,7 @@
 		B54CACF2225B463800BE7127 /* CoinsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CACF1225B463800BE7127 /* CoinsListHeaderView.swift */; };
 		B54CACF7225B473700BE7127 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B54CACF9225B473700BE7127 /* Localizable.strings */; };
 		B55500FD2237953B00FB7165 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55500FC2237953B00FB7165 /* Price.swift */; };
-		B55501012237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */; };
+		B55501012237A89C00FB7165 /* SVGLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55501002237A89C00FB7165 /* SVGLoader.swift */; };
 		B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E93E2202AD4F00778DA8 /* CRRoot.swift */; };
 		B572E9432202AF0F00778DA8 /* CRDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9422202AF0F00778DA8 /* CRDataList.swift */; };
 		B572E9472202AFBA00778DA8 /* CRStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572E9462202AFBA00778DA8 /* CRStats.swift */; };
@@ -216,7 +216,7 @@
 		B54CACF1225B463800BE7127 /* CoinsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListHeaderView.swift; sourceTree = "<group>"; };
 		B54CACF8225B473700BE7127 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B55500FC2237953B00FB7165 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
-		B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVGKFastImageView+Extensions.swift"; sourceTree = "<group>"; };
+		B55501002237A89C00FB7165 /* SVGLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGLoader.swift; sourceTree = "<group>"; };
 		B572E93E2202AD4F00778DA8 /* CRRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRRoot.swift; sourceTree = "<group>"; };
 		B572E9422202AF0F00778DA8 /* CRDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDataList.swift; sourceTree = "<group>"; };
 		B572E9462202AFBA00778DA8 /* CRStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRStats.swift; sourceTree = "<group>"; };
@@ -648,7 +648,7 @@
 			children = (
 				B5A1FE0A225C665800341CCC /* Coins */,
 				B5A1FE05225C5E2E00341CCC /* Sortable */,
-				B55501002237A89C00FB7165 /* SVGKFastImageView+Extensions.swift */,
+				B55501002237A89C00FB7165 /* SVGLoader.swift */,
 				B5737D4C2244E76E00C6A687 /* DateTimeService.swift */,
 			);
 			path = Services;
@@ -934,12 +934,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Cryptotracker/Pods-Cryptotracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Macaw/Macaw.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
-				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
@@ -948,12 +948,12 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Macaw.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
@@ -1008,7 +1008,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1041,7 +1041,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5FCEA88220B05FB00E4B433 /* DetailsBottomCell.swift in Sources */,
-				B55501012237A89C00FB7165 /* SVGKFastImageView+Extensions.swift in Sources */,
+				B55501012237A89C00FB7165 /* SVGLoader.swift in Sources */,
 				B572E93F2202AD4F00778DA8 /* CRRoot.swift in Sources */,
 				B520CEF822648BFA008A0CCE /* CurrenciesEndPoint.swift in Sources */,
 				B5B063A922644DE6008A0024 /* MenuViewController.swift in Sources */,

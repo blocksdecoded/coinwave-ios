@@ -8,9 +8,9 @@
 
 import UIKit
 import SafariServices
-import SVGKit
 import Kingfisher
 import SnapKit
+import Macaw
 
 // swiftlint:disable type_body_length
 class DetailsViewController: UIViewController, DetailsDisplayLogic {
@@ -73,9 +73,10 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     return UIImageView()
   }()
   
-  private lazy var vectorCoinIcon: SVGKFastImageView = {
-    let imageView = SVGKFastImageView(svgkImage: SVGKImage())!
+  private lazy var vectorCoinIcon: SVGView = {
+    let imageView = SVGView()
     imageView.contentMode = .scaleAspectFit
+    imageView.backgroundColor = .clear
     return imageView
   }()
   
@@ -259,7 +260,9 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         coinIcon.kf.setImage(with: viewModel.info.iconUrl!)
       case .vector:
         coinIcon.isHidden = true
-        vectorCoinIcon.load(viewModel.info.iconUrl!)
+        SVGLoader.load(viewModel.info.iconUrl!) { (node) in
+          self.vectorCoinIcon.node = node
+        }
       }
     } else {
       coinIcon.isHidden = true

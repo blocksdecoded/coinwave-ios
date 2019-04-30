@@ -8,7 +8,7 @@
 
 import UIKit
 import Kingfisher
-import SVGKit
+import Macaw
 
 class TVCCrypto: UITableViewCell {
   static var reuseID: String {
@@ -25,7 +25,11 @@ class TVCCrypto: UITableViewCell {
   @IBOutlet weak var price: UILabel!
   @IBOutlet weak var topSeparationLine: UIView!
   @IBOutlet weak var cryptoIcon: UIImageView!
-  @IBOutlet weak var svgCryptoIcon: SVGKFastImageView!
+  @IBOutlet weak var svgCryptoIcon: SVGView! {
+    didSet {
+      self.svgCryptoIcon.backgroundColor = .clear
+    }
+  }
   @IBOutlet weak var pricePercent: UILabel!
   @IBOutlet weak var priceUpDownIcon: UIImageView!
   @IBOutlet weak var topSeparatorHeight: NSLayoutConstraint!
@@ -35,6 +39,7 @@ class TVCCrypto: UITableViewCell {
   
   override func prepareForReuse() {
     super.prepareForReuse()
+    cryptoIcon.kf.cancelDownloadTask()
     task?.cancel()
     task = nil
   }
@@ -44,15 +49,16 @@ class TVCCrypto: UITableViewCell {
       let iconUrl = coin.iconUrl else {
         return
     }
-    
+
     switch iconType {
     case .pixel:
       svgCryptoIcon.isHidden = true
       cryptoIcon.kf.setImage(with: iconUrl)
     case .vector:
       cryptoIcon.isHidden = true
-      svgCryptoIcon.contentMode = .scaleAspectFit
-      task = svgCryptoIcon.load(iconUrl)
+      SVGLoader.load(iconUrl) { (node) in
+        self.svgCryptoIcon.node = node
+      }
     }
   }
   

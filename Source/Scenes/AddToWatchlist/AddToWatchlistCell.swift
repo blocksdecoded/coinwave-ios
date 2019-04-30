@@ -8,8 +8,8 @@
 
 import UIKit
 import Kingfisher
-import SVGKit
 import SnapKit
+import Macaw
 
 class AddToWatchlistCell: UICollectionViewCell {
   
@@ -76,9 +76,10 @@ class AddToWatchlistCell: UICollectionViewCell {
     return imageView
   }()
   
-  private lazy var svgIcon: SVGKFastImageView = {
-    let imageView = SVGKFastImageView(svgkImage: SVGKImage())!
+  private lazy var svgIcon: SVGView = {
+    let imageView = SVGView()
     imageView.contentMode = .scaleAspectFit
+    imageView.backgroundColor = .clear
     return imageView
   }()
   
@@ -179,7 +180,9 @@ class AddToWatchlistCell: UICollectionViewCell {
       icon.kf.setImage(with: iconUrl)
     case .vector:
       icon.isHidden = true
-      task = svgIcon.load(iconUrl)
+      SVGLoader.load(iconUrl) { (node) in
+        self.svgIcon.node = node
+      }
     }
   }
 }

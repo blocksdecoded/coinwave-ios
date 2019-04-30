@@ -2,13 +2,12 @@ PODS:
   - Charts (3.2.2):
     - Charts/Core (= 3.2.2)
   - Charts/Core (3.2.2)
-  - CocoaLumberjack (3.5.2):
-    - CocoaLumberjack/Core (= 3.5.2)
-  - CocoaLumberjack/Core (3.5.2)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
   - Kingfisher (4.10.1)
+  - Macaw (0.9.5):
+    - SWXMLHash
   - NVActivityIndicatorView (4.6.1):
     - NVActivityIndicatorView/Presenter (= 4.6.1)
   - NVActivityIndicatorView/Presenter (4.6.1)
@@ -20,59 +19,49 @@ PODS:
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
-  - SVGKit (2.1.0):
-    - CocoaLumberjack (~> 3.0)
+  - SWXMLHash (4.9.0)
 
 DEPENDENCIES:
   - Charts
   - Crashlytics
   - Fabric
   - Kingfisher (= 4.10.1)
+  - Macaw (= 0.9.5)
   - NVActivityIndicatorView
   - R.swift
   - SideMenu
   - SnapKit (~> 4.0)
   - SQLite.swift
-  - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `3.x`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Charts
-    - CocoaLumberjack
     - Crashlytics
     - Fabric
     - Kingfisher
+    - Macaw
     - NVActivityIndicatorView
     - R.swift
     - R.swift.Library
     - SideMenu
     - SnapKit
     - SQLite.swift
-
-EXTERNAL SOURCES:
-  SVGKit:
-    :branch: 3.x
-    :git: https://github.com/SVGKit/SVGKit.git
-
-CHECKOUT OPTIONS:
-  SVGKit:
-    :commit: 51534583f7223402d1be405b1c52bf3989ddb2b5
-    :git: https://github.com/SVGKit/SVGKit.git
+    - SWXMLHash
 
 SPEC CHECKSUMS:
   Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
-  CocoaLumberjack: 118bf4a820efc641f79fa487b75ed928dccfae23
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Macaw: 10bf9e327cb75f24e3225d5229a80ed544df85f0
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
   R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
-  SVGKit: 8a2fc74258bdb2abb54d3b65f3dd68b0277a9c4d
+  SWXMLHash: 87b0006848a548b7f9485b40bc71721b3ae39add
 
-PODFILE CHECKSUM: 53933f2281653345cad1c4cb4f4e19cc5ace9e71
+PODFILE CHECKSUM: 31fa87d53795bfdd20be354d97deffc16b5aa2fd
 
 COCOAPODS: 1.6.1

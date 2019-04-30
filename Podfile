@@ -7,9 +7,9 @@ target 'Cryptotracker' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
+  pod 'Macaw', '0.9.5'
   pod 'Kingfisher', '4.10.1'
   pod 'SQLite.swift'
-  pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '3.x'
   pod 'Charts'
   pod 'SideMenu'
   pod 'Fabric'
